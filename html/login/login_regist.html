@@ -1,0 +1,56 @@
+<ion-scroll zooming="true" direction="y" style="width:100%;height:100%;">
+    <div class="login" ui-view>
+        <header class="user_pic">
+            <b ng-click="back()"></b>
+            <span></span>
+
+        </header>
+        <section>
+            <form class="list_information" name="myForm" novalidate>
+                <div class="contain_information">
+                    <div class="user_name information">
+                        <span class="first"></span>
+                        <span class="second">
+                                <input type="tel"  id="phone"  class="phone" ng-model="info.phone" ng-pattern="/^0?1[3|4|5|8][0-9]\d{4}\d{4}$/"    name="phone"  required  placeholder="请输入手机号码登录" maxlength="11"/> 
+                                <!--<span class="test"></span>-->
+                        <span class="four notice" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">{{notice}}</span>
+                        </span>
+                    </div>
+                    <div class="scode information">
+                        <span class="first" style="background-image:url(images/login/ic_login_password.png)"></span>
+                        <span class="second">
+                                <input type="text" name="scode" ng-model="info.scode" required placeholder="请输入短信验证码" style="width:60%;">
+                                <span class="third notice" ng-hide="true">验证码输入错误</span>
+                        <button class="scode_get" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">
+                                </button>
+                        </span>
+                    </div>
+                    <div class="icode information" style="display: block;" ng-show="icode_show">
+                        <span class="first" style="background-image:url(images/login/ic_login_invitation.png)"></span>
+                        <span class="second">
+                                    <input  type="text" ng-model="info.icode" placeholder="若无邀请码请忽略">
+
+                                </span>
+                    </div>
+                    <input class="info_submit" type="submit" value="登录/注册" ng-disabled=" myForm.phone.$invalid  && myForm.scode.$invalid && agree" ng-click="login()">
+                </div>
+            </form>
+
+            <p class="transition_01">
+                <span class="left line"></span>
+                <span class="center">关联社交账户快速登录</span>
+                <span class="right line"></span>
+            </p>
+            <div class="social_connection">
+                <dl ng-click="weixin_bind()">
+                    <dt></dt>
+                    <dd>微信登录</dd>
+                </dl>
+            </div>
+        </section>
+        <footer>
+            <span ng-click="toggleCustom()"></span>
+            <a href="">注册登录表示同意《会加油充值服务协议》</a>
+        </footer>
+    </div>
+</ion-scroll>

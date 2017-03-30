@@ -1,0 +1,21 @@
+<ion-scroll zooming="true" direction="y" style="width:100%;height:100%;">
+    <div class="all_help" style="overflow:scroll;">
+        <section>
+            <p class="center_title">
+                <span class="help_iocna"></span>
+                <span class="normal_question">常见问题</span>
+            </p>
+            <ul class="main_content_help" style="height:100%;">
+                <li ng-repeat="x in help_information">
+                    <p class="question"><span>{{x.question}}</span><span class="help_iconb"></span></p>
+                    <div class="answer" style="display: none">
+                        <p ng-repeat="y in x.answer"> {{y}}</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!--<footer ui-sref="feedback">
+            意见反馈
+        </footer>-->
+    </div>
+</ion-scroll>
