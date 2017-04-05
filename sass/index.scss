@@ -314,6 +314,71 @@ $background) {
 
 /*动画*/
 
+@mixin friend_request_details_pupum {
+    width: 100%;
+    height: 11.36rem;
+    position: fixed;
+    background-color: rgba(black, .5);
+    z-index: 13;
+    display: none;
+    .popum {
+        width: 4.8rem; // 240px
+        height: 6.8rem; // 340px
+        z-index: 12;
+        @include center-block;
+        margin-top: 20%;
+        background: #FFF;
+        border-radius: 3%;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        .pic_show {
+            height: 1.88rem; // 94px;
+            width: 100%;
+            @include backgroundset("../images/friend/H5_popup.png",
+            center,
+            center,
+            100%);
+        }
+        .rule_main {
+            flex: 1;
+            overflow: hidden;
+            font-family: PingFangSC-Regular;
+            padding: 0 0.2rem;
+            .title {
+                text-align: center;
+                font-size: .24rem; // 12px
+                margin: .3rem 0; // 15px ;
+            }
+            h3 {
+                font-size: .2rem; // 10px
+                color: #6DC152;
+                margin: 0;
+                padding: 0;
+            }
+            p {
+                font-size: .2rem; // 10px
+            }
+        }
+        .rule_close {
+            position: relative;
+            bottom: -15%;
+            width: .56rem; // 28px;
+            height: .56rem; // 28px;
+            margin: 0 auto;
+            padding: 0;
+            border-radius: 50%;
+            @include backgroundset("../images/friend/close.png",
+            center,
+            center,
+            60%) border: 2px solid #FFF;
+            color: #FFF;
+            text-align: center;
+            font-size: .5rem; // 25px
+        }
+    }
+}
+
 
 /*commonbackheader*/
 
@@ -385,10 +450,12 @@ $background) {
             display: block;
             width: 1.26rem; // 63px; // 122px // 122px;
             height: 1.86rem; // 93px ;// 175px;
-            @include center-block @include backgroundset("../images/login/ic_login_logo.png",
+            @include center-block;
+            @include backgroundset("../images/login/ic_login_logo.png",
             center,
             center,
-            100%) margin-bottom: 10%;
+            100%);
+            margin-bottom: 10%;
         }
         b {
             display: block;
@@ -577,7 +644,8 @@ $background) {
 #weixin_bind {
     width: 1.3rem; // 65px;
     height: 1.76rem;
-    @include center-block dt {
+    @include center-block;
+    dt {
         width: 100%;
         height: 1.5rem; // 75px;
         @include backgroundset("../images/login/ic_tabar_me_h@3x.png",
@@ -770,6 +838,9 @@ $background) {
     display: flex;
     flex-direction: column;
     background: #FFF;
+    .popum_wrap {
+        @include friend_request_details_pupum;
+    }
     header {
         height: 3.2rem; // 160px;
         line-height: .74rem;
@@ -1950,6 +2021,7 @@ $background) {
         width: 100%;
         height: 2.9rem; // 145px;
         color: #4A4A4A;
+        margin-top: 0.1rem;
         font-family: PingFangSC-Medium;
         @include backgroundset("../images/friend/H5_title_driver.png",
         center,
@@ -2018,65 +2090,6 @@ $background) {
         }
     }
     .popum_wrap {
-        width: 100%;
-        height: 11.36rem;
-        position: fixed;
-        background-color: rgba(black, .5);
-        z-index: 13;
-        display: none;
-        .popum {
-            width: 4.8rem; // 240px
-            height: 6.8rem; // 340px
-            z-index: 12;
-            @include center-block;
-            margin-top: 20%;
-            background: #FFF;
-            border-radius: 3%;
-            display: flex;
-            position: relative;
-            flex-direction: column;
-            .pic_show {
-                height: 1.88rem; // 94px;
-                width: 100%;
-                @include backgroundset("../images/friend/H5_popup.png",
-                center,
-                center,
-                100%);
-            }
-            .rule_main {
-                flex: 1;
-                overflow: hidden;
-                font-family: PingFangSC-Regular;
-                padding: 0 0.2rem;
-                .title {
-                    text-align: center;
-                    font-size: .24rem; // 12px
-                    margin: .3rem 0; // 15px ;
-                }
-                h3 {
-                    font-size: .2rem; // 10px
-                    color: #6DC152;
-                    margin: 0;
-                    padding: 0;
-                }
-                p {
-                    font-size: .2rem; // 10px
-                }
-            }
-            .rule_close {
-                position: relative;
-                bottom: -15%;
-                width: .56rem; // 28px;
-                height: .56rem; // 28px;
-                margin: 0 auto;
-                padding:0;
-                border-radius: 50%;
-                @include backgroundset("../images/friend/close.png",center,center,60%)
-                border: 2px solid #FFF;
-                color: #FFF;
-                text-align: center;
-                font-size: .5rem; // 25px
-            }
-        }
+        @include friend_request_details_pupum;
     }
 }

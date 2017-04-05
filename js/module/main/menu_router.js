@@ -1,5 +1,6 @@
 ;
-HJY.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    $ionicConfigProvider.views.maxCache(5);
     $stateProvider.state("login", {
             url: "/login",
             controller: "loginc",
@@ -42,7 +43,12 @@ HJY.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
         .state("buy", {
             url: "/buy",
             controller: "buy",
-            templateUrl: "html/buy/index01.html"
+            templateUrl: "html/buy/index01.html",
+            resolve: {
+                loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load('./js/plugins/swiper-3.4.0.min.js'); // 按需加载目标 js file
+                }]
+            }
         })
         .state("game", {
             url: "/game",

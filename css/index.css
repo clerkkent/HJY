@@ -670,6 +670,76 @@ a:focus {
       -ms-flex-direction: column;
           flex-direction: column;
   background: #FFF; }
+  .friend_request .popum_wrap {
+    width: 100%;
+    height: 11.36rem;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 13;
+    display: none; }
+    .friend_request .popum_wrap .popum {
+      width: 4.8rem;
+      height: 6.8rem;
+      z-index: 12;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      margin-top: 20%;
+      background: #FFF;
+      -webkit-border-radius: 3%;
+              border-radius: 3%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      position: relative;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+      .friend_request .popum_wrap .popum .pic_show {
+        height: 1.88rem;
+        width: 100%;
+        background: url("../images/friend/H5_popup.png") center center no-repeat;
+        background-size: 100%; }
+      .friend_request .popum_wrap .popum .rule_main {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        overflow: hidden;
+        font-family: PingFangSC-Regular;
+        padding: 0 0.2rem; }
+        .friend_request .popum_wrap .popum .rule_main .title {
+          text-align: center;
+          font-size: .24rem;
+          margin: .3rem 0; }
+        .friend_request .popum_wrap .popum .rule_main h3 {
+          font-size: .2rem;
+          color: #6DC152;
+          margin: 0;
+          padding: 0; }
+        .friend_request .popum_wrap .popum .rule_main p {
+          font-size: .2rem; }
+      .friend_request .popum_wrap .popum .rule_close {
+        position: relative;
+        bottom: -15%;
+        width: .56rem;
+        height: .56rem;
+        margin: 0 auto;
+        padding: 0;
+        -webkit-border-radius: 50%;
+                border-radius: 50%;
+        background: url("../images/friend/close.png") center center no-repeat;
+        background-size: 60%;
+        border: 2px solid #FFF;
+        color: #FFF;
+        text-align: center;
+        font-size: .5rem; }
   .friend_request header {
     height: 3.2rem;
     line-height: .74rem;
@@ -1779,6 +1849,7 @@ a:focus {
     width: 100%;
     height: 2.9rem;
     color: #4A4A4A;
+    margin-top: 0.1rem;
     font-family: PingFangSC-Medium;
     background: url("../images/friend/H5_title_driver.png") center 15% no-repeat;
     background-size: 60%;

@@ -69,8 +69,8 @@ HJY.controller("loginc", ["$scope", "$state", "login_logic", "$interval", "$ioni
                 "jsonrpc": "2.0",
                 "method": "signin",
                 "params": [{
-                    "username": $scope.info.phone, //电话号 
-                    "sms_key": $scope.key, //短信接口收到的key 
+                    "username": $scope.info.phone, //电话号
+                    "sms_key": $scope.key, //短信接口收到的key
                     "sms_code": $scope.info.scode, //验证码
                     "invite_code ": $scope.info.icode
                 }],
@@ -81,8 +81,8 @@ HJY.controller("loginc", ["$scope", "$state", "login_logic", "$interval", "$ioni
                 "jsonrpc": "2.0",
                 "method": "signin",
                 "params": [{
-                    "username": $scope.info.phone, //电话号 
-                    "sms_key": $scope.key, //短信接口收到的key 
+                    "username": $scope.info.phone, //电话号
+                    "sms_key": $scope.key, //短信接口收到的key
                     "sms_code": $scope.info.scode, //验证码
                 }],
                 "id": 1
@@ -140,9 +140,7 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     $scope.allFriendNum = 4; //朋友总数
     $scope.url = location.search; //参数
     $scope.theRequest = new Object();
-    $scope.turn_details = function() {
-        $state.go("friend_request_details")
-    }
+    friend.popum();
     if ($scope.url.indexOf("?") != -1) { //重复代码较多，应写成服务。
         var str = $scope.url.substr(1);
         $scope.strs = str.split("&");
@@ -192,10 +190,10 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
         })
     }
 }]);
-HJY.controller("friend_request_details", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "friend", "webappSDK", function($scope, $state, login_logic, $http, $ionicPopup, friend, webappSDK) {
+HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPopup", "friend", "webappSDK", function($scope, $state, $http, $ionicPopup, friend, webappSDK) {
     friend.popum();
-    webappSDK.getUserInfos();
-    $scope.share = function() {
+    webappSDK.getUserInfos(); //注册原生H5取参数
+    $scope.share = function() { //分享原生H5指令交互
         webappSDK.share();
     }
 }]);
@@ -208,7 +206,18 @@ HJY.controller("mycenter", ["$scope", "$state", "login_logic", "$http", function
     }
 }]);
 HJY.controller("buy", ["$scope", "$state", "buy", "$http", function($scope, $state, buy, $http) {
-    buy.index_banner()
+    new Swiper(".swiper-container", {
+        effect: 'coverflow',
+        slidesPerView: 1.6,
+        centeredSlides: true,
+        coverflow: {
+            rotate: 0,
+            stretch: -20,
+            depth: 60,
+            modifier: 2,
+            slideShadows: true
+        }
+    })
 }]);
 HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", function($scope, $state, game_play, $http, $timeout) {
     $scope.text = "连续点击，赢取油滴"; //按钮内文字
@@ -216,7 +225,6 @@ HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", fu
     $scope.url = location.search;
     $scope.theRequest = new Object();
     if ($scope.url.indexOf("?") != -1) {
-        console.log(11)
         var str = $scope.url.substr(1);
         strs = str.split("&");
         for (var i = 0; i < strs.length; i++) {
@@ -313,8 +321,8 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
             "jsonrpc": "2.0",
             "method": "signin",
             "params": [{
-                "username": $scope.info.phone, //电话号 
-                "sms_key": $scope.key, //短信接口收到的key 
+                "username": $scope.info.phone, //电话号
+                "sms_key": $scope.key, //短信接口收到的key
                 "sms_code": $scope.info.scode, //验证码
                 "oilNum ": $scope.score_login,
                 "invite_code": $scope.theRequest.invite_code

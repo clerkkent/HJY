@@ -1,5 +1,5 @@
 ;
-var HJY = angular.module("HJY", ["ionic", "ui.router", "ngVerify"]);
+var HJY = angular.module("HJY", ["ionic", "ui.router", "ngVerify", "oc.lazyLoad"]);
 HJY.controller("MainCtrl", ["$scope", "$state", "$ionicSideMenuDelegate", "$timeout", "$ionicLoading", "$ionicNavBarDelegate", function($scope, $state, $ionicSideMenuDelegate, $timeout, $ionicLoading, $ionicNavBarDelegate) {
     $ionicLoading.show({
         content: 'Loading',

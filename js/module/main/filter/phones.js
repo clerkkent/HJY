@@ -1,6 +1,9 @@
-HJY.filter("encryPt", function() {
+HJY.filter("encryPt", function() { //
     return function(input, uppercase) {
-        console.log(input)
-        return input.replace(/(\d{3})(\d{4})/, "$1****");
+        if (input == undefined) {
+            return "180****0000"
+        } else {
+            return input.replace(/(\d{3})(\d{4})/, "$1****");
+        }
     }
 })

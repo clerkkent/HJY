@@ -6,7 +6,7 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
         $(".main_content").on("focus", ".login input", (function(event) {
             $(this).parent(".second").addClass("line_change");
         }));
-        $(".main_content").on("input propertychange", ".login #phone", (function(event) {
+        $(".main_content").on("input propertychange", ".login #phone", (function(event) { //电话号码格式化，暂时不使用
             if ($(this).val().length <= 6) {
                 $(".main_content .login .test").text($(this).val().replace(/(\d{3})/, "$1 "))
             } else {
@@ -112,21 +112,6 @@ HJY.factory("buy", ["$http", "$q", function($http, $q) {
             }
         });
     }
-    factory.index_banner = function() {
-            new Swiper(".swiper-container", {
-                effect: 'coverflow',
-                slidesPerView: 1.6,
-                centeredSlides: true,
-                coverflow: {
-                    rotate: 0,
-                    stretch: -20,
-                    depth: 60,
-                    modifier: 2,
-                    slideShadows: true
-                }
-            })
-
-        } //初始化swiper
     return factory;
 }]);
 HJY.factory("game_play", [function($state) { //此处所有的节点应该也归于游戏元素中，但由于每个游戏进程内this，that不易辨别，就在每个进程之内取用所需节点。
@@ -146,7 +131,12 @@ HJY.factory("game_play", [function($state) { //此处所有的节点应该也归
         var contain = $(".main_content .friend_game .left"); //容器节点
         var that = this;
         bt.on("touchend", function() {
-            that.count++;
+            if (that.count < 200) {
+                that.count++;
+            } else {
+                that.count = 200;
+            }
+
             if (that.r < 160) {
                 that.r += 10;
                 animation.addone();
@@ -296,47 +286,45 @@ HJY.factory("friend", [function() {
         $(".main_content").on("click", ".friend_request_details .rule_close", (function(event) {
             $(".main_content .friend_request_details .popum_wrap").css({ display: "none" });
         }));
+        $(".main_content").on("click", ".friend_request section .friend_wrap .first", (function(event) {
+            $(".main_content .friend_request .popum_wrap").css({ display: "block" });
+        }));
+        $(".main_content").on("click", ".friend_request .rule_close", (function(event) {
+            $(".main_content .friend_request .popum_wrap").css({ display: "none" });
+        }));
     }
     factory.friend_none = function() {
-            $(".main_content .friend_request .friend_wrap ul").addClass("friend_none")
-        }
-        // factory.friend_webview = function() {
-        //     function setupWebViewJavascriptBridge(callback) {
-        //         if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-        //         if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
-        //         window.WVJBCallbacks = [callback];
-        //         var WVJBIframe = document.createElement('iframe');
-        //         WVJBIframe.style.display = 'none';
-        //         WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-        //         document.documentElement.appendChild(WVJBIframe);
-        //         setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
-        //     };
-        //     setupWebViewJavascriptBridge()
-        // }
+        $(".main_content .friend_request .friend_wrap ul").addClass("friend_none")
+    }
     return factory
 }])
 HJY.factory("webappSDK", [function() {
     var factory = {}
     factory.webview = function(callback) {
-        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+        if (window.WebViewJavascriptBridge) { alert(1); return callback(WebViewJavascriptBridge); } else {
+            alert(2);
+            document.addEventListener('WebViewJavascriptBridgeReady', function() {
+                return callback(WebViewJavascriptBridge);
+            }, false)
+        }
         if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
         window.WVJBCallbacks = [callback];
         var WVJBIframe = document.createElement('iframe');
         WVJBIframe.style.display = 'none';
-        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__'; //通过发送地址吊起方法，双重保证
         document.documentElement.appendChild(WVJBIframe);
         setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
     }
     factory.share = function() {
         this.webview(function(bridge) {
-            bridge.callHandler('invitation', function(responseData) {
+            bridge.callHandler('invitation', function(responseData) { //请求OC
 
             })
         })
     }
     factory.getUserInfos = function() {
         this.webview(function(bridge) {
-            bridge.registerHandler('getUserInfos', function(data, responseCallback) {
+            bridge.registerHandler('getUserInfos', function(data, responseCallback) { //注册JS方法
                 alert(data)
                     // responseCallback({ 'userId': '123456', 'blog': '' })
             })
