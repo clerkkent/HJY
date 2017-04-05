@@ -72,7 +72,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         })
         .state("game_success", {
             url: "/game_success",
-            controller: "game",
+            controller: "game_success",
             templateUrl: "html/game/game_success.html"
         })
         .state("register_agreement", {

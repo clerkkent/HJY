@@ -132,28 +132,30 @@ HJY.controller("help", ["$scope", "$state", "login_logic", "$http", function($sc
         $scope.help_information = data.data;
     })
 }]);
-HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "friend", function($scope, $state, login_logic, $http, $ionicPopup, friend) {
+HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "friend", "webappSDK", "$q", function($scope, $state, login_logic, $http, $ionicPopup, friend, webappSDK, $q) {
     $scope.userid = null; //userid
-    $scope.strs = null; //参数数组
-    $scope.todayOilNum = 500; //今日获取油滴数
-    $scope.allOilNum = 100000; //总共获取油滴数
-    $scope.allFriendNum = 4; //朋友总数
+    $scope.strs = null; //token
+    $scope.info = null; //登录信息主体
+    $scope.todayOilNum = 0; //今日获取油滴数
+    $scope.allOilNum = 0; //总共获取油滴数
+    $scope.allFriendNum = 0; //朋友总数
     $scope.url = location.search; //参数
     $scope.theRequest = new Object();
     friend.popum();
-    if ($scope.url.indexOf("?") != -1) { //重复代码较多，应写成服务。
-        var str = $scope.url.substr(1);
-        $scope.strs = str.split("&");
-        for (var i = 0; i < $scope.strs.length; i++) {
-            $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
-        }
-        $scope.userid = $scope.theRequest.user_id
-    }
+    webappSDK.getUserInfos();
+    $scope.info = sessionStorage.getItem("info")
+    $scope.userid = JSON.parse($scope.info).user_id;
+    $scope.strs = JSON.parse($scope.info).OIL_TOKEN
+        // if ($scope.url.indexOf("?") != -1) { //重复代码较多，应写成服务。
+        //     var str = $scope.url.substr(1);
+        //     $scope.strs = str.split("&");
+        //     for (var i = 0; i < $scope.strs.length; i++) {
+        //         $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
+        //     }
+        //     $scope.userid = $scope.theRequest.user_id
+        // }
 
-    $scope.frienddetails = [{ //测试展示数据（无效，上线应去除）
-        phone: "18238862002",
-        get_oildrop_num: 500
-    }];
+    $scope.frienddetails = null
 
     if ($scope.userid != null) {
         var list = {
@@ -165,10 +167,10 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             "id": 1
         }
         console.log(list)
-        var promise_scode = login_logic.submit(list, $scope.strs[1]);
+        var promise_scode = login_logic.submit(list, $scope.strs);
         promise_scode.then(function(data) {
             if (data.result != undefined) {
-                console.log(data)
+                alert(JSON.stringify(data))
                 $scope.todayOilNum = data["result"]["todayOilNum"]
                 $scope.allOilNum = data["result"]["allOilNum"]
                 $scope.allFriendNum = data["result"]["allFriendNum"]
@@ -192,7 +194,6 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
 }]);
 HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPopup", "friend", "webappSDK", function($scope, $state, $http, $ionicPopup, friend, webappSDK) {
     friend.popum();
-    webappSDK.getUserInfos(); //注册原生H5取参数
     $scope.share = function() { //分享原生H5指令交互
         webappSDK.share();
     }
@@ -247,6 +248,8 @@ HJY.controller("game_select", ["$scope", "$state", "game_play", "$http", "$timeo
 HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeout", "ngVerify", "login_logic", "$interval", "$ionicPopup", function($scope, $state, game_play, $http, $timeout, ngVerify, login_logic, $interval, $ionicPopup) {
     $scope.score_login = sessionStorage.getItem("score");
     game_play.deal_icon();
+    $scope.state = 0;
+    $scope.registed = false;
     $scope.info = { phone: "", scode: "", icode: "" } //表单验证信息,此处用对象绑定一是因为IONIC的作用域不清，二是方便表单信息处理
     $scope.notice = "手机号码错误";
     // $scope.agree = false;//此处无用
@@ -257,9 +260,6 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
     $scope.state_sign = true; //true为填写手机号码，false为填写
     // login_logic.deal();//测试解决某些浏览器固定窗口大小，没有resize事件，但存在用户主动关闭键盘的BUG
     $scope.former_phone = $scope.theRequest.mobile;
-    // console.log($scope.theRequest.mobile)
-    // console.log($scope.score_login)
-    // console.log($scope.theRequest.invite_code)
     $scope.scode_get = function() { //获取验证码
         var a = 60;
         $scope.second = a + "s"
@@ -285,19 +285,11 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
             "id": 1
         }
         var promise_scode = login_logic.submit(list);
+        console.log(list)
         promise_scode.then(function(data) {
             if (data.result != undefined) {
                 $scope.icode_show = data["result"]["data"]["key"]
                 $scope.key = data["result"]["data"]["key"]
-                if (data["result"]["data"]["is_registed"] = 1) {
-                    $ionicPopup.alert({
-                        title: '提示',
-                        template: "您已注册，点击领取油滴将直接登录",
-                        okText: '嗯！知道了', // String
-                        okType: 'button-energized',
-                    });
-                }
-                console.log(data)
             } else { //错误信息弹窗
                 $ionicPopup.alert({
                     title: '提示',
@@ -317,48 +309,91 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
         })
     }
     $scope.login = function() { //登录注册
-        var list_login = {
-            "jsonrpc": "2.0",
-            "method": "signin",
-            "params": [{
-                "username": $scope.info.phone, //电话号
-                "sms_key": $scope.key, //短信接口收到的key
-                "sms_code": $scope.info.scode, //验证码
-                "oilNum ": $scope.score_login,
-                "invite_code": $scope.theRequest.invite_code
-
-            }],
-            "id": 1
-        }
-        console.log($scope.info.scode)
-        var promise_login = login_logic.submit(list_login);
-        promise_login.then(function(data) {
-            if (data.result != undefined) {
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: "登录成功",
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
-                console.log(data);
-                $state.go("game_success")
-            } else { //错误信息弹窗
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: data["error"]["message"],
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
+        var list_login = null;
+        var promise_login = null;
+        if ($scope.state == 0) {
+            list_login = {
+                "jsonrpc": "2.0",
+                "method": "isRegisterForBefore",
+                "params": [{
+                    "phone": $scope.info.phone
+                }],
+                "id": 1
             }
+            promise_login = login_logic.submit(list_login);
+            promise_login.then(function(data) {
+                console.log(data["result"])
+                if (data.result != undefined) {
+                    if (data["result"]["isRegister"] == 0) {
+                        $scope.state = 1;
+                        $scope.registed = true;
 
-        }, function() {
-            console.log("登录失败");
-            $ionicPopup.alert({
-                title: '提示',
-                template: "网络异常",
-                okText: '嗯！知道了', // String
-                okType: 'button-energized',
-            });
-        })
+                    } else {
+                        $ionicPopup.alert({
+                            title: '提示',
+                            template: "此帐号已注册，请更换帐号重试！",
+                            okText: '嗯！知道了', // String
+                            okType: 'button-energized',
+                        });
+                    }
+                }
+            }, function() {
+                console.log("登录失败");
+                $ionicPopup.alert({
+                    title: '提示',
+                    template: "网络异常",
+                    okText: '嗯！知道了', // String
+                    okType: 'button-energized',
+                });
+            })
+        } else {
+            list_login = {
+                "jsonrpc": "2.0",
+                "method": "signin",
+                "params": [{
+                    "username": $scope.info.phone, //电话号
+                    "sms_key": $scope.key, //短信接口收到的key
+                    "sms_code": $scope.info.scode, //验证码
+                    "oilNum ": $scope.score_login,
+                    "invite_code": $scope.theRequest.invite_code
+
+                }],
+                "id": 1
+            }
+            console.log($scope.info.scode)
+            promise_login = login_logic.submit(list_login);
+            promise_login.then(function(data) {
+                if (data.result != undefined) {
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: "注册成功",
+                        okText: '嗯！知道了', // String
+                        okType: 'button-energized',
+                    });
+                    console.log(data);
+                    $state.go("game_success")
+                } else { //错误信息弹窗
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: data["error"]["message"],
+                        okText: '嗯！知道了', // String
+                        okType: 'button-energized',
+                    });
+                }
+
+            }, function() {
+                console.log("登录失败");
+                $ionicPopup.alert({
+                    title: '提示',
+                    template: "网络异常",
+                    okText: '嗯！知道了', // String
+                    okType: 'button-energized',
+                });
+            })
+        }
+
     }
+}])
+HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
+    $scope.score_login = sessionStorage.getItem("score");
 }])

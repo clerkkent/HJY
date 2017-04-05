@@ -66,7 +66,7 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
             head = {
                 'Content-Type': 'application/x-www-form-urlencoded'
             };
-            window.document.cookie = authToken.split("=")[0] + "=" + authToken.split("=")[1] + ";path=/;";
+            window.document.cookie = "OIL_TOKEN=" + authToken + ";path=/;";
         } else {
             head = {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -298,11 +298,12 @@ HJY.factory("friend", [function() {
     }
     return factory
 }])
-HJY.factory("webappSDK", [function() {
-    var factory = {}
+HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
+    var factory = {
+        information: null
+    }
     factory.webview = function(callback) {
-        if (window.WebViewJavascriptBridge) { alert(1); return callback(WebViewJavascriptBridge); } else {
-            alert(2);
+        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); } else {
             document.addEventListener('WebViewJavascriptBridgeReady', function() {
                 return callback(WebViewJavascriptBridge);
             }, false)
@@ -316,17 +317,18 @@ HJY.factory("webappSDK", [function() {
         setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
     }
     factory.share = function() {
+
         this.webview(function(bridge) {
             bridge.callHandler('invitation', function(responseData) { //请求OC
 
             })
         })
     }
+
     factory.getUserInfos = function() {
         this.webview(function(bridge) {
-            bridge.registerHandler('getUserInfos', function(data, responseCallback) { //注册JS方法
-                alert(data)
-                    // responseCallback({ 'userId': '123456', 'blog': '' })
+            bridge.callHandler('getUserInfos', function(responseData) { //请求OC
+                sessionStorage.setItem("info", responseData)
             })
         })
     }

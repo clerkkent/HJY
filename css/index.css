@@ -669,6 +669,7 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 11.36rem;
   background: #FFF; }
   .friend_request .popum_wrap {
     width: 100%;
@@ -1828,9 +1829,90 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: url("../images/game/game_success.png") top center no-repeat;
-  background-size: 100%;
-  background-color: #fedb65; }
+  background-color: #fedb65;
+  font-family: PingFangSC-Medium;
+  color: #575e6f; }
+  .game_success header {
+    width: 100%;
+    height: 6.7rem;
+    background: url("../images/game/H5_accomplish.png") center center no-repeat;
+    background-size: 80%; }
+    .game_success header h3 {
+      text-align: center;
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: .24rem; }
+    .game_success header p {
+      width: 100%;
+      height: .94rem;
+      line-height: .94rem;
+      background: url(../images/game/H5_accomplish_option.png) 20% center no-repeat;
+      background-size: .36rem .36rem;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row; }
+      .game_success header p .left {
+        background: #FFF;
+        height: 100%;
+        display: block;
+        width: 2.1rem;
+        margin-left: 1.8rem;
+        text-align: center;
+        font-size: .32rem;
+        -webkit-border-top-left-radius: 5%;
+                border-top-left-radius: 5%;
+        -webkit-border-bottom-left-radius: 5%;
+                border-bottom-left-radius: 5%; }
+        .game_success header p .left b {
+          color: #eb1b05;
+          font-size: .36rem; }
+      .game_success header p .right {
+        display: block;
+        width: 1.24rem;
+        height: 100%;
+        text-align: center;
+        color: #FFF;
+        font-size: .44rem;
+        background: url("../images/game/H5_accomplish_list.png") center center no-repeat;
+        background-size: 100%; }
+        .game_success header p .right b {
+          font-size: .24rem; }
+      .game_success header p .oil {
+        background: url("../images/game/H5_accomplish_huijiayou.png") center center no-repeat;
+        background-size: 100%; }
+  .game_success section {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    position: relative; }
+    .game_success section .download {
+      width: 2.9rem;
+      height: 2.9rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      background: url("../images/game/H5_accomplish_QR code.png") center center no-repeat;
+      background-size: 100%;
+      margin-top: .4rem; }
+      .game_success section .download img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        margin-left: 0.8rem;
+        margin-top: 0.5rem; }
 
 .friend_request_details {
   width: 100%;
