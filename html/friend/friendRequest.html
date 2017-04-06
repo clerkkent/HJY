@@ -33,10 +33,13 @@
                 <div class="second">
                     <p>我的车友</p>
                     <div>
-                        <ul style="overflow-y:scroll;">
+                        <ul style="overflow-y:auto;">
                             <li ng-repeat="x in frienddetails">
                                 <span class="phone_number">{{x.phone | encryPt}}</span>
-                                <span class="oil_drop">+{{x.get_oildrop_num}}油滴</span>
+                                <span class="oil_drop">
+                                    <b style="font-weight:500;" ng-if="x.get_oildrop_num">+{{x.get_oildrop_num}}油滴</b>
+                                    <b style="font-weight:500;color:#51586a" ng-if="!x.get_oildrop_num">未加油</b>
+                                </span>
                             </li>
                         </ul>
                     </div>

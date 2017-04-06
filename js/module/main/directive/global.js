@@ -7,6 +7,14 @@ HJY.directive('scrollHeight', function() { //赋予元素当前可见窗口高�
         }
     }
 });
+HJY.directive('friendzeroOil', function() { //赋予元素当前可见窗口高度
+    return {
+        restrict: 'AE',
+        link: function(scope, element, attr) {
+            alert(element[0].innerHTML)
+        }
+    }
+});
 HJY.directive("commonbackHeader", function() { //购买页，个人中心，订单页下方菜单
     return {
         restrict: "ECMA",

@@ -325,10 +325,10 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
         })
     }
 
-    factory.getUserInfos = function() {
+    factory.getUserInfos = function(callback) {
         this.webview(function(bridge) {
             bridge.callHandler('getUserInfos', function(responseData) { //请求OC
-                sessionStorage.setItem("info", responseData)
+                callback(responseData)
             })
         })
     }

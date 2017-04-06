@@ -42,6 +42,7 @@ HJY.controller("loginc", ["$scope", "$state", "login_logic", "$interval", "$ioni
             "id": 1
         }
         var promise_scode = login_logic.submit(list);
+        console.log(list)
         promise_scode.then(function(data) {
             if (data.result != undefined) {
                 $scope.icode_show = data["result"]["data"]["is_registed"] == 0 ? true : false;
@@ -142,55 +143,52 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     $scope.url = location.search; //参数
     $scope.theRequest = new Object();
     friend.popum();
-    webappSDK.getUserInfos();
-    $scope.info = sessionStorage.getItem("info")
-    $scope.userid = JSON.parse($scope.info).user_id;
-    $scope.strs = JSON.parse($scope.info).OIL_TOKEN
-        // if ($scope.url.indexOf("?") != -1) { //重复代码较多，应写成服务。
-        //     var str = $scope.url.substr(1);
-        //     $scope.strs = str.split("&");
-        //     for (var i = 0; i < $scope.strs.length; i++) {
-        //         $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
-        //     }
-        //     $scope.userid = $scope.theRequest.user_id
-        // }
-
-    $scope.frienddetails = null
-
-    if ($scope.userid != null) {
-        var list = {
-            "jsonrpc": "2.0",
-            "method": "myInviteFriendList",
-            "params": [{
-                "user_id": $scope.userid //用户的user_id，必须
-            }],
-            "id": 1
-        }
-        console.log(list)
-        var promise_scode = login_logic.submit(list, $scope.strs);
-        promise_scode.then(function(data) {
-            if (data.result != undefined) {
-                alert(JSON.stringify(data))
-                $scope.todayOilNum = data["result"]["todayOilNum"]
-                $scope.allOilNum = data["result"]["allOilNum"]
-                $scope.allFriendNum = data["result"]["allFriendNum"]
-                $scope.frienddetails = data["result"]["list"]
-                if ($scope.frienddetails == 0) {
-                    friend.friend_none()
-                }
-            } else { //错误信息弹窗
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: data["error"]["message"],
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
+    webappSDK.getUserInfos(function(res) {
+        var info = JSON.parse(res)
+        $scope.userid = info.user_id
+        $scope.strs = info.OIL_TOKEN
+        if ($scope.userid != null) {
+            var list = {
+                "jsonrpc": "2.0",
+                "method": "myInviteFriendList",
+                "params": [{
+                    "user_id": $scope.userid //用户的user_id，必须
+                }],
+                "id": 1
             }
+            var promise_scode = login_logic.submit(list, $scope.strs);
+            promise_scode.then(function(data) {
+                if (data.result != undefined) {
+                    $scope.todayOilNum = data["result"]["todayOilNum"]
+                    $scope.allOilNum = data["result"]["allOilNum"]
+                    $scope.allFriendNum = data["result"]["allFriendNum"]
+                    $scope.frienddetails = data["result"]["list"]
+                    if ($scope.frienddetails == 0) {
+                        friend.friend_none()
+                    }
+                } else { //错误信息弹窗
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: data["error"]["message"],
+                        okText: '嗯！知道了', // String
+                        okType: 'button-energized',
+                    });
+                }
 
-        }, function() {
-            console.log("验证码信息获取失败");
-        })
-    }
+            }, function() {
+                console.log("验证码信息获取失败");
+            })
+        }
+    });
+
+    // if ($scope.url.indexOf("?") != -1) { //重复代码较多，应写成服务。
+    //     var str = $scope.url.substr(1);
+    //     $scope.strs = str.split("&");
+    //     for (var i = 0; i < $scope.strs.length; i++) {
+    //         $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
+    //     }
+    //     $scope.userid = $scope.theRequest.user_id
+    // }
 }]);
 HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPopup", "friend", "webappSDK", function($scope, $state, $http, $ionicPopup, friend, webappSDK) {
     friend.popum();

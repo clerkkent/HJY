@@ -22,7 +22,7 @@
                                 </button>
         <input ng-if="registed" class="first_i" type="text" name="scode" ng-model="info.scode" ng-verify="max:6" required placeholder="请输入短信验证码">
 
-        <input class="second_i button button-assertive" type="submit" value="领取油滴" ng-disabled=" myForm.phone.$invalid  && myForm.scode.$invalid && agree" ng-click="login()">
+        <input class="second_i button button-assertive" ng-verify="{control:'myform'}" type="submit" value="领取油滴" ng-disabled=" myForm.phone.$invalid  && myForm.scode.$invalid && agree" ng-click="login()">
     </form>
     <p class="remind">注册即送：<span>200</span>元礼券 加油低至<span>85</span>折</p>
 </div>
