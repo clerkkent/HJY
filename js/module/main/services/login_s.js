@@ -74,7 +74,7 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
         }
         $http({
             method: 'post',
-            url: 'http://192.168.10.212:8888/passport/service.php?c=account',
+            url: 'http://www.ihaomu.com/passport/service.php?c=account',
             data: data_send,
             headers: head
         }).success(function(data, header, config, status) {
@@ -131,10 +131,10 @@ HJY.factory("game_play", [function($state) { //此处所有的节点应该也归
         var contain = $(".main_content .friend_game .left"); //容器节点
         var that = this;
         bt.on("touchend", function() {
-            if (that.count < 200) {
+            if (that.count < 300) {
                 that.count++;
             } else {
-                that.count = 200;
+                that.count = 300;
             }
 
             if (that.r < 160) {

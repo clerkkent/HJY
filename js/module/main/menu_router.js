@@ -23,6 +23,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("friend_invi", {
             url: "/friend_invi",
             controller: "friend",
+            cache: 'false',
             templateUrl: "html/friend/friendRequest.html",
         })
         .state("friend_request_details", {
@@ -53,25 +54,30 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("game", {
             url: "/game",
             controller: "game",
+            cache: 'false',
             templateUrl: "html/game/game.html"
         })
         .state("game.select", {
             url: "/select",
             controller: "game_select",
+            cache: 'false',
             templateUrl: "html/game/select.html"
         })
         .state("game.login", {
             url: "/login",
             controller: "game_login",
+            cache: 'false',
             templateUrl: "html/game/get_login.html"
         })
         .state("game.main", {
             url: "/main",
             controller: "game",
+            cache: 'false',
             templateUrl: "html/game/game_main.html"
         })
         .state("game_success", {
             url: "/game_success",
+            cache: 'false',
             controller: "game_success",
             templateUrl: "html/game/game_success.html"
         })
@@ -84,6 +90,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             url: "/user_agreement",
             controller: "help",
             templateUrl: "html/agreement/user_agreement.html"
+        })
+        .state("land", {
+            url: "/land",
+            controller: "land",
+            templateUrl: "html/land/land.html"
         })
         // .state("feedback", {
         //     url: "/feedback",
