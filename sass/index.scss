@@ -2186,19 +2186,19 @@ $background) {
         }
         .details{
             width:1.8rem; // 90px
-            height:.28rem; // 14px;
+            height:.92rem; // 46px;
+            line-height:.92rem; // 46px;
             text-align:center;
             font-size:.24rem; // 12px;
             color:#858585;
             position:absolute;
             right:15%;
-            top:0.25rem;
+            top:0.03rem;
         }
         .second_i{
             width:100%;
             height:.92rem; // 46px;
             border-radius:.46rem; // 23px;
-            padding-left:.46rem; // 23px;
             font-size:.24rem; // 12px;
             color:#858585;
             color:#FFF;
@@ -2211,15 +2211,13 @@ $background) {
             border:none;
         }
         .agree{
-            font-size:.24rem; // 12px;
-            height:.4rem; // 20px;
             background:none;
+            margin-left:0.8rem;
+            transform:scale(0.9);
+            color:red;
             border:none;
-            a{
-                color:red;
-            }
-            .select{
-
+            i{
+                transform:scale(0.8);
             }
         }
 

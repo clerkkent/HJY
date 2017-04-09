@@ -2089,19 +2089,19 @@ a:focus {
       margin-bottom: .1rem; }
     .land section .details {
       width: 1.8rem;
-      height: .28rem;
+      height: .92rem;
+      line-height: .92rem;
       text-align: center;
       font-size: .24rem;
       color: #858585;
       position: absolute;
       right: 15%;
-      top: 0.25rem; }
+      top: 0.03rem; }
     .land section .second_i {
       width: 100%;
       height: .92rem;
       -webkit-border-radius: .46rem;
               border-radius: .46rem;
-      padding-left: .46rem;
       font-size: .24rem;
       color: #858585;
       color: #FFF;
@@ -2112,9 +2112,14 @@ a:focus {
       background: none;
       border: none; }
     .land section .agree {
-      font-size: .24rem;
-      height: .4rem;
       background: none;
+      margin-left: 0.8rem;
+      -webkit-transform: scale(0.9);
+          -ms-transform: scale(0.9);
+              transform: scale(0.9);
+      color: red;
       border: none; }
-      .land section .agree a {
-        color: red; }
+      .land section .agree i {
+        -webkit-transform: scale(0.8);
+            -ms-transform: scale(0.8);
+                transform: scale(0.8); }

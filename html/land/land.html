@@ -11,12 +11,7 @@
                 <input class="first_i info" type="text" name="scode" ng-verify="max:6" required placeholder="请输入验证码">
                 <button class="get_scode" ng-bind="second">获取短信验证码</button>
                 <input class="second_i button button-assertive info" ng-verify="{control:'landform'}" type="submit" value="确认支付90元" ng-disabled=" myForm.phone.$invalid  && myForm.scode.$invalid && agree" ng-click="login()">
-                <p class="item item-checkbox agree">
-                    <lable class="checkbox checkbox-assertive">
-                        <input class="select" type="checkbox" name="checkbox" ng-verify="least:1,errmsg:'请同意会加油注册协议后注册'" />
-                    </lable>
-                    <a href="javascript:;">同意《会加油注册协议》</a>
-                </p>
+                <ion-checkbox class="agree checkbox-assertive" ng-model="isChecked">同意《会加油注册协议》</ion-checkbox>
             </form>
         </section>
         <footer>

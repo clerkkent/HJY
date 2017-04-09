@@ -74,7 +74,7 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
         }
         $http({
             method: 'post',
-            url: 'http://www.ihaomu.com/passport/service.php?c=account',
+            url: 'http://192.168.10.212:8888/passport/service.php?c=account',
             data: data_send,
             headers: head
         }).success(function(data, header, config, status) {
