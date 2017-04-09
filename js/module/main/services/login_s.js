@@ -334,3 +334,12 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
     }
     return factory
 }])
+HJY.factory("land", [function() {
+    var factory = {
+       
+    }
+    factory.format=function(){
+        $("#card").mask("9999 9999 9999 9999 999",{autoclear: false,placeholder:""});
+    }
+    return factory
+}])

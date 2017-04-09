@@ -424,6 +424,7 @@ HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", func
         $state.go("game.main")
     }
 }])
-HJY.controller("land", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
-
+HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land",function($scope, $state, login_logic, $http,land) {
+    $scope.isChecked=true;
+    land.format();
 }])

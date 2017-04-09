@@ -2183,6 +2183,7 @@ $background) {
             font-size:.24rem; // 12px;
             color:#858585;
             margin-bottom:.1rem; // 5px
+            text-decoration: none;
         }
         .details{
             width:1.8rem; // 90px
@@ -2199,10 +2200,12 @@ $background) {
             width:100%;
             height:.92rem; // 46px;
             border-radius:.46rem; // 23px;
-            font-size:.24rem; // 12px;
+            font-size:0.32rem;
+            padding:0;
             color:#858585;
             color:#FFF;
             margin-bottom:.1rem; // 5px
+            font-weight:550;
         }
         .get_scode{
             width:1rem; // 50px;
@@ -2212,14 +2215,100 @@ $background) {
         }
         .agree{
             background:none;
-            margin-left:0.8rem;
-            transform:scale(0.9);
-            color:red;
+            margin-left:0.5rem;
+            transform:scale(0.8);
+            color:#ff9432;
             border:none;
+            margin-top:-0.3rem;
             i{
-                transform:scale(0.8);
+                transform:scale(0.6);
+                padding:0;
+            }
+            .item-content{
+                margin-left:-10%;
             }
         }
-
     }
+    footer{
+        flex:1;
+        width:100%;
+        .first{
+            height:8.58rem;
+            width:100%;
+            @include backgroundset("../images/land/H5_ drawing@3x.png",center,center,100%)
+        }
+        .download{
+            height:1.6rem;
+            background-color: rgba(white,.5);
+            display:flex;
+            flex-direction:row;
+            .left{
+                width:2.5rem;
+                height:2.5rem;
+                transform:scale(0.5);
+                @include backgroundset("../images/login/ic_login_logo@3x.png",center,20%,30%);
+                background-color:#FFF;
+                margin:-0.45rem;
+                margin-left:-0.25rem;
+                text-align:center;
+                font-size:0.2rem;
+                color:#838383;
+                .chinese{
+                    font-size:0.38rem;
+                    line-height:0.28rem;
+                    margin:0;
+                    margin-top:60%;
+                }
+                .english{
+                    margin-top:0.1rem;
+                    font-size:0.12rem;
+                }
+            }
+            .center{
+                width:2.4rem;
+                height:0.64rem;
+                color:#f95b4e;
+                font-size:0.28rem;
+                margin-left:0.1rem;
+                p{
+                    margin:0;
+                }
+                .top{
+                    margin-top:0.3rem;
+                }
+                .sec{
+                    font-size:0.16rem;
+                }
+            }
+            .right{
+                width:2.4rem;
+                height:0.4rem;
+                text-align:center;
+                color:#FFF;
+                padding:0;
+                margin-top:0.5rem;
+                margin-left:-3%;
+                transform:scale(0.8);
+            }
+            }}
+        .connect{
+            .tel{
+                color:#f9614e;
+                text-align:center;
+                font-size:0.28rem;
+                margin:0.2rem 0;
+            }
+            .copyright{
+                text-align:center;
+                font-size:0.24rem;
+                color:#d97f47;
+                margin:0;
+            }
+            .company{
+                text-align:center;
+                font-size:0.24rem;
+                color:#d97f47;
+            }
+
+        }
 }

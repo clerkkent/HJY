@@ -94,7 +94,12 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("land", {
             url: "/land",
             controller: "land",
-            templateUrl: "html/land/land.html"
+            templateUrl: "html/land/land.html",
+            resolve: {
+                loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load('./js/plugins/jquery.maskedinput.js'); // 按需加载目标 js file
+                }]
+            }
         })
         // .state("feedback", {
         //     url: "/feedback",

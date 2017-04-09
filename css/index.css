@@ -2086,7 +2086,8 @@ a:focus {
       padding-left: .46rem;
       font-size: .24rem;
       color: #858585;
-      margin-bottom: .1rem; }
+      margin-bottom: .1rem;
+      text-decoration: none; }
     .land section .details {
       width: 1.8rem;
       height: .92rem;
@@ -2102,10 +2103,12 @@ a:focus {
       height: .92rem;
       -webkit-border-radius: .46rem;
               border-radius: .46rem;
-      font-size: .24rem;
+      font-size: 0.32rem;
+      padding: 0;
       color: #858585;
       color: #FFF;
-      margin-bottom: .1rem; }
+      margin-bottom: .1rem;
+      font-weight: 550; }
     .land section .get_scode {
       width: 1rem;
       height: .36rem;
@@ -2113,13 +2116,99 @@ a:focus {
       border: none; }
     .land section .agree {
       background: none;
-      margin-left: 0.8rem;
-      -webkit-transform: scale(0.9);
-          -ms-transform: scale(0.9);
-              transform: scale(0.9);
-      color: red;
-      border: none; }
+      margin-left: 0.5rem;
+      -webkit-transform: scale(0.8);
+          -ms-transform: scale(0.8);
+              transform: scale(0.8);
+      color: #ff9432;
+      border: none;
+      margin-top: -0.3rem; }
       .land section .agree i {
+        -webkit-transform: scale(0.6);
+            -ms-transform: scale(0.6);
+                transform: scale(0.6);
+        padding: 0; }
+      .land section .agree .item-content {
+        margin-left: -10%; }
+  .land footer {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 100%; }
+    .land footer .first {
+      height: 8.58rem;
+      width: 100%;
+      background: url("../images/land/H5_ drawing@3x.png") center center no-repeat;
+      background-size: 100%; }
+    .land footer .download {
+      height: 1.6rem;
+      background-color: rgba(255, 255, 255, 0.5);
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row; }
+      .land footer .download .left {
+        width: 2.5rem;
+        height: 2.5rem;
+        -webkit-transform: scale(0.5);
+            -ms-transform: scale(0.5);
+                transform: scale(0.5);
+        background: url("../images/login/ic_login_logo@3x.png") center 20% no-repeat;
+        background-size: 30%;
+        background-color: #FFF;
+        margin: -0.45rem;
+        margin-left: -0.25rem;
+        text-align: center;
+        font-size: 0.2rem;
+        color: #838383; }
+        .land footer .download .left .chinese {
+          font-size: 0.38rem;
+          line-height: 0.28rem;
+          margin: 0;
+          margin-top: 60%; }
+        .land footer .download .left .english {
+          margin-top: 0.1rem;
+          font-size: 0.12rem; }
+      .land footer .download .center {
+        width: 2.4rem;
+        height: 0.64rem;
+        color: #f95b4e;
+        font-size: 0.28rem;
+        margin-left: 0.1rem; }
+        .land footer .download .center p {
+          margin: 0; }
+        .land footer .download .center .top {
+          margin-top: 0.3rem; }
+        .land footer .download .center .sec {
+          font-size: 0.16rem; }
+      .land footer .download .right {
+        width: 2.4rem;
+        height: 0.4rem;
+        text-align: center;
+        color: #FFF;
+        padding: 0;
+        margin-top: 0.5rem;
+        margin-left: -3%;
         -webkit-transform: scale(0.8);
             -ms-transform: scale(0.8);
                 transform: scale(0.8); }
+  .land .connect .tel {
+    color: #f9614e;
+    text-align: center;
+    font-size: 0.28rem;
+    margin: 0.2rem 0; }
+  .land .connect .copyright {
+    text-align: center;
+    font-size: 0.24rem;
+    color: #d97f47;
+    margin: 0; }
+  .land .connect .company {
+    text-align: center;
+    font-size: 0.24rem;
+    color: #d97f47; }
