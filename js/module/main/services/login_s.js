@@ -273,7 +273,14 @@ HJY.factory("game_play", [function($state) { //此处所有的节点应该也归
     }
     factory.deal_icon = function() {
         var icon = $("<span class='result_icon'><b>" + sessionStorage.getItem("score") + "</b></span>")
-        $(".main_content .friend_game header .banner").append(icon)
+        $(".main_content .friend_game header .banner").append(icon);
+        $(".main_content").on("click", ".get_award .remind .agree", (function() {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass("selected")
+            } else {
+                $(this).addClass("selected")
+            }
+        }));
     }
     return factory;
 }])
@@ -336,10 +343,19 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
 }])
 HJY.factory("land", [function() {
     var factory = {
-       
+
     }
-    factory.format=function(){
-        $("#card").mask("9999 9999 9999 9999 999",{autoclear: false,placeholder:""});
+    factory.format = function() {
+        $('.main_content').on('keyup mouseout input', '.land #card', function() {
+            var $this = $(this);
+            var v = $this.val();
+            /\S{5}/.test(v) && $this.val(v.replace(/\s/g, '').replace(/(.{4})/g, "$1 "));
+        });
+        $('.main_content').on('keyup mouseout input', '.land #phone', function() {
+            var $this = $(this);
+            var v = $this.val();
+            /\S{5}/.test(v) && $this.val(v.replace(/\s/g, '').replace(/(.{3})(.{4})/g, "$1 $2 "));
+        });
     }
     return factory
 }])

@@ -1,17 +1,20 @@
-<div style="width:100%;height:100%;overflow-y:scroll;">
+<div style="width:100%;height:100%;overflow-y:scroll;" ui-view>
     <div class="land">
         <header>
 
         </header>
         <section>
-            <form name="landform" class="information" novalidate verify-scope="tipStyle: 1">
-                <input class="info"  type="tel" id="card" ng-verify="pattern:/^(\d{16}|\d{19})$/,max:19,errmsg:'油卡卡号格式错误'" placeholder="请输入油卡号">
+
+            <form name="landform" class="information" novalidate verify-scope="tipStyle: 0">
+                <input class="info credit-card" type="tel" id="card" ng-verify="pattern:/\d\s/,min:19,max:23,errmsg:'油卡卡号格式错误'" placeholder="请输入油卡号" ng-model="info.card">
                 <span class="details">中国石化 | *小名</span>
-                <input class="info" type="text" id="phone" ng-verify="pattern:/^0?1[0-9][0-9]\d{4}\d{4}$/,max:11,errmsg:'手机号码格式错误',required: false" placeholder="请输入手机号码">
-                <input class="first_i info" type="text" name="scode" ng-verify="max:6" required placeholder="请输入验证码">
-                <button class="get_scode" ng-bind="second">获取短信验证码</button>
-                <input class="second_i button button-assertive info" ng-verify="{control:'landform'}" type="submit" value="确认支付90元" ng-disabled=" myForm.phone.$invalid  && myForm.scode.$invalid && agree" ng-click="login()">
-                <ion-checkbox class="agree checkbox-assertive" ng-model="isChecked">同意《会加油注册协议》</ion-checkbox>
+                <input class="info" type="text" id="phone" ng-verify="pattern:/^0?1[0-9][0-9]\s{1}\d{4}\s{1}\d{4}$/,max:13,errmsg:'手机号码格式错误',required: false" placeholder="请输入手机号码">
+                <input class="first_i info" type="text" ng-model="info.scode" name="scode" ng-verify="max:6" required placeholder="请输入验证码">
+                <button class="get_scode" ng-bind="second" ng-click="scode_get()">获取短信验证码</button>
+                <p class="notice">{{notice}}</p>
+                <input class="second_i button button-assertive info" ng-verify="{control:'landform'}" type="submit" value="确认支付90元" ng-disabled=" myForm.phone.$invalid  && myForm.scode.$invalid && info.agree" ng-click="login()">
+                <ion-checkbox class="agree checkbox-assertive" ng-model="info.agree">同意《会加油注册协议》</ion-checkbox>
+
             </form>
         </section>
         <footer>
@@ -30,7 +33,7 @@
                 <p class="right button button-assertive">下载APP</p>
             </div>
             <div class="connect">
-                <p class="tel">客服热线 ： 4008-588-066</p>
+                <p class="tel">客服热线 ： 400-851-8686</p>
                 <p class="copyright">Copyright©2017 Hao Mu Co.,Ltd All Rights Reserved。</p>
                 <p class="company">北京好木电子商务有限公司 京 ICP 备 16060363号-1</p>
             </div>
