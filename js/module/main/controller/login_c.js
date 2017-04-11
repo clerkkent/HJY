@@ -288,7 +288,13 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
     $scope.second = "获取验证码";
     $scope.agree = false;
     $scope.toggleCustom = function() {
-        $scope.agree = $scope.agree === false ? true : false;
+        if ($scope.agree == false) {
+            $scope.agree = true;
+            $(".main_content .get_award .remind .agree").addClass("selected")
+        } else {
+            $scope.agree = false;
+            $(".main_content .get_award .remind .agree").removeClass("selected")
+        }
     };
     $scope.go_register_agreement = function() {
         $state.go("register_agreement")
@@ -359,7 +365,7 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
             }
             promise_login = login_logic.submit(list_login);
             promise_login.then(function(data) {
-                console.log(data["result"])
+
                 if (data.result != undefined) {
                     if (data["result"]["isRegister"] == 0) {
                         $scope.state = 1;
@@ -432,64 +438,127 @@ HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", func
 }])
 HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.info = { card: "", phone: "", scode: "", agree: true }
-    $scope.isChecked = true;
+    $scope.cardt = false;
+    $scope.phonet = false;
+    $scope.scodet = false;
+    $scope.agreet = false;
+    $scope.degree_s = 0;
+    $scope.degree_a = 0;
     land.format();
-    $scope.agree = false;
+    $scope.toggleCustom = function() {
+        if ($scope.agreet == true) {
+            $(".main_content .land .remind .agree").removeClass("selected")
+            $scope.agreet = false;
+            $scope.notice = "";
+        } else {
+
+            $(".main_content .land .remind .agree").addClass("selected")
+            $scope.agreet = true;
+            $scope.notice = "请同意会加油注册及充值协议";
+        }
+    }
+    $scope.check_send = function() {
+        if (/\d{16}|\d{19}/g.test($scope.info.card.replace(/\s/g, ""))) {
+            //请求油卡信息
+        } else {
+            //此处暂不设置错误显示
+        }
+    }
+    $scope.isChecked = true;
+
+
     $scope.timeout = false; //倒数读秒按钮禁用
     $scope.icode_show = false; //是否为新注册用户
-    /*以上为页面操作功能*/
-    $scope.toggleCustom = function() {
-        $scope.agree = $scope.agree === false ? true : false;
-    };
-
+    $scope.notice = ""
+        /*以上为页面操作功能*/
     $scope.second = "获取验证码";
 
     $scope.scode_get = function() { //获取验证码
-        var a = 60;
-        $scope.second = a + "s"
-        $scope.timeout = true;
-        var timeout = $interval(function() {
-            if (a <= 0) {
-                $scope.second = "获取验证码"
-                $scope.timeout = false;
-                a = 60;
-                $interval.cancel(timeout)
-            } else {
-                a--;
+        // console.log(/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, "")))
+        // console.log($scope.info.phone)
+        // console.log($scope.info.phone.replace(/\s/g, ""))
+        console.log($scope.agreet)
+        if ($scope.agreet == false) {
+            if (/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, ""))) {
+                $scope.phonet = false;
+                $scope.notice = "";
+                console.log(11)
+                    //发送验证信息验证是否注册,随后判断错误优先级
+                var a = 60;
                 $scope.second = a + "s"
-            }
-        }, 1000);
-        var list = {
-            "jsonrpc": "2.0",
-            "method": "messageAuth",
-            "params": [{
-                "mobile": $scope.info.phone
-            }],
-            "id": 1
-        }
-        var promise_scode = login_logic.submit(list);
-        console.log(list)
-        promise_scode.then(function(data) {
-            if (data.result != undefined) {
-                $scope.icode_show = data["result"]["data"]["is_registed"] == 0 ? true : false;
-                $scope.key = data["result"]["data"]["key"]
-                console.log(data)
-            } else { //错误信息弹窗
-                console.log(data)
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: data["error"]["message"],
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
-            }
+                $scope.timeout = true;
+                var timeout = $interval(function() {
+                    if (a <= 0) {
+                        $scope.second = "获取验证码"
+                        $scope.timeout = false;
+                        a = 60;
+                        $interval.cancel(timeout)
+                    } else {
+                        a--;
+                        $scope.second = a + "s"
+                    }
+                }, 1000);
+                var list = {
+                    "jsonrpc": "2.0",
+                    "method": "messageAuth",
+                    "params": [{
+                        "mobile": $scope.info.phone
+                    }],
+                    "id": 1
+                }
+                var promise_scode = login_logic.submit(list);
 
-        }, function() {
-            console.log("验证码信息获取失败");
-        })
+                promise_scode.then(function(data) {
+                    if (data.result != undefined) {
+                        $scope.icode_show = data["result"]["data"]["is_registed"] == 0 ? true : false;
+                        $scope.key = data["result"]["data"]["key"]
+                        console.log(data)
+                    } else { //错误信息弹窗
+                        console.log(data)
+                    }
+
+                }, function() {
+                    console.log("验证码信息获取失败");
+                })
+
+            } else {
+                console.log(12)
+                $scope.phonet = true;
+                $scope.notice = "请输入正确的手机号";
+            }
+        } else {
+            $scope.notice = "请同意会加油注册及充值协议";
+        }
+
     }
 
     $scope.login = function() { //登录注册
+        if (/\d{16}|\d{19}/g.test($scope.info.card.replace(/\s/g, ""))) {
+            $scope.cardt = false;
+            $scope.notice = "";
+            //请求油卡信息判断并显示是否注册，注册则进行下一步判断手机号,未通过则提示请更换未绑定油卡
+            if (/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, ""))) {
+                $scope.phonet = false;
+                $scope.notice = "";
+                //手机号码注册判断，已注册提示错误信息未注册进行下步
+                if (/\d{4}/g.test($scope.info.scode.replace(/\s/g, ""))) {
+                    $scope.scodet = false;
+                    $scope.notice = "验证码错误"
+                        //发送整体信息，拿到返回信息，验证码再次错误则弹出验证码错误,成功则正常登录
+                } else {
+                    $scope.scodet = true;
+                    $scope.notice = "验证码错误"
+                }
+            } else {
+                $scope.phonet = true;
+                $scope.notice = "请输入正确的手机号";
+            }
+        } else {
+            $scope.cardt = true;
+            $scope.notice = "请输入正确的油卡号";
+        }
+
+
         var list_login = null;
         if ($scope.info.icode != "") { //判断是否存在验证码
             list_login = {

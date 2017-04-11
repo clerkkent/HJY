@@ -54,7 +54,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("game", {
             url: "/game",
             controller: "game",
-            cache: 'false',
+            cache: "false",
             templateUrl: "html/game/game.html"
         })
         .state("game.select", {
@@ -66,8 +66,8 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("game.login", {
             url: "/login",
             controller: "game_login",
-            cache: 'false',
-            templateUrl: "html/game/get_login.html"
+            cache: "false",
+            templateUrl: "html/game/get_login.html",
         })
         .state("game.main", {
             url: "/main",

@@ -680,7 +680,6 @@ a:focus {
     display: none; }
     .friend_request .popum_wrap .popum {
       width: 4.8rem;
-      height: 6.8rem;
       z-index: 12;
       position: absolute;
       left: 0;
@@ -688,7 +687,7 @@ a:focus {
       right: 0;
       bottom: 0;
       margin: auto;
-      margin-top: 20%;
+      margin-top: 30%;
       background: #FFF;
       -webkit-border-radius: 3%;
               border-radius: 3%;
@@ -708,17 +707,18 @@ a:focus {
         background: url("../images/friend/H5_popup.png") center center no-repeat;
         background-size: 100%; }
       .friend_request .popum_wrap .popum .rule_main {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-            -ms-flex: 1;
-                flex: 1;
+        height: auto;
         overflow: hidden;
         font-family: PingFangSC-Regular;
-        padding: 0 0.2rem; }
+        padding: 0 0.2rem;
+        padding-bottom: 0.5rem;
+        color: #666;
+        position: relative; }
         .friend_request .popum_wrap .popum .rule_main .title {
           text-align: center;
           font-size: .24rem;
-          margin: .3rem 0; }
+          margin: .3rem 0;
+          color: #000; }
         .friend_request .popum_wrap .popum .rule_main h3 {
           font-size: .2rem;
           color: #6DC152;
@@ -727,8 +727,9 @@ a:focus {
         .friend_request .popum_wrap .popum .rule_main p {
           font-size: .2rem; }
       .friend_request .popum_wrap .popum .rule_close {
-        position: relative;
-        bottom: -15%;
+        position: absolute;
+        top: 0%;
+        right: 1%;
         width: .56rem;
         height: .56rem;
         margin: 0 auto;
@@ -737,9 +738,9 @@ a:focus {
                 border-radius: 50%;
         background: url("../images/friend/close.png") center center no-repeat;
         background-size: 60%;
-        border: 2px solid #FFF;
         color: #FFF;
         text-align: center;
+        z-index: 16;
         font-size: .5rem; }
   .friend_request header {
     height: 3.2rem;
@@ -850,17 +851,25 @@ a:focus {
         font-family: PingFangSC-Regular;
         font-size: .2rem;
         color: #51586A;
-        letter-spacing: 0; }
+        letter-spacing: 0;
+        margin-top: 0rem; }
         .friend_request header .second .left .number,
         .friend_request header .second .right .number {
           text-align: center;
           margin: 0;
           padding: 0;
+          margin-top: 0.1rem;
           line-height: .5rem; }
         .friend_request header .second .left .title,
         .friend_request header .second .right .title {
           text-align: center;
           line-height: .25rem; }
+      .friend_request header .second .center {
+        width: none;
+        height: 80%;
+        border-left: .02rem solid #FFF;
+        opacity: 0.5;
+        margin-top: 0.1rem; }
   .friend_request section {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -890,7 +899,11 @@ a:focus {
           font-size: .2rem;
           font-family: PingFangSC-Regular;
           color: #999999;
-          letter-spacing: 0; }
+          letter-spacing: 0;
+          background-image: url(../images/login/ic_home_tag_left@3x.png), url(../images/login/ic_home_tag_right@3x.png);
+          background-repeat: no-repeat,no-repeat;
+          background-position: 30% center,70% center;
+          background-size: .36rem .12rem,.36rem .12rem; }
         .friend_request section .friend_wrap .second .friend_none {
           background: url("../images/login/ic_default_order@3x.png") top center no-repeat;
           background-size: 60%; }
@@ -1929,7 +1942,8 @@ a:focus {
         bottom: 0;
         margin: auto;
         margin-left: 0.8rem;
-        margin-top: 0.5rem; }
+        margin-top: 0.5rem;
+        width: 1.4rem; }
 
 .friend_request_details {
   width: 100%;
@@ -1955,16 +1969,20 @@ a:focus {
     padding-top: 1.5rem; }
     .friend_request_details header .first {
       text-align: center;
-      font-size: .28rem; }
+      font-size: .28rem;
+      font-family: PingFangSC-Medium; }
       .friend_request_details header .first span {
         color: #f95e4e; }
     .friend_request_details header .second {
       text-align: center;
-      font-size: .32rem; }
+      font-size: .32rem;
+      font-family: PingFangSC-Medium;
+      margin-top: 0.4rem; }
       .friend_request_details header .second span {
         background: url("../images/friend/H5_backgroud.png") center center no-repeat;
-        background-size: 100%;
-        padding: .2rem .2rem; }
+        background-size: 95%;
+        padding: .2rem .2rem;
+        font-family: PingFangSC-Medium; }
         .friend_request_details header .second span i {
           color: #FFF;
           font-size: .2rem; }
@@ -2010,7 +2028,6 @@ a:focus {
     display: none; }
     .friend_request_details .popum_wrap .popum {
       width: 4.8rem;
-      height: 6.8rem;
       z-index: 12;
       position: absolute;
       left: 0;
@@ -2018,7 +2035,7 @@ a:focus {
       right: 0;
       bottom: 0;
       margin: auto;
-      margin-top: 20%;
+      margin-top: 30%;
       background: #FFF;
       -webkit-border-radius: 3%;
               border-radius: 3%;
@@ -2038,17 +2055,18 @@ a:focus {
         background: url("../images/friend/H5_popup.png") center center no-repeat;
         background-size: 100%; }
       .friend_request_details .popum_wrap .popum .rule_main {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-            -ms-flex: 1;
-                flex: 1;
+        height: auto;
         overflow: hidden;
         font-family: PingFangSC-Regular;
-        padding: 0 0.2rem; }
+        padding: 0 0.2rem;
+        padding-bottom: 0.5rem;
+        color: #666;
+        position: relative; }
         .friend_request_details .popum_wrap .popum .rule_main .title {
           text-align: center;
           font-size: .24rem;
-          margin: .3rem 0; }
+          margin: .3rem 0;
+          color: #000; }
         .friend_request_details .popum_wrap .popum .rule_main h3 {
           font-size: .2rem;
           color: #6DC152;
@@ -2057,8 +2075,9 @@ a:focus {
         .friend_request_details .popum_wrap .popum .rule_main p {
           font-size: .2rem; }
       .friend_request_details .popum_wrap .popum .rule_close {
-        position: relative;
-        bottom: -15%;
+        position: absolute;
+        top: 0%;
+        right: 1%;
         width: .56rem;
         height: .56rem;
         margin: 0 auto;
@@ -2067,9 +2086,9 @@ a:focus {
                 border-radius: 50%;
         background: url("../images/friend/close.png") center center no-repeat;
         background-size: 60%;
-        border: 2px solid #FFF;
         color: #FFF;
         text-align: center;
+        z-index: 16;
         font-size: .5rem; }
 
 /*land*/
@@ -2100,10 +2119,15 @@ a:focus {
       color: #f95b4e;
       margin-left: 10%;
       text-indent: 0.3rem;
-      background: url("../images/land/H5_info.png") left center no-repeat;
+      background: url("../images/land/H5_info.png") left 30% no-repeat;
       background-size: 4%;
       margin-bottom: 0.3rem;
-      font-size: .2rem; }
+      font-size: .2rem;
+      height: .5rem;
+      width: 100%;
+      position: absolute;
+      top: 56%;
+      font-family: PingFangSC-Regular; }
     .land section .info {
       width: 100%;
       height: .92rem;
@@ -2113,7 +2137,8 @@ a:focus {
       font-size: .2rem;
       color: #858585;
       margin-bottom: .1rem;
-      text-decoration: none; }
+      text-decoration: none;
+      font-family: PingFangSC-Regular; }
     .land section .details {
       width: 2.0rem;
       height: .92rem;
@@ -2123,7 +2148,8 @@ a:focus {
       color: #858585;
       position: absolute;
       right: 10%;
-      top: 0.03rem; }
+      top: 0.03rem;
+      font-family: PingFangSC-Regular; }
     .land section .second_i {
       width: 100%;
       height: .92rem;
@@ -2135,7 +2161,8 @@ a:focus {
       color: #FFF;
       margin-bottom: .1rem;
       font-weight: 550;
-      font-family: PingFangSC-Medium; }
+      font-family: PingFangSC-Medium;
+      margin-top: 0.8rem; }
     .land section .get_scode {
       width: 1.5rem;
       height: .36rem;
@@ -2145,23 +2172,38 @@ a:focus {
       position: absolute;
       right: 10%;
       top: 44%;
-      font-size: .2rem; }
-    .land section .agree {
-      background: none;
-      margin-left: 0.2rem;
-      -webkit-transform: scale(0.8);
-          -ms-transform: scale(0.8);
-              transform: scale(0.8);
-      color: #ff9432;
-      border: none;
-      margin-top: -0.3rem; }
-      .land section .agree i {
-        -webkit-transform: scale(0.6);
-            -ms-transform: scale(0.6);
-                transform: scale(0.6);
-        padding: 0; }
-      .land section .agree .item-content {
-        margin-left: -8%; }
+      font-size: .2rem;
+      font-family: PingFangSC-Regular; }
+    .land section .remind {
+      width: 4.8rem;
+      height: .6rem;
+      line-height: .6rem;
+      margin: 0 auto;
+      margin-top: 0rem;
+      text-align: center;
+      padding-left: 0.3rem;
+      font-family: PingFangSC-Regular;
+      font-size: .24rem;
+      color: #343434;
+      letter-spacing: 0;
+      overflow: hidden;
+      position: relative; }
+      .land section .remind .agree {
+        width: .3rem;
+        height: .3rem;
+        border: .02rem solid #f95b4e;
+        display: inline-block;
+        -webkit-border-radius: 20%;
+                border-radius: 20%;
+        position: absolute;
+        left: 23%;
+        background: url("../images/game/H5_Check@3x.png") center center no-repeat;
+        background-size: 100%;
+        top: 25%; }
+      .land section .remind .selected {
+        background-image: none; }
+      .land section .remind span {
+        color: #f95b4e; }
   .land footer {
     -webkit-box-flex: 1;
     -webkit-flex: 1;

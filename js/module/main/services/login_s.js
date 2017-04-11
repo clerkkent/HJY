@@ -274,13 +274,7 @@ HJY.factory("game_play", [function($state) { //此处所有的节点应该也归
     factory.deal_icon = function() {
         var icon = $("<span class='result_icon'><b>" + sessionStorage.getItem("score") + "</b></span>")
         $(".main_content .friend_game header .banner").append(icon);
-        $(".main_content").on("click", ".get_award .remind .agree", (function() {
-            if ($(this).hasClass('selected')) {
-                $(this).removeClass("selected")
-            } else {
-                $(this).addClass("selected")
-            }
-        }));
+
     }
     return factory;
 }])

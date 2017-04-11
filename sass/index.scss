@@ -323,10 +323,9 @@ $background) {
     display: none;
     .popum {
         width: 4.8rem; // 240px
-        height: 6.8rem; // 340px
         z-index: 12;
         @include center-block;
-        margin-top: 20%;
+        margin-top: 30%;
         background: #FFF;
         border-radius: 3%;
         display: flex;
@@ -341,14 +340,18 @@ $background) {
             100%);
         }
         .rule_main {
-            flex: 1;
+            height:auto;
             overflow: hidden;
             font-family: PingFangSC-Regular;
             padding: 0 0.2rem;
+            padding-bottom:0.5rem;
+            color: #666;
+            position:relative;
             .title {
                 text-align: center;
                 font-size: .24rem; // 12px
                 margin: .3rem 0; // 15px ;
+                color: #000;
             }
             h3 {
                 font-size: .2rem; // 10px
@@ -361,8 +364,9 @@ $background) {
             }
         }
         .rule_close {
-            position: relative;
-            bottom: -15%;
+            position: absolute;
+            top:0%;
+            right:1%;
             width: .56rem; // 28px;
             height: .56rem; // 28px;
             margin: 0 auto;
@@ -371,9 +375,10 @@ $background) {
             @include backgroundset("../images/friend/close.png",
             center,
             center,
-            60%) border: 2px solid #FFF;
+            60%);
             color: #FFF;
             text-align: center;
+            z-index: 16;
             font-size: .5rem; // 25px
         }
     }
@@ -442,7 +447,8 @@ $background) {
     @include backgroundset("../images/login/ic_login_ pattern.png",
     center,
     bottom,
-    100%) .user_pic {
+    100%);
+    .user_pic {
         height: 4rem; // 170px
         width: 100%;
         position: relative;
@@ -837,7 +843,7 @@ $background) {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height:11.36rem;
+    height: 11.36rem;
     background: #FFF;
     .popum_wrap {
         @include friend_request_details_pupum;
@@ -941,16 +947,25 @@ $background) {
                 font-size: .2rem;
                 color: #51586A;
                 letter-spacing: 0;
+                margin-top: 0rem;
                 .number {
                     text-align: center;
                     margin: 0;
                     padding: 0;
+                    margin-top: 0.1rem;
                     line-height: .5rem; // 25px
                 }
                 .title {
                     text-align: center;
                     line-height: .25rem;
                 }
+            }
+            .center{
+                width:none;
+                height:80%;
+                border-left:.02rem solid #FFF;
+                opacity:0.5;
+                margin-top:0.1rem;
             }
         }
     }
@@ -981,6 +996,10 @@ $background) {
                     font-family: PingFangSC-Regular;
                     color: #999999;
                     letter-spacing: 0;
+                    background-image: url(../images/login/ic_home_tag_left@3x.png),url(../images/login/ic_home_tag_right@3x.png);
+                    background-repeat: no-repeat,no-repeat;
+                    background-position: 30% center,70% center;
+                    background-size: .36rem .12rem,.36rem .12rem;
                 }
                 .friend_none {
                     @include backgroundset("../images/login/ic_default_order@3x.png",
@@ -1985,26 +2004,28 @@ $background) {
                 margin: 0 auto;
                 margin-top: -0.2rem;
                 text-align: center;
-                padding-left:0.3rem;
+                padding-left: 0.3rem;
                 font-family: PingFangSC-Regular;
                 font-size: .24rem; // 12px
                 color: #343434;
                 letter-spacing: 0;
-                overflow:hidden;
-                position:relative;
-                .agree{
-                    width:.3rem; // 15px;
-                    height:.3rem; // 15px;
-                    border:.02rem solid #f95b4e;
-                    display:inline-block;
-                    border-radius:20%;
-                    position:absolute;
-                    left:15%;@include backgroundset("../images/game/H5_Check@3x.png",center,center,100%)
-                    top:25%;
-
+                overflow: hidden;
+                position: relative;
+                .agree {
+                    width: .3rem; // 15px;
+                    height: .3rem; // 15px;
+                    border: .02rem solid #f95b4e;
+                    display: inline-block;
+                    border-radius: 20%;
+                    position: absolute;
+                    left: 15%;
+                    @include backgroundset("../images/game/H5_Check@3x.png",
+                    center,
+                    center,
+                    100%) top: 25%;
                 }
-                .selected{
-                    background-image:none;
+                .selected {
+                    background-image: none;
                 }
                 span {
                     color: #f95b4e;
@@ -2024,71 +2045,83 @@ $background) {
     flex-direction: column;
     background-color: #fedb65;
     font-family: PingFangSC-Medium;
-    color:#575e6f;
-    header{
-        width:100%;
-        height:6.7rem; // 335px;
-        @include backgroundset("../images/game/H5_accomplish.png",center,center,80%);
-        h3{
-            text-align:center;
-            margin-top:1.5rem;
-            margin-bottom:0.8rem;
-            font-size:.24rem; // 12px
+    color: #575e6f;
+    header {
+        width: 100%;
+        height: 6.7rem; // 335px;
+        @include backgroundset("../images/game/H5_accomplish.png",
+        center,
+        center,
+        80%);
+        h3 {
+            text-align: center;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: .24rem; // 12px
         }
-        p{
-            width:100%;
-            height:.94rem; // 47px;
-            line-height:.94rem; // 47px;
-            background:url(../images/game/H5_accomplish_option.png) 20% center  no-repeat;
-            background-size:.36rem .36rem; // 18px; // 18px;
+        p {
+            width: 100%;
+            height: .94rem; // 47px;
+            line-height: .94rem; // 47px;
+            background: url(../images/game/H5_accomplish_option.png) 20% center no-repeat;
+            background-size: .36rem .36rem; // 18px; // 18px;
             display: flex;
             flex-direction: row;
-            .left{
-                background:#FFF;
-                height:100%;
-                display:block;
-                width:2.1rem; // 102px;
-                margin-left:1.8rem;
-                text-align:center;
-                font-size:.32rem; // 16px
-                border-top-left-radius:5%;
-                border-bottom-left-radius:5%;
-                b{
-                    color:#eb1b05;
-                    font-size:.36rem; // 18px
+            .left {
+                background: #FFF;
+                height: 100%;
+                display: block;
+                width: 2.1rem; // 102px;
+                margin-left: 1.8rem;
+                text-align: center;
+                font-size: .32rem; // 16px
+                border-top-left-radius: 5%;
+                border-bottom-left-radius: 5%;
+                b {
+                    color: #eb1b05;
+                    font-size: .36rem; // 18px
                 }
-
             }
-            .right{
-                display:block;
-                width:1.24rem; // 62px;
-                height:100%;
-                text-align:center;
-                color:#FFF;
-                font-size:.44rem; // 22px;
-                b{
-                   font-size:.24rem; // 12px;
+            .right {
+                display: block;
+                width: 1.24rem; // 62px;
+                height: 100%;
+                text-align: center;
+                color: #FFF;
+                font-size: .44rem; // 22px;
+                b {
+                    font-size: .24rem; // 12px;
                 }
-                @include backgroundset("../images/game/H5_accomplish_list.png",center,center,100%)
+                @include backgroundset("../images/game/H5_accomplish_list.png",
+                center,
+                center,
+                100%)
             }
-            .oil{
-                    @include backgroundset("../images/game/H5_accomplish_huijiayou.png",center,center,100%)
-                }
+            .oil {
+                @include backgroundset("../images/game/H5_accomplish_huijiayou.png",
+                center,
+                center,
+                100%)
+            }
         }
     }
-    section{
-        flex:1;
-        position:relative;
-        .download{
-            width:2.9rem; // 145px;
-            height:2.9rem; // 145px;
+    section {
+        flex: 1;
+        position: relative;
+        .download {
+            width: 2.9rem; // 145px;
+            height: 2.9rem; // 145px;
             @include center-block;
-            @include backgroundset("../images/game/H5_accomplish_QR code.png",center,center,100%);
-            margin-top:.4rem; // 20px
-            img{
+            @include backgroundset("../images/game/H5_accomplish_QR code.png",
+            center,
+            center,
+            100%);
+            margin-top: .4rem; // 20px
+            img {
                 @include center-block;
-                margin-left:0.8rem;
-                margin-top:0.5rem;
+                margin-left: 0.8rem;
+                margin-top: 0.5rem;
+                width:1.4rem; // 70px
             }
         }
     }
@@ -2114,6 +2147,7 @@ $background) {
         .first {
             text-align: center;
             font-size: .28rem; // 14px;
+            font-family: PingFangSC-Medium;
             span {
                 color: #f95e4e;
             }
@@ -2121,12 +2155,15 @@ $background) {
         .second {
             text-align: center;
             font-size: .32rem; // 16px
+            font-family: PingFangSC-Medium;
+            margin-top:0.4rem;
             span {
                 @include backgroundset("../images/friend/H5_backgroud.png",
                 center,
                 center,
-                100%);
+                95%);
                 padding: .2rem .2rem;
+                font-family: PingFangSC-Medium;
                 i {
                     color: #FFF;
                     font-size: .2rem; // 10px;
@@ -2176,309 +2213,362 @@ $background) {
         @include friend_request_details_pupum;
     }
 }
+
+
 /*land*/
-.land{
-    display:flex;
-    flex-direction:column;
-    height:22.76rem; // 1138px;
-    background:#ffdc5a;
-    header{
-        height:4.96rem; // 248px;
-        @include backgroundset("../images/land/H5_banner@3x.png",center,center,95%);
-        margin-top:0.1rem;
+
+.land {
+    display: flex;
+    flex-direction: column;
+    height: 22.76rem; // 1138px;
+    background: #ffdc5a;
+    header {
+        height: 4.96rem; // 248px;
+        @include backgroundset("../images/land/H5_banner@3x.png",
+        center,
+        center,
+        95%);
+        margin-top: 0.1rem;
     }
-    section{
-        height:5.4rem; // 270px
-        padding:0 .3rem; // 30px;
-        position:relative;
-        margin-top:.36rem; // 18px
+    section {
+        height: 5.4rem; // 270px
+        padding: 0 .3rem; // 30px;
+        position: relative;
+        margin-top: .36rem; // 18px
         font-family: PingFangSC-Regular;
-        .notice{
-             color:#f95b4e;
-             margin-left:10%;
-             text-indent:0.3rem;
-             @include backgroundset("../images/land/H5_info.png",left,center,4%);
-             margin-bottom:0.3rem;
-             font-size:.2rem; // 10px
+        .notice {
+            color: #f95b4e;
+            margin-left: 10%;
+            text-indent: 0.3rem;
+            @include backgroundset("../images/land/H5_info.png",
+            left,
+            30%,
+            4%);
+            margin-bottom: 0.3rem;
+            font-size: .2rem; // 10px
+            height: .5rem; // 25px;
+            width: 100%;
+            position: absolute;
+            top: 56%;
+            font-family: PingFangSC-Regular;
         }
-        .info{
-            width:100%;
-            height:.92rem; // 46px;
-            border-radius:.46rem; // 23px;
-            padding-left:.46rem; // 23px;
-            font-size:.2rem; // 10px
-            color:#858585;
-            margin-bottom:.1rem; // 5px
+        .info {
+            width: 100%;
+            height: .92rem; // 46px;
+            border-radius: .46rem; // 23px;
+            padding-left: .46rem; // 23px;
+            font-size: .2rem; // 10px
+            color: #858585;
+            margin-bottom: .1rem; // 5px
             text-decoration: none;
+            font-family: PingFangSC-Regular;
         }
-        .details{
-            width:2.0rem; // 90px
-            height:.92rem; // 46px;
-            line-height:.92rem; // 46px;
-            text-align:center;
-             font-size:.2rem; // 10px
-            color:#858585;
-            position:absolute;
-            right:10%;
-            top:0.03rem;
+        .details {
+            width: 2.0rem; // 90px
+            height: .92rem; // 46px;
+            line-height: .92rem; // 46px;
+            text-align: center;
+            font-size: .2rem; // 10px
+            color: #858585;
+            position: absolute;
+            right: 10%;
+            top: 0.03rem;
+            font-family: PingFangSC-Regular;
         }
-        .second_i{
-            width:100%;
-            height:.92rem; // 46px;
-            border-radius:.46rem; // 23px;
-            font-size:0.32rem;
-            padding:0;
-            color:#858585;
-            color:#FFF;
-            margin-bottom:.1rem; // 5px
-            font-weight:550;
+        .second_i {
+            width: 100%;
+            height: .92rem; // 46px;
+            border-radius: .46rem; // 23px;
+            font-size: 0.32rem;
+            padding: 0;
+            color: #858585;
+            color: #FFF;
+            margin-bottom: .1rem; // 5px
+            font-weight: 550;
+            font-family: PingFangSC-Medium;
+            margin-top: 0.8rem;
+        }
+        .get_scode {
+            width: 1.5rem; // 50px;
+            height: .36rem; // 18px;
+            background: none;
+            border: none;
+            color: #ff6409;
+            position: absolute;
+            right: 10%;
+            top: 44%;
+            font-size: .2rem; // 10px
+            font-family: PingFangSC-Regular;
+        }
+        .remind {
+            width: 4.8rem; // 240px
+            height: .6rem; // 30px;
+            line-height: .6rem;
+            margin: 0 auto;
+            margin-top: 0rem;
+            text-align: center;
+            padding-left: 0.3rem;
+            font-family: PingFangSC-Regular;
+            font-size: .24rem; // 12px
+            color: #343434;
+            letter-spacing: 0;
+            overflow: hidden;
+            position: relative;
+            .agree {
+                width: .3rem; // 15px;
+                height: .3rem; // 15px;
+                border: .02rem solid #f95b4e;
+                display: inline-block;
+                border-radius: 20%;
+                position: absolute;
+                left: 23%;
+                @include backgroundset("../images/game/H5_Check@3x.png",
+                center,
+                center,
+                100%) top: 25%;
+            }
+            .selected {
+                background-image: none;
+            }
+            span {
+                color: #f95b4e;
+            }
+        }
+    }
+    footer {
+        flex: 1;
+        width: 100%;
+        font-family: PingFangSC-Medium;
+        .first {
+            height: 8.58rem;
+            width: 100%;
+            @include backgroundset("../images/land/H5_ drawing@3x.png",
+            center,
+            center,
+            100%)
+        }
+        .download {
+            height: 1.6rem;
+            background-color: rgba(white, .5);
+            display: flex;
+            flex-direction: row;
+            .left {
+                width: 2.5rem;
+                height: 2.5rem;
+                transform: scale(0.5);
+                @include backgroundset("../images/login/ic_login_logo@3x.png",
+                center,
+                20%,
+                30%);
+                background-color: #FFF;
+                margin: -0.45rem;
+                margin-left: -0.25rem;
+                text-align: center;
+                font-size: 0.2rem;
+                font-family: PingFangSC-Medium;
+                color: #838383;
+                .chinese {
+                    font-size: 0.38rem;
+                    line-height: 0.28rem;
+                    margin: 0;
+                    margin-top: 60%;
+                }
+                .english {
+                    margin-top: 0.1rem;
+                    font-size: 0.12rem;
+                }
+            }
+            .center {
+                width: 2.4rem;
+                height: 0.64rem;
+                color: #f95b4e;
+                font-family: PingFangSC-Medium;
+                font-size: 0.28rem;
+                margin-left: 0.1rem;
+                p {
+                    margin: 0;
+                }
+                .top {
+                    margin-top: 0.3rem;
+                }
+                .sec {
+                    font-size: 0.16rem;
+                }
+            }
+            .right {
+                width: 2.4rem;
+                height: 0.4rem;
+                text-align: center;
+                color: #FFF;
+                padding: 0;
+                font-family: PingFangSC-Medium;
+                margin-top: 0.5rem;
+                margin-left: -3%;
+                transform: scale(0.8);
+            }
+        }
+        .connect {
+            .tel {
+                color: #f9614e;
+                text-align: center;
+                font-size: 0.28rem;
+                margin: 0.2rem 0;
+                font-family: PingFangSC-Medium;
+            }
+            .copyright {
+                text-align: center;
+                font-size: 0.24rem;
+                font-family: PingFangSC-Medium;
+                transform: scale(0.8);
+                color: #d97f47;
+                margin: 0;
+            }
+            .company {
+                text-align: center;
+                font-family: PingFangSC-Medium;
+                font-size: 0.24rem;
+                color: #d97f47;
+                transform: scale(0.8);
+            }
+        }
+    }
+}
+
+.pay_success {
+    height: 11.36rem;
+    display: flex;
+    flex-direction: column;
+    font-family: PingFangSC-Medium;
+    header {
+        height: 2.36rem; // 118px;
+        @include backgroundset("../images/land/H5_complete@3x.png",
+        20%,
+        center,
+        18%);
+        background-color: #ffdc5a;
+        position: relative;
+        p {
+            @include center-block;
+            width: 3.6rem; // 180px;
+            height: .4rem; // 20px;
+            text-align: center;
+            font-size: .36rem; // 18px;
+            color: #F95B4E;
+            margin-left: 35%;
             font-family: PingFangSC-Medium;
         }
-        .get_scode{
-            width:1.5rem; // 50px;
-            height:.36rem; // 18px;
-            background:none;
-            border:none;
-            color:#ff6409;
-            position:absolute;
-            right:10%;
-            top:44%;
-            font-size:.2rem; // 10px
-        }
-        .agree{
-            background:none;
-            margin-left:0.2rem;
-            transform:scale(0.8);
-            color:#ff9432;
-            border:none;
-            margin-top:-0.3rem;
-            i{
-                transform:scale(0.6);
-                padding:0;
+    }
+    section {
+        flex: 1;
+        background: #FFF;
+        padding-left: .58rem; // 29px;
+        padding-top: .52rem; // 26px;
+        p {
+            font-family: PingFangSC-Regular;
+            font-size: .2rem; // 10px;
+            .key {
+                color: #999999;
             }
-            .item-content{
-                margin-left:-8%;
+            .value {
+                color: #333333;
             }
         }
     }
-    footer{
-        flex:1;
-        width:100%;
+    footer {
+        height: 3.2rem; // 160px
+        width: 100%;
         font-family: PingFangSC-Medium;
-        .first{
-            height:8.58rem;
-            width:100%;
-            @include backgroundset("../images/land/H5_ drawing@3x.png",center,center,100%)
+        .first {
+            height: 8.58rem;
+            width: 100%;
+            @include backgroundset("../images/land/H5_ drawing@3x.png",
+            center,
+            center,
+            100%)
         }
-        .download{
-            height:1.6rem;
-            background-color: rgba(white,.5);
-            display:flex;
-            flex-direction:row;
-            .left{
-                width:2.5rem;
-                height:2.5rem;
-                transform:scale(0.5);
-                @include backgroundset("../images/login/ic_login_logo@3x.png",center,20%,30%);
-                background-color:#FFF;
-                margin:-0.45rem;
-                margin-left:-0.25rem;
-                text-align:center;
-                font-size:0.2rem;
+        .download {
+            height: 1.6rem;
+            background-color: rgba(#FFEEAC, .5);
+            display: flex;
+            flex-direction: row;
+            .left {
+                width: 2.5rem;
+                height: 2.5rem;
+                transform: scale(0.5);
+                @include backgroundset("../images/login/ic_login_logo@3x.png",
+                center,
+                20%,
+                30%);
+                background-color: #FFF;
+                margin: -0.45rem;
+                margin-left: -0.25rem;
+                text-align: center;
+                font-size: 0.2rem;
                 font-family: PingFangSC-Medium;
-                color:#838383;
-                .chinese{
-                    font-size:0.38rem;
-                    line-height:0.28rem;
-                    margin:0;
-                    margin-top:60%;
+                color: #838383;
+                .chinese {
+                    font-size: 0.38rem;
+                    line-height: 0.28rem;
+                    margin: 0;
+                    margin-top: 60%;
                 }
-                .english{
-                    margin-top:0.1rem;
-                    font-size:0.12rem;
-                }
-            }
-            .center{
-                width:2.4rem;
-                height:0.64rem;
-                color:#f95b4e;
-                font-family: PingFangSC-Medium;
-                font-size:0.28rem;
-                margin-left:0.1rem;
-                p{
-                    margin:0;
-                }
-                .top{
-                    margin-top:0.3rem;
-                }
-                .sec{
-                    font-size:0.16rem;
+                .english {
+                    margin-top: 0.1rem;
+                    font-size: 0.12rem;
                 }
             }
-            .right{
-                width:2.4rem;
-                height:0.4rem;
-                text-align:center;
-                color:#FFF;
-                padding:0;
+            .center {
+                width: 2.4rem;
+                height: 0.64rem;
+                color: #f95b4e;
                 font-family: PingFangSC-Medium;
-                margin-top:0.5rem;
-                margin-left:-3%;
-                transform:scale(0.8);
+                font-size: 0.28rem;
+                margin-left: 0.1rem;
+                p {
+                    margin: 0;
+                }
+                .top {
+                    margin-top: 0.3rem;
+                }
+                .sec {
+                    font-size: 0.16rem;
+                }
             }
-            }
-        .connect{
-            .tel{
-                color:#f9614e;
-                text-align:center;
-                font-size:0.28rem;
-                margin:0.2rem 0;
+            .right {
+                width: 2.4rem;
+                height: 0.4rem;
+                text-align: center;
+                color: #FFF;
+                padding: 0;
                 font-family: PingFangSC-Medium;
+                margin-top: 0.5rem;
+                margin-left: -3%;
+                transform: scale(0.8);
             }
-            .copyright{
-                text-align:center;
-                font-size:0.24rem;
-                font-family: PingFangSC-Medium;
-                transform:scale(0.8);
-                color:#d97f47;
-                margin:0;
-            }
-            .company{
-                text-align:center;
-                font-family: PingFangSC-Medium;
-                font-size:0.24rem;
-                color:#d97f47;
-                transform:scale(0.8);
-            }
-
         }
-}}
-.pay_success{
-    height:11.36rem;
-    display:flex;
-    flex-direction:column;
-    font-family: PingFangSC-Medium;
-    header{
-        height:2.36rem; // 118px;
-        @include backgroundset("../images/land/H5_complete@3x.png",20%,center,18%);
-        background-color:#ffdc5a;
-        position:relative;
-        p{
-            @include center-block;
-            width:3.6rem; // 180px;
-            height:.4rem; // 20px;
-            text-align:center;
-            font-size:.36rem; // 18px;
-            color:#F95B4E ;
-            margin-left:35%;
-             font-family: PingFangSC-Medium;
-        }
-    }
-    section{
-        flex:1;
-        background:#FFF;
-        padding-left:.58rem; // 29px;
-        padding-top:.52rem; // 26px;
-        p{
-            font-family:PingFangSC-Regular;
-            font-size:.2rem; // 10px;
-            .key{
-                color:#999999;
+        .connect {
+            .tel {
+                color: #f9614e;
+                text-align: center;
+                font-size: 0.24rem;
+                margin: 0.2rem 0;
+                font-family: PingFangSC-Medium;
             }
-            .value{
-                color:#333333;
+            .copyright {
+                text-align: center;
+                font-size: 0.24rem;
+                font-family: PingFangSC-Medium;
+                transform: scale(0.8);
+                color: #999999;
+                margin: 0;
+            }
+            .company {
+                text-align: center;
+                font-family: PingFangSC-Medium;
+                font-size: 0.24rem;
+                color: #999999;
+                transform: scale(0.8);
             }
         }
     }
-    footer{
-        height:3.2rem; // 160px
-        width:100%;
-        font-family: PingFangSC-Medium;
-        .first{
-            height:8.58rem;
-            width:100%;
-            @include backgroundset("../images/land/H5_ drawing@3x.png",center,center,100%)
-        }
-        .download{
-            height:1.6rem;
-            background-color: rgba(#FFEEAC,.5);
-            display:flex;
-            flex-direction:row;
-            .left{
-                width:2.5rem;
-                height:2.5rem;
-                transform:scale(0.5);
-                @include backgroundset("../images/login/ic_login_logo@3x.png",center,20%,30%);
-                background-color:#FFF;
-                margin:-0.45rem;
-                margin-left:-0.25rem;
-                text-align:center;
-                font-size:0.2rem;
-                font-family: PingFangSC-Medium;
-                color:#838383;
-                .chinese{
-                    font-size:0.38rem;
-                    line-height:0.28rem;
-                    margin:0;
-                    margin-top:60%;
-                }
-                .english{
-                    margin-top:0.1rem;
-                    font-size:0.12rem;
-                }
-            }
-            .center{
-                width:2.4rem;
-                height:0.64rem;
-                color:#f95b4e;
-                font-family: PingFangSC-Medium;
-                font-size:0.28rem;
-                margin-left:0.1rem;
-                p{
-                    margin:0;
-                }
-                .top{
-                    margin-top:0.3rem;
-                }
-                .sec{
-                    font-size:0.16rem;
-                }
-            }
-            .right{
-                width:2.4rem;
-                height:0.4rem;
-                text-align:center;
-                color:#FFF;
-                padding:0;
-                font-family: PingFangSC-Medium;
-                margin-top:0.5rem;
-                margin-left:-3%;
-                transform:scale(0.8);
-            }
-            }
-        .connect{
-            .tel{
-                color:#f9614e;
-                text-align:center;
-                font-size:0.24rem;
-                margin:0.2rem 0;
-                font-family: PingFangSC-Medium;
-            }
-            .copyright{
-                text-align:center;
-                font-size:0.24rem;
-                font-family: PingFangSC-Medium;
-                transform:scale(0.8);
-                color:#999999;
-                margin:0;
-            }
-            .company{
-                text-align:center;
-                font-family: PingFangSC-Medium;
-                font-size:0.24rem;
-                color:#999999;
-                transform:scale(0.8);
-            }
-        }
-}
 }
