@@ -101,6 +101,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "pay_success",
             templateUrl: "html/land/pay_success.html"
         })
+        .state("land.pay_success.pay_fails", {
+            url: "/pay_fails",
+            controller: "pay_fails",
+            templateUrl: "html/land/payfail.html"
+        })
         // .state("feedback", {
         //     url: "/feedback",
         //     controller: "help",

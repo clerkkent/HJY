@@ -436,20 +436,27 @@ HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", func
         $state.go("game.main")
     }
 }])
-HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
-    $scope.info = { card: "", phone: "", scode: "", agree: true }
+HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", "login_logic", "land", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup, login_logic, land) {
+    $scope.info = { card: "", phone: "", scode: "", agree: true };
+    $scope.cardinfo = { company: "", name: "" }
+    $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "" }
     $scope.cardt = false;
     $scope.phonet = false;
     $scope.scodet = false;
-    $scope.agreet = false;
+    $scope.agreet = false; //以上为信息格式验证标识
     $scope.degree_s = 0;
-    $scope.degree_a = 0;
-    land.format();
-    $scope.toggleCustom = function() {
+    $scope.degree_a = 0; //提示信息是否出现表示
+    $scope.phone_flag = null;
+    $scope.card_flag = null; //卡，手机是否红包有效标志
+    $scope.price_get = false; //读取价格时禁用按钮
+    $scope.text = "立即支付";
+    $scope.price = 100;
+    $scope.discount = 1;
+    land.format(); //号码格式化显示
+    $scope.toggleCustom = function() { //注册协议限制
         if ($scope.agreet == true) {
             $(".main_content .land .remind .agree").removeClass("selected")
             $scope.agreet = false;
-            $scope.notice = "";
         } else {
 
             $(".main_content .land .remind .agree").addClass("selected")
@@ -457,11 +464,73 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
             $scope.notice = "请同意会加油注册及充值协议";
         }
     }
-    $scope.check_send = function() {
+    $scope.check_send = function() { //油卡失去焦点检测
         if (/\d{16}|\d{19}/g.test($scope.info.card.replace(/\s/g, ""))) {
             //请求油卡信息
+            var list = {
+                "jsonrpc": "2.0",
+                "method": "getCardInfoByNumber",
+                "params": [{
+                    "user_id": "5",
+                    "oil_card": $scope.info.card.replace(/\s/g, "")
+                }],
+                "id": 1
+            }
+            var land_data = land.submit(list);
+            land_data.then(function(data) {
+                console.log(data)
+                if (data.result != undefined) {
+                    $scope.cardinfo.name = data["result"]["username"];
+                    $scope.cardinfo.company = data["result"]["name"];
+                    $scope.card_flag = data["result"]["card_isDiscount"];
+                    console.log(data)
+                } else { //错误信息弹窗
+                    console.log(data)
+                }
+
+            }, function() {
+                console.log("验证码信息获取失败");
+            })
+
+            var product = {
+                "jsonrpc": "2.0",
+                "method": "productList",
+                "params": [{
+                    "user_id": "5",
+                    "channel": "renrenche"
+                }],
+                "id": 1
+            }
+            var product_data = land.submit(product);
+            product_data.then(function(data) {
+                if (data.result != undefined) {
+                    $scope.info_send.product_id = data["result"]["list"][0]["id"];
+                    $scope.discount = data["result"]["list"][0]["product_discount"]; //折扣
+                    var dc = parseFloat($scope.discount);
+                    if ($scope.phone_flag != null && $scope.phone_flag != null) {
+                        $scope.price_get = false;
+                        if ($scope.phone_flag == 1 && $scope.card_flag == 1) {
+                            $scope.price = Math.ceil((dc * 100 - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                            $scope.text = "确认支付" + String($scope.price) + "元";
+                            console.log($scope.price)
+                        } else {
+                            $scope.price = Math.ceil((dc * 100) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                            $scope.text = "确认支付" + String($scope.price) + "元";
+                            console.log($scope.price)
+                        }
+                    } else {
+                        $scope.price_get = true;
+                    }
+                } else { //错误信息弹窗
+                    console.log(data)
+                }
+
+            }, function() {
+                console.log("验证码信息获取失败");
+            })
+
         } else {
-            //此处暂不设置错误显示
+            //此处暂不设置错误显示,若有错误提示应该为油卡错误提示
         }
     }
     $scope.isChecked = true;
@@ -469,21 +538,18 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
 
     $scope.timeout = false; //倒数读秒按钮禁用
     $scope.icode_show = false; //是否为新注册用户
-    $scope.notice = ""
-        /*以上为页面操作功能*/
+    /*以上为页面操作功能*/
     $scope.second = "获取验证码";
 
     $scope.scode_get = function() { //获取验证码
         // console.log(/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, "")))
         // console.log($scope.info.phone)
         // console.log($scope.info.phone.replace(/\s/g, ""))
-        console.log($scope.agreet)
         if ($scope.agreet == false) {
             if (/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, ""))) {
                 $scope.phonet = false;
                 $scope.notice = "";
-                console.log(11)
-                    //发送验证信息验证是否注册,随后判断错误优先级
+                //发送验证信息验证是否注册,随后判断错误优先级
                 var a = 60;
                 $scope.second = a + "s"
                 $scope.timeout = true;
@@ -500,9 +566,10 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                 }, 1000);
                 var list = {
                     "jsonrpc": "2.0",
-                    "method": "messageAuth",
+                    "method": "messageAuthForChannel",
                     "params": [{
-                        "mobile": $scope.info.phone
+                        "phone": $scope.info.phone.replace(/\s/g, "") //手机号
+
                     }],
                     "id": 1
                 }
@@ -510,9 +577,28 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
 
                 promise_scode.then(function(data) {
                     if (data.result != undefined) {
-                        $scope.icode_show = data["result"]["data"]["is_registed"] == 0 ? true : false;
-                        $scope.key = data["result"]["data"]["key"]
                         console.log(data)
+                        $scope.phone_flag = data["result"]["is_discount"];
+                        // $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "" }
+                        $scope.info_send.sms_key = data["result"]["data"]["key"]; //短信验证key
+                        var dc = parseFloat($scope.discount);
+                        console.log($scope.phone_flag);
+                        console.log($scope.card_flag);
+                        if ($scope.phone_flag != null && $scope.phone_flag != null) {
+                            $scope.price_get = false;
+                            if ($scope.phone_flag == 1 && $scope.card_flag == 1) {
+                                $scope.price = Math.ceil((dc * 100 - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                                $scope.text = "确认支付" + String($scope.price) + "元";
+                                console.log($scope.price)
+                            } else {
+                                $scope.price = Math.ceil((dc * 100) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                                $scope.text = "确认支付" + String($scope.price) + "元";
+                                console.log($scope.price)
+                            }
+                        } else {
+                            $scope.price_get = true;
+                        }
+
                     } else { //错误信息弹窗
                         console.log(data)
                     }
@@ -522,7 +608,6 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                 })
 
             } else {
-                console.log(12)
                 $scope.phonet = true;
                 $scope.notice = "请输入正确的手机号";
             }
@@ -535,16 +620,18 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
     $scope.login = function() { //登录注册
         if (/\d{16}|\d{19}/g.test($scope.info.card.replace(/\s/g, ""))) {
             $scope.cardt = false;
-            $scope.notice = "";
             //请求油卡信息判断并显示是否注册，注册则进行下一步判断手机号,未通过则提示请更换未绑定油卡
             if (/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, ""))) {
                 $scope.phonet = false;
-                $scope.notice = "";
                 //手机号码注册判断，已注册提示错误信息未注册进行下步
-                if (/\d{4}/g.test($scope.info.scode.replace(/\s/g, ""))) {
+                if (/\d{6}/g.test($scope.info.scode)) {
                     $scope.scodet = false;
-                    $scope.notice = "验证码错误"
-                        //发送整体信息，拿到返回信息，验证码再次错误则弹出验证码错误,成功则正常登录
+                    $scope.info_send.username = $scope.info.phone.replace(/\s/g, "");
+                    $scope.info_send.sms_code = $scope.info.scode;
+                    $scope.info_send.oil_card = $scope.info.card.replace(/\s/g, "");
+                    $scope.info_send.money = $scope.price;
+                    console.log($scope.info_send)
+                    land.pay($scope.info_send);
                 } else {
                     $scope.scodet = true;
                     $scope.notice = "验证码错误"
@@ -558,58 +645,13 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
             $scope.notice = "请输入正确的油卡号";
         }
 
-
-        var list_login = null;
-        if ($scope.info.icode != "") { //判断是否存在验证码
-            list_login = {
-                "jsonrpc": "2.0",
-                "method": "signin",
-                "params": [{
-                    "username": $scope.info.phone, //电话号
-                    "sms_key": $scope.key, //短信接口收到的key
-                    "sms_code": $scope.info.scode, //验证码
-                    "invite_code ": $scope.info.icode
-                }],
-                "id": 1
-            }
-        } else {
-            list_login = {
-                "jsonrpc": "2.0",
-                "method": "signin",
-                "params": [{
-                    "username": $scope.info.phone, //电话号
-                    "sms_key": $scope.key, //短信接口收到的key
-                    "sms_code": $scope.info.scode, //验证码
-                }],
-                "id": 1
-            }
-        }
-
-        var promise_login = login_logic.submit(list_login);
-        promise_login.then(function(data) {
-            if (data.result != undefined) {
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: "登录成功",
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
-            } else { //错误信息弹窗
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: data["error"]["message"],
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
-            }
-        }, function() {
-            $ionicPopup.alert({
-                title: '提示',
-                template: "网络异常",
-                okText: '嗯！知道了', // String
-                okType: 'button-energized',
-            });
-        })
     }
 }])
-HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {}])
+HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
+    console.log(login_logic.parse_url())
+}])
+HJY.controller("pay_fails", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
+    $scope.repay = function() {
+        $state.go("land")
+    }
+}])

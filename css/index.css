@@ -2312,41 +2312,70 @@ a:focus {
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: PingFangSC-Medium; }
-  .pay_success header {
-    height: 2.36rem;
-    background: url("../images/land/H5_complete@3x.png") 20% center no-repeat;
-    background-size: 18%;
-    background-color: #ffdc5a;
-    position: relative; }
-    .pay_success header p {
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      width: 3.6rem;
-      height: .4rem;
-      text-align: center;
-      font-size: .36rem;
-      color: #F95B4E;
-      margin-left: 35%;
-      font-family: PingFangSC-Medium; }
-  .pay_success section {
+  .pay_success .pay_details {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
-            flex: 1;
-    background: #FFF;
-    padding-left: .58rem;
-    padding-top: .52rem; }
-    .pay_success section p {
-      font-family: PingFangSC-Regular;
-      font-size: .2rem; }
-      .pay_success section p .key {
-        color: #999999; }
-      .pay_success section p .value {
-        color: #333333; }
+            flex: 1; }
+    .pay_success .pay_details header {
+      height: 2.36rem;
+      background: url("../images/land/H5_complete@3x.png") 20% center no-repeat;
+      background-size: 18%;
+      background-color: #ffdc5a;
+      position: relative; }
+      .pay_success .pay_details header p {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 3.6rem;
+        height: .4rem;
+        text-align: center;
+        font-size: .36rem;
+        color: #F95B4E;
+        margin-left: 35%;
+        font-family: PingFangSC-Medium; }
+    .pay_success .pay_details section {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      background: #FFF;
+      padding-left: .58rem;
+      padding-top: .52rem;
+      position: relative; }
+      .pay_success .pay_details section p {
+        font-family: PingFangSC-Regular;
+        font-size: .2rem; }
+        .pay_success .pay_details section p .key {
+          color: #999999; }
+        .pay_success .pay_details section p .value {
+          color: #333333; }
+      .pay_success .pay_details section .repay {
+        width: 3.04rem;
+        height: .7rem;
+        text-align: center;
+        color: #FFF;
+        font-size: .32rem;
+        font-family: PingFangSC-Medium;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        margin-top: 10%; }
   .pay_success footer {
     height: 3.2rem;
     width: 100%;

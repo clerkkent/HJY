@@ -2439,7 +2439,11 @@ $background) {
     display: flex;
     flex-direction: column;
     font-family: PingFangSC-Medium;
-    header {
+    .pay_details{
+        display: flex;
+        flex-direction: column;
+        flex:1;
+        header {
         height: 2.36rem; // 118px;
         @include backgroundset("../images/land/H5_complete@3x.png",
         20%,
@@ -2463,6 +2467,7 @@ $background) {
         background: #FFF;
         padding-left: .58rem; // 29px;
         padding-top: .52rem; // 26px;
+        position:relative;
         p {
             font-family: PingFangSC-Regular;
             font-size: .2rem; // 10px;
@@ -2473,7 +2478,19 @@ $background) {
                 color: #333333;
             }
         }
+        .repay{
+            width:3.04rem; // 152px;
+            height:.7rem; // 35px;
+            text-align:center;
+            color:#FFF;
+            font-size:.32rem; // 16px;
+            font-family:PingFangSC-Medium;
+            @include center-block;
+            margin-top:10%;
+        }
     }
+    }
+
     footer {
         height: 3.2rem; // 160px
         width: 100%;
