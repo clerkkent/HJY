@@ -99,14 +99,14 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
     factory.deal_mycenter = function() {
         $(".main_content .my_center .popum_wrap").fadeIn(1000, "linear").delay(800).fadeOut("slow")
     }
-    factory.parse_url = function() {
-        var url = location.search; //参数
+    factory.parse_url = function() { //解析url参数
+        var url = location.hash.split("?")[1]; //参数
+        console.log(url)
         var theRequest = new Object();
-        if (url.indexOf("?") != -1) { //URL入口
-            var str = url.substr(1);
-            var strs = str.split("&");
+        if (url != undefined) { //URL入口
+            var strs = url.split("&");
             for (var i = 0; i < strs.length; i++) {
-                theRequest[strs[i].split("=")[0]] = strs[i].split("=")[1]; //提取url中的参数
+                theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]); //提取url中的参数
             }
         }
         return theRequest;
@@ -381,7 +381,7 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         // console.log(basecode)
         $http({
             method: 'POST',
-            url: 'http://oilproduct.dev.wanglibao.com/index.php?c=oilcard',
+            url: 'http://test.1huangjin.cn/pro/index.php?c=oilcard',
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
@@ -391,7 +391,35 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         });
         return defer.promise
     }
-    factory.pay = function(data) {
+    factory.get_good_list = function(data_send, authToken) {
+        var defer = $q.defer();
+        var head = null
+        if (authToken != undefined) { //此处的登录状态cookie设置还需要更改
+            head = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            };
+            window.document.cookie = "OIL_TOKEN=" + authToken + ";path=/;";
+        } else {
+            head = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+        // var endata = encodeURIComponent(data_send)
+        // var basecode = BASE64.encoder(endata)
+        // console.log(basecode)
+        $http({
+            method: 'POST',
+            url: 'http://test.1huangjin.cn/pro/index.php?c=pay',
+            headers: head,
+            data: data_send
+        }).success(function(data, header, config, status) {
+            defer.resolve(data); //声明执行成功
+        }).error(function(data, header, config, status) {
+            defer.reject(); //声明执行失败
+        });
+        return defer.promise
+    }
+    factory.pay = function(data, authToken) {
         $.extend({
             StandardPost: function(url, args) {
                 var body = $(document.body),
@@ -406,11 +434,46 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
                 });
 
                 form.appendTo(document.body);
-                form.submit();
+                form.submit() //阻止表单默认提交 
                 document.body.removeChild(form[0]);
             }
         });
-        $.StandardPost("http://test.1huangjin.cn/pro/index.php?c=webpay", data)
+        $.StandardPost("http://test.1huangjin.cn/pro/index.php?c=webpay", data);
+        // console.log(data)
+        // var defer = $q.defer();
+        // var head = null
+        // if (authToken != undefined) { //此处的登录状态cookie设置还需要更改
+        //     head = {
+        //         'Content-Type': 'application/x-www-form-urlencoded'
+        //     };
+        //     window.document.cookie = "OIL_TOKEN=" + authToken + ";path=/;";
+        // } else {
+        //     head = {
+        //         'Content-Type': 'application/x-www-form-urlencoded'
+        //     }
+        // }
+        // console.log(JSON.stringify(data))
+        // var datas = JSON.stringify(data);
+        // $http({
+        //     method: 'POST',
+        //     url: 'http://192.168.10.212:8888/pro/index.php?c=pay',
+        //     data: data
+        // }).success(function(ref, header, config, status) {
+        //     console.log(ref)
+        //     defer.resolve(ref); //声明执行成功
+        // }).error(function(ref, header, config, status) {
+        //     defer.reject(); //声明执行失败
+        // // });
+        // $.ajax({
+        //     type: "POST",
+        //     url: "http://192.168.10.212:8888/pro/index.php?c=webpay",
+        //     data: data,
+        //     async: true,
+        //     success: function(result) {
+        //         console.log(1)
+        //         console.log(result)
+        //     }
+        // })
     }
     return factory
 }])

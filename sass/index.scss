@@ -977,6 +977,7 @@ $background) {
             background: #FFF;
             width: 80%;
             margin: .4rem 10%;
+            border-radius:.3rem; // 15px;
             h3 {
                 text-align: center;
                 font-family: PingFangSC-Regular;
@@ -998,8 +999,8 @@ $background) {
                     letter-spacing: 0;
                     background-image: url(../images/login/ic_home_tag_left@3x.png),url(../images/login/ic_home_tag_right@3x.png);
                     background-repeat: no-repeat,no-repeat;
-                    background-position: 30% center,70% center;
-                    background-size: .36rem .12rem,.36rem .12rem;
+                    background-position: 32% center,68% center;
+                    background-size: 6%,6%;
                 }
                 .friend_none {
                     @include backgroundset("../images/login/ic_default_order@3x.png",
@@ -2321,7 +2322,7 @@ $background) {
                 display: inline-block;
                 border-radius: 20%;
                 position: absolute;
-                left: 23%;
+                left: 9%;
                 @include backgroundset("../images/game/H5_Check@3x.png",
                 center,
                 center,

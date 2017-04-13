@@ -880,7 +880,9 @@ a:focus {
     .friend_request section .friend_wrap {
       background: #FFF;
       width: 80%;
-      margin: .4rem 10%; }
+      margin: .4rem 10%;
+      -webkit-border-radius: .3rem;
+              border-radius: .3rem; }
       .friend_request section .friend_wrap h3 {
         text-align: center;
         font-family: PingFangSC-Regular;
@@ -902,8 +904,8 @@ a:focus {
           letter-spacing: 0;
           background-image: url(../images/login/ic_home_tag_left@3x.png), url(../images/login/ic_home_tag_right@3x.png);
           background-repeat: no-repeat,no-repeat;
-          background-position: 30% center,70% center;
-          background-size: .36rem .12rem,.36rem .12rem; }
+          background-position: 32% center,68% center;
+          background-size: 6%,6%; }
         .friend_request section .friend_wrap .second .friend_none {
           background: url("../images/login/ic_default_order@3x.png") top center no-repeat;
           background-size: 60%; }
@@ -2196,7 +2198,7 @@ a:focus {
         -webkit-border-radius: 20%;
                 border-radius: 20%;
         position: absolute;
-        left: 23%;
+        left: 9%;
         background: url("../images/game/H5_Check@3x.png") center center no-repeat;
         background-size: 100%;
         top: 25%; }

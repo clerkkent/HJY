@@ -81,16 +81,6 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "game_success",
             templateUrl: "html/game/game_success.html"
         })
-        .state("register_agreement", {
-            url: "/register_agreement",
-            controller: "help",
-            templateUrl: "html/agreement/register_agreement.html"
-        })
-        .state("user_agreement", {
-            url: "/user_agreement",
-            controller: "help",
-            templateUrl: "html/agreement/user_agreement.html"
-        })
         .state("land", {
             url: "/land",
             controller: "land",
@@ -106,11 +96,22 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "pay_fails",
             templateUrl: "html/land/payfail.html"
         })
-        // .state("feedback", {
-        //     url: "/feedback",
-        //     controller: "help",
-        //     templateUrl: "html/help/feedback.html",
-        // })//信息反馈页面
+        .state("register_agreement", {
+            url: "/register_agreement",
+            controller: "help",
+            templateUrl: "html/agreement/register_agreement.html"
+        })
+        .state("user_agreement", {
+            url: "/user_agreement",
+            controller: "help",
+            templateUrl: "html/agreement/user_agreement.html"
+        })
+
+    // .state("feedback", {
+    //     url: "/feedback",
+    //     controller: "help",
+    //     templateUrl: "html/help/feedback.html",
+    // })//信息反馈页面
 
 
 

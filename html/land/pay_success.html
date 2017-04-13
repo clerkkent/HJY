@@ -1,16 +1,16 @@
 <div class="pay_success">
-    <div class="pay_details" ui-view>   
+    <div class="pay_details" ui-view>
         <header>
             <p>恭喜你，支付成功</p>
         </header>
         <section>
             <p>
                 <span class="key">订单编号:</span>
-                <span class="value">111111111</span>
+                <span class="value">{{list.order_number}}</span>
             </p>
             <p>
                 <span class="key">成交时间:</span>
-                <span class="value">111111111</span>
+                <span class="value">{{list.utime}}</span>
             </p>
             <p>
                 <span class="key">商品名称:</span>
@@ -18,11 +18,11 @@
             </p>
             <p>
                 <span class="key">支付金额:</span>
-                <span class="value" style="color:#E3442A;">￥90（优惠券抵扣￥10）</span>
+                <span class="value" style="color:#E3442A;">￥{{list.discount_after_amount}}（优惠券抵扣￥{{list.discount_money}}）</span>
             </p>
             <p>
                 <span class="key">充值油卡:</span>
-                <span class="value">1000 0100 1400 10000  中国|*小名</span>
+                <span class="value">{{list.card_number}}</span>
             </p>
             <p>
                 <span class="key">到账时间:</span>
@@ -37,7 +37,7 @@
                 <p class="english">ihuijiayou.com</p>
             </div>
             <div class="center">
-                <p class="top">APP加油低至88折</p>
+                <p class="top">APP加油低至85折</p>
                 <p class="sec">仅在手机客户端</p>
             </div>
             <p class="right button button-assertive">下载APP</p>
