@@ -362,6 +362,13 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
             var v = $this.val();
             /\S{5}/.test(v) && $this.val(v.replace(/\s/g, '').replace(/(.{3})(.{4})/g, "$1 $2 "));
         });
+        $(".main_content").on("click", ".land .express", function(event) {
+            $(".main_content .land .details_express").show();
+            event.stopPropagation()
+        })
+        $(".main_content").on("click", ".land", function() {
+            $(".main_content .land .details_express").hide();
+        })
     }
     factory.submit = function(data_send, authToken) {
         var defer = $q.defer();

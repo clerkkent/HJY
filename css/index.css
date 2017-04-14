@@ -903,9 +903,9 @@ a:focus {
           color: #999999;
           letter-spacing: 0;
           background-image: url(../images/login/ic_home_tag_left@3x.png), url(../images/login/ic_home_tag_right@3x.png);
-          background-repeat: no-repeat,no-repeat;
-          background-position: 32% center,68% center;
-          background-size: 6%,6%; }
+          background-repeat: no-repeat, no-repeat;
+          background-position: 32% center, 68% center;
+          background-size: 6%, 6%; }
         .friend_request section .friend_wrap .second .friend_none {
           background: url("../images/login/ic_default_order@3x.png") top center no-repeat;
           background-size: 60%; }
@@ -2110,25 +2110,57 @@ a:focus {
     height: 4.96rem;
     background: url("../images/land/H5_banner@3x.png") center center no-repeat;
     background-size: 95%;
-    margin-top: 0.1rem; }
+    margin-top: 0.1rem;
+    position: relative; }
+    .land header .express {
+      position: absolute;
+      right: 10%;
+      bottom: -0.2rem;
+      text-indent: 0.3rem;
+      color: #699896;
+      font-size: .20rem;
+      background: url("../images/land/H5_mark.png") left center no-repeat;
+      background-size: 15%;
+      -webkit-transform: scale(0.9);
+          -ms-transform: scale(0.9);
+              transform: scale(0.9);
+      z-index: 100; }
+    .land header .details_express {
+      width: 3.5rem;
+      height: 3rem;
+      padding: 0.3rem 0.3rem;
+      position: absolute;
+      right: 0%;
+      top: 55%;
+      display: none;
+      line-height: .28rem;
+      font-size: .20rem;
+      background: url("../images/land/H5_bubble.png") top center no-repeat;
+      background-size: 80%;
+      background-size: 3.3rem 2rem;
+      color: #FFF;
+      -webkit-transform: scale(0.9);
+          -ms-transform: scale(0.9);
+              transform: scale(0.9); }
   .land section {
     height: 5.4rem;
     padding: 0 .3rem;
     position: relative;
     margin-top: .36rem;
-    font-family: PingFangSC-Regular; }
+    font-family: PingFangSC-Regular;
+    overflow: hidden; }
     .land section .notice {
       color: #f95b4e;
       margin-left: 10%;
       text-indent: 0.3rem;
-      background: url("../images/land/H5_info.png") left 30% no-repeat;
+      background: url("../images/land/H5_info.png") left 25% no-repeat;
       background-size: 4%;
       margin-bottom: 0.3rem;
       font-size: .2rem;
       height: .5rem;
       width: 100%;
       position: absolute;
-      top: 56%;
+      top: 60%;
       font-family: PingFangSC-Regular; }
     .land section .info {
       width: 100%;
@@ -2185,26 +2217,35 @@ a:focus {
       text-align: center;
       padding-left: 0.3rem;
       font-family: PingFangSC-Regular;
-      font-size: .24rem;
-      color: #343434;
+      font-size: .20rem;
       letter-spacing: 0;
       overflow: hidden;
-      position: relative; }
+      position: relative;
+      -webkit-transform: scale(1.1);
+          -ms-transform: scale(1.1);
+              transform: scale(1.1);
+      color: #FDA174; }
+      .land section .remind b {
+        font-weight: 500;
+        color: #FF7320; }
       .land section .remind .agree {
-        width: .3rem;
-        height: .3rem;
-        border: .02rem solid #f95b4e;
         display: inline-block;
         -webkit-border-radius: 20%;
                 border-radius: 20%;
         position: absolute;
-        left: 9%;
+        left: 15%;
         background: url("../images/game/H5_Check@3x.png") center center no-repeat;
         background-size: 100%;
-        top: 25%; }
+        top: 25%;
+        -webkit-transform: scale(0.7);
+            -ms-transform: scale(0.7);
+                transform: scale(0.7); }
       .land section .remind .selected {
         background-image: none; }
       .land section .remind span {
+        width: .3rem;
+        height: .3rem;
+        border: .02rem solid #f95b4e;
         color: #f95b4e; }
   .land footer {
     -webkit-box-flex: 1;
@@ -2220,6 +2261,8 @@ a:focus {
       background-size: 100%; }
     .land footer .download {
       height: 1.6rem;
+      background: url("../images/land/H5_ arrow@3x.png") 37% 85% no-repeat;
+      background-size: 20%;
       background-color: rgba(255, 255, 255, 0.5);
       display: -webkit-box;
       display: -webkit-flex;
@@ -2398,7 +2441,9 @@ a:focus {
       -webkit-box-direction: normal;
       -webkit-flex-direction: row;
           -ms-flex-direction: row;
-              flex-direction: row; }
+              flex-direction: row;
+      background: url("../images/land/H5_ arrow@3x.png") 37% 85% no-repeat;
+      background-size: 20%; }
       .pay_success footer .download .left {
         width: 2.5rem;
         height: 2.5rem;

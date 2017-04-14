@@ -18,7 +18,7 @@
             </p>
             <p>
                 <span class="key">支付金额:</span>
-                <span class="value" style="color:#E3442A;">￥{{list.discount_after_amount}}（优惠券抵扣￥{{list.discount_money}}）</span>
+                <span class="value" style="color:#E3442A;">￥{{list.discount_after_amount}}<i ng-if="redpack">(优惠券抵扣￥10 )</i></span>
             </p>
             <p>
                 <span class="key">充值油卡:</span>
@@ -40,7 +40,8 @@
                 <p class="top">APP加油低至85折</p>
                 <p class="sec">仅在手机客户端</p>
             </div>
-            <p class="right button button-assertive">下载APP</p>
+
+            <p class="right button button-assertive" down-load>下载APP</p>
         </div>
         <div class="connect">
             <p class="tel">客服热线 ： 400-851-8686</p>

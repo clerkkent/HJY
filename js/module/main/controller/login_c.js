@@ -453,8 +453,100 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
     $scope.product_id = false; //请求卡信息时禁用按钮
     $scope.card_info_get = false; //请求卡信息时禁用按钮
     $scope.text = "立即支付";
-    $scope.price = 100;
-    $scope.discount = 1;
+    $scope.price = 100; //当前商品原价
+    $scope.discount = 1; //当前卡所享折扣
+    $scope.product_type = function(callback) {
+        var product = {
+            "jsonrpc": "2.0",
+            "method": "productList",
+            "params": [{
+                "user_id": "5",
+                "channel": "renrenche"
+            }],
+            "id": 1
+        }
+        var product_data = land.submit(product);
+        $scope.product_id = true
+        product_data.then(function(data) {
+            if (data.result != undefined) {
+                $scope.product_id = false;
+                $scope.info_send.product_id = data["result"]["list"][0]["id"];
+                $scope.discount = data["result"]["list"][0]["product_discount"]; //折扣
+                $scope.belong = data["result"]["list"][0]["belong"]
+                if ($scope.belong == 1) {
+                    $scope.test = /^100011\d{13}$/g;
+                } else if ($scope.belong == 2) {
+                    $scope.test = /^9\d{15}$/g;
+                }
+
+            } else { //错误信息弹窗
+                console.log(data)
+            }
+
+        }, function() {
+            console.log("验证码信息获取失败");
+        });
+    }
+    $scope.product_type(); //产品类型获取函数
+    $scope.card_check = function() { //油卡校验函数
+        if ($scope.test.test($scope.info.card.replace(/\s/g, ""))) {
+            //请求油卡信息
+            $scope.cardt = false;
+            console.log($scope.cardt)
+            var list = {
+                "jsonrpc": "2.0",
+                "method": "getCardInfoByNumber",
+                "params": [{
+                    "user_id": "5",
+                    "oil_card": $scope.info.card.replace(/\s/g, "")
+                }],
+                "id": 1
+            }
+            $scope.card_info_get = true;
+            var land_data = land.submit(list);
+            land_data.then(function(data) {
+                console.log(data)
+                if (data.result != undefined) {
+                    $scope.card_info_get = false;
+                    $scope.cardinfo.name = data["result"]["username"];
+                    $scope.cardinfo.company = data["result"]["name"];
+                    $scope.card_flag = data["result"]["card_isDiscount"];
+                    var dc = parseFloat($scope.discount);
+                    if ($scope.phone_flag != null && $scope.card_flag != null) {
+                        $scope.price_get = false;
+                        if ($scope.phone_flag == 1 && $scope.card_flag == 1) {
+                            $scope.price = Math.ceil((dc * 100 - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                            $scope.text = "确认支付" + String($scope.price) + "元";
+                        } else {
+                            $scope.price = Math.ceil((dc * 100) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                            $scope.text = "确认支付" + String($scope.price) + "元";
+                        }
+                    } else {
+                        $scope.price_get = true;
+                    }
+                } else { //错误信息弹窗
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: data["error"]["message"],
+                        okText: '嗯！知道了', // String
+                        okType: 'button-energized',
+                    });
+                }
+            }, function() {
+                $ionicPopup.alert({
+                    title: '提示',
+                    template: "网络异常",
+                    okText: '嗯！知道了', // String
+                    okType: 'button-energized',
+                });
+            })
+        } else {
+            $scope.cardt = true;
+            $scope.notice = "请输入正确的油卡号";
+            console.log($scope.cardt)
+        }
+    }
+
     $scope.go_r = function() {
         $state.go("register_agreement")
     }
@@ -473,81 +565,14 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
             $scope.notice = "请同意会加油注册及充值协议";
         }
     }
-    $scope.check_send = function() { //油卡失去焦点检测
-        if (/\d{16}|\d{19}/g.test($scope.info.card.replace(/\s/g, ""))) {
-            //请求油卡信息
-            var list = {
-                "jsonrpc": "2.0",
-                "method": "getCardInfoByNumber",
-                "params": [{
-                    "user_id": "5",
-                    "oil_card": $scope.info.card.replace(/\s/g, "")
-                }],
-                "id": 1
-            }
-            $scope.product_id = true;
-            $scope.card_info_get = true;
-            var land_data = land.submit(list);
-            land_data.then(function(data) {
-                if (data.result != undefined) {
-                    $scope.card_info_get = false;
-                    $scope.cardinfo.name = data["result"]["username"];
-                    $scope.cardinfo.company = data["result"]["name"];
-                    $scope.card_flag = data["result"]["card_isDiscount"];
-                    console.log(data)
-                } else { //错误信息弹窗
-                    console.log(data)
-                }
-            }, function() {
-                console.log("验证码信息获取失败");
-            })
-
-            var product = {
-                "jsonrpc": "2.0",
-                "method": "productList",
-                "params": [{
-                    "user_id": "5",
-                    "channel": "renrenche"
-                }],
-                "id": 1
-            }
-            var product_data = land.submit(product);
-
-            product_data.then(function(data) {
-                if (data.result != undefined) {
-                    $scope.product_id = false;
-                    $scope.info_send.product_id = data["result"]["list"][0]["id"];
-                    $scope.discount = data["result"]["list"][0]["product_discount"]; //折扣
-                    var dc = parseFloat($scope.discount);
-                    if ($scope.phone_flag != null && $scope.phone_flag != null) {
-                        $scope.price_get = false;
-                        if ($scope.phone_flag == 1 && $scope.card_flag == 1) {
-                            $scope.price = Math.ceil((dc * 100 - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
-                            $scope.text = "确认支付" + String($scope.price) + "元";
-                        } else {
-                            $scope.price = Math.ceil((dc * 100) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
-                            $scope.text = "确认支付" + String($scope.price) + "元";
-                        }
-                    } else {
-                        $scope.price_get = true;
-                    }
-                } else { //错误信息弹窗
-                    console.log(data)
-                }
-
-            }, function() {
-                console.log("验证码信息获取失败");
-            })
-
-        } else {
-            //此处暂不设置错误显示,若有错误提示应该为油卡错误提示
+    $scope.check_send = function() { //油卡失去焦点获取卡信息函数
+        if ($scope.test != undefined) {
+            $scope.card_check($scope.test);
         }
     }
     $scope.isChecked = true;
-
-
     $scope.timeout = false; //倒数读秒按钮禁用
-    $scope.icode_show = false; //是否为新注册用户
+    $scope.icode_show = false; //是否为新注册用户//貌似无用
     /*以上为页面操作功能*/
     $scope.second = "获取验证码";
 
@@ -564,7 +589,7 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                 $scope.timeout = true;
                 var timeout = $interval(function() {
                     if (a <= 0) {
-                        $scope.second = "获取验证码"
+                        $scope.second = "重新获取"
                         $scope.timeout = false;
                         a = 60;
                         $interval.cancel(timeout)
@@ -585,13 +610,14 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                 var promise_scode = login_logic.submit(list);
 
                 promise_scode.then(function(data) {
+                    console.log(data)
                     if (data.result != undefined) {
-                        console.log(data)
+                        $scope.phonet = false;
                         $scope.phone_flag = data["result"]["is_discount"];
                         // $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "" }
                         $scope.info_send.sms_key = data["result"]["data"]["key"]; //短信验证key
                         var dc = parseFloat($scope.discount);
-                        if ($scope.phone_flag != null && $scope.phone_flag != null) {
+                        if ($scope.phone_flag != null && $scope.card_flag != null) {
                             if ($scope.phone_flag == 1 && $scope.card_flag == 1) {
                                 $scope.price = Math.ceil((dc * 100 - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
                                 $scope.text = "确认支付" + String($scope.price) + "元";
@@ -604,14 +630,19 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                             $scope.price_get = true;
                         }
 
-                    } else { //错误信息弹窗
-                        console.log(data)
+                    } else { //验证码多次获取失败
+                        $scope.phonet = true;
+                        $scope.notice = data["error"]["message"];
+                        $ionicPopup.alert({
+                            title: '提示',
+                            template: data["error"]["message"],
+                            okText: '嗯！知道了', // String
+                            okType: 'button-energized',
+                        });
                     }
-
                 }, function() {
-                    console.log("验证码信息获取失败");
-                })
 
+                })
             } else {
                 $scope.phonet = true;
                 $scope.notice = "请输入正确的手机号";
@@ -623,7 +654,7 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
     }
 
     $scope.login = function() { //登录注册
-        if (/\d{16}|\d{19}/g.test($scope.info.card.replace(/\s/g, ""))) {
+        if ($scope.test) {
             $scope.cardt = false;
             //请求油卡信息判断并显示是否注册，注册则进行下一步判断手机号,未通过则提示请更换未绑定油卡
             if (/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, ""))) {
@@ -675,12 +706,12 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
             $scope.cardt = true;
             $scope.notice = "请输入正确的油卡号";
         }
-
     }
 }])
 HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.url_data = login_logic.parse_url();
     $scope.list = null;
+    $scope.redpack = false;
     $scope.send = {
         "jsonrpc": "2.0",
         "method": "webBack",
@@ -694,7 +725,11 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
                 $interval.cancel(time);
                 if (data["result"]["status"] == 1) {
                     $scope.list = data["result"];
-                    console.log($scope.list)
+                    if ($scope.list.uuid == "") {
+                        $scope.redpack = false;
+                    } else {
+                        $scope.redpack = true;
+                    }
                 } else if (data["result"]["status"] == 2) {
                     $state.go("land.pay_success.pay_fails")
                 }
@@ -704,8 +739,6 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
         })
     }
     var time = $interval(getdata(), 1000);
-
-
 }])
 HJY.controller("pay_fails", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.repay = function() {

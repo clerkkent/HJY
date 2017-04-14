@@ -340,13 +340,13 @@ $background) {
             100%);
         }
         .rule_main {
-            height:auto;
+            height: auto;
             overflow: hidden;
             font-family: PingFangSC-Regular;
             padding: 0 0.2rem;
-            padding-bottom:0.5rem;
+            padding-bottom: 0.5rem;
             color: #666;
-            position:relative;
+            position: relative;
             .title {
                 text-align: center;
                 font-size: .24rem; // 12px
@@ -365,8 +365,8 @@ $background) {
         }
         .rule_close {
             position: absolute;
-            top:0%;
-            right:1%;
+            top: 0%;
+            right: 1%;
             width: .56rem; // 28px;
             height: .56rem; // 28px;
             margin: 0 auto;
@@ -960,12 +960,12 @@ $background) {
                     line-height: .25rem;
                 }
             }
-            .center{
-                width:none;
-                height:80%;
-                border-left:.02rem solid #FFF;
-                opacity:0.5;
-                margin-top:0.1rem;
+            .center {
+                width: none;
+                height: 80%;
+                border-left: .02rem solid #FFF;
+                opacity: 0.5;
+                margin-top: 0.1rem;
             }
         }
     }
@@ -977,7 +977,7 @@ $background) {
             background: #FFF;
             width: 80%;
             margin: .4rem 10%;
-            border-radius:.3rem; // 15px;
+            border-radius: .3rem; // 15px;
             h3 {
                 text-align: center;
                 font-family: PingFangSC-Regular;
@@ -997,10 +997,10 @@ $background) {
                     font-family: PingFangSC-Regular;
                     color: #999999;
                     letter-spacing: 0;
-                    background-image: url(../images/login/ic_home_tag_left@3x.png),url(../images/login/ic_home_tag_right@3x.png);
-                    background-repeat: no-repeat,no-repeat;
-                    background-position: 32% center,68% center;
-                    background-size: 6%,6%;
+                    background-image: url(../images/login/ic_home_tag_left@3x.png), url(../images/login/ic_home_tag_right@3x.png);
+                    background-repeat: no-repeat, no-repeat;
+                    background-position: 32% center, 68% center;
+                    background-size: 6%, 6%;
                 }
                 .friend_none {
                     @include backgroundset("../images/login/ic_default_order@3x.png",
@@ -2122,7 +2122,7 @@ $background) {
                 @include center-block;
                 margin-left: 0.8rem;
                 margin-top: 0.5rem;
-                width:1.4rem; // 70px
+                width: 1.4rem; // 70px
             }
         }
     }
@@ -2157,7 +2157,7 @@ $background) {
             text-align: center;
             font-size: .32rem; // 16px
             font-family: PingFangSC-Medium;
-            margin-top:0.4rem;
+            margin-top: 0.4rem;
             span {
                 @include backgroundset("../images/friend/H5_backgroud.png",
                 center,
@@ -2230,6 +2230,33 @@ $background) {
         center,
         95%);
         margin-top: 0.1rem;
+        position: relative;
+        .express{
+            position:absolute;
+            right:10%;
+            bottom:-0.2rem;
+            text-indent:0.3rem;
+            color:#699896;
+            font-size:.20rem; // 12px;
+            @include backgroundset("../images/land/H5_mark.png",left,center,15%);
+            transform:scale(0.9);
+            z-index:100;
+        }
+        .details_express{
+            width:3.5rem;
+            height:3rem;
+            padding:0.3rem 0.3rem;
+            position:absolute;
+            right:0%;
+            top:55%;
+            display:none;
+            line-height:.28rem; // 12px;
+            font-size:.20rem; // 12px;
+            @include backgroundset("../images/land/H5_bubble.png",top,center,80%);
+            background-size:3.3rem 2rem;
+            color:#FFF;
+            transform:scale(0.9);
+        }
     }
     section {
         height: 5.4rem; // 270px
@@ -2237,20 +2264,22 @@ $background) {
         position: relative;
         margin-top: .36rem; // 18px
         font-family: PingFangSC-Regular;
+        overflow: hidden;
+
         .notice {
             color: #f95b4e;
             margin-left: 10%;
             text-indent: 0.3rem;
             @include backgroundset("../images/land/H5_info.png",
             left,
-            30%,
+            25%,
             4%);
             margin-bottom: 0.3rem;
             font-size: .2rem; // 10px
             height: .5rem; // 25px;
             width: 100%;
             position: absolute;
-            top: 56%;
+            top: 60%;
             font-family: PingFangSC-Regular;
         }
         .info {
@@ -2310,28 +2339,35 @@ $background) {
             text-align: center;
             padding-left: 0.3rem;
             font-family: PingFangSC-Regular;
-            font-size: .24rem; // 12px
-            color: #343434;
+            font-size: .20rem; // 12px
             letter-spacing: 0;
             overflow: hidden;
             position: relative;
+            transform: scale(1.1);
+            color: #FDA174;
+            b {
+                font-weight: 500;
+                color: #FF7320;
+            }
             .agree {
-                width: .3rem; // 15px;
-                height: .3rem; // 15px;
-                border: .02rem solid #f95b4e;
                 display: inline-block;
                 border-radius: 20%;
                 position: absolute;
-                left: 9%;
+                left: 15%;
                 @include backgroundset("../images/game/H5_Check@3x.png",
                 center,
                 center,
-                100%) top: 25%;
+                100%);
+                top: 25%;
+                transform: scale(0.7);
             }
             .selected {
                 background-image: none;
             }
             span {
+                width: .3rem; // 15px;
+                height: .3rem; // 15px;
+                border: .02rem solid #f95b4e;
                 color: #f95b4e;
             }
         }
@@ -2350,7 +2386,10 @@ $background) {
         }
         .download {
             height: 1.6rem;
-            background-color: rgba(white, .5);
+            @include backgroundset("../images/land/H5_ arrow@3x.png",
+            37%,
+            85%,
+            20%) background-color: rgba(white, .5);
             display: flex;
             flex-direction: row;
             .left {
@@ -2440,58 +2479,57 @@ $background) {
     display: flex;
     flex-direction: column;
     font-family: PingFangSC-Medium;
-    .pay_details{
+    .pay_details {
         display: flex;
         flex-direction: column;
-        flex:1;
-        header {
-        height: 2.36rem; // 118px;
-        @include backgroundset("../images/land/H5_complete@3x.png",
-        20%,
-        center,
-        18%);
-        background-color: #ffdc5a;
-        position: relative;
-        p {
-            @include center-block;
-            width: 3.6rem; // 180px;
-            height: .4rem; // 20px;
-            text-align: center;
-            font-size: .36rem; // 18px;
-            color: #F95B4E;
-            margin-left: 35%;
-            font-family: PingFangSC-Medium;
-        }
-    }
-    section {
         flex: 1;
-        background: #FFF;
-        padding-left: .58rem; // 29px;
-        padding-top: .52rem; // 26px;
-        position:relative;
-        p {
-            font-family: PingFangSC-Regular;
-            font-size: .2rem; // 10px;
-            .key {
-                color: #999999;
-            }
-            .value {
-                color: #333333;
+        header {
+            height: 2.36rem; // 118px;
+            @include backgroundset("../images/land/H5_complete@3x.png",
+            20%,
+            center,
+            18%);
+            background-color: #ffdc5a;
+            position: relative;
+            p {
+                @include center-block;
+                width: 3.6rem; // 180px;
+                height: .4rem; // 20px;
+                text-align: center;
+                font-size: .36rem; // 18px;
+                color: #F95B4E;
+                margin-left: 35%;
+                font-family: PingFangSC-Medium;
             }
         }
-        .repay{
-            width:3.04rem; // 152px;
-            height:.7rem; // 35px;
-            text-align:center;
-            color:#FFF;
-            font-size:.32rem; // 16px;
-            font-family:PingFangSC-Medium;
-            @include center-block;
-            margin-top:10%;
+        section {
+            flex: 1;
+            background: #FFF;
+            padding-left: .58rem; // 29px;
+            padding-top: .52rem; // 26px;
+            position: relative;
+            p {
+                font-family: PingFangSC-Regular;
+                font-size: .2rem; // 10px;
+                .key {
+                    color: #999999;
+                }
+                .value {
+                    color: #333333;
+                }
+            }
+            .repay {
+                width: 3.04rem; // 152px;
+                height: .7rem; // 35px;
+                text-align: center;
+                color: #FFF;
+                font-size: .32rem; // 16px;
+                font-family: PingFangSC-Medium;
+                @include center-block;
+                margin-top: 10%;
+            }
         }
     }
-    }
-
     footer {
         height: 3.2rem; // 160px
         width: 100%;
@@ -2509,7 +2547,10 @@ $background) {
             background-color: rgba(#FFEEAC, .5);
             display: flex;
             flex-direction: row;
-            .left {
+            @include backgroundset("../images/land/H5_ arrow@3x.png",
+            37%,
+            85%,
+            20%) .left {
                 width: 2.5rem;
                 height: 2.5rem;
                 transform: scale(0.5);

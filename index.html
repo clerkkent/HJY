@@ -18,8 +18,9 @@
     <link rel="shortcut icon" href="images/bitbug_favicon.ico">
 </head>
 
-<body ng-app="HJY" ng-controller="MainCtrl" style="display: flex;flex-direction:column;background-color:#fff">
-    <div class="main_content" ui-view style="overflow-y:scroll">
+<body ng-app="HJY" ng-controller="MainCtrl" style="display: flex;flex-direction:column;background-color:#fff;overflow:hidden;">
+    <div class="main_content" cache-view="false" style="height:100%;width:100%;overflow:hidden;" ui-view>
+
     </div>
     <script src="js/common.js"></script>
 </body>
