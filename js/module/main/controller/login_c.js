@@ -437,9 +437,37 @@ HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", func
         $state.go("game.main")
     }
 }])
-HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", "login_logic", "land", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup, login_logic, land) {
+HJY.controller("download", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
+    $scope.browser = {
+        versions: function() {
+            var u = navigator.userAgent,
+                app = navigator.appVersion;
+            return {
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+                qq: u.match(/\sQQ/i) == " qq" //是否QQ
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    }
+    if ($scope.browser.versions.android) {
+        window.location.href = "https://pro-app-qn.fir.im/a642805408c44b8f9cf7bd7f16a6c507d2e8d0ad.apk?attname=app-yingyongbao-release.apk_1.0.0.apk&e=1492161405&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:uNmsWt3Mtc7XedlLRBtx8Izyyd4="
+    } else if ($scope.browser.versions.ios) {
+        window.location.href = "https://itunes.apple.com/us/app/yi-huang-jin-huang-jin-li-cai/id1168865801?mt=8"
+    }
+}])
+HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", "login_logic", "land", "get_predata", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup, login_logic, land, get_predata) {
     $scope.info = { card: "", phone: "", scode: "", agree: true };
-    $scope.cardinfo = { company: "", name: "" }
+
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "" }
     $scope.cardt = false;
     $scope.phonet = false;
@@ -450,49 +478,40 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
     $scope.phone_flag = null;
     $scope.card_flag = null; //卡，手机是否红包有效标志
     $scope.price_get = false; //读取价格时禁用按钮
-    $scope.product_id = false; //请求卡信息时禁用按钮
     $scope.card_info_get = false; //请求卡信息时禁用按钮
     $scope.text = "立即支付";
     $scope.price = 100; //当前商品原价
     $scope.discount = 1; //当前卡所享折扣
-    $scope.product_type = function(callback) {
-        var product = {
-            "jsonrpc": "2.0",
-            "method": "productList",
-            "params": [{
-                "user_id": "5",
-                "channel": "renrenche"
-            }],
-            "id": 1
-        }
-        var product_data = land.submit(product);
-        $scope.product_id = true
-        product_data.then(function(data) {
-            if (data.result != undefined) {
-                $scope.product_id = false;
-                $scope.info_send.product_id = data["result"]["list"][0]["id"];
-                $scope.discount = data["result"]["list"][0]["product_discount"]; //折扣
-                $scope.belong = data["result"]["list"][0]["belong"]
-                if ($scope.belong == 1) {
-                    $scope.test = /^100011\d{13}$/g;
-                } else if ($scope.belong == 2) {
-                    $scope.test = /^9\d{15}$/g;
-                }
-
-            } else { //错误信息弹窗
-                console.log(data)
-            }
-
-        }, function() {
-            console.log("验证码信息获取失败");
-        });
+    $scope.info_send.product_id = get_predata["result"]["list"][0]["id"]; //get_predata为页面加载前返回的商品信息
+    $scope.discount = get_predata["result"]["list"][0]["product_discount"]; //折扣
+    $scope.pay_on = false; //支付中，防止用户重复请求
+    $scope.belong = get_predata["result"]["list"][0]["belong"]
+    if ($scope.belong == 1) {
+        $scope.test = /^100011\d{13}$/;
+    } else if ($scope.belong == 2) {
+        $scope.test = /^9\d{15}$/;
     }
-    $scope.product_type(); //产品类型获取函数
-    $scope.card_check = function() { //油卡校验函数
-        if ($scope.test.test($scope.info.card.replace(/\s/g, ""))) {
+    $scope.go_p = function() { //调往充值协议
+        $state.go("user_agreement")
+    }
+    land.format(); //号码格式化显示
+    $scope.toggleCustom = function() { //注册协议限制
+        if ($scope.agreet == true) {
+            $(".main_content .land .remind .agree").removeClass("selected")
+            $scope.agreet = false;
+        } else {
+
+            $(".main_content .land .remind .agree").addClass("selected")
+            $scope.agreet = true;
+            $scope.notice = "请同意会加油注册及充值协议";
+        }
+    }
+    $scope.check_send = function() { //油卡失去焦点获取卡信息函数
+        var card = $scope.test.test($scope.info.card.replace(/\s/g, ""));
+        if (card) {
             //请求油卡信息
             $scope.cardt = false;
-            console.log($scope.cardt)
+            $scope.cardinfo = { company: "", name: "" }
             var list = {
                 "jsonrpc": "2.0",
                 "method": "getCardInfoByNumber",
@@ -505,7 +524,6 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
             $scope.card_info_get = true;
             var land_data = land.submit(list);
             land_data.then(function(data) {
-                console.log(data)
                 if (data.result != undefined) {
                     $scope.card_info_get = false;
                     $scope.cardinfo.name = data["result"]["username"];
@@ -543,31 +561,6 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
         } else {
             $scope.cardt = true;
             $scope.notice = "请输入正确的油卡号";
-            console.log($scope.cardt)
-        }
-    }
-
-    $scope.go_r = function() {
-        $state.go("register_agreement")
-    }
-    $scope.go_p = function() {
-        $state.go("user_agreement")
-    }
-    land.format(); //号码格式化显示
-    $scope.toggleCustom = function() { //注册协议限制
-        if ($scope.agreet == true) {
-            $(".main_content .land .remind .agree").removeClass("selected")
-            $scope.agreet = false;
-        } else {
-
-            $(".main_content .land .remind .agree").addClass("selected")
-            $scope.agreet = true;
-            $scope.notice = "请同意会加油注册及充值协议";
-        }
-    }
-    $scope.check_send = function() { //油卡失去焦点获取卡信息函数
-        if ($scope.test != undefined) {
-            $scope.card_check($scope.test);
         }
     }
     $scope.isChecked = true;
@@ -575,13 +568,9 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
     $scope.icode_show = false; //是否为新注册用户//貌似无用
     /*以上为页面操作功能*/
     $scope.second = "获取验证码";
-
     $scope.scode_get = function() { //获取验证码
-        // console.log(/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, "")))
-        // console.log($scope.info.phone)
-        // console.log($scope.info.phone.replace(/\s/g, ""))
         if ($scope.agreet == false) {
-            if (/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, ""))) {
+            if (/^0?1[0-9][0-9]\d{4}\d{4}$/.test($scope.info.phone.replace(/\s/g, ""))) {
                 $scope.phonet = false;
                 //发送验证信息验证是否注册,随后判断错误优先级
                 var a = 60;
@@ -610,7 +599,6 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                 var promise_scode = login_logic.submit(list);
 
                 promise_scode.then(function(data) {
-                    console.log(data)
                     if (data.result != undefined) {
                         $scope.phonet = false;
                         $scope.phone_flag = data["result"]["is_discount"];
@@ -654,13 +642,14 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
     }
 
     $scope.login = function() { //登录注册
-        if ($scope.test) {
+        var card = $scope.test.test($scope.info.card.replace(/\s/g, ""))
+        if (card) {
             $scope.cardt = false;
             //请求油卡信息判断并显示是否注册，注册则进行下一步判断手机号,未通过则提示请更换未绑定油卡
-            if (/^0?1[0-9][0-9]\d{4}\d{4}$/g.test($scope.info.phone.replace(/\s/g, ""))) {
+            if (/^0?1[0-9][0-9]\d{4}\d{4}$/.test($scope.info.phone.replace(/\s/g, ""))) {
                 $scope.phonet = false;
                 //手机号码注册判断，已注册提示错误信息未注册进行下步
-                if (/\d{6}/g.test($scope.info.scode)) {
+                if (/\d{6}/.test($scope.info.scode)) {
                     $scope.scodet = false;
                     $scope.info_send.username = $scope.info.phone.replace(/\s/g, "");
                     $scope.info_send.sms_code = $scope.info.scode;
@@ -678,12 +667,12 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                     }
                     var login = login_logic.submit(list)
                     login.then(function(data) {
-                            console.log(data.result.checkSms)
                             if (data.result != undefined) {
-                                //然后if判断后调用land.pay($scope.info_send)，失败则显示验证码错误
                                 if (data.result.checkSms) {
                                     $scope.scodet = false;
+                                    $scope.pay_on = true;
                                     land.pay($scope.info_send);
+                                    $scope.text = "正在前往支付页";
                                 } else {
                                     $scope.scodet = true;
                                     $scope.notice = "验证码错误";
@@ -700,9 +689,9 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                 }
             } else {
                 $scope.phonet = true;
-                $scope.notice = "请输入正确的手机号";
+                $scope.notice = "请输入正确的手机号"
             }
-        } else {
+        } else { //此处正则为何验证慢。。。
             $scope.cardt = true;
             $scope.notice = "请输入正确的油卡号";
         }
@@ -712,17 +701,11 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
     $scope.url_data = login_logic.parse_url();
     $scope.list = null;
     $scope.redpack = false;
-    $scope.send = {
-        "jsonrpc": "2.0",
-        "method": "webBack",
-        "params": [$scope.url_data],
-        "id": 1
-    }
-    var getdata = function() {
-        var good_list = land.get_good_list($scope.send);
+    $scope.getdata = function(send) {
+        var good_list = land.get_good_list(send);
         good_list.then(function(data) {
             if (data["result"] != undefined) {
-                $interval.cancel(time);
+                $interval.cancel($scope.time);
                 if (data["result"]["status"] == 1) {
                     $scope.list = data["result"];
                     if ($scope.list.uuid == "") {
@@ -738,7 +721,13 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
 
         })
     }
-    var time = $interval(getdata(), 1000);
+    $scope.send = {
+        "jsonrpc": "2.0",
+        "method": "webBack",
+        "params": [$scope.url_data],
+        "id": 1
+    }
+    $scope.time = $interval($scope.getdata($scope.send), 1000);
 }])
 HJY.controller("pay_fails", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.repay = function() {

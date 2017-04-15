@@ -81,10 +81,31 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "game_success",
             templateUrl: "html/game/game_success.html"
         })
+        .state("download", {
+            url: "/download",
+            cache: 'false',
+            controller: "download",
+            templateUrl: "html/game/appdown.html"
+        })
         .state("land", {
             url: "/land",
             controller: "land",
-            templateUrl: "html/land/land.html"
+            templateUrl: "html/land/land.html",
+            resolve: {
+                predata: "land",
+                get_predata: function(predata) {
+                    var list = {
+                        "jsonrpc": "2.0",
+                        "method": "productList",
+                        "params": [{
+                            "user_id": "5",
+                            "channel": "renrenche"
+                        }],
+                        "id": 1
+                    }
+                    return predata.submit(list)
+                }
+            }
         })
         .state("land.pay_success", {
             url: "/pay_success",

@@ -448,6 +448,7 @@ $background) {
     center,
     bottom,
     100%);
+    -webkit-overflow-scrolling: touch;
     .user_pic {
         height: 4rem; // 170px
         width: 100%;
@@ -651,6 +652,7 @@ $background) {
     width: 1.3rem; // 65px;
     height: 1.76rem;
     @include center-block;
+    -webkit-overflow-scrolling: touch;
     dt {
         width: 100%;
         height: 1.5rem; // 75px;
@@ -685,6 +687,7 @@ $background) {
     flex-direction: column;
     background: #FFF;
     min-height: 11.36rem; // 568px
+    -webkit-overflow-scrolling: touch;
     section {
         width: 100%;
         flex: 1;
@@ -785,6 +788,7 @@ $background) {
     display: flex;
     flex-direction: column;
     background: #FFF;
+    -webkit-overflow-scrolling: touch;
     header {
         height: .74rem; // 37px
         line-height: .64rem;
@@ -845,6 +849,7 @@ $background) {
     flex-direction: column;
     height: 11.36rem;
     background: #FFF;
+    -webkit-overflow-scrolling: touch;
     .popum_wrap {
         @include friend_request_details_pupum;
     }
@@ -1050,6 +1055,7 @@ $background) {
     flex-direction: column;
     background: #FFF;
     height: 11.36rem; // 568px
+    -webkit-overflow-scrolling: touch;
     section {
         flex: 1;
         display: flex;
@@ -1255,6 +1261,7 @@ $background) {
     background: #FFF;
     height: 11.36rem; // 568px
     position: relative;
+    -webkit-overflow-scrolling: touch;
     header {
         width: 100%;
         height: 3.5rem;
@@ -1443,6 +1450,7 @@ $background) {
     background: #f5f5f5;
     height: 11.36rem; // 568px
     position: relative;
+    -webkit-overflow-scrolling: touch;
     header {
         height: .8rem; // 40px;
         width: 100%;
@@ -1685,6 +1693,7 @@ $background) {
     background: #fedb65;
     height: 11.36rem; // 568px
     transition: all .1s;
+    -webkit-overflow-scrolling: touch;
     header {
         flex: 1;
         text-align: center;
@@ -2019,7 +2028,7 @@ $background) {
                     display: inline-block;
                     border-radius: 20%;
                     position: absolute;
-                    left: 15%;
+                    left: 19%;
                     @include backgroundset("../images/game/H5_Check@3x.png",
                     center,
                     center,
@@ -2047,6 +2056,7 @@ $background) {
     background-color: #fedb65;
     font-family: PingFangSC-Medium;
     color: #575e6f;
+    -webkit-overflow-scrolling: touch;
     header {
         width: 100%;
         height: 6.7rem; // 335px;
@@ -2134,6 +2144,7 @@ $background) {
     height: 11.36rem; // 568px
     flex-direction: column;
     background-color: #fedb65;
+    -webkit-overflow-scrolling: touch;
     header {
         width: 100%;
         height: 2.9rem; // 145px;
@@ -2223,6 +2234,7 @@ $background) {
     flex-direction: column;
     height: 22.76rem; // 1138px;
     background: #ffdc5a;
+    -webkit-overflow-scrolling: touch;
     header {
         height: 4.96rem; // 248px;
         @include backgroundset("../images/land/H5_banner@3x.png",
@@ -2353,7 +2365,7 @@ $background) {
                 display: inline-block;
                 border-radius: 20%;
                 position: absolute;
-                left: 15%;
+                left: 19%;
                 @include backgroundset("../images/game/H5_Check@3x.png",
                 center,
                 center,
@@ -2479,6 +2491,7 @@ $background) {
     display: flex;
     flex-direction: column;
     font-family: PingFangSC-Medium;
+    -webkit-overflow-scrolling: touch;
     .pay_details {
         display: flex;
         flex-direction: column;

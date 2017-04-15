@@ -8,14 +8,13 @@
         </header>
         <section>
             <form name="landform" class="information" novalidate verify-scope="tipStyle: 0">
-                <!--<input class="info credit-card" type="tel" id="card" ng-verify="pattern:/\d\s/,min:19,max:23,errmsg:'油卡卡号格式错误'" placeholder="请输入油卡号" ng-model="info.card" ng-blur="check_send()" ng-change="myFunc()">-->
                 <input class="info credit-card" autocomplete="off" type="tel" id="card" ng-verify="pattern:/\d\s/,min:19,max:23,errmsg:'油卡卡号格式错误'" placeholder="请输入油卡号" ng-model="info.card" ng-blur="check_send()" ng-change="myFunc()">
                 <span class="details">{{cardinfo.company}}   {{cardinfo.name}}</span>
                 <input class="info" type="tel" autocomplete="off" id="phone" ng-verify="pattern:/^0?1[0-9][0-9]\s{1}\d{4}\s{1}\d{4}$/,errmsg:'手机号码格式错误'" ng-model="info.phone" maxlength="13" placeholder="请输入手机号码">
                 <input class="first_i info" autocomplete="off" type="tel" ng-model="info.scode" name="scode" ng-verify="max:6" required placeholder="请输入验证码">
                 <button class="get_scode" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">获取短信验证码</button>
                 <p class="notice" ng-show="cardt||phonet||scodet||agreet">{{notice}}</p>
-                <input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled=" price_get || agreet||product_id||card_info_get" ng-click="login()">
+                <input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled=" price_get || agreet||pay_on||card_info_get" ng-click="login()">
                 <p class="remind" class="agree checkbox-assertive" ng-model="info.agree"><span class="agree" ng-click="toggleCustom()"></span><span ng-click="go_p()" style="border:none;">同意《会加油服务协议》</span></p>
             </form>
         </section>

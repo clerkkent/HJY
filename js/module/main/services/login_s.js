@@ -87,7 +87,7 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
     }
     factory.deal_help = function() { //帮助页的详细信息隐藏出现
         $(".main_content").on("click", ".main_content_help li", (function(event) {
-            $(this).find(".answer").slideToggle("slow");
+            $(this).find(".answer").slideToggle("fast");
             if ($(this).find("span").hasClass("selected")) {
                 $(this).find("span").removeClass("selected")
             } else {
@@ -411,9 +411,6 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }
-        // var endata = encodeURIComponent(data_send)
-        // var basecode = BASE64.encoder(endata)
-        // console.log(basecode)
         $http({
             method: 'POST',
             url: 'http://test.1huangjin.cn/pro/index.php?c=pay',
@@ -446,41 +443,6 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
             }
         });
         $.StandardPost("http://test.1huangjin.cn/pro/index.php?c=webpay", data);
-        // console.log(data)
-        // var defer = $q.defer();
-        // var head = null
-        // if (authToken != undefined) { //此处的登录状态cookie设置还需要更改
-        //     head = {
-        //         'Content-Type': 'application/x-www-form-urlencoded'
-        //     };
-        //     window.document.cookie = "OIL_TOKEN=" + authToken + ";path=/;";
-        // } else {
-        //     head = {
-        //         'Content-Type': 'application/x-www-form-urlencoded'
-        //     }
-        // }
-        // console.log(JSON.stringify(data))
-        // var datas = JSON.stringify(data);
-        // $http({
-        //     method: 'POST',
-        //     url: 'http://192.168.10.212:8888/pro/index.php?c=pay',
-        //     data: data
-        // }).success(function(ref, header, config, status) {
-        //     console.log(ref)
-        //     defer.resolve(ref); //声明执行成功
-        // }).error(function(ref, header, config, status) {
-        //     defer.reject(); //声明执行失败
-        // // });
-        // $.ajax({
-        //     type: "POST",
-        //     url: "http://192.168.10.212:8888/pro/index.php?c=webpay",
-        //     data: data,
-        //     async: true,
-        //     success: function(result) {
-        //         console.log(1)
-        //         console.log(result)
-        //     }
-        // })
     }
     return factory
 }])
