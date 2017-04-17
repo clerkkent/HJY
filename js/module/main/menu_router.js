@@ -133,12 +133,6 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
     //     controller: "help",
     //     templateUrl: "html/help/feedback.html",
     // })//信息反馈页面
-
-
-
-    // if (browser.versions.mobile || browser.versions.android || browser.versions.ios) {
-    //     $urlRouterProvider.otherwise("login");
-    // } else {
     $urlRouterProvider.otherwise("error");
     var browser = {
         versions: function() {
@@ -164,6 +158,4 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
     if (!(browser.versions.mobile || browser.versions.android || browser.versions.ios)) {
         location.hash = "/error"
     }
-    //     console.log("pc")
-    // }
 }]);

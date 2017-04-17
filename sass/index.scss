@@ -2232,55 +2232,49 @@ $background) {
 .land {
     display: flex;
     flex-direction: column;
-    height: 22.76rem; // 1138px;
+    min-height:22.5rem;
     background: #ffdc5a;
     -webkit-overflow-scrolling: touch;
     header {
-        height: 4.96rem; // 248px;
+        height: 3.92532998rem; // 230px
         @include backgroundset("../images/land/H5_banner@3x.png",
         center,
         center,
-        95%);
-        margin-top: 0.1rem;
+        90%);
+    }
+    section {
+        height: 4.4885295rem; // 263px
+        padding: 0 .55199956rem; // 30px
         position: relative;
+        font-family: PingFangSC-Regular;
+        padding-top:0.34rem;
         .express{
             position:absolute;
             right:10%;
-            bottom:-0.2rem;
-            text-indent:0.3rem;
+            top:-2%;
             color:#699896;
-            font-size:.20rem; // 12px;
+            font-size:.17066652rem; // 10px
+            z-index:100;
             @include backgroundset("../images/land/H5_mark.png",left,center,15%);
             transform:scale(0.9);
-            z-index:100;
-        }
-        .details_express{
-            width:3.5rem;
-            height:3rem;
-            padding:0.3rem 0.3rem;
+            padding-left:0.3rem;
+            .details_express{
+            width:3.2426639rem;
+            padding:0.15rem;
+            padding-bottom:0.5rem;
             position:absolute;
-            right:0%;
-            top:55%;
+            right:-5%;
+            bottom:100%;
             display:none;
             line-height:.28rem; // 12px;
-            font-size:.20rem; // 12px;
             @include backgroundset("../images/land/H5_bubble.png",top,center,80%);
-            background-size:3.3rem 2rem;
             color:#FFF;
-            transform:scale(0.9);
+            background-size:100% 100%;
         }
-    }
-    section {
-        height: 5.4rem; // 270px
-        padding: 0 .3rem; // 30px;
-        position: relative;
-        margin-top: .36rem; // 18px
-        font-family: PingFangSC-Regular;
-        overflow: hidden;
-
+        }
         .notice {
             color: #f95b4e;
-            margin-left: 10%;
+            margin-left: 5%;
             text-indent: 0.3rem;
             @include backgroundset("../images/land/H5_info.png",
             left,
@@ -2291,15 +2285,15 @@ $background) {
             height: .5rem; // 25px;
             width: 100%;
             position: absolute;
-            top: 60%;
+            top: 70%;
             font-family: PingFangSC-Regular;
         }
         .info {
             width: 100%;
-            height: .92rem; // 46px;
+            height:.85333261rem; // 50px
             border-radius: .46rem; // 23px;
             padding-left: .46rem; // 23px;
-            font-size: .2rem; // 10px
+            font-size: .23893313rem; // 14px
             color: #858585;
             margin-bottom: .1rem; // 5px
             text-decoration: none;
@@ -2307,19 +2301,19 @@ $background) {
         }
         .details {
             width: 2.0rem; // 90px
-            height: .92rem; // 46px;
-            line-height: .92rem; // 46px;
+            height: .34133304rem; // 20px
+            line-height: .34133304rem; // 20px
             text-align: center;
-            font-size: .2rem; // 10px
+            font-size: .22rem; // 14px
             color: #858585;
             position: absolute;
             right: 10%;
-            top: 0.03rem;
+            top: 0.59rem;
             font-family: PingFangSC-Regular;
         }
         .second_i {
             width: 100%;
-            height: .92rem; // 46px;
+           height:.85333261rem; // 50px
             border-radius: .46rem; // 23px;
             font-size: 0.32rem;
             padding: 0;
@@ -2328,18 +2322,18 @@ $background) {
             margin-bottom: .1rem; // 5px
             font-weight: 550;
             font-family: PingFangSC-Medium;
-            margin-top: 0.8rem;
+            margin-top: 0.4rem;
         }
         .get_scode {
-            width: 1.5rem; // 50px;
+            width: 1.56rem; // 50px;
             height: .36rem; // 18px;
             background: none;
             border: none;
             color: #ff6409;
             position: absolute;
             right: 10%;
-            top: 44%;
-            font-size: .2rem; // 10px
+            top: 34.2%;
+             font-size: .22rem; // 14px
             font-family: PingFangSC-Regular;
         }
         .remind {
@@ -2347,7 +2341,7 @@ $background) {
             height: .6rem; // 30px;
             line-height: .6rem;
             margin: 0 auto;
-            margin-top: 0rem;
+            margin-top: -0.1rem;
             text-align: center;
             padding-left: 0.3rem;
             font-family: PingFangSC-Regular;
@@ -2388,32 +2382,63 @@ $background) {
         flex: 1;
         width: 100%;
         font-family: PingFangSC-Medium;
+        margin-top:2.04799825rem; // 120px;
         .first {
-            height: 8.58rem;
+            height: 8.53332605rem; // 500px
             width: 100%;
             @include backgroundset("../images/land/H5_ drawing@3x.png",
             center,
             center,
             100%)
         }
-        .download {
-            height: 1.6rem;
+
+        .connect {
+            margin-top:0.4rem;
+            .tel {
+                color: #f9614e;
+                text-align: center;
+                font-size: .27306643rem; // 16px
+                margin: 0.2rem 0;
+                font-family: PingFangSC-Medium;
+            }
+            .copyright {
+                text-align: center;
+                font-size: .17066652rem; // 10px
+                font-family: PingFangSC-Medium;
+                color: #d97f47;
+                margin: 0;
+            }
+            .company {
+                text-align: center;
+                font-family: PingFangSC-Medium;
+                font-size: .20479983rem; // 12px
+                color: #d97f47;
+                transform: scale(0.8);
+            }
+        }
+    }
+}
+ .download {
+            height: 1.27999891rem; // 75px
             @include backgroundset("../images/land/H5_ arrow@3x.png",
-            37%,
+            35%,
             85%,
-            20%) background-color: rgba(white, .5);
+            18%) background-color: rgba(#FFEDAC, 1);
             display: flex;
             flex-direction: row;
+            position:fixed;
+            z-index:1500;
+            bottom:0%;
             .left {
                 width: 2.5rem;
                 height: 2.5rem;
-                transform: scale(0.5);
+                transform: scale(0.4);
                 @include backgroundset("../images/login/ic_login_logo@3x.png",
                 center,
                 20%,
                 30%);
                 background-color: #FFF;
-                margin: -0.45rem;
+                margin: -0.6rem;
                 margin-left: -0.25rem;
                 text-align: center;
                 font-size: 0.2rem;
@@ -2437,6 +2462,8 @@ $background) {
                 font-family: PingFangSC-Medium;
                 font-size: 0.28rem;
                 margin-left: 0.1rem;
+                margin-top:-0.15rem;
+                transform:scale(0.9);
                 p {
                     margin: 0;
                 }
@@ -2454,38 +2481,11 @@ $background) {
                 color: #FFF;
                 padding: 0;
                 font-family: PingFangSC-Medium;
-                margin-top: 0.5rem;
+                margin-top: 0.29rem;
                 margin-left: -3%;
                 transform: scale(0.8);
             }
         }
-        .connect {
-            .tel {
-                color: #f9614e;
-                text-align: center;
-                font-size: 0.28rem;
-                margin: 0.2rem 0;
-                font-family: PingFangSC-Medium;
-            }
-            .copyright {
-                text-align: center;
-                font-size: 0.24rem;
-                font-family: PingFangSC-Medium;
-                transform: scale(0.8);
-                color: #d97f47;
-                margin: 0;
-            }
-            .company {
-                text-align: center;
-                font-family: PingFangSC-Medium;
-                font-size: 0.24rem;
-                color: #d97f47;
-                transform: scale(0.8);
-            }
-        }
-    }
-}
-
 .pay_success {
     height: 11.36rem;
     display: flex;

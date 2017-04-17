@@ -24,8 +24,6 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
                 $(this).addClass("selected")
             }
         }));
-
-
         $(".main_content").on("focus", ".get_award input", (function(event) {
             $(".friend_game").addClass("keyshow");
         }));
@@ -74,7 +72,7 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
         }
         $http({
             method: 'post',
-            url: 'http://test.1huangjin.cn/passport/service.php?c=account',
+            url: 'http://192.168.10.212:8888/passport/service.php?c=account',
             data: data_send,
             headers: head
         }).success(function(data, header, config, status) {
@@ -388,7 +386,7 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         // console.log(basecode)
         $http({
             method: 'POST',
-            url: 'http://test.1huangjin.cn/pro/index.php?c=oilcard',
+            url: 'http://192.168.10.212:8888/pro/index.php?c=oilcard',
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
@@ -413,7 +411,7 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         }
         $http({
             method: 'POST',
-            url: 'http://test.1huangjin.cn/pro/index.php?c=pay',
+            url: 'http://192.168.10.212:8888/pro/index.php?c=pay',
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
@@ -442,7 +440,7 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
                 document.body.removeChild(form[0]);
             }
         });
-        $.StandardPost("http://test.1huangjin.cn/pro/index.php?c=webpay", data);
+        $.StandardPost("http://www.ihaomu.com/pro/index.php?c=webpay", data);
     }
     return factory
 }])

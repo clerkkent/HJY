@@ -17,6 +17,29 @@ HJY.directive('scrollHeight', function() { //赋予元素当前可见窗口高�
         }
     }
 });
+HJY.directive("scrollLs", function() {
+    return {
+        restrict: "AE",
+        link: function(scope, element, attr) {
+            var flag = false;
+            if (navigator.userAgent.indexOf('iPhone') > -1) {
+                flag = true;
+            }
+            $(element[0]).scroll(function() {
+                var $this = $(this),
+                    viewH = $(this).height(), //可见高度
+                    contentH = $(this).get(0).scrollHeight, //内容高度
+                    scrollTop = $(this).scrollTop(); //滚动高度
+                console.log(scrollTop)
+                if (scrollTop <= 550) {
+                    $(".land .download").css({ position: "fixed" })
+                } else {
+                    $(".land .download").css({ position: "static" })
+                }
+            })
+        }
+    }
+})
 HJY.directive('downLoad', function() { //赋予元素当前可见窗口高度
     return {
         restrict: 'AE',
@@ -44,9 +67,9 @@ HJY.directive('downLoad', function() { //赋予元素当前可见窗口高度
             }
             element[0].onclick = function() {
                 if (browser.versions.android) {
-                    window.open("https://pro-app-qn.fir.im/a642805408c44b8f9cf7bd7f16a6c507d2e8d0ad.apk?attname=app-yingyongbao-release.apk_1.0.0.apk&e=1492161405&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:uNmsWt3Mtc7XedlLRBtx8Izyyd4=")
+                    window.location.href = "https://pro-app-qn.fir.im/a642805408c44b8f9cf7bd7f16a6c507d2e8d0ad.apk?attname=app-yingyongbao-release.apk_1.0.0.apk&e=1492161405&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:uNmsWt3Mtc7XedlLRBtx8Izyyd4="
                 } else if (browser.versions.ios) {
-                    window.open("https://itunes.apple.com/us/app/yi-huang-jin-huang-jin-li-cai/id1168865801?mt=8")
+                    window.location.href = "http://itunes.apple.com/us/app/hui-jia-you-qi-che-zhe-kou-jia-you-di-zhi-8.5-zhe/id1225155226?mt=8"
                 }
             }
 

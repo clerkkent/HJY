@@ -2115,55 +2115,48 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 22.76rem;
+  min-height: 22.5rem;
   background: #ffdc5a;
   -webkit-overflow-scrolling: touch; }
   .land header {
-    height: 4.96rem;
+    height: 3.92532998rem;
     background: url("../images/land/H5_banner@3x.png") center center no-repeat;
-    background-size: 95%;
-    margin-top: 0.1rem;
-    position: relative; }
-    .land header .express {
+    background-size: 90%; }
+  .land section {
+    height: 4.4885295rem;
+    padding: 0 .55199956rem;
+    position: relative;
+    font-family: PingFangSC-Regular;
+    padding-top: 0.34rem; }
+    .land section .express {
       position: absolute;
       right: 10%;
-      bottom: -0.2rem;
-      text-indent: 0.3rem;
+      top: -2%;
       color: #699896;
-      font-size: .20rem;
+      font-size: .17066652rem;
+      z-index: 100;
       background: url("../images/land/H5_mark.png") left center no-repeat;
       background-size: 15%;
       -webkit-transform: scale(0.9);
           -ms-transform: scale(0.9);
               transform: scale(0.9);
-      z-index: 100; }
-    .land header .details_express {
-      width: 3.5rem;
-      height: 3rem;
-      padding: 0.3rem 0.3rem;
-      position: absolute;
-      right: 0%;
-      top: 55%;
-      display: none;
-      line-height: .28rem;
-      font-size: .20rem;
-      background: url("../images/land/H5_bubble.png") top center no-repeat;
-      background-size: 80%;
-      background-size: 3.3rem 2rem;
-      color: #FFF;
-      -webkit-transform: scale(0.9);
-          -ms-transform: scale(0.9);
-              transform: scale(0.9); }
-  .land section {
-    height: 5.4rem;
-    padding: 0 .3rem;
-    position: relative;
-    margin-top: .36rem;
-    font-family: PingFangSC-Regular;
-    overflow: hidden; }
+      padding-left: 0.3rem; }
+      .land section .express .details_express {
+        width: 3.2426639rem;
+        padding: 0.15rem;
+        padding-bottom: 0.5rem;
+        position: absolute;
+        right: -5%;
+        bottom: 100%;
+        display: none;
+        line-height: .28rem;
+        background: url("../images/land/H5_bubble.png") top center no-repeat;
+        background-size: 80%;
+        color: #FFF;
+        background-size: 100% 100%; }
     .land section .notice {
       color: #f95b4e;
-      margin-left: 10%;
+      margin-left: 5%;
       text-indent: 0.3rem;
       background: url("../images/land/H5_info.png") left 25% no-repeat;
       background-size: 4%;
@@ -2172,33 +2165,33 @@ a:focus {
       height: .5rem;
       width: 100%;
       position: absolute;
-      top: 60%;
+      top: 70%;
       font-family: PingFangSC-Regular; }
     .land section .info {
       width: 100%;
-      height: .92rem;
+      height: .85333261rem;
       -webkit-border-radius: .46rem;
               border-radius: .46rem;
       padding-left: .46rem;
-      font-size: .2rem;
+      font-size: .23893313rem;
       color: #858585;
       margin-bottom: .1rem;
       text-decoration: none;
       font-family: PingFangSC-Regular; }
     .land section .details {
       width: 2.0rem;
-      height: .92rem;
-      line-height: .92rem;
+      height: .34133304rem;
+      line-height: .34133304rem;
       text-align: center;
-      font-size: .2rem;
+      font-size: .22rem;
       color: #858585;
       position: absolute;
       right: 10%;
-      top: 0.03rem;
+      top: 0.59rem;
       font-family: PingFangSC-Regular; }
     .land section .second_i {
       width: 100%;
-      height: .92rem;
+      height: .85333261rem;
       -webkit-border-radius: .46rem;
               border-radius: .46rem;
       font-size: 0.32rem;
@@ -2208,24 +2201,24 @@ a:focus {
       margin-bottom: .1rem;
       font-weight: 550;
       font-family: PingFangSC-Medium;
-      margin-top: 0.8rem; }
+      margin-top: 0.4rem; }
     .land section .get_scode {
-      width: 1.5rem;
+      width: 1.56rem;
       height: .36rem;
       background: none;
       border: none;
       color: #ff6409;
       position: absolute;
       right: 10%;
-      top: 44%;
-      font-size: .2rem;
+      top: 34.2%;
+      font-size: .22rem;
       font-family: PingFangSC-Regular; }
     .land section .remind {
       width: 4.8rem;
       height: .6rem;
       line-height: .6rem;
       margin: 0 auto;
-      margin-top: 0rem;
+      margin-top: -0.1rem;
       text-align: center;
       padding-left: 0.3rem;
       font-family: PingFangSC-Regular;
@@ -2265,97 +2258,105 @@ a:focus {
         -ms-flex: 1;
             flex: 1;
     width: 100%;
-    font-family: PingFangSC-Medium; }
+    font-family: PingFangSC-Medium;
+    margin-top: 2.04799825rem; }
     .land footer .first {
-      height: 8.58rem;
+      height: 8.53332605rem;
       width: 100%;
       background: url("../images/land/H5_ drawing@3x.png") center center no-repeat;
       background-size: 100%; }
-    .land footer .download {
-      height: 1.6rem;
-      background: url("../images/land/H5_ arrow@3x.png") 37% 85% no-repeat;
-      background-size: 20%;
-      background-color: rgba(255, 255, 255, 0.5);
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: row;
-          -ms-flex-direction: row;
-              flex-direction: row; }
-      .land footer .download .left {
-        width: 2.5rem;
-        height: 2.5rem;
-        -webkit-transform: scale(0.5);
-            -ms-transform: scale(0.5);
-                transform: scale(0.5);
-        background: url("../images/login/ic_login_logo@3x.png") center 20% no-repeat;
-        background-size: 30%;
-        background-color: #FFF;
-        margin: -0.45rem;
-        margin-left: -0.25rem;
+    .land footer .connect {
+      margin-top: 0.4rem; }
+      .land footer .connect .tel {
+        color: #f9614e;
         text-align: center;
-        font-size: 0.2rem;
-        font-family: PingFangSC-Medium;
-        color: #838383; }
-        .land footer .download .left .chinese {
-          font-size: 0.38rem;
-          line-height: 0.28rem;
-          margin: 0;
-          margin-top: 60%; }
-        .land footer .download .left .english {
-          margin-top: 0.1rem;
-          font-size: 0.12rem; }
-      .land footer .download .center {
-        width: 2.4rem;
-        height: 0.64rem;
-        color: #f95b4e;
-        font-family: PingFangSC-Medium;
-        font-size: 0.28rem;
-        margin-left: 0.1rem; }
-        .land footer .download .center p {
-          margin: 0; }
-        .land footer .download .center .top {
-          margin-top: 0.3rem; }
-        .land footer .download .center .sec {
-          font-size: 0.16rem; }
-      .land footer .download .right {
-        width: 2.4rem;
-        height: 0.4rem;
+        font-size: .27306643rem;
+        margin: 0.2rem 0;
+        font-family: PingFangSC-Medium; }
+      .land footer .connect .copyright {
         text-align: center;
-        color: #FFF;
-        padding: 0;
+        font-size: .17066652rem;
         font-family: PingFangSC-Medium;
-        margin-top: 0.5rem;
-        margin-left: -3%;
+        color: #d97f47;
+        margin: 0; }
+      .land footer .connect .company {
+        text-align: center;
+        font-family: PingFangSC-Medium;
+        font-size: .20479983rem;
+        color: #d97f47;
         -webkit-transform: scale(0.8);
             -ms-transform: scale(0.8);
                 transform: scale(0.8); }
-    .land footer .connect .tel {
-      color: #f9614e;
-      text-align: center;
-      font-size: 0.28rem;
-      margin: 0.2rem 0;
-      font-family: PingFangSC-Medium; }
-    .land footer .connect .copyright {
-      text-align: center;
-      font-size: 0.24rem;
-      font-family: PingFangSC-Medium;
-      -webkit-transform: scale(0.8);
-          -ms-transform: scale(0.8);
-              transform: scale(0.8);
-      color: #d97f47;
+
+.download {
+  height: 1.27999891rem;
+  background: url("../images/land/H5_ arrow@3x.png") 35% 85% no-repeat;
+  background-size: 18%;
+  background-color: #ffedac;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: fixed;
+  z-index: 1500;
+  bottom: 0%; }
+  .download .left {
+    width: 2.5rem;
+    height: 2.5rem;
+    -webkit-transform: scale(0.4);
+        -ms-transform: scale(0.4);
+            transform: scale(0.4);
+    background: url("../images/login/ic_login_logo@3x.png") center 20% no-repeat;
+    background-size: 30%;
+    background-color: #FFF;
+    margin: -0.6rem;
+    margin-left: -0.25rem;
+    text-align: center;
+    font-size: 0.2rem;
+    font-family: PingFangSC-Medium;
+    color: #838383; }
+    .download .left .chinese {
+      font-size: 0.38rem;
+      line-height: 0.28rem;
+      margin: 0;
+      margin-top: 60%; }
+    .download .left .english {
+      margin-top: 0.1rem;
+      font-size: 0.12rem; }
+  .download .center {
+    width: 2.4rem;
+    height: 0.64rem;
+    color: #f95b4e;
+    font-family: PingFangSC-Medium;
+    font-size: 0.28rem;
+    margin-left: 0.1rem;
+    margin-top: -0.15rem;
+    -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+            transform: scale(0.9); }
+    .download .center p {
       margin: 0; }
-    .land footer .connect .company {
-      text-align: center;
-      font-family: PingFangSC-Medium;
-      font-size: 0.24rem;
-      color: #d97f47;
-      -webkit-transform: scale(0.8);
-          -ms-transform: scale(0.8);
-              transform: scale(0.8); }
+    .download .center .top {
+      margin-top: 0.3rem; }
+    .download .center .sec {
+      font-size: 0.16rem; }
+  .download .right {
+    width: 2.4rem;
+    height: 0.4rem;
+    text-align: center;
+    color: #FFF;
+    padding: 0;
+    font-family: PingFangSC-Medium;
+    margin-top: 0.29rem;
+    margin-left: -3%;
+    -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+            transform: scale(0.8); }
 
 .pay_success {
   height: 11.36rem;

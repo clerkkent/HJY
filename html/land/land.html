@@ -1,13 +1,13 @@
-<div style="width:100%;height:100%;overflow:auto; -webkit-overflow-scrolling: touch" ui-view>
+<div style="width:100%;height:100%;overflow-y:scroll;overflow-x:hidden; -webkit-overflow-scrolling: touch" ui-view scroll-ls>
     <div class="land" style=" -webkit-overflow-scrolling: touch">
         <header>
-            <span class="express">支持油卡说明</span>
-            <span class="details_express">
-                中石化支持个人主卡和单位主卡（不含增票卡）不支持副卡、挂失卡、不记名卡、增票卡的充值
-            </span>
+
+
         </header>
         <section>
             <form name="landform" class="information" novalidate verify-scope="tipStyle: 0">
+                <span class="express">支持油卡说明<span class="details_express">支持中石化个人主卡和单位主卡（不含增票卡）不支持副卡、挂失卡、不记名卡、增票卡的充值
+            </span></span>
                 <input class="info credit-card" autocomplete="off" type="tel" id="card" ng-verify="pattern:/\d\s/,min:19,max:23,errmsg:'油卡卡号格式错误'" placeholder="请输入油卡号" ng-model="info.card" ng-blur="check_send()" ng-change="myFunc()">
                 <span class="details">{{cardinfo.company}}   {{cardinfo.name}}</span>
                 <input class="info" type="tel" autocomplete="off" id="phone" ng-verify="pattern:/^0?1[0-9][0-9]\s{1}\d{4}\s{1}\d{4}$/,errmsg:'手机号码格式错误'" ng-model="info.phone" maxlength="13" placeholder="请输入手机号码">
@@ -21,23 +21,23 @@
         <footer>
             <div class="first">
             </div>
-            <div class="download">
-                <div class="left">
-                    <p class="chinese">会加油</p>
-                    <p class="english">ihuijiayou.com</p>
-                </div>
-                <div class="center">
-                    <p class="top">APP加油低至85折</p>
-                    <p class="sec">仅在手机客户端</p>
-                </div>
-                <p class="right button button-assertive" down-load>下载APP</p>
-            </div>
+
             <div class="connect">
                 <p class="tel">客服热线 ： 400-851-8686</p>
                 <p class="copyright">Copyright©2017 Hao Mu Co Ltd All Rights Reserved </p>
                 <p class="company">北京好木电子商务有限公司 京 ICP 备 16060363号-1</p>
             </div>
-
         </footer>
     </div>
+</div>
+<div class="download">
+    <div class="left">
+        <p class="chinese">会加油</p>
+        <p class="english">ihuijiayou.com</p>
+    </div>
+    <div class="center">
+        <p class="top">APP加油低至85折</p>
+        <p class="sec">仅在手机客户端</p>
+    </div>
+    <p class="right button button-assertive" down-load>下载APP</p>
 </div>

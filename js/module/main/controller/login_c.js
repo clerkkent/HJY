@@ -437,37 +437,9 @@ HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", func
         $state.go("game.main")
     }
 }])
-HJY.controller("download", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
-    $scope.browser = {
-        versions: function() {
-            var u = navigator.userAgent,
-                app = navigator.appVersion;
-            return {
-                trident: u.indexOf('Trident') > -1, //IE内核
-                presto: u.indexOf('Presto') > -1, //opera内核
-                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
-                iPad: u.indexOf('iPad') > -1, //是否iPad
-                webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
-                weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
-                qq: u.match(/\sQQ/i) == " qq" //是否QQ
-            };
-        }(),
-        language: (navigator.browserLanguage || navigator.language).toLowerCase()
-    }
-    if ($scope.browser.versions.android) {
-        window.location.href = "https://pro-app-qn.fir.im/a642805408c44b8f9cf7bd7f16a6c507d2e8d0ad.apk?attname=app-yingyongbao-release.apk_1.0.0.apk&e=1492161405&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:uNmsWt3Mtc7XedlLRBtx8Izyyd4="
-    } else if ($scope.browser.versions.ios) {
-        window.location.href = "https://itunes.apple.com/us/app/yi-huang-jin-huang-jin-li-cai/id1168865801?mt=8"
-    }
-}])
+
 HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", "login_logic", "land", "get_predata", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup, login_logic, land, get_predata) {
     $scope.info = { card: "", phone: "", scode: "", agree: true };
-
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "" }
     $scope.cardt = false;
     $scope.phonet = false;
@@ -503,13 +475,14 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
 
             $(".main_content .land .remind .agree").addClass("selected")
             $scope.agreet = true;
-            $scope.notice = "请同意会加油注册及充值协议";
+            $scope.notice = "同意《会加油服务协议》";
         }
     }
     $scope.check_send = function() { //油卡失去焦点获取卡信息函数
         var card = $scope.test.test($scope.info.card.replace(/\s/g, ""));
         if (card) {
             //请求油卡信息
+            $('.main_content .land #card').css({ border: "0.00rem solid red" })
             $scope.cardt = false;
             $scope.cardinfo = { company: "", name: "" }
             var list = {
@@ -560,6 +533,7 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
             })
         } else {
             $scope.cardt = true;
+            $('.main_content .land #card').css({ border: "0.02rem solid red" })
             $scope.notice = "请输入正确的油卡号";
         }
     }
@@ -693,7 +667,31 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
             }
         } else { //此处正则为何验证慢。。。
             $scope.cardt = true;
+
             $scope.notice = "请输入正确的油卡号";
+        }
+    }
+
+    function judge(obj) {　　
+        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+            　　　　 return true;　　 }　
+        return false;
+    }
+    $scope.error = login_logic.parse_url();
+    if (judge($scope.error)) {
+        if ($scope.error["message"] != undefined) {
+            $ionicPopup.alert({
+                title: '提示',
+                template: $scope.error["message"],
+                okText: '嗯！知道了', // String
+                okType: 'button-energized',
+            });
+        }
+        if ($scope.error["oil_card"] != undefined) {
+            $scope.info.card = $scope.error["oil_card"].replace(/(.{4})/g, "$1 ");
+        }
+        if ($scope.error["username"] != undefined) {
+            $scope.info.phone = $scope.error["username"].replace(/(\d{3})(\d{4})/, "$1 $2 ");
         }
     }
 }])
@@ -701,6 +699,7 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
     $scope.url_data = login_logic.parse_url();
     $scope.list = null;
     $scope.redpack = false;
+    console.log($scope.url_data)
     $scope.getdata = function(send) {
         var good_list = land.get_good_list(send);
         good_list.then(function(data) {
@@ -732,5 +731,33 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
 HJY.controller("pay_fails", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.repay = function() {
         $state.go("land")
+    }
+}])
+HJY.controller("download", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
+    $scope.browser = {
+        versions: function() {
+            var u = navigator.userAgent,
+                app = navigator.appVersion;
+            return {
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+                qq: u.match(/\sQQ/i) == " qq" //是否QQ
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    }
+    if ($scope.browser.versions.android) {
+        window.location.href = "https://pro-app-qn.fir.im/a642805408c44b8f9cf7bd7f16a6c507d2e8d0ad.apk?attname=app-yingyongbao-release.apk_1.0.0.apk&e=1492161405&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:uNmsWt3Mtc7XedlLRBtx8Izyyd4="
+    } else if ($scope.browser.versions.ios) {
+        window.location.href = "https://itunes.apple.com/us/app/yi-huang-jin-huang-jin-li-cai/id1168865801?mt=8"
     }
 }])
