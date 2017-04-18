@@ -25,18 +25,28 @@ HJY.directive("scrollLs", function() {
             if (navigator.userAgent.indexOf('iPhone') > -1) {
                 flag = true;
             }
+            if ($(element[0]).height() / $(element[0]).get(0).scrollHeight < 0.513) {
+                $(".download").css({ height: "0", opacity: "0" })
+            } else {
+                $(".download").css({ height: "1.27999891rem", opacity: "1" })
+            }
             $(element[0]).scroll(function() {
-                var $this = $(this),
-                    viewH = $(this).height(), //可见高度
-                    contentH = $(this).get(0).scrollHeight, //内容高度
-                    scrollTop = $(this).scrollTop(); //滚动高度
-                console.log(scrollTop)
-                if (scrollTop <= 550) {
-                    $(".land .download").css({ position: "fixed" })
-                } else {
-                    $(".land .download").css({ position: "static" })
-                }
-            })
+                    var $this = $(this),
+                        viewH = $(this).height(), //可见高度
+                        contentH = $(this).get(0).scrollHeight, //内容高度
+                        scrollTop = $(this).scrollTop(); //滚动高度
+                    if ((viewH + scrollTop) / contentH < 0.513) {
+                        $(".download").css({ height: "0", opacity: "0" })
+                    } else {
+                        $(".download").css({ height: "1.27999891rem", opacity: "1" })
+                    }
+                })
+                // $("input").focus(function() {
+                //     $(".download").css({ height: "0", opacity: "0" })
+                // });
+                // $("input").blur(function() {
+                //     $(".download").css({ height: "1.27999891rem", opacity: "1" })
+                // });
         }
     }
 })

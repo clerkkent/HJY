@@ -72,7 +72,7 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
         }
         $http({
             method: 'post',
-            url: 'http://192.168.10.212:8888/passport/service.php?c=account',
+            url: 'http://test.1huangjin.cn/passport/service.php?c=account',
             data: data_send,
             headers: head
         }).success(function(data, header, config, status) {
@@ -99,7 +99,6 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
     }
     factory.parse_url = function() { //解析url参数
         var url = location.hash.split("?")[1]; //参数
-        console.log(url)
         var theRequest = new Object();
         if (url != undefined) { //URL入口
             var strs = url.split("&");
@@ -346,9 +345,7 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
     return factory
 }])
 HJY.factory("land", ["$http", "$q", function($http, $q) {
-    var factory = {
-
-    }
+    var factory = {}
     factory.format = function() {
         $('.main_content').on('keyup mouseout input', '.land #card', function() {
             var $this = $(this);
@@ -367,6 +364,8 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         $(".main_content").on("click", ".land", function() {
             $(".main_content .land .details_express").hide();
         })
+        var share = $('<meta name="sharecontent" data-msg-img="images/login/ic_login_logo.png" data-msg-title="会加油充值" data-msg-content="新用户注册立减10元，加油卡充值套餐低至85折" data-msg-callBack="" data-line-img="images/login/ic_login_logo.png" data-line-title="会加油充值" data-line-callBack=""/>')
+        $("head").append(share)
     }
     factory.submit = function(data_send, authToken) {
         var defer = $q.defer();
@@ -386,7 +385,7 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         // console.log(basecode)
         $http({
             method: 'POST',
-            url: 'http://192.168.10.212:8888/pro/index.php?c=oilcard',
+            url: 'http://test.1huangjin.cn/pro/index.php?c=oilcard',
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
@@ -411,7 +410,7 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         }
         $http({
             method: 'POST',
-            url: 'http://192.168.10.212:8888/pro/index.php?c=pay',
+            url: 'http://test.1huangjin.cn/pro/index.php?c=pay',
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
@@ -434,13 +433,12 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
                     input.val(value);
                     form.append(input);
                 });
-
                 form.appendTo(document.body);
                 form.submit() //阻止表单默认提交 
                 document.body.removeChild(form[0]);
             }
         });
-        $.StandardPost("http://www.ihaomu.com/pro/index.php?c=webpay", data);
+        $.StandardPost("http://test.1huangjin.cn/pro/index.php?c=webpay", data);
     }
     return factory
 }])

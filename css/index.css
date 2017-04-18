@@ -2115,13 +2115,15 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 22.5rem;
+  min-height: 20rem;
   background: #ffdc5a;
   -webkit-overflow-scrolling: touch; }
   .land header {
     height: 3.92532998rem;
     background: url("../images/land/H5_banner@3x.png") center center no-repeat;
-    background-size: 90%; }
+    background-size: auto;
+    background-size: contain;
+    margin-top: 0.1rem; }
   .land section {
     height: 4.4885295rem;
     padding: 0 .55199956rem;
@@ -2134,7 +2136,6 @@ a:focus {
       top: -2%;
       color: #699896;
       font-size: .17066652rem;
-      z-index: 100;
       background: url("../images/land/H5_mark.png") left center no-repeat;
       background-size: 15%;
       -webkit-transform: scale(0.9);
@@ -2203,14 +2204,14 @@ a:focus {
       font-family: PingFangSC-Medium;
       margin-top: 0.4rem; }
     .land section .get_scode {
-      width: 1.56rem;
+      width: 1.66rem;
       height: .36rem;
       background: none;
       border: none;
       color: #ff6409;
       position: absolute;
       right: 10%;
-      top: 34.2%;
+      top: 56.2%;
       font-size: .22rem;
       font-family: PingFangSC-Regular; }
     .land section .remind {
@@ -2259,7 +2260,7 @@ a:focus {
             flex: 1;
     width: 100%;
     font-family: PingFangSC-Medium;
-    margin-top: 2.04799825rem; }
+    margin-top: 1.04799825rem; }
     .land footer .first {
       height: 8.53332605rem;
       width: 100%;
@@ -2304,15 +2305,20 @@ a:focus {
           flex-direction: row;
   position: fixed;
   z-index: 1500;
-  bottom: 0%; }
+  bottom: 0%;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  -webkit-transition: all .6s;
+  transition: all .6s; }
   .download .left {
     width: 2.5rem;
     height: 2.5rem;
     -webkit-transform: scale(0.4);
         -ms-transform: scale(0.4);
             transform: scale(0.4);
-    background: url("../images/login/ic_login_logo@3x.png") center 20% no-repeat;
-    background-size: 30%;
+    background: url("../images/land/H5_logo@3x.png") center 20% no-repeat;
+    background-size: 100%;
     background-color: #FFF;
     margin: -0.6rem;
     margin-left: -0.25rem;
