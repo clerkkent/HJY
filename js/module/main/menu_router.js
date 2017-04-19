@@ -110,7 +110,13 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("land.pay_success", {
             url: "/pay_success",
             controller: "pay_success",
-            templateUrl: "html/land/pay_success.html"
+            templateUrl: "html/land/pay_success.html",
+            // onEnter: function() { //此处处理父组件的download出现在子组件中的BUG
+            //     $(".download").hide()
+            // },
+            // onExit: function() {
+            //     $(".download").show()
+            // }
         })
         .state("land.pay_success.pay_fails", {
             url: "/pay_fails",
@@ -158,4 +164,13 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
     if (!(browser.versions.mobile || browser.versions.android || browser.versions.ios)) {
         location.hash = "/error"
     }
+}]);
+HJY.run(['$rootScope', '$window', '$location', '$log', '$templateCache', function($rootScope, $window, $location, $log, $templateCache) {
+
+    var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
+
+    function stateChangeSuccess($rootScope) {
+        $templateCache.removeAll();
+    }
+
 }]);

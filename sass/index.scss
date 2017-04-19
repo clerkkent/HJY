@@ -384,7 +384,23 @@ $background) {
     }
 }
 
+$breakpoints: (
+  'xs': 'only screen and ( min-width: 320px)',
+  'sm': 'only screen and ( min-width: 375px)',
+  'md': 'only screen and ( min-width: 414px)',
+  'lg': 'only screen and ( min-width: 520px)',
+) !default;
+@mixin respond-to($breakpoint) {
+  $query: map-get($breakpoints, $breakpoint);
 
+  @if not $query {
+    @error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
+  }
+
+  @media #{if(type-of($query) == 'string', unquote($query), inspect($query))} {
+    @content;
+  }
+}
 /*commonbackheader*/
 
 .common_backheader {
@@ -854,7 +870,8 @@ $background) {
         @include friend_request_details_pupum;
     }
     header {
-        height: 3.2rem; // 160px;
+            height: 2.5rem; // 160px;
+
         line-height: .74rem;
         width: 100%;
         border-bottom: .04rem solid #e1e1e1;
@@ -2232,7 +2249,7 @@ $background) {
 .land {
     display: flex;
     flex-direction: column;
-    min-height:20rem;
+    height:21rem;
     background: #ffdc5a;
     -webkit-overflow-scrolling: touch;
     header {
@@ -2425,7 +2442,7 @@ $background) {
             @include backgroundset("../images/land/H5_ arrow@3x.png",
             35%,
             85%,
-            18%) background-color: rgba(#FFEDAC, 1);
+            18%) ;background-color: rgba(#FFEDAC, 1);
             display: flex;
             flex-direction: row;
             position:fixed;
@@ -2522,7 +2539,7 @@ $background) {
             }
         }
         section {
-            flex: 1;
+            flex:1;
             background: #FFF;
             padding-left: .58rem; // 29px;
             padding-top: .52rem; // 26px;
@@ -2550,7 +2567,7 @@ $background) {
         }
     }
     footer {
-        height: 3.2rem; // 160px
+        height: 4.2rem; // 160px
         width: 100%;
         font-family: PingFangSC-Medium;
         .first {
@@ -2561,24 +2578,30 @@ $background) {
             center,
             100%)
         }
-        .download {
-            height: 1.6rem;
-            background-color: rgba(#FFEEAC, .5);
+       .downloadp {
+            height: 1.27999891rem; // 75px
+            @include backgroundset("../images/land/H5_ arrow@3x.png",
+            35%,
+            85%,
+            18%) ;background-color: rgba(#FFEDAC, 1);
             display: flex;
             flex-direction: row;
-            @include backgroundset("../images/land/H5_ arrow@3x.png",
-            37%,
-            85%,
-            20%); .left {
+            z-index:1500;
+            bottom:0%;
+            left:0;
+            overflow:hidden;
+            width:100%;
+            transition:all .6s;
+            .left {
                 width: 2.5rem;
                 height: 2.5rem;
-                transform: scale(0.5);
-                @include backgroundset("../images/login/ic_login_logo@3x.png",
+                transform: scale(0.4);
+                @include backgroundset("../images/land/H5_logo@3x.png",
                 center,
                 20%,
-                30%);
+                100%);
                 background-color: #FFF;
-                margin: -0.45rem;
+                margin: -0.6rem;
                 margin-left: -0.25rem;
                 text-align: center;
                 font-size: 0.2rem;
@@ -2602,6 +2625,8 @@ $background) {
                 font-family: PingFangSC-Medium;
                 font-size: 0.28rem;
                 margin-left: 0.1rem;
+                margin-top:-0.15rem;
+                transform:scale(0.9);
                 p {
                     margin: 0;
                 }
@@ -2619,7 +2644,7 @@ $background) {
                 color: #FFF;
                 padding: 0;
                 font-family: PingFangSC-Medium;
-                margin-top: 0.5rem;
+                margin-top: 0.29rem;
                 margin-left: -3%;
                 transform: scale(0.8);
             }
@@ -2631,21 +2656,7 @@ $background) {
                 font-size: 0.24rem;
                 margin: 0.2rem 0;
                 font-family: PingFangSC-Medium;
-            }
-            .copyright {
-                text-align: center;
-                font-size: 0.24rem;
-                font-family: PingFangSC-Medium;
-                transform: scale(0.8);
-                color: #999999;
-                margin: 0;
-            }
-            .company {
-                text-align: center;
-                font-family: PingFangSC-Medium;
-                font-size: 0.24rem;
-                color: #999999;
-                transform: scale(0.8);
+                margin-top:0.4rem;
             }
         }
     }

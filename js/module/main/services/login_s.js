@@ -410,7 +410,7 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         }
         $http({
             method: 'POST',
-            url: 'http://test.1huangjin.cn/pro/index.php?c=pay',
+            url: 'http://test.1huangjin.cn/index.php?c=pay',
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {

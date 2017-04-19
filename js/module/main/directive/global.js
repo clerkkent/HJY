@@ -3,6 +3,11 @@ HJY.directive('scrollHeight', function() { //赋予元素当前可见窗口高�
     return {
         restrict: 'AE',
         link: function(scope, element, attr) {
+            // var y = (document.body.clientHeight) / ($(element[0]).height());
+            // console.log(document.body.clientHeight)
+            // console.log($(element[0]).height())
+            // console.log(y)
+            // $(element[0]).css({ transform: "scale(" + y + ")" })
             element[0].style.height = document.body.clientHeight + 'px';
             var x = document.body.clientHeight / window.screen.height;
             // var w = $(element[0]).find(".wrap").css("height")
@@ -13,7 +18,6 @@ HJY.directive('scrollHeight', function() { //赋予元素当前可见窗口高�
             //     // $(element[0]).find("section").css({ transform: "scale(" + x + ")", height: x * s });
             //     // $(element[0]).find("footer").css({ transform: "scale(" + x + ")", height: x * f });
             // $(element[0]).find(".wrap").css({ transform: "scale(" + x + ")", height: x * w });
-
         }
     }
 });
@@ -22,10 +26,17 @@ HJY.directive("scrollLs", function() {
         restrict: "AE",
         link: function(scope, element, attr) {
             var flag = false;
+            var g = 0.513;
+            console.log(location.hash)
+            if (location.hash == "#/land/pay_success") {
+                g = 0.8
+            } else {
+                g = 0.513;
+            }
             if (navigator.userAgent.indexOf('iPhone') > -1) {
                 flag = true;
             }
-            if ($(element[0]).height() / $(element[0]).get(0).scrollHeight < 0.513) {
+            if ($(element[0]).height() / $(element[0]).get(0).scrollHeight < g) {
                 $(".download").css({ height: "0", opacity: "0" })
             } else {
                 $(".download").css({ height: "1.27999891rem", opacity: "1" })
@@ -35,7 +46,7 @@ HJY.directive("scrollLs", function() {
                         viewH = $(this).height(), //可见高度
                         contentH = $(this).get(0).scrollHeight, //内容高度
                         scrollTop = $(this).scrollTop(); //滚动高度
-                    if ((viewH + scrollTop) / contentH < 0.513) {
+                    if ((viewH + scrollTop) / contentH < g) {
                         $(".download").css({ height: "0", opacity: "0" })
                     } else {
                         $(".download").css({ height: "1.27999891rem", opacity: "1" })

@@ -748,7 +748,7 @@ a:focus {
         z-index: 16;
         font-size: .5rem; }
   .friend_request header {
-    height: 3.2rem;
+    height: 2.5rem;
     line-height: .74rem;
     width: 100%;
     border-bottom: .04rem solid #e1e1e1;
@@ -2115,7 +2115,7 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 20rem;
+  height: 21rem;
   background: #ffdc5a;
   -webkit-overflow-scrolling: touch; }
   .land header {
@@ -2442,7 +2442,7 @@ a:focus {
         margin: auto;
         margin-top: 10%; }
   .pay_success footer {
-    height: 3.2rem;
+    height: 4.2rem;
     width: 100%;
     font-family: PingFangSC-Medium; }
     .pay_success footer .first {
@@ -2450,9 +2450,11 @@ a:focus {
       width: 100%;
       background: url("../images/land/H5_ drawing@3x.png") center center no-repeat;
       background-size: 100%; }
-    .pay_success footer .download {
-      height: 1.6rem;
-      background-color: rgba(255, 238, 172, 0.5);
+    .pay_success footer .downloadp {
+      height: 1.27999891rem;
+      background: url("../images/land/H5_ arrow@3x.png") 35% 85% no-repeat;
+      background-size: 18%;
+      background-color: #ffedac;
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -2462,52 +2464,61 @@ a:focus {
       -webkit-flex-direction: row;
           -ms-flex-direction: row;
               flex-direction: row;
-      background: url("../images/land/H5_ arrow@3x.png") 37% 85% no-repeat;
-      background-size: 20%; }
-      .pay_success footer .download .left {
+      z-index: 1500;
+      bottom: 0%;
+      left: 0;
+      overflow: hidden;
+      width: 100%;
+      -webkit-transition: all .6s;
+      transition: all .6s; }
+      .pay_success footer .downloadp .left {
         width: 2.5rem;
         height: 2.5rem;
-        -webkit-transform: scale(0.5);
-            -ms-transform: scale(0.5);
-                transform: scale(0.5);
-        background: url("../images/login/ic_login_logo@3x.png") center 20% no-repeat;
-        background-size: 30%;
+        -webkit-transform: scale(0.4);
+            -ms-transform: scale(0.4);
+                transform: scale(0.4);
+        background: url("../images/land/H5_logo@3x.png") center 20% no-repeat;
+        background-size: 100%;
         background-color: #FFF;
-        margin: -0.45rem;
+        margin: -0.6rem;
         margin-left: -0.25rem;
         text-align: center;
         font-size: 0.2rem;
         font-family: PingFangSC-Medium;
         color: #838383; }
-        .pay_success footer .download .left .chinese {
+        .pay_success footer .downloadp .left .chinese {
           font-size: 0.38rem;
           line-height: 0.28rem;
           margin: 0;
           margin-top: 60%; }
-        .pay_success footer .download .left .english {
+        .pay_success footer .downloadp .left .english {
           margin-top: 0.1rem;
           font-size: 0.12rem; }
-      .pay_success footer .download .center {
+      .pay_success footer .downloadp .center {
         width: 2.4rem;
         height: 0.64rem;
         color: #f95b4e;
         font-family: PingFangSC-Medium;
         font-size: 0.28rem;
-        margin-left: 0.1rem; }
-        .pay_success footer .download .center p {
+        margin-left: 0.1rem;
+        margin-top: -0.15rem;
+        -webkit-transform: scale(0.9);
+            -ms-transform: scale(0.9);
+                transform: scale(0.9); }
+        .pay_success footer .downloadp .center p {
           margin: 0; }
-        .pay_success footer .download .center .top {
+        .pay_success footer .downloadp .center .top {
           margin-top: 0.3rem; }
-        .pay_success footer .download .center .sec {
+        .pay_success footer .downloadp .center .sec {
           font-size: 0.16rem; }
-      .pay_success footer .download .right {
+      .pay_success footer .downloadp .right {
         width: 2.4rem;
         height: 0.4rem;
         text-align: center;
         color: #FFF;
         padding: 0;
         font-family: PingFangSC-Medium;
-        margin-top: 0.5rem;
+        margin-top: 0.29rem;
         margin-left: -3%;
         -webkit-transform: scale(0.8);
             -ms-transform: scale(0.8);
@@ -2517,21 +2528,5 @@ a:focus {
       text-align: center;
       font-size: 0.24rem;
       margin: 0.2rem 0;
-      font-family: PingFangSC-Medium; }
-    .pay_success footer .connect .copyright {
-      text-align: center;
-      font-size: 0.24rem;
       font-family: PingFangSC-Medium;
-      -webkit-transform: scale(0.8);
-          -ms-transform: scale(0.8);
-              transform: scale(0.8);
-      color: #999999;
-      margin: 0; }
-    .pay_success footer .connect .company {
-      text-align: center;
-      font-family: PingFangSC-Medium;
-      font-size: 0.24rem;
-      color: #999999;
-      -webkit-transform: scale(0.8);
-          -ms-transform: scale(0.8);
-              transform: scale(0.8); }
+      margin-top: 0.4rem; }

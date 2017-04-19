@@ -676,6 +676,7 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
         return false;
     }
     $scope.error = login_logic.parse_url();
+    $scope.download_show = true;
     if (judge($scope.error)) {
         if ($scope.error["message"] != undefined) {
             $ionicPopup.alert({
@@ -693,15 +694,23 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
         }
         if ($scope.error["ch"] != undefined) {
             $scope.info_send.channel = $scope.error["ch"];
+            if ($scope.info_send.channel = "yimiao") {
+                $scope.download_show = false;
+            }
         }
-        if ($scope.error["test_money"] != undefined) {
+        if ($scope.error["test_money_HJY"] != undefined) {
             $scope.pre_price = $scope.error["test_money"];
-            console.log($scope.pre_price)
         }
     }
 }])
 HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.url_data = login_logic.parse_url();
+
+    function judge(obj) {　　
+        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+            　　　　 return true;　　 }　
+        return false;
+    }
     $scope.list = null;
     $scope.redpack = false;
     $scope.getdata = function(send) {
@@ -730,7 +739,9 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
         "params": [$scope.url_data],
         "id": 1
     }
-    var time = $interval($scope.getdata(list), 1000);
+    if (judge($scope.url_data)) {
+        var time = $interval($scope.getdata(list), 1000);
+    }
 }])
 HJY.controller("pay_fails", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.repay = function() {
@@ -760,7 +771,7 @@ HJY.controller("download", ["$scope", "$state", "login_logic", "$http", function
         language: (navigator.browserLanguage || navigator.language).toLowerCase()
     }
     if ($scope.browser.versions.android) {
-        window.location.href = "https://pro-app-qn.fir.im/a642805408c44b8f9cf7bd7f16a6c507d2e8d0ad.apk?attname=app-yingyongbao-release.apk_1.0.0.apk&e=1492161405&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:uNmsWt3Mtc7XedlLRBtx8Izyyd4="
+        window.location.href = "http://m.gdown.baidu.com/ddac2c0eda8b7182a0134c027a32e991364f48dd3e54ea3caa2901222dc9c5adaf618652e1b84fd77cf052b337d9ab61db35f9d12de358ab699b5bdb5ffe2b6017e990a98c521c5558ed13390c8f7394d12ab0462bde57da29993e27161e85b40a425eb041c47a3f32ebb75d5f257d3572ca1f6c858868688106c26bc5a9fc04c58f29b5df2eeb112f2cc0365081f59100f5bb3aefb3ab146f01b14986fb41852fea1ea1f42771d8118a39b600d6a3ef2fea1ea1f42771d82e559c7e51daa605"
     } else if ($scope.browser.versions.ios) {
         window.location.href = "https://itunes.apple.com/us/app/yi-huang-jin-huang-jin-li-cai/id1168865801?mt=8"
     }
