@@ -677,6 +677,7 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
     }
     $scope.error = login_logic.parse_url();
     $scope.download_show = true;
+    $scope.no_download = ["yimiao"];
     if (judge($scope.error)) {
         if ($scope.error["message"] != undefined) {
             $ionicPopup.alert({
@@ -686,6 +687,7 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                 okType: 'button-energized',
             });
         }
+
         if ($scope.error["oil_card"] != undefined) {
             $scope.info.card = $scope.error["oil_card"].replace(/(.{4})/g, "$1 ");
         }
@@ -694,8 +696,10 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
         }
         if ($scope.error["ch"] != undefined) {
             $scope.info_send.channel = $scope.error["ch"];
-            if ($scope.info_send.channel = "yimiao") {
-                $scope.download_show = false;
+            for (i = 0; i < $scope.no_download.length; i++) {
+                if ($scope.info_send.channel == $scope.no_download[i]) {
+                    $scope.download_show = false;
+                }
             }
         }
         if ($scope.error["test_money_HJY"] != undefined) {
@@ -773,6 +777,7 @@ HJY.controller("download", ["$scope", "$state", "login_logic", "$http", function
     if ($scope.browser.versions.android) {
         window.location.href = "http://m.gdown.baidu.com/ddac2c0eda8b7182a0134c027a32e991364f48dd3e54ea3caa2901222dc9c5adaf618652e1b84fd77cf052b337d9ab61db35f9d12de358ab699b5bdb5ffe2b6017e990a98c521c5558ed13390c8f7394d12ab0462bde57da29993e27161e85b40a425eb041c47a3f32ebb75d5f257d3572ca1f6c858868688106c26bc5a9fc04c58f29b5df2eeb112f2cc0365081f59100f5bb3aefb3ab146f01b14986fb41852fea1ea1f42771d8118a39b600d6a3ef2fea1ea1f42771d82e559c7e51daa605"
     } else if ($scope.browser.versions.ios) {
-        window.location.href = "https://itunes.apple.com/us/app/yi-huang-jin-huang-jin-li-cai/id1168865801?mt=8"
+        window.location.href = "https://itunes.apple.com/us/app/hui-jia-you-qi-che-zhe-kou-jia-you-di-zhi-8.5-zhe/id1225155226?mt=8"
+
     }
 }])

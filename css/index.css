@@ -673,7 +673,7 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 11.36rem;
+  height: 10.36rem;
   background: #FFF;
   -webkit-overflow-scrolling: touch; }
   .friend_request .popum_wrap {
@@ -748,7 +748,7 @@ a:focus {
         z-index: 16;
         font-size: .5rem; }
   .friend_request header {
-    height: 2.5rem;
+    height: 3.5rem;
     line-height: .74rem;
     width: 100%;
     border-bottom: .04rem solid #e1e1e1;
@@ -1963,7 +1963,7 @@ a:focus {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  height: 11.36rem;
+  height: 10.36rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;

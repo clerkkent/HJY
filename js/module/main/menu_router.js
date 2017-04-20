@@ -110,13 +110,13 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("land.pay_success", {
             url: "/pay_success",
             controller: "pay_success",
-            templateUrl: "html/land/pay_success.html",
-            // onEnter: function() { //此处处理父组件的download出现在子组件中的BUG
-            //     $(".download").hide()
-            // },
-            // onExit: function() {
-            //     $(".download").show()
-            // }
+            templateUrl: "html/land/pay_success.html"
+                // onEnter: function() { //此处处理父组件的download出现在子组件中的BUG
+                //     $(".download").hide()
+                // },
+                // onExit: function() {
+                //     $(".download").show()
+                // }
         })
         .state("land.pay_success.pay_fails", {
             url: "/pay_fails",
@@ -133,12 +133,37 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "help",
             templateUrl: "html/agreement/user_agreement.html"
         })
-
-    // .state("feedback", {
-    //     url: "/feedback",
-    //     controller: "help",
-    //     templateUrl: "html/help/feedback.html",
-    // })//信息反馈页面
+        .state("funcpage", {
+            url: "/funcpage",
+            controller: "funcpage",
+            templateUrl: "html/funpage/func.html",
+            resolve: {
+                loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        './js/funcpage/controller/func_c.js',
+                        './js/funcpage/directive/func_d.js',
+                        './js/funcpage/filter/func_f.js',
+                        './js/funcpage/service/func_s.js',
+                        './css/funcpage/funcpage.css'
+                    ]); // 按需加载目标 js file
+                }]
+            }
+        })
+        .state("funcpage.help", {
+            url: "/help",
+            controller: "func_help",
+            templateUrl: "html/help/help.html"
+        })
+        .state("funcpage.land_main", {
+            url: "/land_main",
+            controller: "land_main",
+            templateUrl: "html/funpage/land_main.html"
+        })
+        // .state("feedback", {
+        //     url: "/feedback",
+        //     controller: "help",
+        //     templateUrl: "html/help/feedback.html",
+        // })//信息反馈页面
     $urlRouterProvider.otherwise("error");
     var browser = {
         versions: function() {
@@ -168,6 +193,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
 HJY.run(['$rootScope', '$window', '$location', '$log', '$templateCache', function($rootScope, $window, $location, $log, $templateCache) {
 
     var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
+    $rootScope.url_global = "http://www.ihaomu.com"; //全局接口域名配置
 
     function stateChangeSuccess($rootScope) {
         $templateCache.removeAll();

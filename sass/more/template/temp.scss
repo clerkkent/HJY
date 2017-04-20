@@ -1,0 +1,400 @@
+@font-face {
+    /* font-properties */
+    font-family: Moon-Bold;
+    src: url('../fonts/Moon Bold.otf')/* IE9 */
+}
+
+
+/*common*/
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+img {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+img {
+    display: block;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #666;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #ff8400;
+    text-decoration: underline;
+}
+
+
+/*small-logo.png*/
+
+@mixin center-block {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+@mixin ell() {
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/*省略号*/
+
+@mixin dib() {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+
+/*兼容转为行内块元素*/
+
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: '.';
+        display: block;
+        height: 0;
+        line-height: 0;
+        overflow: hidden;
+    }
+    *height: 1%;
+}
+
+
+/*兼容清除浮动*/
+
+@mixin minHeight($min-height) {
+    min-height: $min-height;
+    height: auto !important;
+    height: $min-height;
+}
+
+
+/*兼容最小行高*/
+
+@mixin arrow($direction,
+$size,
+$color) {
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    overflow: hidden;
+    border-width: $size;
+    cursor: pointer;
+    @if $direction==top {
+        border-style: dashed dashed solid dashed;
+        border-color: transparent transparent $color transparent;
+        border-top: none;
+    }
+    @else if $direction==bottom {
+        border-style: solid dashed dashed dashed;
+        border-color: $color transparent transparent transparent;
+        border-bottom: none;
+    }
+    @else if $direction==right {
+        border-style: dashed dashed dashed solid;
+        border-color: transparent transparent transparent $color;
+        border-right: none;
+    }
+    @else if $direction==left {
+        border-style: dashed solid dashed dashed;
+        border-color: transparent $color transparent transparent;
+        border-left: none;
+    }
+}
+
+
+/*兼容纯css箭头*/
+
+@mixin backgroundset($url,
+$top,
+$left,
+$size) {
+    background: url($url) $top $left no-repeat;
+    background-size: $size;
+}
+
+@mixin semi-transparent-colors($attribute,
+$color,
+$background) {
+    $percent: alpha($color) * 100%; //获取颜色透明度值，并转换成百分比
+    $opaque: opacify($color, 1); //使颜色不透明
+    $solid-color: mix($opaque, $background, $percent);
+    #{$attribute}: $solid-color; //设置不透明的颜色，为不支持rgba颜色的浏览器服务
+    #{$attribute}: $color; //设置透明颜色，为支持rgba颜色的浏览器服务
+}
+
+
+/*兼容性透明度*/
+
+
+/*动画*/
+
+@keyframes circledoes {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes circledoesX {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes circledoesY {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes myfirst
+/* Safari 与 Chrome */
+
+{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes disappear {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(-0%);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0) translateY(-100%);
+    }
+}
+
+@keyframes disappear_hjy {
+    0% {
+        opacity: 0;
+        display: block;
+    }
+    30% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.1;
+    }
+    100 {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes borderTransform {
+    0% {
+        @include semi-transparent-colors(border-right-color,
+        rgba(blue, 1),
+        #FFF);
+        @include semi-transparent-colors(border-top-color,
+        rgba(red, 1),
+        #FFF);
+        @include semi-transparent-colors(border-bottom-color,
+        rgba(red, 1),
+        #FFF);
+        @include semi-transparent-colors(border-left-color,
+        rgba(blue, 1),
+        #FFF);
+    }
+    50% {
+        @include semi-transparent-colors(border-right-color,
+        rgba(red, 1),
+        #FFF);
+        @include semi-transparent-colors(border-top-color,
+        rgba(blue, 1),
+        #FFF);
+        @include semi-transparent-colors(border-bottom-color,
+        rgba(blue, 1),
+        #FFF);
+        @include semi-transparent-colors(border-left-color,
+        rgba(red, 1),
+        #FFF);
+    }
+    100% {
+        @include semi-transparent-colors(border-right-color,
+        rgba(blue, 1),
+        #FFF);
+        @include semi-transparent-colors(border-top-color,
+        rgba(red, 1),
+        #FFF);
+        @include semi-transparent-colors(border-bottom-color,
+        rgba(red, 1),
+        #FFF);
+        @include semi-transparent-colors(border-left-color,
+        rgba(blue, 1),
+        #FFF);
+    }
+}
+
+
+/*动画*/
+
+@mixin friend_request_details_pupum {
+    width: 100%;
+    height: 11.36rem;
+    position: fixed;
+    background-color: rgba(black, .5);
+    z-index: 13;
+    display: none;
+    .popum {
+        width: 4.8rem; // 240px
+        z-index: 12;
+        @include center-block;
+        margin-top: 30%;
+        background: #FFF;
+        border-radius: 3%;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        .pic_show {
+            height: 1.88rem; // 94px;
+            width: 100%;
+            @include backgroundset("../images/friend/H5_popup.png",
+            center,
+            center,
+            100%);
+        }
+        .rule_main {
+            height: auto;
+            overflow: hidden;
+            font-family: PingFangSC-Regular;
+            padding: 0 0.2rem;
+            padding-bottom: 0.5rem;
+            color: #666;
+            position: relative;
+            .title {
+                text-align: center;
+                font-size: .24rem; // 12px
+                margin: .3rem 0; // 15px ;
+                color: #000;
+            }
+            h3 {
+                font-size: .2rem; // 10px
+                color: #6DC152;
+                margin: 0;
+                padding: 0;
+            }
+            p {
+                font-size: .2rem; // 10px
+            }
+        }
+        .rule_close {
+            position: absolute;
+            top: 0%;
+            right: 1%;
+            width: .56rem; // 28px;
+            height: .56rem; // 28px;
+            margin: 0 auto;
+            padding: 0;
+            border-radius: 50%;
+            @include backgroundset("../images/friend/close.png",
+            center,
+            center,
+            60%);
+            color: #FFF;
+            text-align: center;
+            z-index: 16;
+            font-size: .5rem; // 25px
+        }
+    }
+}
+
+$breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
+'sm': 'only screen and ( min-width: 375px)',
+'md': 'only screen and ( min-width: 414px)',
+'lg': 'only screen and ( min-width: 520px)',
+) !default;
+@mixin respond-to($breakpoint) {
+    $query: map-get($breakpoints, $breakpoint);
+    @if not $query {
+        @error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
+    }
+    @media #{if(type-of($query) == 'string', unquote($query), inspect($query))} {
+        @content;
+    }
+}

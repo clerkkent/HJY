@@ -1,5 +1,5 @@
 ;
-HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
+HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $rootScope) {
     var factory = {}
     factory.deal = function() { //注册页输入框下线变色
         var str = "";
@@ -24,6 +24,7 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
                 $(this).addClass("selected")
             }
         }));
+        console.log($rootScope.url_global)
         $(".main_content").on("focus", ".get_award input", (function(event) {
             $(".friend_game").addClass("keyshow");
         }));
@@ -72,7 +73,7 @@ HJY.factory("login_logic", ["$http", "$q", function($http, $q) {
         }
         $http({
             method: 'post',
-            url: 'http://test.1huangjin.cn/passport/service.php?c=account',
+            url: $rootScope.url_global + '/passport/service.php?c=account',
             data: data_send,
             headers: head
         }).success(function(data, header, config, status) {
@@ -344,7 +345,7 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
     }
     return factory
 }])
-HJY.factory("land", ["$http", "$q", function($http, $q) {
+HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope) {
     var factory = {}
     factory.format = function() {
         $('.main_content').on('keyup mouseout input', '.land #card', function() {
@@ -365,7 +366,8 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
             $(".main_content .land .details_express").hide();
         })
         var share = $('<meta name="sharecontent" data-msg-img="images/login/ic_login_logo.png" data-msg-title="会加油充值" data-msg-content="新用户注册立减10元，加油卡充值套餐低至85折" data-msg-callBack="" data-line-img="images/login/ic_login_logo.png" data-line-title="会加油充值" data-line-callBack=""/>')
-        $("head").append(share)
+        $("head").append(share);
+        console.log($rootScope.url_global + "/pro/index.php?c=webpay")
     }
     factory.submit = function(data_send, authToken) {
         var defer = $q.defer();
@@ -385,7 +387,7 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         // console.log(basecode)
         $http({
             method: 'POST',
-            url: 'http://test.1huangjin.cn/pro/index.php?c=oilcard',
+            url: $rootScope.url_global + '/pro/index.php?c=oilcard',
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
@@ -410,7 +412,7 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
         }
         $http({
             method: 'POST',
-            url: 'http://test.1huangjin.cn/index.php?c=pay',
+            url: $rootScope.url_global + '/pro/index.php?c=pay',
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
@@ -438,7 +440,8 @@ HJY.factory("land", ["$http", "$q", function($http, $q) {
                 document.body.removeChild(form[0]);
             }
         });
-        $.StandardPost("http://test.1huangjin.cn/pro/index.php?c=webpay", data);
+
+        $.StandardPost($rootScope.url_global + "/pro/index.php?c=webpay", data);
     }
     return factory
 }])

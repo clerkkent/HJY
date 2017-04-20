@@ -1,0 +1,61 @@
+@import '../template/temp.scss';
+.land_main{
+    width:100%;
+    height:10.27412457rem; // 602px;
+    display:flex;
+    flex-direction:column;
+    header{
+        height:5.46132867rem; // 320px;
+        width:100%;
+        background-image:url("../../images/land/H5_gold.png");
+        background-repeat:no-repeat;
+        background-position:top center;
+        background-size:100%;
+        position:relative;
+        .order_wrap{
+            width:100%; // 350px;
+            height:4.94932911rem; // 290px;
+            @include center-block;
+            font-family: PingFangSC-Regular;
+            background-image: linear-gradient(-180deg, #FFF7D5 0%, #FEFBF1 100%);
+            margin-bottom:0;
+            padding:0 .54613287rem; // 32px;
+            .first{
+                height:.85333261rem; // 50px;
+                width:100%;
+                position:relative;
+                @include backgroundset("../../images/land/H5_car.png",left,center,70%);
+                p{
+                    width:1.43359878rem; // 84px;
+                    height:.47786626rem; // 28px;
+                    border:1px solid red;
+                    border-radius:.13653322rem; // 8px;
+                    text-align:center;
+                    line-height:.47786626rem; // 28px;
+                    font-size:.22186648rem; // 13px
+                    font-family: PingFangSC-Regular;
+                    color:#F95B4E ;
+                    @include center-block;
+                    margin-right:0%;
+                    text-indent:0.3rem;
+                    @include backgroundset("../../images/land/H5_Order.png",0.08rem,center,20%);
+                }
+            }
+            #card{
+                height:.90453256rem; // 53px;
+                width:100%;
+                padding-left:.68266608rem; // 40px;
+                font-family: PingFangSC-Regular;
+                font-size:.23893313rem; // 14px;
+                @include backgroundset("../../images/land/H5_icon.png",0.08rem,center,6%);
+                 background-color:#FFF;
+            }
+            .help{
+                color:#F95B4E ;
+                padding-left:.34133304rem; // 20px;
+                @include backgroundset("../../images/land/H5_help.png",left,bottom,5%);
+                padding-top:.20479983rem; // 12px;
+            }
+        }
+    }
+}

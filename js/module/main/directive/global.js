@@ -27,7 +27,6 @@ HJY.directive("scrollLs", function() {
         link: function(scope, element, attr) {
             var flag = false;
             var g = 0.513;
-            console.log(location.hash)
             if (location.hash == "#/land/pay_success") {
                 g = 0.8
             } else {
@@ -42,22 +41,17 @@ HJY.directive("scrollLs", function() {
                 $(".download").css({ height: "1.27999891rem", opacity: "1" })
             }
             $(element[0]).scroll(function() {
-                    var $this = $(this),
-                        viewH = $(this).height(), //可见高度
-                        contentH = $(this).get(0).scrollHeight, //内容高度
-                        scrollTop = $(this).scrollTop(); //滚动高度
-                    if ((viewH + scrollTop) / contentH < g) {
-                        $(".download").css({ height: "0", opacity: "0" })
-                    } else {
-                        $(".download").css({ height: "1.27999891rem", opacity: "1" })
-                    }
-                })
-                // $("input").focus(function() {
-                //     $(".download").css({ height: "0", opacity: "0" })
-                // });
-                // $("input").blur(function() {
-                //     $(".download").css({ height: "1.27999891rem", opacity: "1" })
-                // });
+                var $this = $(this),
+                    viewH = $(this).height(), //可见高度
+                    contentH = $(this).get(0).scrollHeight, //内容高度
+                    scrollTop = $(this).scrollTop(); //滚动高度
+                if ((viewH + scrollTop) / contentH < g) {
+                    $(".download").css({ height: "0", opacity: "0" })
+                } else {
+                    console.log($(".download")[0])
+                    $(".download").css({ height: "1.27999891rem", opacity: "1" })
+                }
+            })
         }
     }
 })
