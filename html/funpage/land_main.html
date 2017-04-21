@@ -1,49 +1,52 @@
 <div style="width:100%;height:100%;overflow-y:scroll;overflow-x:hidden; -webkit-overflow-scrolling: touch">
     <form class="land_main" style=" -webkit-overflow-scrolling: touch">
         <header>
-            <div class="order_wrap">
+            <div class="order_wrap" ui-view="header">
                 <div class="first">
-                    <p>
-                        我的订单
-                    </p>
+                    <span class="total"><i>100</i>元</span>即时充 可<span class="reduce">节省<i>2</i>元</span>
                 </div>
                 <input type="text" id="card" placeholder="请输入油卡号">
-                <p class="help">充值帮助</p>
-                <ul>
-                    <li>
-                        <p class="pre_price">100元</p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li>
-                        <p class="pre_price">100元</p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li>
-                        <p class="pre_price">100元</p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li>
-                        <p class="pre_price">100元</p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li>
-                        <p class="pre_price">100元</p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li>
-                        <p class="pre_price">100元</p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                </ul>
             </div>
         </header>
         <section>
-            <h3>充油成功通知手机号</h3>
-            <input type="tel" placeholder="请输入手机号">
-            <input type="tel" placeholder="请输入验证码">
-            <button class="get_scode" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">获取短信验证码</button>
-            <input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled=" price_get || agreet||pay_on||card_info_get" ng-click="login()">
-            <p class="remind" class="agree checkbox-assertive" ng-model="info.agree"><span class="agree" ng-click="toggleCustom()"></span><span ng-click="go_p()" style="border:none;">同意《会加油服务协议》</span></p>
+            <div ui-view="body">
+                <h3 class="title">{{main_title}}</h3>
+
+                <div class="select">
+                    <div class="left">—</div>
+                    <div class="center">100<i> 元</i></div>
+                    <div class="right">+</div>
+                </div>
+                <p class="help">充值帮助</p>
+                <ul>
+                    <li>
+                        <p class="pre_price">100<span>元</span></p>
+                        <p class="dis_price">仅售：99.5</p>
+                    </li>
+                    <li class="is_sellect">
+                        <p class="pre_price">100<span>元</span></p>
+                        <p class="dis_price">仅售：99.5</p>
+                    </li>
+                    <li>
+                        <p class="pre_price">100<span>元</span></p>
+                        <p class="dis_price">仅售：99.5</p>
+                    </li>
+                    <li>
+                        <p class="pre_price">100<span>元</span></p>
+                        <p class="dis_price">仅售：99.5</p>
+                    </li>
+                    <li>
+                        <p class="pre_price">100<span>元</span></p>
+                        <p class="dis_price">仅售：99.5</p>
+                    </li>
+                    <li>
+                        <p class="pre_price">100<span>元</span></p>
+                        <p class="dis_price">仅售：99.5</p>
+                    </li>
+                </ul>
+                <input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled=" price_get || agreet||pay_on||card_info_get" ng-click="login()">
+            </div>
+            <p class="my_order"></p>
         </section>
     </form>
 </div>

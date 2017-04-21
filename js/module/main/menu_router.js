@@ -159,6 +159,33 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "land_main",
             templateUrl: "html/funpage/land_main.html"
         })
+        .state("funcpage.land_main.pay_login", {
+            url: "/pay_login",
+            views: {
+                'header': {
+                    templateUrl: "html/funpage/pay_login/header.html",
+                    controller: "land_main"
+                },
+                'body': {
+                    templateUrl: "html/funpage/pay_login/body.html",
+                    controller: "land_main",
+                }
+            }
+        })
+        .state("funcpage.land_main.pay_login.login_on", {
+            url: "/login_on",
+            templateUrl: "html/funpage/pay_login/login_on.html"
+        })
+        .state("funcpage.order_list", {
+            url: "/order_list",
+            controller: "order_list",
+            templateUrl: "html/funpage/order_list/order_list.html"
+        })
+        .state("funcpage.order_details", {
+            url: "/order_details",
+            controller: "order_details",
+            templateUrl: "html/funpage/order_list/order_details.html"
+        })
         // .state("feedback", {
         //     url: "/feedback",
         //     controller: "help",
@@ -193,7 +220,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
 HJY.run(['$rootScope', '$window', '$location', '$log', '$templateCache', function($rootScope, $window, $location, $log, $templateCache) {
 
     var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
-    $rootScope.url_global = "http://www.ihaomu.com"; //全局接口域名配置
+    $rootScope.url_global = "http://test.1huangjin.cn"; //全局接口域名配置
 
     function stateChangeSuccess($rootScope) {
         $templateCache.removeAll();

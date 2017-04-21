@@ -5,7 +5,7 @@
     display:flex;
     flex-direction:column;
     header{
-        height:5.46132867rem; // 320px;
+        height:2.98666412rem; // 175px
         width:100%;
         background-image:url("../../images/land/H5_gold.png");
         background-repeat:no-repeat;
@@ -14,31 +14,89 @@
         position:relative;
         .order_wrap{
             width:100%; // 350px;
-            height:4.94932911rem; // 290px;
+            height:2.59413112rem; // 152px
             @include center-block;
             font-family: PingFangSC-Regular;
-            background-image: linear-gradient(-180deg, #FFF7D5 0%, #FEFBF1 100%);
+            @include backgroundset("../../images/land/H5_mountain 2.png",center,center,100%)
             margin-bottom:0;
             padding:0 .54613287rem; // 32px;
+            // .first{
+            //     height:.85333261rem; // 50px;
+            //     width:100%;
+            //     position:relative;
+            //     @include backgroundset("../../images/land/H5_car.png",left,center,70%);
+            //     p{
+            //         width:1.43359878rem; // 84px;
+            //         height:.47786626rem; // 28px;
+            //         border:1px solid red;
+            //         border-radius:.13653322rem; // 8px;
+            //         text-align:center;
+            //         line-height:.47786626rem; // 28px;
+            //         font-size:.22186648rem; // 13px
+            //         font-family: PingFangSC-Regular;
+            //         color:#F95B4E ;
+            //         @include center-block;
+            //         margin-right:0%;
+            //         text-indent:0.3rem;
+            //         @include backgroundset("../../images/land/H5_Order.png",0.08rem,center,20%);
+            //     }
+            // }
+            .type {
+                margin-bottom: 0.3rem;
+                text-align: center;
+               color: #F95B4E;
+               font-family: PingFangSC-Medium;
+               height:.46079961rem; // 27px;
+               line-height:.46079961rem; // 27px;
+                .mul {
+                    font-size: .40959965rem; // 24px;
+                    font-family: PingFangSC-Medium;
+                    display:inline-block;
+                    height:.46079961rem; // 27px;
+                    line-height:.46079961rem; // 27px;
+                }
+                .unit {
+                    font-size: .24rem; // 12px
+                    font-family: PingFangSC-Medium;
+                    display:inline-block;
+                    vertical-align:top;
+                }
+                .count{
+                    font-size: .40959965rem; // 24px;
+                    font-family: PingFangSC-Medium;
+                    display:inline-block;
+                    height:.46079961rem; // 27px;
+                    line-height:.46079961rem; // 27px;
+                }
+            }
+            .user_info{
+                text-align:center;
+                font-size:.22186648rem; // 13px;
+                color: #EC9F89;
+            }
+            .title_state02{
+                height:.92159921rem; // 54px;
+                color: #FC6A11;
+                text-align:center;
+                font-size:.22186648rem; // 13px;
+                line-height:.92159921rem; // 54px;
+                background-image: url(../../images/land/H5_left.png), url(../../images/land/H5_right.png);
+                background-repeat: no-repeat, no-repeat;
+                background-position: 25% center, 75% center;
+                background-size: 15%, 15%;
+            }
             .first{
-                height:.85333261rem; // 50px;
-                width:100%;
-                position:relative;
-                @include backgroundset("../../images/land/H5_car.png",left,center,70%);
-                p{
-                    width:1.43359878rem; // 84px;
-                    height:.47786626rem; // 28px;
-                    border:1px solid red;
-                    border-radius:.13653322rem; // 8px;
-                    text-align:center;
-                    line-height:.47786626rem; // 28px;
-                    font-size:.22186648rem; // 13px
-                    font-family: PingFangSC-Regular;
-                    color:#F95B4E ;
-                    @include center-block;
-                    margin-right:0%;
-                    text-indent:0.3rem;
-                    @include backgroundset("../../images/land/H5_Order.png",0.08rem,center,20%);
+                text-align:center;
+                font-size:.22186648rem; // 13px
+                color: #3F3F3F;
+                font-family: PingFangSC-Medium;
+                margin-top:.51199956rem; // 30px;
+                margin-bottom:.27306643rem; // 16px;
+                span{
+                    color:#f95b4e;
+                    i{
+                        font-size:.27306643rem; // 16px;
+                    }
                 }
             }
             #card{
@@ -47,14 +105,278 @@
                 padding-left:.68266608rem; // 40px;
                 font-family: PingFangSC-Regular;
                 font-size:.23893313rem; // 14px;
-                @include backgroundset("../../images/land/H5_icon.png",0.08rem,center,6%);
+                @include backgroundset("../../images/land/H5_icon.png",0.15rem,center,6%);
                  background-color:#FFF;
             }
-            .help{
+
+        }
+    }
+    section{
+        width:100%;
+        height:7.3386604rem; // 430px;
+         padding:0 .54613287rem; // 32px;
+         position:relative;
+         .title{
+            text-align:center;
+            font-size:.22186648rem; // 13px;
+            color: #999999;
+            background-image: url(../../images/land/H5_left.png), url(../../images/land/H5_right.png);
+            background-repeat: no-repeat, no-repeat;
+            background-position: 15% center, 85% center;
+            background-size: 20%, 20%;
+            margin-top:.37546635rem; // 22px;
+            margin-bottom:.23893313rem; // 14px;
+         }
+         .select{
+            height:.93866587rem; // 55px;
+            display:flex;
+            flex-flow:row wrap;
+            justify-content: space-between;
+            .left,.right{
+                width:.76799934rem; // 45px;
+                height:.76799934rem; // 45px;
+                border-radius:50%;
+                border:1px solid #f95b4e;
+                line-height:.64133304rem; // 20px
+                text-align:center;
+                font-size:.40959965rem; // 24px
+                margin-top:0.1rem;
+                color:#f95b4e;
+                font-weight:600;
+            }
+            .left{
+                font-size:.30059965rem; // 24px
+            }
+            .right{
+                color:#FFF;
+                background-image: linear-gradient(-38deg, #FDC499 0%, #FF952F 47%, #FC6C12 100%);
+            }
+            .center{
+                width:3.05493073rem; // 179px;
+                border:1px solid #f95b4e;
+                border-radius:3%;
+                line-height:.93866587rem; // 55px;
+                text-align:center;
+                font-size:.40959965rem; // 24px;
+                font-family: PingFangSC-Medium;
+                color:#f95b4e;
+                i{
+                    font-size:.23893313rem; // 14px;
+                }
+            }
+         }
+        .help{
                 color:#F95B4E ;
-                padding-left:.34133304rem; // 20px;
-                @include backgroundset("../../images/land/H5_help.png",left,bottom,5%);
-                padding-top:.20479983rem; // 12px;
+                padding-left:.30133304rem; // 20px;
+                @include backgroundset("../../images/land/H5_help.png",80%,center,4%);
+                font-size:.22186648rem; // 13px;
+                font-family: PingFangSC-Regular;
+                text-align:right;
+                margin:0.1rem 0;
+                margin-top:.34133304rem; // 20px
+            }
+        .info{
+            height:.85333261rem; // 50px;
+            border: 1px solid #999999;
+            border-radius: 2px;
+            width:100%;
+            margin-top:.13653322rem; // 8px;
+            padding-left:.34133304rem; // 20px;
+        }
+        .get_scode{
+            position:absolute;
+            color:#F95B4E;
+            text-align:center;
+            font-size:.22186648rem; // 13px;
+            background:none;
+            border:none;
+            right:10%;
+            top:30%;
+        }
+        .remind {
+            width: 4.8rem; // 240px
+            height: .6rem; // 30px;
+            line-height: .6rem;
+            margin: 0 auto;
+            margin-top: 0.1rem;
+            text-align: center;
+            padding-left: 0.3rem;
+            font-family: PingFangSC-Regular;
+            font-size: .20rem; // 12px
+            letter-spacing: 0;
+            overflow: hidden;
+            position: relative;
+            transform: scale(1.3);
+            color: #FDA174;
+            b {
+                font-weight: 500;
+                color: #FF7320;
+            }
+            .agree {
+                display: inline-block;
+                border-radius: 20%;
+                position: absolute;
+                left: 19%;
+                @include backgroundset("../../images/game/H5_Check@3x.png",
+                center,
+                center,
+                100%);
+                top: 25%;
+                transform: scale(0.7);
+            }
+            .selected {
+                background-image: none;
+            }
+            span {
+                width: .3rem; // 15px;
+                height: .3rem; // 15px;
+                border: .02rem solid #f95b4e;
+                color: #f95b4e;
+            }
+        }
+            ul{
+                width:100%;
+                height:2.32106469rem; // 136px;
+                display:flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                li{
+                    height:.92159921rem; // 54px;
+                    width:1.62133195rem; // 95px;
+                    text-align:center;
+                    @include backgroundset("../../images/land/H5_Option_n.png",center,center,100%);
+                    .pre_price{
+                        font-size:.30719974rem; // 18px;
+                        color: #F95B4E;
+                        font-family: PingFangSC-Semibold;
+                        margin-top:0.1rem;
+                        span{
+                            font-size:.20479983rem; // 12px;
+                            padding-left:0.04rem;
+                        }
+                    }
+                    .dis_price{
+                        font-size:.18773317rem; // 11px;
+                        color: #F95B4E;
+                        font-family: PingFangSC-Regular;
+                    }
+                }
+                .is_sellect{
+                    @include backgroundset("../../images/land/H5_Option_h.png",center,center,100%);
+                    .pre_price{
+                        color:#FFF;
+                    }
+                    .dis_price{
+                        color:#FFF;
+                    }
+                }
+            }
+            .second_i{
+                width:100%;
+                height:.85333261rem; // 50px;
+                margin-top:.30719974rem; // 18px;
+                border-radius:.4266663rem; // 25px;
+                font-size:.34133304rem; // 20px
+                font-family: PingFangSC-Semibold;
+            }
+            .my_order{
+                width:1.62133195rem; // 95px;
+                height:.68266608rem; // 40px;
+                position:absolute;
+                right:10%;
+                font-size:.20479983rem; // 12px;
+                color:#F95B4E ;
+                margin-top:.27306643rem; // 16px;
+                @include backgroundset("../../images/land/H5_My Order.png",center,center,100%);
+            }
+            .login_on{
+                text-align:center;
+                font-family: PingFangSC-Regular;
+                color: #999999;
+                font-size:.22186648rem; // 13px;
+                margin-top:0.6rem;
+            }
+    }
+}
+.order_list{
+    background-color:#f5f5f5;
+    li{
+        width:100%;
+        height:2.18453147rem; // 128px;
+        margin-top:.08533326rem; // 5px
+        margin-bottom:.17066652rem; // 10px
+        .title{
+            height:.73386604rem; // 43px
+            line-height:.73386604rem; // 43px
+            padding-left:.35839969rem; // 21px
+            color:#51586A;
+            font-family: PingFangSC-Regular;
+            font-size:.22186648rem; // 13px;
+            display:flex;
+            flex-direction:row;
+            position:relative;
+            background:#FFF;
+            margin-bottom:0.02rem;
+            span{
+                display:block;
+            }
+            .company{
+                font-size:.23893313rem; // 14px;
+            }
+            .state{
+                height:100%;
+                width:.98986582rem; // 58px;
+                font-size:.17066652rem; // 10px;
+                text-indent:0.2rem;
+                color:#6DC152;
+                margin-left:0.2rem;
+                @include backgroundset("../../images/land/ic_recording_green@3x.png",left,0.18rem,100%);
+                transform:scale(1.3);
+                padding-left:.30719974rem; // 18px;
+            }
+            .pay_success{
+                @include backgroundset("../../images/land/ic_recording_red@3x.png",left,0.18rem,100%);
+            }
+            .un_pay{
+                @include backgroundset("../../images/land/ic_recording_Orange@3x.png",left,0.18rem,100%);
+            }
+            .icon_order{
+                width:.30719974rem; // 18px
+                height:.30719974rem; // 18px;
+                @include backgroundset("../../images/login/ic_pay_arrow_n@3x.png",
+                        center,
+                        center,
+                        100%);
+                @include center-block;
+                margin-right:5%;
+            }
+        }
+        .details{
+            width:100%;
+            height:1.39946547rem; // 82px;
+            background:#FFF;
+            margin-top:0.05rem;
+            display:flex;
+            flex-direction:row;
+            dl{
+                flex:1;
+                height:100%;
+                text-align:center;
+                font-family: PingFangSC-Regular;
+                dt{
+                    color: #999999;
+                    font-size:.23893313rem; // 14px;
+                    height:.85333261rem; // 50px;
+                    line-height:.85333261rem; // 50px;
+                }
+                dd{
+                    color: #51586A;
+                    font-size:.20479983rem; // 12px;
+                }
+            }
+            .card_order{
+                text-align:left;
+                text-indent:.37546635rem; // 22px
             }
         }
     }

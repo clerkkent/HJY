@@ -1,0 +1,8 @@
+<h3 class="title" style="background-position:10% center,90% center;">{{pay_title}}</h3>
+<div ui-view>
+    <input type="tel" id="phone" class="info" placeholder="请输入手机号">
+    <input type="tel" id="scode" class="info" placeholder="请输入验证码">
+    <button class="get_scode" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">获取短信验证码</button>
+</div>
+<input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled=" price_get || agreet||pay_on||card_info_get" ng-click="login()" style="margin-top:1rem;">
+<p class="remind" class="agree checkbox-assertive" ng-model="info.agree"><span class="agree" ng-click="toggleCustom()"></span><span ng-click="go_p()" style="border:none;">同意《会加油服务协议》</span></p>
