@@ -93,17 +93,32 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             templateUrl: "html/land/land.html",
             resolve: {
                 predata: "land",
-                get_predata: function(predata) {
-                    var list = {
-                        "jsonrpc": "2.0",
-                        "method": "productList",
-                        "params": [{
-                            "user_id": "5",
-                            "channel": "renrenche"
-                        }],
-                        "id": 1
+                parse: "login_logic",
+                get_predata: function(predata, parse) {
+                    var x = parse.parse_url();
+                    var channel = "renrenche";
+                    var list = null;
+
+                    function judge(obj) {　　
+                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                            　　　　 return true;　　 }　
+                        return false;
                     }
-                    return predata.submit(list)
+                    if (judge(x)) {
+                        if (x["ch"] != undefined) {
+                            channel = x["ch"];
+                            list = {
+                                "jsonrpc": "2.0",
+                                "method": "productList",
+                                "params": [{
+                                    "user_id": "5",
+                                    "channel": channel
+                                }],
+                                "id": 1
+                            }
+                        }
+                    }
+                    return predata.submit(list);
                 }
             }
         })
@@ -157,7 +172,18 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("funcpage.land_main", {
             url: "/land_main",
             controller: "land_main",
-            templateUrl: "html/funpage/land_main.html"
+            templateUrl: "html/funpage/land_main.html",
+            resolve: {
+                get_type: function($http, $q) {
+                    var defer = $q.defer();
+                    $http.get("mock/func/price_degree.json").success(function(data) {
+                        defer.resolve(data);
+                    }).error(function() {
+                        defer.reject(); //声明执行失败
+                    })
+                    return defer.promise;
+                }
+            }
         })
         .state("funcpage.land_main.pay_login", {
             url: "/pay_login",
@@ -185,6 +211,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             url: "/order_details",
             controller: "order_details",
             templateUrl: "html/funpage/order_list/order_details.html"
+        })
+        .state("funcpage.not_login", {
+            url: "/not_login",
+            controller: "not_login",
+            templateUrl: "html/funpage/order_list/not_login.html"
         })
         // .state("feedback", {
         //     url: "/feedback",
@@ -218,10 +249,10 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
     }
 }]);
 HJY.run(['$rootScope', '$window', '$location', '$log', '$templateCache', function($rootScope, $window, $location, $log, $templateCache) {
-
     var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
-    $rootScope.url_global = "http://test.1huangjin.cn"; //全局接口域名配置
-
+    // $rootScope.url_global = "http://192.168.11.153:8888"; //本地测试
+    $rootScope.url_global = "http://test.1huangjin.cn"; //线上测试
+    // $rootScope.url_global = "http://www.ihaomu.com"; //线上
     function stateChangeSuccess($rootScope) {
         $templateCache.removeAll();
     }

@@ -48,7 +48,6 @@ HJY.directive("scrollLs", function() {
                 if ((viewH + scrollTop) / contentH < g) {
                     $(".download").css({ height: "0", opacity: "0" })
                 } else {
-                    console.log($(".download")[0])
                     $(".download").css({ height: "1.27999891rem", opacity: "1" })
                 }
             })
@@ -125,5 +124,17 @@ HJY.directive("friendRules", function() { //个人中心探弹窗
         restrict: "ECMA",
         replace: true,
         templateUrl: "html/common/friend_request_rules.html"
+    }
+})
+HJY.directive("cardFormat", function() { //个人中心探弹窗
+    return {
+        restrict: "ECMA",
+        link: function(scope, element, attr) {
+            $(element[0]).on('keyup mouseout input', '#card', function() {
+                var $this = $(this);
+                var v = $this.val();
+                /\S{5}/.test(v) && $this.val(v.replace(/\s/g, '').replace(/(.{4})/g, "$1 "));
+            });
+        }
     }
 })

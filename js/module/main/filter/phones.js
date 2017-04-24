@@ -10,7 +10,7 @@ HJY.filter("encryPt", function() { //
 HJY.filter("cardfilter", function() { //
     return function(input, uppercase) {
         if (input == undefined) {
-            return "180****0000"
+            return
         } else {
             return input.replace(/(\d{4})/, "$1 ");
         }

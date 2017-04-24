@@ -438,7 +438,7 @@ HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", func
 
 HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", "login_logic", "land", "get_predata", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup, login_logic, land, get_predata) {
     $scope.info = { card: "", phone: "", scode: "", agree: true };
-    $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "" }
+    $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
     $scope.cardt = false;
     $scope.phonet = false;
     $scope.scodet = false;
@@ -453,10 +453,13 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
     $scope.price = 100; //当前商品原价,用于乘以折扣使用
     $scope.pre_price = 100; //用于传递后台原价，或者进行测试使用
     $scope.discount = 1; //当前卡所享折扣
-    $scope.info_send.product_id = get_predata["result"]["list"][0]["id"]; //get_predata为页面加载前返回的商品信息
-    $scope.discount = get_predata["result"]["list"][0]["product_discount"]; //折扣
+    if (get_predata["result"] != undefined) {
+        $scope.info_send.product_id = get_predata["result"]["list"][0]["id"]; //get_predata为页面加载前返回的商品信息
+        $scope.discount = get_predata["result"]["list"][0]["product_discount"]; //折扣
+        $scope.belong = get_predata["result"]["list"][0]["belong"];
+    }
     $scope.pay_on = false; //支付中，防止用户重复请求
-    $scope.belong = get_predata["result"]["list"][0]["belong"]
+
     if ($scope.belong == 1) {
         $scope.test = /^100011\d{13}$/;
     } else if ($scope.belong == 2) {
@@ -677,7 +680,7 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
     }
     $scope.error = login_logic.parse_url();
     $scope.download_show = true;
-    $scope.no_download = ["yimiao"];
+    $scope.no_download = [];
     if (judge($scope.error)) {
         if ($scope.error["message"] != undefined) {
             $ionicPopup.alert({
@@ -730,6 +733,7 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
                         $scope.redpack = true;
                     }
                 } else if (data["result"]["status"] == 2) {
+
                     $state.go("land.pay_success.pay_fails")
                 }
             }
@@ -749,7 +753,8 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
 }])
 HJY.controller("pay_fails", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.repay = function() {
-        $state.go("land")
+        location.hash = "#/land?" + "ch=156464";
+
     }
 }])
 HJY.controller("download", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {

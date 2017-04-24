@@ -1,9 +1,9 @@
 <div style="width:100%;height:100%;overflow-y:scroll;overflow-x:hidden; -webkit-overflow-scrolling: touch">
-    <form class="land_main" style=" -webkit-overflow-scrolling: touch">
+    <form class="land_main" style=" -webkit-overflow-scrolling: touch" card-format>
         <header>
             <div class="order_wrap" ui-view="header">
                 <div class="first">
-                    <span class="total"><i>100</i>元</span>即时充 可<span class="reduce">节省<i>2</i>元</span>
+                    <span class="total"><i>{{unit_price}}</i>元</span>即时充 可<span class="reduce">节省<i>2</i>元</span>
                 </div>
                 <input type="text" id="card" placeholder="请输入油卡号">
             </div>
@@ -14,7 +14,7 @@
 
                 <div class="select">
                     <div class="left">—</div>
-                    <div class="center">100<i> 元</i></div>
+                    <div class="center">{{unit_price}}<i> 元</i></div>
                     <div class="right">+</div>
                 </div>
                 <p class="help">充值帮助</p>

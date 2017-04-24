@@ -141,10 +141,10 @@ HJY.factory("game_play", [function($state) { //此处所有的节点应该也归
         var contain = $(".main_content .friend_game .left"); //容器节点
         var that = this;
         bt.on("touchend", function() {
-            if (that.count < 300) {
+            if (that.count < 200) {
                 that.count++;
             } else {
-                that.count = 300;
+                that.count = 200;
             }
 
             if (that.r < 160) {
@@ -328,7 +328,6 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
         setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
     }
     factory.share = function() {
-
         this.webview(function(bridge) {
             bridge.callHandler('invitation', function(responseData) { //请求OC
 
