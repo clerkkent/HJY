@@ -135,9 +135,9 @@
             .left,.right{
                 width:.76799934rem; // 45px;
                 height:.76799934rem; // 45px;
-                border-radius:50%;
+                border-radius:.37546635rem; // 22px
                 border:1px solid #f95b4e;
-                line-height:.64133304rem; // 20px
+                line-height:.76799934rem; // 45px
                 text-align:center;
                 font-size:.40959965rem; // 24px
                 margin-top:0.1rem;
@@ -508,13 +508,14 @@
                         width:.34133304rem; // 20px;
                         height:.34133304rem; // 20px;
                         margin-right:2%;
-                        @include backgroundset("../../images/land/ic_details_option_n@3x.png",center,center,50%);
+                        @include backgroundset("../../images/land/ic_details_option_n@3x.png",center,center,60%);
                         position:relative;
                         .concat{
                             width:0;
-                            border:1px solid #E7E7E7;
-                            height:160%;
+                            border-right:1px solid #E7E7E7;
+                            height:170%;
                             @include center-block;
+
                             margin-top:70%;
                         }
                     }
@@ -529,10 +530,10 @@
                         position:relative;
                         .concat{
                             width:0;
-                            border:1px solid #D2F0C9;
-                            height:150%;
+                            border-right:1px solid #D2F0C9;
+                            height:140%;
                             @include center-block;
-                            margin-top:80%;
+                            margin-top:90%;
                         }
                     }
                 }
@@ -546,8 +547,8 @@
                         @include backgroundset("../../images/land/ic_details_option@3x.png",center,center,80%);
                         .concat{
                             width:0;
-                            border:1px solid #E7E7E7;
-                            height:150%;
+                            border-right:1px solid #E7E7E7;
+                            height:170%;
                             @include center-block;
                             margin-top:80%;
                         }

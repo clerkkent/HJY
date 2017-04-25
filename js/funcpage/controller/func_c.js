@@ -7,18 +7,76 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
         $scope.help_information = data.data;
     })
 }]);
-angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", function($scope, $state, login_logic, $http, get_type) {
+angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "get_predata", "land_main", "$viewContentLoaded", function($scope, $state, login_logic, $http, get_type, _, get_predata, land_main, $viewContentLoaded) {
     $scope.text = "确认套餐";
     $scope.main_title = "每月充值";
     $scope.pay_title = "充油成功通知手机号";
     $scope.second = "获取验证码";
-    $scope.selected = 0;
-    $scope.type_info = get_type[0]; //页面预加载前获取套餐信息。
+    $scope.price_selected = 0;
+    $scope.type_selected = 0;
+    $scope.type = get_type[0]["type"];
+    $scope.type_info = get_type[0]["type"][0]; //页面预加载前获取套餐信息。
     $scope.unit_price = get_type[0]["price"][0];
-    console.log($scope.type_info)
-        // get_type.then(function(data) {
-        //     console.log(data)
-        // })
+    $scope.reduce_price = ($scope.unit_price * (1 - $scope.type_info.disn) * $scope.type_info.t).toFixed(1);
+    $scope.final_price = ($scope.unit_price * $scope.type_info.disn * $scope.type_info.t).toFixed(1);
+    $scope.$on('$viewContentLoaded', function() {
+        alert('1');
+        $(".land_main section li").eq(0).addClass("is_sellect");
+    });
+
+    $scope.select_type = function(x, index) {
+        $scope.type_info = x; //页面预加载前获取套餐信息。
+        $scope.type_selected = index;
+        $(".land_main section li").removeClass("is_sellect");
+        $(".land_main section li").eq(index).addClass("is_sellect");
+        $scope.reduce_price = $scope.reduce();
+    }
+    $scope.add = function() {
+        if ($scope.price_selected < get_type[0]["type"].length - 1) {
+            $scope.price_selected = $scope.price_selected + 1;
+            $scope.unit_price = get_type[0]["price"][$scope.price_selected];
+            $scope.reduce_price = $scope.reduce();
+        }
+    }
+    $scope.sub = function() {
+        if ($scope.price_selected > 0) {
+            $scope.price_selected = $scope.price_selected - 1;
+            $scope.unit_price = get_type[0]["price"][$scope.price_selected];
+            $scope.reduce_price = $scope.reduce();
+        }
+    }
+    $scope.price_final = function() {
+        var d = $scope.type_info.disn;
+        var t = $scope.type_info.t;
+        var u = $scope.unit_price;
+        return (d * t * u).toFixed(1);
+    }
+    $scope.reduce = function() {
+        var d = $scope.type_info.disn;
+        var t = $scope.type_info.t;
+        var u = $scope.unit_price;
+        return ((1 - d) * t * u).toFixed(1);
+    }
+    $scope.go_help = function() {
+        $state.go("funcpage.help")
+    }
+    $scope.go_order = function() {
+            $state.go("funcpage.order_list")
+        }
+        //以上为价格套餐选择处理逻辑
+        //
+        //
+        //////////////////////////
+    $scope.pro_info = get_predata;
+    $scope.belong = 1;
+    if ($scope.belong == 1) {
+        $scope.test = /^100011\d{13}$/;
+    } else if ($scope.belong == 2) {
+        $scope.test = /^9\d{15}$/;
+    }
+    land_main.test();
+    $(".land_main #card").attr({ "ng-verify": "pattern:" + $scope.test + ",errmsg:'手机号码格式错误',required: false" })
+
 }]);
 
 angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {

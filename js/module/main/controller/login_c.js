@@ -140,6 +140,15 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     $scope.url = location.search; //参数
     $scope.theRequest = new Object();
     friend.popum();
+    $scope.share = function() { //分享原生H5指令交互
+        var content = {
+            title: "asda",
+            content: "xxxxxxx",
+            imageUrl: "http",
+            url: "url"
+        }
+        webappSDK.share(content);
+    }
     webappSDK.getUserInfos(function(res) { //webbriage入口
         var info = JSON.parse(res)
         $scope.userid = info.user_id
@@ -223,7 +232,13 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
 HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPopup", "friend", "webappSDK", function($scope, $state, $http, $ionicPopup, friend, webappSDK) {
     friend.popum();
     $scope.share = function() { //分享原生H5指令交互
-        webappSDK.share();
+        var content = {
+            title: "asda",
+            content: "xxxxxxx",
+            imageUrl: "http",
+            url: "url"
+        }
+        webappSDK.share(content);
     }
 }]);
 HJY.controller("pay", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
@@ -646,6 +661,7 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                                 if (data.result.checkSms) {
                                     $scope.scodet = false;
                                     $scope.pay_on = true;
+                                    sessionStorage.setItem("channel", $scope.info_send.channel);
                                     land.pay($scope.info_send);
                                     $scope.text = "正在前往支付页";
                                 } else {
@@ -699,6 +715,7 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
         }
         if ($scope.error["ch"] != undefined) {
             $scope.info_send.channel = $scope.error["ch"];
+            sessionStorage.setItem("channel", $scope.info_send.channel);
             for (i = 0; i < $scope.no_download.length; i++) {
                 if ($scope.info_send.channel == $scope.no_download[i]) {
                     $scope.download_show = false;
@@ -753,7 +770,8 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
 }])
 HJY.controller("pay_fails", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.repay = function() {
-        location.hash = "#/land?" + "ch=156464";
+        var channel = sessionStorage.getItem("channel");
+        location.hash = "#/land?ch=" + channel;
 
     }
 }])

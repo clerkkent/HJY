@@ -159,7 +159,8 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                         './js/funcpage/directive/func_d.js',
                         './js/funcpage/filter/func_f.js',
                         './js/funcpage/service/func_s.js',
-                        './css/funcpage/funcpage.css'
+                        './css/funcpage/funcpage.css',
+                        './js/plugins/underscore.js'
                     ]); // 按需加载目标 js file
                 }]
             }
@@ -176,12 +177,43 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             resolve: {
                 get_type: function($http, $q) {
                     var defer = $q.defer();
+                    console.log($(".land_main section li"))
                     $http.get("mock/func/price_degree.json").success(function(data) {
                         defer.resolve(data);
                     }).error(function() {
                         defer.reject(); //声明执行失败
                     })
                     return defer.promise;
+                },
+                predata: "land",
+                parse: "login_logic",
+                get_predata: function(predata, parse) {
+                    var x = parse.parse_url();
+                    var channel = "renrenche";
+                    var list = null;
+
+                    $(".land_main section li").eq(0).addClass("is_sellect");
+
+                    function judge(obj) {　　
+                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                            　　　　 return true;　　 }　
+                        return false;
+                    }
+                    if (judge(x)) {
+                        if (x["ch"] != undefined) {
+                            channel = x["ch"];
+                            list = {
+                                "jsonrpc": "2.0",
+                                "method": "productList",
+                                "params": [{
+                                    "user_id": "5",
+                                    "channel": channel
+                                }],
+                                "id": 1
+                            }
+                        }
+                    }
+                    return predata.submit(list);
                 }
             }
         })
@@ -247,14 +279,4 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
     if (!(browser.versions.mobile || browser.versions.android || browser.versions.ios)) {
         location.hash = "/error"
     }
-}]);
-HJY.run(['$rootScope', '$window', '$location', '$log', '$templateCache', function($rootScope, $window, $location, $log, $templateCache) {
-    var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
-    // $rootScope.url_global = "http://192.168.11.153:8888"; //本地测试
-    $rootScope.url_global = "http://test.1huangjin.cn"; //线上测试
-    // $rootScope.url_global = "http://www.ihaomu.com"; //线上
-    function stateChangeSuccess($rootScope) {
-        $templateCache.removeAll();
-    }
-
 }]);

@@ -1,9 +1,9 @@
 <div style="width:100%;height:100%;overflow-y:scroll;overflow-x:hidden; -webkit-overflow-scrolling: touch">
-    <form class="land_main" style=" -webkit-overflow-scrolling: touch" card-format>
+    <form class="land_main" style=" -webkit-overflow-scrolling: touch" name="myform" novalidate verify-scope="tipStyle: 1">
         <header>
             <div class="order_wrap" ui-view="header">
                 <div class="first">
-                    <span class="total"><i>{{unit_price}}</i>元</span>即时充 可<span class="reduce">节省<i>2</i>元</span>
+                    <span class="total"><i>{{unit_price}}</i>元</span>{{type_info.text}} 可<span class="reduce">节省<i>{{reduce_price }}</i>元</span>
                 </div>
                 <input type="text" id="card" placeholder="请输入油卡号">
             </div>
@@ -13,40 +13,20 @@
                 <h3 class="title">{{main_title}}</h3>
 
                 <div class="select">
-                    <div class="left">—</div>
+                    <div class="left" ng-click="sub()">—</div>
                     <div class="center">{{unit_price}}<i> 元</i></div>
-                    <div class="right">+</div>
+                    <div class="right" ng-click="add()">+</div>
                 </div>
-                <p class="help">充值帮助</p>
+                <p class="help" ng-click="go_help()">充值帮助</p>
                 <ul>
-                    <li>
-                        <p class="pre_price">100<span>元</span></p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li class="is_sellect">
-                        <p class="pre_price">100<span>元</span></p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li>
-                        <p class="pre_price">100<span>元</span></p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li>
-                        <p class="pre_price">100<span>元</span></p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li>
-                        <p class="pre_price">100<span>元</span></p>
-                        <p class="dis_price">仅售：99.5</p>
-                    </li>
-                    <li>
-                        <p class="pre_price">100<span>元</span></p>
-                        <p class="dis_price">仅售：99.5</p>
+                    <li ng-repeat="x in type" ng-click="select_type(x,$index)">
+                        <p class="pre_price">{{x.discount}}<span>折</span></p>
+                        <p class="dis_price">{{x.method}}</p>
                     </li>
                 </ul>
                 <input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled=" price_get || agreet||pay_on||card_info_get" ng-click="login()">
             </div>
-            <p class="my_order"></p>
+            <p class="my_order" ng-click="go_order()"></p>
         </section>
     </form>
 </div>

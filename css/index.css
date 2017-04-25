@@ -673,7 +673,7 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 10.36rem;
+  height: 10.8rem;
   background: #FFF;
   -webkit-overflow-scrolling: touch; }
   .friend_request .popum_wrap {
@@ -748,7 +748,7 @@ a:focus {
         z-index: 16;
         font-size: .5rem; }
   .friend_request header {
-    height: 3.5rem;
+    height: 3.06rem;
     line-height: .74rem;
     width: 100%;
     border-bottom: .04rem solid #e1e1e1;
@@ -789,7 +789,8 @@ a:focus {
       top: 0;
       right: 0;
       bottom: 0;
-      margin: auto; }
+      margin: auto;
+      margin-top: 10%; }
       .friend_request header .first .left {
         width: 1.5rem;
         height: 1.2rem;
@@ -886,6 +887,7 @@ a:focus {
       background: #FFF;
       width: 80%;
       margin: .4rem 10%;
+      margin-bottom: 0;
       -webkit-border-radius: .3rem;
               border-radius: .3rem; }
       .friend_request section .friend_wrap h3 {
@@ -947,6 +949,17 @@ a:focus {
               font-size: .2rem;
               color: #51586A;
               letter-spacing: 0; }
+  .friend_request footer {
+    width: 100%;
+    height: 1rem;
+    background: #FF7320;
+    text-align: center;
+    line-height: 1rem;
+    font-size: .30719974rem;
+    color: #FFF;
+    font-family: PingFangSC-Medium;
+    position: fixed;
+    bottom: 0; }
 
 /*pay*/
 .pay {

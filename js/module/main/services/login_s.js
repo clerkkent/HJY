@@ -327,9 +327,10 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
         document.documentElement.appendChild(WVJBIframe);
         setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
     }
-    factory.share = function() {
+    factory.share = function(content) {
+        console.log(content)
         this.webview(function(bridge) {
-            bridge.callHandler('invitation', function(responseData) { //请求OC
+            bridge.callHandler('invitation', content, function(responseData) { //请求OC
 
             })
         })
