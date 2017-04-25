@@ -5,7 +5,7 @@
                 <div class="first">
                     <span class="total"><i>{{unit_price}}</i>元</span>{{type_info.text}} 可<span class="reduce">节省<i>{{reduce_price }}</i>元</span>
                 </div>
-                <input type="text" id="card" placeholder="请输入油卡号">
+                <input type="text" id="card" placeholder="请输入油卡号" test-t ng-verify="pattern:/^0?1[0-9][0-9]\d{4}\d{4}$/,max:11,errmsg:'手机号码格式错误',required: false">
             </div>
         </header>
         <section>
@@ -19,7 +19,7 @@
                 </div>
                 <p class="help" ng-click="go_help()">充值帮助</p>
                 <ul>
-                    <li ng-repeat="x in type" ng-click="select_type(x,$index)">
+                    <li ng-repeat="x in type" ng-click="select_type(x,$index)" init-t>
                         <p class="pre_price">{{x.discount}}<span>折</span></p>
                         <p class="dis_price">{{x.method}}</p>
                     </li>

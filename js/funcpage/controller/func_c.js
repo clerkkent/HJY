@@ -7,7 +7,7 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
         $scope.help_information = data.data;
     })
 }]);
-angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "get_predata", "land_main", "$viewContentLoaded", function($scope, $state, login_logic, $http, get_type, _, get_predata, land_main, $viewContentLoaded) {
+angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "get_predata", "land_main", function($scope, $state, login_logic, $http, get_type, _, get_predata, land_main) {
     $scope.text = "确认套餐";
     $scope.main_title = "每月充值";
     $scope.pay_title = "充油成功通知手机号";
@@ -19,11 +19,10 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.unit_price = get_type[0]["price"][0];
     $scope.reduce_price = ($scope.unit_price * (1 - $scope.type_info.disn) * $scope.type_info.t).toFixed(1);
     $scope.final_price = ($scope.unit_price * $scope.type_info.disn * $scope.type_info.t).toFixed(1);
-    $scope.$on('$viewContentLoaded', function() {
-        alert('1');
-        $(".land_main section li").eq(0).addClass("is_sellect");
-    });
-
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+            $(".land_main section li").eq(0).addClass("is_sellect")
+        })
+        //可以写两个input并根据belong来渲染
     $scope.select_type = function(x, index) {
         $scope.type_info = x; //页面预加载前获取套餐信息。
         $scope.type_selected = index;
@@ -69,11 +68,8 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         //////////////////////////
     $scope.pro_info = get_predata;
     $scope.belong = 1;
-    if ($scope.belong == 1) {
-        $scope.test = /^100011\d{13}$/;
-    } else if ($scope.belong == 2) {
-        $scope.test = /^9\d{15}$/;
-    }
+    sessionStorage.setItem("belong", $scope.belong);
+
     land_main.test();
     $(".land_main #card").attr({ "ng-verify": "pattern:" + $scope.test + ",errmsg:'手机号码格式错误',required: false" })
 

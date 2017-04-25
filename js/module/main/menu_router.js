@@ -192,7 +192,6 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                     var channel = "renrenche";
                     var list = null;
 
-                    $(".land_main section li").eq(0).addClass("is_sellect");
 
                     function judge(obj) {　　
                         for (var i in obj) { //如果不为空，则会执行到这一步，返回true
@@ -213,6 +212,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                             }
                         }
                     }
+                    sessionStorage.setItem("channel", channel);
                     return predata.submit(list);
                 }
             }
