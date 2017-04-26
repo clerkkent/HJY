@@ -15,16 +15,17 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.price_selected = 0;
     $scope.type_selected = 0;
     $scope.type = get_type["type"];
+    console.log(get_type)
     $scope.type_info = get_type["type"][0]; //页面预加载前获取套餐信息。
     $scope.unit_price = get_type["price"][0];
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
-    $scope.reduce_price = ($scope.unit_price * (1 - $scope.type_info.disn) * $scope.type_info.t).toFixed(1);
-    $scope.normal_price = $scope.unit_price * $scope.type_info["t"];
-    $scope.final_price = ($scope.unit_price * $scope.type_info.disn * $scope.type_info.t).toFixed(1);
-    $scope.info_send.product_id = $scope.type_info["product_id"];
-    $scope.belong = $scope.type_info["belong"];
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
             $(".land_main section li").eq(0).addClass("is_sellect");
+            $scope.reduce_price = ($scope.unit_price * (1 - $scope.type_info["disn"]) * $scope.type_info.t).toFixed(1);
+            $scope.normal_price = $scope.unit_price * $scope.type_info["t"];
+            $scope.final_price = ($scope.unit_price * $scope.type_info["disn"] * $scope.type_info.t).toFixed(1);
+            $scope.info_send.product_id = $scope.type_info["product_id"];
+            $scope.belong = $scope.type_info["belong"];
         })
         //可以写两个input并根据belong来渲染
     $scope.select_type = function(x, index) {
@@ -184,35 +185,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         ////////////////登陆部分逻辑
 }]);
 angular.module('HJY').controller("pay_login_info", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land) {
-     $scope.login_pay_on = function() {
-                var mytime = new Date();
-                var t = mytime.getTime();
-                var params = {
-                    "oil_card": $scope.info.card.replace(/\s/g, ""),
-                    "product_id": $scope.info_send.product_id,
-                    "time": t,
-                    "money": $scope.normal_price,
-                    "uuid": data.result.packetsUuid
-                }
-                var sign = login_logic.md(params);
-                if ($scope.login_state_confirm()) {
-                    console.log(dsada)
-                }
-                var list = {
-                    "jsonrpc": "2.0",
-                    "method": "order",
-                    "params": [{
-                        "oil_card": $scope.info.card.replace(/\s/g, ""),
-                        "product_id": $scope.info_send.product_id,
-                        "time": t,
-                        "sign": sign,
-                        "money": "200",
-                        "uuid": data.result.packetsUuid
-                    }],
-                    "id": 1
-                }
-                land.pay(list)
-            } 
+
 }])
 angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land) {
     $scope.agreet = false;
@@ -243,7 +216,8 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
                 if (data.result != undefined) {
                     $scope.phonet = false;
                     $scope.phone_flag = data["result"]["is_discount"];
-                    // $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "" }
+                    console.log(data)
+                        // $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "" }
                     $scope.info_send.sms_key = data["result"]["data"]["key"]; //短信验证key
                     if ($scope.card_flag == 1 && $scope.phone_flag == 1) {
                         $scope.price = ($scope.price - 10).toFixed(1)
@@ -304,6 +278,7 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
         login.then(function(data) {
             if (data.result != undefined) {
                 sessionStorage.setItem("phone", $scope.info.phone.replace(/\s/g, ""));
+                sessionStorage.setItem("uuid", data.result.packetsUuid);
                 var mytime = new Date();
                 var t = mytime.getTime();
                 var params = {
@@ -347,6 +322,39 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
                 okType: 'button-energized',
             });
         })
+    }
+}])
+angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land) {
+    var uuid = sessionStorage.getItem("uuid");
+    var phone = sessionStorage.getItem("phone");
+    $scope.login_pay_on = function() {
+        var mytime = new Date();
+        var t = mytime.getTime();
+        var params = {
+            "oil_card": $scope.info.card.replace(/\s/g, ""),
+            "product_id": $scope.info_send.product_id,
+            "time": t,
+            "money": $scope.normal_price,
+            "uuid": uuid
+        }
+        var sign = login_logic.md(params);
+        if ($scope.login_state_confirm()) {
+            console.log(dsada)
+        }
+        var list = {
+            "jsonrpc": "2.0",
+            "method": "order",
+            "params": [{
+                "oil_card": $scope.info.card.replace(/\s/g, ""),
+                "product_id": $scope.info_send.product_id,
+                "time": t,
+                "sign": sign,
+                "money": "200",
+                "uuid": uuid
+            }],
+            "id": 1
+        }
+        land.pay(list)
     }
 }])
 angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {

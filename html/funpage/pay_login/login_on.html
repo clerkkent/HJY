@@ -1,9 +1,9 @@
-
-<h3 class="title" style="background-position:10% center,90% center;">{{pay_title}}</h3>
+<h3 class="title" style="background-position:10% center,90% center;">
+    {{pay_title}}</h3>
 <div>
-   <p class="login_on" >
-     {{info.phone|encryPt}}
-   </p>
+    <p class="login_on">
+        {{info.phone|encryPt}}
+    </p>
 </div>
-<input class="second_i button button-assertive info" type="submit" value="{{pay_text}}" ng-disabled="agreet" ng-click="login_pay_on()" style="margin-top:1rem;" >
-<p class="remind" class="agree checkbox-assertive" ng-model="info.agree"><span class="agree" ng-click="toggleCustom()"></span><span ng-click="go_p()" style="border:none;">同意《会加油服务协议》</span></p>
+<input class="second_i button button-assertive info" type="submit" value="{{pay_text}}" ng-disabled="agreet" ng-click="login_pay_on()" style="margin-top:1rem;">
+<!--<p class="remind" class="agree checkbox-assertive" ng-model="info.agree"><span class="agree" ng-click="toggleCustom()"></span><span ng-click="go_p()" style="border:none;">同意《会加油服务协议》</span></p>-->

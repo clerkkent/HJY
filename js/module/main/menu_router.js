@@ -298,7 +298,16 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         })
         .state("funcpage.land_main.login_on", {
             url: "/login_on",
-            templateUrl: "html/funpage/pay_login/login_on.html"
+            views: {
+                'header': {
+                    templateUrl: "html/funpage/pay_login/header.html",
+                    controller: "pay_login_info"
+                },
+                'body': {
+                    templateUrl: "html/funpage/pay_login/login_on.html",
+                    controller: "pay_login_on"
+                }
+            }
         })
         .state("funcpage.order_list", {
             url: "/order_list",
