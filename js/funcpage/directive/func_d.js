@@ -10,7 +10,6 @@ angular.module('HJY').directive("testT", function($timeout) {
             } else if (belong == 2) {
                 test = /^9\d{15}$/;
             }
-            $(element[0]).attr({ "ng-verify": "pattern:" + test + ",errmsg:'手码格式错误',required: false,max:6,min:6" });
         }
     }
 })

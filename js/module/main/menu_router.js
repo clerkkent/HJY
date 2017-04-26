@@ -160,7 +160,8 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                         './js/funcpage/filter/func_f.js',
                         './js/funcpage/service/func_s.js',
                         './css/funcpage/funcpage.css',
-                        './js/plugins/underscore.js'
+                        './js/plugins/underscore.js',
+                        './js/plugins/md5.js',
                     ]); // 按需加载目标 js file
                 }]
             }
@@ -175,23 +176,22 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "land_main",
             templateUrl: "html/funpage/land_main.html",
             resolve: {
-                get_type: function($http, $q) {
-                    var defer = $q.defer();
-                    console.log($(".land_main section li"))
-                    $http.get("mock/func/price_degree.json").success(function(data) {
-                        defer.resolve(data);
-                    }).error(function() {
-                        defer.reject(); //声明执行失败
-                    })
-                    return defer.promise;
-                },
+                // get_type: function($http, $q) {
+                //     var defer = $q.defer();
+                //     console.log($(".land_main section li"))
+                //     $http.get("mock/func/price_degree.json").success(function(data) {
+                //         defer.resolve(data);
+                //     }).error(function() {
+                //         defer.reject(); //声明执行失败
+                //     })
+                //     return defer.promise;
+                // },
                 predata: "land",
                 parse: "login_logic",
-                get_predata: function(predata, parse) {
+                get_type: function(predata, parse) {
                     var x = parse.parse_url();
                     var channel = "renrenche";
                     var list = null;
-
 
                     function judge(obj) {　　
                         for (var i in obj) { //如果不为空，则会执行到这一步，返回true
@@ -211,9 +211,75 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                                 "id": 1
                             }
                         }
+                    } else {
+                        list = {
+                            "jsonrpc": "2.0",
+                            "method": "productList",
+                            "params": [{
+                                "user_id": "5",
+                                "channel": channel
+                            }],
+                            "id": 1
+                        }
                     }
-                    sessionStorage.setItem("channel", channel);
-                    return predata.submit(list);
+                    sessionStorage.setItem("ch", channel);
+                    var type_data = [];
+                    predata.submit(list).then(function(data) {
+                        if (data.result != undefined) {
+                            var type = data["result"]["list"];
+                            for (i = 0; i < type.length; i++) {
+                                var dis = type[i].product_discount;
+                                var ty = {
+                                    "discount": (dis * 10).toFixed(2),
+                                    "disn": (dis * 1).toFixed(2),
+                                    "t": type[i].product_time,
+                                    "method": type[i].product_time + "期",
+                                    "text": "/月*" + type[i].product_time + "个月套餐",
+                                    "belong": type[i].belong,
+                                    "product_id": type[i].id
+                                }
+                                type_data.push(ty)
+                            }
+                            console.log(type_data)
+                                // console.log(type_data)
+                        }
+                    });
+
+                    var mytime = new Date();
+                    var t = mytime.getTime();
+                    var params = {
+                            "time": t,
+                            "channel": channel,
+                        }
+                        // console.log(parse.md(params))
+                    var pricelist = {
+                        "jsonrpc": "2.0",
+                        "method": "getMoneyByChannel",
+                        "params": [{
+                            "time": t,
+                            "sign": parse.md(params),
+                            "channel": channel
+                        }],
+                        "id": 1
+                    }
+                    var price_data = [];
+                    var final_list = null;
+                    predata.submit(pricelist).then(function(data) {
+                        if (data.result != undefined) {
+                            var ty = data["result"]["list"];
+                            for (i = 0; i < ty.length; i++) {
+                                var dis = Number(ty[i].name);
+                                price_data.push(dis);
+                            }
+                        }
+                    })
+                    final_list = {
+                        "price": price_data,
+                        "type": type_data
+                    }
+
+                    return final_list;
+
                 }
             }
         })
@@ -222,15 +288,15 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             views: {
                 'header': {
                     templateUrl: "html/funpage/pay_login/header.html",
-                    controller: "land_main"
+                    controller: "pay_login_info"
                 },
                 'body': {
                     templateUrl: "html/funpage/pay_login/body.html",
-                    controller: "land_main",
+                    controller: "pay_login"
                 }
             }
         })
-        .state("funcpage.land_main.pay_login.login_on", {
+        .state("funcpage.land_main.login_on", {
             url: "/login_on",
             templateUrl: "html/funpage/pay_login/login_on.html"
         })
