@@ -351,7 +351,7 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
     factory.share = function(content) {
         console.log(content)
         this.webview(function(bridge) {
-            bridge.callHandler('invitation', content, function(responseData) { //请求OC
+            bridge.callHandler('invitation', function(responseData) { //请求OC
 
             })
         })

@@ -1,27 +1,38 @@
-<div style="width:100%;height:100%;overflow-y:scroll;overflow-x:hidden; -webkit-overflow-scrolling: touch;background:#f5f5f5;">
+<ion-content style="width:100%;height:100%;overflow-y:scroll;overflow-x:hidden; -webkit-overflow-scrolling: touch;background:#f5f5f5;">
     <div class="order_list">
         <ul>
-            <li>
+            <li ng-repeat="x in order_list" ng-click="go_details(x.id)">
                 <p class="title">
-                    <span class="company">中国石化 充值套餐</span>
-                    <span class="state">2/6</span>
+                    <span class="company">{{x.product_name}}</span>
+                    <span class="state" ng-if="x.status==3">{{x.count}}/{{x.total_time}}</span>
+                    <span class="state un_pay" ng-if="x.status==0"></span>
+                    <span class="state pay_success" ng-if="x.status==1"></span>
                     <span class="icon_order"></span>
                 </p>
                 <div class="details">
                     <dl class="card_order">
                         <dt>卡号</dt>
-                        <dd>{{phone|encryPt}}</dd>
+                        <dd>{{x.user_name|encryPt}}</dd>
                     </dl>
                     <dl class="type">
                         <dt>套餐类型</dt>
-                        <dd>6个月</dd>
+                        <dd>{{x.total_time}}个月</dd>
                     </dl>
-                    <dl class="pay_state">
+                    <dl class="pay_state" ng-if="x.status==3||x.status==1">
                         <dt>支付金额</dt>
-                        <dd>50000</dd>
+                        <dd>{{x.discount_after_amount}}</dd>
+                    </dl>
+                    <dl class="pay_state go_pay" ng-if="x.status==0">
+                        <p>去支付</p>
+                    </dl>
+                    <dl class="pay_state order_close" ng-if="x.status==4||x.status==2">
+                        订单关闭
                     </dl>
                 </div>
             </li>
+            <p class="button button-dark" style="margin:0.5rem auto;margin-left:40%;" ng-click="esc()">退出登录</p>
         </ul>
     </div>
-</div>
+    <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="bottom">
+    </ion-infinite-scroll>
+</ion-content>

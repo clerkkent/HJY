@@ -142,12 +142,12 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     friend.popum();
     $scope.share = function() { //分享原生H5指令交互
         var content = {
-            title: "asda",
-            content: "xxxxxxx",
+            title: "抢油滴省钱加油",
+            content: "抢到多少送多少，额外再送200元加油礼券，用了就是赚到，我会加油我骄傲",
             imageUrl: "http",
             url: "url"
         }
-        webappSDK.share(content);
+        webappSDK.share();
     }
     webappSDK.getUserInfos(function(res) { //webbriage入口
         var info = JSON.parse(res)
@@ -238,7 +238,7 @@ HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPo
             imageUrl: "http",
             url: "url"
         }
-        webappSDK.share(content);
+        webappSDK.share();
     }
 }]);
 HJY.controller("pay", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
@@ -750,7 +750,6 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
                         $scope.redpack = true;
                     }
                 } else if (data["result"]["status"] == 2) {
-
                     $state.go("land.pay_success.pay_fails")
                 }
             }

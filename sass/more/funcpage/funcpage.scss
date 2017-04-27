@@ -249,7 +249,7 @@
                         font-size:.30719974rem; // 18px;
                         color: #F95B4E;
                         font-family: PingFangSC-Semibold;
-                        margin-top:0.1rem;
+                        margin-top:10%;
                         span{
                             font-size:.20479983rem; // 12px;
                             padding-left:0.04rem;
@@ -338,7 +338,8 @@
                 @include backgroundset("../../images/land/ic_recording_red@3x.png",left,0.18rem,100%);
             }
             .un_pay{
-                @include backgroundset("../../images/land/ic_recording_Orange@3x.png",left,0.18rem,100%);
+
+                background-image:url("../../images/land/ic_recording_Orange@3x.png");
             }
             .icon_order{
                 width:.30719974rem; // 18px
@@ -372,6 +373,24 @@
                 dd{
                     color: #51586A;
                     font-size:.20479983rem; // 12px;
+                }
+
+            }
+            .order_close{
+                line-height:1.39946547rem; // 82px;
+                color: #999999;
+            }
+            .go_pay{
+                position:relative;
+                p{
+                    width:1.2117323rem; // 71px;
+                    height:.46079961rem; // 27px;
+                    border:1px solid #FA9245;
+                    color:#FA9245;
+                    text-align:center;
+                    border-radius:5%;
+                    @include center-block;
+
                 }
             }
             .card_order{
@@ -421,6 +440,9 @@
             margin-top:0.15rem;
         }
     }
+    .second_icon{
+        background-image:url("../../images/land/ic_details_SINOPEC@2x.png");
+    }
     footer{
         background-color:#FFF;
         padding:0 .47786626rem; // 28px
@@ -434,7 +456,8 @@
         }
         .first{
             width:100%;
-            height:5.87092832rem; // 344px;
+            max-height:5.87092832rem; // 344px;
+            overflow-y:scroll;
             padding:0 .41199956rem; // 30px;
             background-image:url("../../images/land/ic_details_frame_l@3x.png"),url("../../images/land/ic_details_frame_r@3x.png");
             background-size:30%,30%;
@@ -452,23 +475,29 @@
                 @include backgroundset("../../images/land/ic_recording_green@3x.png",left,top,100%);
                 transform:scale(1.3);
                 padding-left:.30719974rem; // 18px;
+                height:.4266663rem; // 25px;
             }
+
             .pay_amount{
-                font-size:.23893313rem; // 14px
-                text-align:left;
+                font-size:.20479983rem; // 12px
                 font-family: PingFangSC-Regular;
                 color: #666666;
                 margin:0 auto;
                 height:.61439948rem; // 36px;
                 border-bottom:1px solid  #E5E5E5;
                 margin-top:.25599978rem; // 15px;
+                 display:flex;
+            flex-flow:row wrap;
+            justify-content: space-between;
                 span{
-                    font-size:.30719974rem; // 18px
+                    font-size:.23893313rem; // 14px
                     color: #2A2A2A;
+                    display:block;
+                     i{
+                    font-size:.20479983rem; // 12px
                 }
-                i{
-                    font-size:.21893313rem; // 14px
                 }
+
             }
             .list_title{
                 margin-top:.34133304rem; // 20px;

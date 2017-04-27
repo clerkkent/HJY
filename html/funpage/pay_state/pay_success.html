@@ -1,0 +1,50 @@
+<div class="pay_success">
+    <div class="pay_details" ui-view>
+        <header>
+            <p>恭喜你，支付成功</p>
+        </header>
+        <section>
+            <p>
+                <span class="key">订单编号:</span>
+                <span class="value">{{list.order_number}}</span>
+            </p>
+            <p>
+                <span class="key">成交时间:</span>
+                <span class="value">{{list.utime}}</span>
+            </p>
+            <p>
+                <span class="key">商品名称:</span>
+                <span class="value">会加油100元油卡充值</span>
+            </p>
+            <p>
+                <span class="key">支付金额:</span>
+                <span class="value" style="color:#E3442A;">￥{{list.discount_after_amount}}<i ng-if="redpack">(优惠券抵扣￥10)</i></span>
+            </p>
+            <p>
+                <span class="key">充值油卡:</span>
+                <span class="value">{{list.card_number}}</span>
+            </p>
+            <p>
+                <span class="key">到账时间:</span>
+                <span class="value">支付成功后2小时内</span>
+            </p>
+        </section>
+    </div>
+    <footer>
+        <!--<div class="downloadp" ng-if="download_show">
+            <div class="left">
+
+            </div>
+            <div class="center">
+                <p class="top">APP加油低至85折</p>
+                <p class="sec">仅在手机客户端</p>
+            </div>
+
+            <p class="right button button-assertive" down-load>下载APP</p>
+        </div>-->
+        <div class="connect">
+            <button class="button button-assertive" style="margin:0 auto;margin-left:30%;width:100%;position:fixed;bottom:0;right:0;" ng-click="go_order_list()">前往订单列表</button>
+            <p class="tel">客服热线 ： 400-851-8686</p>
+        </div>
+    </footer>
+</div>
