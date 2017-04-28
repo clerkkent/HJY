@@ -2,8 +2,12 @@
     <form class="land_main" style=" -webkit-overflow-scrolling: touch" name="myform" novalidate verify-scope="tipStyle: 1">
         <header>
             <div class="order_wrap" ui-view="header" card-format>
-                <div class="first">
-                    <span class="total"><i>{{unit_price}}</i>元</span>{{type_info.text}} 可<span class="reduce">节省<i>{{reduce_price }}</i>元</span>
+                <div class="first" ng-if="type_info.t!=1">
+                    <span class="total"><i>{{unit_price}}</i>元</span>*{{type_info.t}}期 可<span class="reduce">节省<i>{{reduce_price }}</i>元</span>
+                </div>
+                <div class="first" ng-if="type_info.t==1">
+                    <span class="total"><i>{{unit_price}}</i>元</span>即时充 可<span class="reduce">节省<i>{{reduce_price }}</i>元</span>
+
                 </div>
                 <input type="tel" id="card" placeholder="请输入油卡号" test-t ng-verify="pattern:/^[\d\s]{19}|[\d\s]{23}$/,max:23,min:19,errmsg:'油卡卡号格式错误',required: true" ng-model="info.card" ng-pattern="/^[\d\s]{19}|[\d\s]{23}$/" name="card">
             </div>
@@ -18,12 +22,13 @@
                 </div>
                 <p class="help" ng-click="go_help()">充值帮助</p>
                 <ul>
-                    <li ng-repeat="x in type" ng-click="select_type(x,$index)" init-t>
+                    <li ng-repeat="x in type | orderBy:order:'desc' " ng-click="select_type(x,$index)" init-t>
                         <p class="pre_price">{{x.discount}}<span>折</span></p>
-                        <p class="dis_price">{{x.method}}</p>
+                        <p class="dis_price" ng-if="x.t!=1">{{x.t}}期</p>
+                        <p class="dis_price" ng-if="x.t==1">即时充值</p>
                     </li>
                 </ul>
-                <input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled="myform.card.$invalid" ng-click="check_send()">
+                <input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled="myform.card.$invalid||get_card_info" ng-click="check_send()">
             </div>
             <p class="my_order" ng-click="go_order()"></p>
         </section>

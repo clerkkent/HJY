@@ -14,11 +14,12 @@
             </p>
             <p>
                 <span class="key">商品名称:</span>
-                <span class="value">会加油100元油卡充值</span>
+                <span class="value" ng-if="list.total_time==1">会加油{{list.unit_price}}元即时充值</span>
+                <span class="value" ng-if="list.total_time!=1">会加油{{list.unit_price}}元*{{list.total_time}}期套餐</span>
             </p>
             <p>
                 <span class="key">支付金额:</span>
-                <span class="value" style="color:#E3442A;">￥{{list.discount_after_amount}}<i ng-if="redpack">(优惠券抵扣￥10)</i></span>
+                <span class="value" style="color:#E3442A;">￥{{list.discount_after_amount}}</span>
             </p>
             <p>
                 <span class="key">充值油卡:</span>

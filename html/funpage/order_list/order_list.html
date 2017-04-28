@@ -4,15 +4,15 @@
             <li ng-repeat="x in order_list" ng-click="go_details(x.id)">
                 <p class="title">
                     <span class="company">{{x.product_name}}</span>
-                    <span class="state" ng-if="x.status==3">{{x.count}}/{{x.total_time}}</span>
+                    <span class="state" ng-if="x.status==1&&x.count<x.total_time">{{x.count}}/{{x.total_time}}</span>
                     <span class="state un_pay" ng-if="x.status==0"></span>
-                    <span class="state pay_success" ng-if="x.status==1"></span>
+                    <span class="state pay_success" ng-if="x.status==1&&x.count==x.total_time"></span>
                     <span class="icon_order"></span>
                 </p>
                 <div class="details">
                     <dl class="card_order">
                         <dt>卡号</dt>
-                        <dd>{{x.user_name|encryPt}}</dd>
+                        <dd>{{x.card_number|cardPt}}</dd>
                     </dl>
                     <dl class="type">
                         <dt>套餐类型</dt>
@@ -23,7 +23,7 @@
                         <dd>{{x.discount_after_amount}}</dd>
                     </dl>
                     <dl class="pay_state go_pay" ng-if="x.status==0">
-                        <p>去支付</p>
+                        <p ng-if="false">去支付</p>
                     </dl>
                     <dl class="pay_state order_close" ng-if="x.status==4||x.status==2">
                         订单关闭

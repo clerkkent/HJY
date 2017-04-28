@@ -7,17 +7,43 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
         $scope.help_information = data.data;
     })
 }]);
-angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land) {
+angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "get_price", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, get_price, _, land_main, $ionicPopup, $interval, land, $rootScope) {
     $scope.text = "确认套餐";
     $scope.pay_text = "确认支付"
     $scope.main_title = "每月充值";
     $scope.pay_title = "充油成功通知手机号";
     $scope.price_selected = 0;
     $scope.type_selected = 0;
-    $scope.type = get_type["type"];
-    $scope.type_info = get_type["type"][0]; //页面预加载前获取套餐信息。
-    $scope.unit_price = get_type["price"][0];
+    $scope.pre_type = [];
+    $scope.pre_price = [];
+    if (get_type.result != undefined) {
+        var type = get_type["result"]["list"];
+        for (i = 0; i < type.length; i++) {
+            var dis = type[i].product_discount;
+            var ty = {
+                "discount": (dis * 10).toFixed(2),
+                "disn": (dis * 1).toFixed(2),
+                "t": type[i].product_time,
+                "method": type[i].product_time + "期",
+                "text": "/月*" + type[i].product_time + "个月套餐",
+                "belong": type[i].belong,
+                "product_id": type[i].id
+            }
+            $scope.pre_type.push(ty)
+        }
+    }
+    if (get_price.result != undefined) {
+        var ty = get_price["result"]["list"];
+        for (i = 0; i < ty.length; i++) {
+            var dis = Number(ty[i].name);
+            $scope.pre_price.push(dis);
+        }
+    }
+    $scope.type = $scope.pre_type;
+    $scope.type_info = $scope.pre_type[0]; //页面预加载前获取套餐信息。
+    $scope.unit_price = $scope.pre_price[0];
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
+
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
             $(".land_main section li").eq(0).addClass("is_sellect");
             if ($scope.type_info != undefined) {
@@ -38,24 +64,27 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         $scope.final_price = $scope.price_final();
         $scope.info_send.product_id = $scope.type_info.product_id;
         $scope.belong = $scope.type_info.belong;
-        $scope.normal_price = $scope.price_normal()
+        $scope.normal_price = $scope.price_normal();
+        $scope.get_card_info = false;
     }
     $scope.add = function() {
-        if ($scope.price_selected < get_type["price"].length - 1) {
+        if ($scope.price_selected < $scope.pre_price.length - 1) {
             $scope.price_selected = $scope.price_selected + 1;
-            $scope.unit_price = get_type["price"][$scope.price_selected];
+            $scope.unit_price = $scope.pre_price[$scope.price_selected];
             $scope.reduce_price = $scope.reduce();
             $scope.final_price = $scope.price_final();
-            $scope.normal_price = $scope.price_normal()
+            $scope.normal_price = $scope.price_normal();
+            $scope.get_card_info = false;
         }
     }
     $scope.sub = function() {
         if ($scope.price_selected > 0) {
             $scope.price_selected = $scope.price_selected - 1;
-            $scope.unit_price = get_type["price"][$scope.price_selected];
+            $scope.unit_price = $scope.pre_price[$scope.price_selected];
             $scope.reduce_price = $scope.reduce();
             $scope.final_price = $scope.price_final();
-            $scope.normal_price = $scope.price_normal()
+            $scope.normal_price = $scope.price_normal();
+            $scope.get_card_info = false;
         }
     }
     $scope.price_final = function() {
@@ -117,8 +146,9 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
 
 
     $scope.cardinfo = { company: "", name: "" }
-
+    $scope.get_card_info = false;
     $scope.check_send = function() {
+            $scope.get_card_info = true;
             if ($scope.belong == 1) {
                 $scope.test = /^100011\d{13}$/;
             } else if ($scope.belong == 2) {
@@ -141,6 +171,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
                 var land_data = land.submit(list);
                 land_data.then(function(data) {
                     if (data.result != undefined) { //带来第一个页面初始数据
+
                         $scope.cardinfo.name = data["result"]["username"];
                         $scope.cardinfo.company = data["result"]["name"];
                         $scope.card_flag = data["result"]["card_isDiscount"];
@@ -149,18 +180,27 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
                         $scope.pay_type_info = $scope.type_info.t;
                         $scope.price = $scope.final_price;
                         if ($scope.login_flag) {
-                            $state.go("funcpage.land_main.login_on");
-                        } else {
-                            $state.go("funcpage.land_main.pay_login");
                             localStorage.setItem("card", $scope.info.card.replace(/\s/g, ""));
                             localStorage.setItem("name", $scope.cardinfo.name);
-                            localStorage.setItem("conmpany", $scope.cardinfo.company);
+                            localStorage.setItem("company", $scope.cardinfo.company);
                             localStorage.setItem("u_price", $scope.pay_unit_price);
                             localStorage.setItem("t", $scope.pay_type_info);
                             localStorage.setItem("pid", $scope.info_send.product_id);
                             localStorage.setItem("n_price", $scope.normal_price);
                             localStorage.setItem("f_price", $scope.final_price);
                             localStorage.setItem("u_price", $scope.unit_price);
+                            $state.go("funcpage.land_main.login_on");
+                        } else {
+                            localStorage.setItem("card", $scope.info.card.replace(/\s/g, ""));
+                            localStorage.setItem("name", $scope.cardinfo.name);
+                            localStorage.setItem("company", $scope.cardinfo.company);
+                            localStorage.setItem("u_price", $scope.pay_unit_price);
+                            localStorage.setItem("t", $scope.pay_type_info);
+                            localStorage.setItem("pid", $scope.info_send.product_id);
+                            localStorage.setItem("n_price", $scope.normal_price);
+                            localStorage.setItem("f_price", $scope.final_price);
+                            localStorage.setItem("u_price", $scope.unit_price);
+                            $state.go("funcpage.land_main.pay_login");
                             //以上为备用参数
                         }
                     } else { //错误信息弹窗
@@ -219,16 +259,31 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     }
 }]);
 angular.module('HJY').controller("pay_login_info", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$stateParams", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $stateParams) {
+    $scope.phone_on = localStorage.getItem("phone");
+    $scope.card_s = localStorage.getItem("card");
+    $scope.name_s = localStorage.getItem("name");
+
+    $scope.company_s = localStorage.getItem("company");
+    $scope.price_n = localStorage.getItem("n_price");
+    $scope.price_f = localStorage.getItem("f_price");
+    $scope.t_s = localStorage.getItem("t");
+    $scope.pid_s = localStorage.getItem("pid");
+    $scope.uid_s = localStorage.getItem("uuid");
+    $scope.u_price = localStorage.getItem("u_price");
+    console.log($scope.u_price)
     if ($stateParams.pro != null) {
-        $scope.pay_unit_price = $stateParams.pro.unit_price;
-        $scope.pay_type_info = $stateParams.pro.total_time;
-        $scope.card = $stateParams.pro.card_number;
+        $scope.u_price = $stateParams.pro.unit_price;
+        $scope.t_s = $stateParams.pro.total_time;
+        $scope.card_s = $stateParams.pro.card_number;
+        localStorage.setItem("u_price", $scope.u_price);
+        localStorage.setItem("t", $scope.t_s);
+        localStorage.setItem("pid", $scope.card_s);
         var list = {
             "jsonrpc": "2.0",
             "method": "getCardInfoByNumber",
             "params": [{
                 "user_id": "5",
-                "oil_card": $scope.card
+                "oil_card": $scope.card_s
             }],
             "id": 1
         }
@@ -236,12 +291,10 @@ angular.module('HJY').controller("pay_login_info", ["$scope", "$state", "login_l
         var land_data = land.submit(list);
         land_data.then(function(data) {
             if (data["result"] != undefined) {
-                console.log(data)
-                $scope.cardinfo.name = data["result"]["username"];
-                $scope.cardinfo.company = data["result"]["name"];
-
-                console.log($scope.cardinfo.name)
-                console.log($scope.cardinfo.company)
+                $scope.name_s = data["result"]["username"];
+                $scope.company_s = data["result"]["name"];
+                localStorage.setItem("name", $scope.name_s);
+                localStorage.setItem("conmpany", $scope.company_s);
             }
         }, function() {
             $ionicPopup.alert({
@@ -255,8 +308,39 @@ angular.module('HJY').controller("pay_login_info", ["$scope", "$state", "login_l
 }])
 angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$stateParams", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $stateParams) {
 
+    $scope.phone_on = localStorage.getItem("phone");
+    $scope.card_s = localStorage.getItem("card");
+    $scope.name_s = localStorage.getItem("name");
+
+    $scope.company_s = localStorage.getItem("conmpany");
+    $scope.price_n = localStorage.getItem("n_price");
+    $scope.price_f = localStorage.getItem("f_price");
+    $scope.t_s = localStorage.getItem("t");
+    $scope.pid_s = localStorage.getItem("pid");
+    $scope.uid_s = localStorage.getItem("uuid");
+    $scope.u_price = localStorage.getItem("u_price");
+
+    $scope.login_state_confirm = function() { //登录状态确认函数,用户操作前调用
+        var list = {
+            "jsonrpc": "2.0",
+            "method": "loginStatus",
+            "params": [],
+            "id": 1
+        }
+        login_logic.submit(list).then(function(data) {
+            if (data.result.status == 1) {
+                $scope.login_flag = true;
+                $state.go("funcpage.land_main.login_on");
+            } else {
+                $scope.login_flag = false;
+            }
+        })
+    }
+
+    $scope.login_state_confirm();
     $scope.agreet = false;
     $scope.ch = sessionStorage.getItem("ch");
+
     $scope.toggleCustom = function() { //注册协议限制
         if ($scope.agreet == true) {
             $(".main_content .land_main .remind .agree").removeClass("selected")
@@ -267,6 +351,7 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
             $scope.notice = "同意《会加油服务协议》";
         }
     }
+
     $scope.scode_get = function() { //获取验证码
             var list = {
                 "jsonrpc": "2.0",
@@ -284,12 +369,8 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
                     $scope.phone_flag = data["result"]["is_discount"];
                     // $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "" }
                     $scope.info_send.sms_key = data["result"]["data"]["key"]; //短信验证key
-                    if ($scope.card_flag == 1 && $scope.phone_flag == 1) {
-                        $scope.price = ($scope.final_price - 10).toFixed(1)
-                        $scope.pay_text = "支付" + $scope.price + "元";
-                    } else {
-                        $scope.pay_text = "支付" + $scope.final_price + "元";
-                    }
+                    $scope.pay_text = "支付" + $scope.price_f + "元";
+
 
                     var a = 60;
                     $scope.second = a + "s"
@@ -326,6 +407,7 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
         //////////////以上为发送验证码过程
         ////////////
         ////////////
+
     $scope.login_pay = function() {
         var list = {
             "jsonrpc": "2.0",
@@ -335,7 +417,7 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
                 "channel": $scope.ch, //渠道
                 "sms_key": $scope.info_send.sms_key, //验证码的key
                 "sms_code": $scope.info.scode, //验证码
-                "card_num": $scope.info.card.replace(/\s/g, "")
+                "card_num": $scope.card_s
             }],
             "id": 1
         }
@@ -347,24 +429,22 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
                 var mytime = new Date();
                 var t = mytime.getTime();
                 var params = {
-                    "oil_card": $scope.info.card.replace(/\s/g, ""),
-                    "product_id": $scope.info_send.product_id,
+                    "oil_card": $scope.card_s,
+                    "product_id": $scope.pid_s,
                     "time": t,
-                    "money": $scope.normal_price,
-                    "uuid": data.result.packetsUuid
+                    "money": $scope.u_price,
+                    // "uuid": data.result.packetsUuid
                 }
                 var sign = login_logic.md(params);
-                if ($scope.login_state_confirm()) {
-                    console.log(dsada)
-                }
                 var list = {
-                    "oil_card": $scope.info.card.replace(/\s/g, ""),
-                    "product_id": $scope.info_send.product_id,
+                    "oil_card": $scope.card_s,
+                    "product_id": $scope.pid_s,
                     "time": t,
                     "sign": sign,
-                    "money": $scope.normal_price,
-                    "uuid": data.result.packetsUuid
+                    "money": $scope.u_price,
+                    // "uuid": data.result.packetsUuid
                 }
+                console.log(list)
                 land_main.pay(list)
             } else {
                 $ionicPopup.alert({
@@ -388,7 +468,7 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
     $scope.phone_on = localStorage.getItem("phone");
     $scope.card_s = localStorage.getItem("card");
     $scope.name_s = localStorage.getItem("name");
-    $scope.company_s = localStorage.getItem("conmpany");
+    $scope.company_s = localStorage.getItem("company");
     $scope.price_n = localStorage.getItem("n_price");
     $scope.price_f = localStorage.getItem("f_price");
     $scope.t_s = localStorage.getItem("t");
@@ -405,45 +485,43 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
             "oil_card": $stateParams.pro.card_number,
             "product_id": $stateParams.pro.id,
             "time": t,
-            "money": $stateParams.pro.discount_before_amount,
-            "uuid": $scope.uid_s
+            "money": $stateParams.pro.unit_price
+
         }
         var sign = login_logic.md(params);
+        localStorage.setItem("card", $stateParams.pro.card_number);
+        localStorage.setItem("pid", $stateParams.pro.id);
+        localStorage.setItem("u_price", $stateParams.pro.unit_price);
         $scope.list_flag = {
             "oil_card": $stateParams.pro.card_number,
             "product_id": $stateParams.pro.id,
             "time": t,
             "sign": sign,
-            "money": $stateParams.pro.discount_before_amount,
-            "uuid": $scope.uid_s
+            "money": $stateParams.pro.unit_price
+
 
         }
-    } else {
-        //以上为备用参数
+    } else if ($scope.u_price != undefined && $scope.pid_s != undefined && $scope.card_s != undefined) {
+        $scope.pay_text = "支付" + $scope.price_f + "元";
         var mytime = new Date();
         var t = mytime.getTime();
         var params = {
-            "oil_card": $scope.info.card.replace(/\s/g, ""),
-            "product_id": $scope.info_send.product_id,
+            "oil_card": $scope.card_s,
+            "product_id": $scope.pid_s,
             "time": t,
-            "money": $scope.normal_price,
-            "uuid": $scope.uid_s
+            "money": $scope.u_price
+
         }
         var sign = login_logic.md(params);
-        if ($scope.login_state_confirm()) {
-
-        }
         $scope.list_flag = {
-            "oil_card": $scope.info.card.replace(/\s/g, ""),
-            "product_id": $scope.info_send.product_id,
+            "oil_card": $scope.card_s,
+            "product_id": $scope.pid_s,
             "time": t,
             "sign": sign,
-            "money": $scope.normal_price,
-            "uuid": $scope.uid_s
-
+            "money": $scope.u_price
         }
-
     }
+
     $scope.login_pay_on = function() {
         land_main.pay($scope.list_flag)
     }
@@ -465,9 +543,10 @@ HJY.controller("m_pay_success", ["$scope", "$state", "login_logic", "$http", "la
         var good_list = land.get_good_list(send);
         good_list.then(function(data) {
             if (data["result"] != undefined) {
-                $interval.cancel(time);
+                clearInterval(time);
                 if (data["result"]["status"] == 1) {
                     $scope.list = data["result"];
+                    console.log($scope.list)
                     if ($scope.list.uuid == "") {
                         $scope.redpack = false;
                     } else {
@@ -488,14 +567,13 @@ HJY.controller("m_pay_success", ["$scope", "$state", "login_logic", "$http", "la
         "id": 1
     }
     if (judge($scope.url_data)) {
-        var time = $interval($scope.getdata(list), 1000);
+        var time = setInterval($scope.getdata(list), 1000);
     }
 }])
 HJY.controller("m_pay_fails", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.repay = function() {
-        var channel = sessionStorage.getItem("channel");
+        var channel = sessionStorage.getItem("ch");
         location.hash = "#/funcpage/land_main?ch=" + channel;
-
     }
 }])
 angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic", "$http", "land_main", "$ionicPopup", function($scope, $state, login_logic, $http, land_main, $ionicPopup) {
@@ -540,20 +618,35 @@ angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic
         })
     }
     $scope.loadMore = function() {
-        console.log(11)
         $scope.page = $scope.page + 1;
         land_main.get_order_list($scope.send_list($scope.page)).then(function(data) {
             if (data["result"] != undefined) {
                 console.log(data["result"]["list"])
                 $scope.order_list.push.apply($scope.order_list, data["result"]["list"]);
                 $scope.$broadcast('scroll.infiniteScrollComplete');
-                if (data["result"]["list"].length == 0) {
-
+                if (data["result"]["list"].length == 0 && $scope.page > 1) {
                     $ionicPopup.alert({
                         title: '提示',
                         template: "没有更多啦~~",
+                        okText: '确定', // String
+                        okType: 'button-energized',
+                    });
+                    $scope.bottom = false;
+                } else if (data["result"]["list"].length == 0 && $scope.page == 1) {
+
+                    $ionicPopup.confirm({
+                        title: '提示',
+                        template: "您当前还没有订单",
                         okText: '去下单', // String
                         okType: 'button-energized',
+                        cancelText: '取消', // String (默认: 'Cancel')。一个取消按钮的文字。
+                        cancelType: 'button-energized', // String (默认: 'button-default')。取消按钮的类型。
+                    }).then(function(res) {
+                        if (res) {
+                            var channel = sessionStorage.getItem("ch");
+                            location.hash = "#/funcpage/land_main?ch=" + channel;
+                        }
+
                     });
 
                     $scope.bottom = false;
@@ -578,26 +671,46 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
     $scope.go_pay = function(x) {
         $state.go("funcpage.land_main.login_on", { pro: x })
     }
-
     $scope.send_details = function(n) {
         var mytime = new Date();
         var t = mytime.getTime();
-        var params = {
-            "time": t,
-            "order_id": $stateParams.id
+        if ($stateParams.id != null) {
+            localStorage.setItem("detail_p", $stateParams.id)
+            var params = {
+                "time": t,
+                "order_id": $stateParams.id
+            }
+            var sign = login_logic.md(params);
+            var list = {
+                "jsonrpc": "2.0",
+                "method": "getOrderInfo",
+                "params": [{
+                    "time": t,
+                    "sign": sign,
+                    "order_id": $stateParams.id
+                }],
+                "id": 1
+            }
+        } else {
+            var params = {
+                "time": t,
+                "order_id": localStorage.getItem("detail_p")
+            }
+            var sign = login_logic.md(params);
+            var list = {
+                "jsonrpc": "2.0",
+                "method": "getOrderInfo",
+                "params": [{
+                    "time": t,
+                    "sign": sign,
+                    "order_id": localStorage.getItem("detail_p")
+                }],
+                "id": 1
+            }
         }
 
-        var sign = login_logic.md(params);
-        var list = {
-            "jsonrpc": "2.0",
-            "method": "getOrderInfo",
-            "params": [{
-                "time": t,
-                "sign": sign,
-                "order_id": $stateParams.id
-            }],
-            "id": 1
-        }
+
+
         console.log(list)
         return list;
     }
@@ -605,7 +718,6 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
         if (data["result"] != undefined) {
             $scope.order_details = data["result"];
             $scope.length = $scope.order_details.oil_info.length;
-            console.log($scope.order_details)
         } else {
             $ionicPopup.alert({
                 title: '提示',
@@ -619,10 +731,28 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
 }]);
 angular.module('HJY').controller("not_login", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
     $scope.go_login = function() {
-        location.hash = "#/funcpage/login?ch=";
+        var channel = sessionStorage.getItem("ch");
+        location.hash = "#/funcpage/login?ch=" + channel;
     }
 }]);
 HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval", "$ionicPopup", function($scope, $state, login_logic, $interval, $ionicPopup) {
+    $scope.login_state_confirm = function() { //登录状态确认函数,用户操作前调用
+        var list = {
+            "jsonrpc": "2.0",
+            "method": "loginStatus",
+            "params": [],
+            "id": 1
+        }
+        login_logic.submit(list).then(function(data) {
+            if (data.result.status == 1) {
+                $scope.login_flag = true;
+                $state.go("funcpage.order_list");
+            } else {
+                $scope.login_flag = false;
+            }
+        })
+    }
+    $scope.login_state_confirm();
     $scope.info = { phone: "", scode: "", icode: "" } //表单验证信息,此处用对象绑定一是因为IONIC的作用域不清，二是方便表单信息处理
     $scope.notice = "手机号码格式不正确,请重新输入";
     $scope.agree = false;
@@ -714,12 +844,6 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
         var promise_login = login_logic.submit(list_login);
         promise_login.then(function(data) {
             if (data.result != undefined) {
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: "登录成功",
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
                 $state.go("funcpage.order_list");
             } else { //错误信息弹窗
                 $ionicPopup.alert({

@@ -41,7 +41,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                 parse: "login_logic",
                 get_type: function(predata, parse) {
                     var x = parse.parse_url();
-                    var channel = "renrenche";
+                    var channel = "yimao";
                     var list = {
                         "jsonrpc": "2.0",
                         "method": "productList",
@@ -72,27 +72,47 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                         }
                     }
                     sessionStorage.setItem("ch", channel);
-                    var type_data = [];
-                    predata.submit(list).then(function(data) {
-                        if (data.result != undefined) {
-                            var type = data["result"]["list"];
-                            for (i = 0; i < type.length; i++) {
-                                var dis = type[i].product_discount;
-                                var ty = {
-                                    "discount": (dis * 10).toFixed(2),
-                                    "disn": (dis * 1).toFixed(2),
-                                    "t": type[i].product_time,
-                                    "method": type[i].product_time + "期",
-                                    "text": "/月*" + type[i].product_time + "个月套餐",
-                                    "belong": type[i].belong,
-                                    "product_id": type[i].id
-                                }
-                                type_data.push(ty)
-                            }
-                            console.log(type_data)
-                                // console.log(type_data)
+                    localStorage.setItem("ch", channel);
+                    // var type_data = [];
+                    return predata.submit(list);
+                    // predata.submit(list).then(function(data) {
+                    //     if (data.result != undefined) {
+                    //         var type = data["result"]["list"];
+                    //         for (i = 0; i < type.length; i++) {
+                    //             var dis = type[i].product_discount;
+                    //             var ty = {
+                    //                 "discount": (dis * 10).toFixed(2),
+                    //                 "disn": (dis * 1).toFixed(2),
+                    //                 "t": type[i].product_time,
+                    //                 "method": type[i].product_time + "期",
+                    //                 "text": "/月*" + type[i].product_time + "个月套餐",
+                    //                 "belong": type[i].belong,
+                    //                 "product_id": type[i].id
+                    //             }
+                    //             type_data.push(ty)
+                    //         }
+                    //         console.log(type_data)
+                    //             // console.log(type_data)
+                    //     }
+                    // });
+
+
+
+                },
+                get_price: function(predata, parse) {
+                    var x = parse.parse_url();
+                    var channel = "yimao";
+                    if (judge(x)) {
+                        if (x["ch"] != undefined) {
+                            channel = x["ch"];
                         }
-                    });
+                    }
+
+                    function judge(obj) {　　
+                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                            　　　　 return true;　　 }　
+                        return false;
+                    }
 
                     var mytime = new Date();
                     var t = mytime.getTime();
@@ -102,33 +122,32 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                         }
                         // console.log(parse.md(params))
                     var pricelist = {
-                        "jsonrpc": "2.0",
-                        "method": "getMoneyByChannel",
-                        "params": [{
-                            "time": t,
-                            "sign": parse.md(params),
-                            "channel": channel
-                        }],
-                        "id": 1
-                    }
-                    var price_data = [];
-                    var final_list = null;
-                    predata.submit(pricelist).then(function(data) {
-                        if (data.result != undefined) {
-                            var ty = data["result"]["list"];
-                            for (i = 0; i < ty.length; i++) {
-                                var dis = Number(ty[i].name);
-                                price_data.push(dis);
-                            }
+                            "jsonrpc": "2.0",
+                            "method": "getMoneyByChannel",
+                            "params": [{
+                                "time": t,
+                                "sign": parse.md(params),
+                                "channel": channel
+                            }],
+                            "id": 1
                         }
-                    })
-                    final_list = {
-                        "price": price_data,
-                        "type": type_data
-                    }
-
-                    return final_list;
-
+                        // var price_data = [];
+                        // var final_list = null;
+                        // predata.submit(pricelist).then(function(data) {
+                        //     if (data.result != undefined) {
+                        //         var ty = data["result"]["list"];
+                        //         for (i = 0; i < ty.length; i++) {
+                        //             var dis = Number(ty[i].name);
+                        //             price_data.push(dis);
+                        //         }
+                        //     }
+                        // })
+                        // final_list = {
+                        //     "price": price_data,
+                        //     "type": type_data
+                        // }
+                    console.log(pricelist)
+                    return predata.submit(pricelist);
                 }
             }
         })

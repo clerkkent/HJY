@@ -4,6 +4,7 @@
     height:10.27412457rem; // 602px;
     display:flex;
     flex-direction:column;
+     -webkit-overflow-scrolling: touch;
     header{
         height:2.98666412rem; // 175px
         width:100%;
@@ -357,8 +358,9 @@
             height:1.39946547rem; // 82px;
             background:#FFF;
             margin-top:0.05rem;
-            display:flex;
-            flex-direction:row;
+             display:flex;
+            flex-flow:row wrap;
+            justify-content: space-between;
             dl{
                 flex:1;
                 height:100%;
