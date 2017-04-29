@@ -30,7 +30,11 @@
                     </dl>
                 </div>
             </li>
-            <p class="button button-dark" style="margin:0.5rem auto;margin-left:40%;" ng-click="esc()">退出登录</p>
+            <div style="display:flex;flex-flow:row wrap;justify-content: space-between;">
+                <p class="button button-dark" style="margin:.8rem auto" ng-click="esc()">退出登录</p>
+                <p class="button button-balanced" style="margin:.8rem auto" ng-click="shop()">再买一单</p>
+            </div>
+
         </ul>
     </div>
     <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="bottom">

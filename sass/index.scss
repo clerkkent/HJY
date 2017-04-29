@@ -528,6 +528,8 @@ $breakpoints: (
                         border-bottom: .02rem solid #D8D8D8; // 2px;
                         position: relative;
                         @include clearfix;
+                        display:flex;
+                        flex-flow:row nowrap;
                         input {
                             height: 90%;
                             border: 0;
@@ -543,7 +545,7 @@ $breakpoints: (
                             // color:#FFF;
                         }
                         .scode_get {
-                            float: right;
+
                             width: 1.4rem; // 70px; // 60px; // 58px;
                             font-size: .24rem; // 12px;
                             color: #F18A30;
@@ -859,14 +861,14 @@ $breakpoints: (
 
 /*friendRequest*/
 
+
 .friend_request {
     width: 100%;
     display: flex;
     flex-direction: column;
     height: 10.8rem;
-    background: #FFF;
     -webkit-overflow-scrolling: touch;
-    .popum_wrap {
+    background: #FFF;    .popum_wrap {
         @include friend_request_details_pupum;
     }
     header {

@@ -363,7 +363,16 @@ a:focus {
             height: .44rem;
             border-bottom: .02rem solid #D8D8D8;
             position: relative;
-            *height: 1%; }
+            *height: 1%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-flow: row nowrap;
+                -ms-flex-flow: row nowrap;
+                    flex-flow: row nowrap; }
             .login section .list_information .contain_information .information .second:after {
               clear: both;
               content: '.';
@@ -382,7 +391,6 @@ a:focus {
               background: #FFF;
               z-index: 3; }
             .login section .list_information .contain_information .information .second .scode_get {
-              float: right;
               width: 1.4rem;
               font-size: .24rem;
               color: #F18A30;
@@ -674,8 +682,8 @@ a:focus {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 10.8rem;
-  background: #FFF;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  background: #FFF; }
   .friend_request .popum_wrap {
     width: 100%;
     height: 11.36rem;

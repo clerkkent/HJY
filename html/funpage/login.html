@@ -19,13 +19,13 @@
                     <div class="scode information">
                         <span class="first" style="background-image:url(images/login/ic_login_password.png)"></span>
                         <span class="second">
-                                <input type="text" name="scode" ng-model="info.scode" required placeholder="请输入短信验证码" style="width:60%;">
+                                <input type="text" name="scode" ng-model="info.scode" required placeholder="请输入短信验证码" style="width:60%;" maxlength="6">
                                 <span class="third notice" ng-hide="true">验证码输入错误</span>
                         <button class="scode_get" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">
                                 </button>
                         </span>
                     </div>
-                    <input class="info_submit" type="submit" value="登录/注册" ng-disabled=" myForm.phone.$invalid  && myForm.scode.$invalid && agree" ng-click="login()">
+                    <input class="info_submit" type="submit" value="登录/注册" ng-disabled=" myForm.phone.$invalid  || myForm.scode.$invalid || agree||send_scode_flag" ng-click="login()">
                 </div>
             </form>
         </section>

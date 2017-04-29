@@ -69,6 +69,28 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                                 }],
                                 "id": 1
                             }
+                        } else if (localStorage.getItem("ch") != null) {
+                            channel = localStorage.getItem("ch");
+                            list = {
+                                "jsonrpc": "2.0",
+                                "method": "productList",
+                                "params": [{
+                                    "user_id": "5",
+                                    "channel": channel
+                                }],
+                                "id": 1
+                            }
+                        }
+                    } else if (localStorage.getItem("ch") != null) {
+                        channel = localStorage.getItem("ch");
+                        list = {
+                            "jsonrpc": "2.0",
+                            "method": "productList",
+                            "params": [{
+                                "user_id": "5",
+                                "channel": channel
+                            }],
+                            "id": 1
                         }
                     }
                     sessionStorage.setItem("ch", channel);
@@ -105,7 +127,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                     if (judge(x)) {
                         if (x["ch"] != undefined) {
                             channel = x["ch"];
+                        } else if (localStorage.getItem("ch") != null) {
+                            channel = localStorage.getItem("ch")
                         }
+                    } else if (localStorage.getItem("ch") != null) {
+                        channel = localStorage.getItem("ch")
                     }
 
                     function judge(obj) {　　

@@ -40,7 +40,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         }
     }
     $scope.type = $scope.pre_type;
-    $scope.type_info = $scope.pre_type[0]; //页面预加载前获取套餐信息。
+    $scope.type_info = $scope.pre_type[$scope.pre_type.length - 1]; //页面预加载前获取套餐信息。
     $scope.unit_price = $scope.pre_price[0];
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
 
@@ -270,7 +270,6 @@ angular.module('HJY').controller("pay_login_info", ["$scope", "$state", "login_l
     $scope.pid_s = localStorage.getItem("pid");
     $scope.uid_s = localStorage.getItem("uuid");
     $scope.u_price = localStorage.getItem("u_price");
-    console.log($scope.u_price)
     if ($stateParams.pro != null) {
         $scope.u_price = $stateParams.pro.unit_price;
         $scope.t_s = $stateParams.pro.total_time;
@@ -617,40 +616,48 @@ angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic
             }
         })
     }
+    $scope.shop = function() {
+        var channel = sessionStorage.getItem("ch");
+        location.hash = "#/funcpage/land_main?ch=" + channel;
+    }
     $scope.loadMore = function() {
         $scope.page = $scope.page + 1;
         land_main.get_order_list($scope.send_list($scope.page)).then(function(data) {
             if (data["result"] != undefined) {
-                console.log(data["result"]["list"])
                 $scope.order_list.push.apply($scope.order_list, data["result"]["list"]);
                 $scope.$broadcast('scroll.infiniteScrollComplete');
-                if (data["result"]["list"].length == 0 && $scope.page > 1) {
-                    $ionicPopup.alert({
-                        title: '提示',
-                        template: "没有更多啦~~",
-                        okText: '确定', // String
-                        okType: 'button-energized',
-                    });
+                if (data["result"]["list"].length < 10 && data["result"]["list"].length > 0 && $scope.page == 1) {
                     $scope.bottom = false;
-                } else if (data["result"]["list"].length == 0 && $scope.page == 1) {
+                } else {
+                    if (data["result"]["list"].length == 0 && $scope.page > 1) {
+                        $ionicPopup.alert({
+                            title: '提示',
+                            template: "没有更多啦~~",
+                            okText: '确定', // String
+                            okType: 'button-energized',
+                        });
+                        $scope.bottom = false;
+                    } else if (data["result"]["list"].length == 0 && $scope.page == 1) {
 
-                    $ionicPopup.confirm({
-                        title: '提示',
-                        template: "您当前还没有订单",
-                        okText: '去下单', // String
-                        okType: 'button-energized',
-                        cancelText: '取消', // String (默认: 'Cancel')。一个取消按钮的文字。
-                        cancelType: 'button-energized', // String (默认: 'button-default')。取消按钮的类型。
-                    }).then(function(res) {
-                        if (res) {
-                            var channel = sessionStorage.getItem("ch");
-                            location.hash = "#/funcpage/land_main?ch=" + channel;
-                        }
+                        $ionicPopup.confirm({
+                            title: '提示',
+                            template: "您当前还没有订单",
+                            okText: '去下单', // String
+                            okType: 'button-energized',
+                            cancelText: '取消', // String (默认: 'Cancel')。一个取消按钮的文字。
+                            cancelType: 'button-energized', // String (默认: 'button-default')。取消按钮的类型。
+                        }).then(function(res) {
+                            if (res) {
+                                var channel = sessionStorage.getItem("ch");
+                                location.hash = "#/funcpage/land_main?ch=" + channel;
+                            }
 
-                    });
+                        });
 
-                    $scope.bottom = false;
+                        $scope.bottom = false;
+                    }
                 }
+
             } else {
                 $ionicPopup.alert({
                     title: '提示',
@@ -756,6 +763,7 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
     $scope.info = { phone: "", scode: "", icode: "" } //表单验证信息,此处用对象绑定一是因为IONIC的作用域不清，二是方便表单信息处理
     $scope.notice = "手机号码格式不正确,请重新输入";
     $scope.agree = false;
+    $scope.send_scode_flag = false;
     $scope.timeout = false; //倒数读秒按钮禁用
     $scope.icode_show = false; //是否为新注册用户
     login_logic.deal(); //输入框下划线等辅助性功能逻
@@ -769,7 +777,6 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
     };
 
     $scope.second = "获取验证码";
-
     $scope.scode_get = function() { //获取验证码
         var list = {
             "jsonrpc": "2.0",
@@ -782,6 +789,7 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
         var promise_scode = login_logic.submit(list);
         promise_scode.then(function(data) {
             if (data.result != undefined) {
+
                 $scope.icode_show = data["result"]["data"]["is_registed"] == 0 ? true : false;
                 $scope.key = data["result"]["data"]["key"]
                 var a = 60;
@@ -800,7 +808,7 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
                 }, 1000);
 
             } else { //错误信息弹窗
-                console.log(data)
+
                 $ionicPopup.alert({
                     title: '提示',
                     template: data["error"]["message"],
@@ -844,8 +852,10 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
         var promise_login = login_logic.submit(list_login);
         promise_login.then(function(data) {
             if (data.result != undefined) {
+                $scope.send_scode_flag = true;
                 $state.go("funcpage.order_list");
             } else { //错误信息弹窗
+                $scope.send_scode_flag = false;
                 $ionicPopup.alert({
                     title: '提示',
                     template: data["error"]["message"],
