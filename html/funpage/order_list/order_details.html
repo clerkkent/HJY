@@ -87,7 +87,7 @@
             <div class="second">
                 <p class="code">订单编号：{{order_details.order_number}}</p>
                 <p class="time">下单时间：{{order_details.ctime}}</p>
-                <p class="deal">成交时间：{{order_details.utime}}</p>
+                <p class="deal" ng-if="order_details.status!=0&&order_details.status!=4&&order_details.status!=2">成交时间：{{order_details.utime}}</p>
             </div>
             <p style="width:100%;height:6%;color: #FF7320;text-align:center;position:fixed;bottom:0;left:0;background:none;font-size:0.4rem;" ng-if="order_details.status==0" ng-click="go_pay(order_details)">马上支付</p>
         </footer>

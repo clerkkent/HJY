@@ -4,5 +4,5 @@
     <input type="tel" id="scode" class="info" placeholder="请输入验证码" name="scode" ng-maxlength="6" ng-minlength="6" name="scode" ng-model="info.scode" ng-verify="max:6,min:6,required: false" placeholder="请输入短信验证码">
     <button class="get_scode" ng-bind="second" ng-disabled="agree || myform.phone.$invalid" ng-click="scode_get()">获取短信验证码</button>
 </div>
-<input class="second_i button button-assertive info" type="submit" value="{{pay_text}}" ng-disabled="myform.phone.$invalid||myform.scode.$invalid||agreet" ng-click="login_pay()" style="margin-top:1rem;">
-<p class="remind" class="agree checkbox-assertive" ng-model="info.agree"><span class="agree" ng-click="toggleCustom()"></span><span ng-click="go_p()" style="border:none;">同意《会加油服务协议》</span></p>
+<button class="second_i button button-assertive info" type="submit" ng-disabled="myform.phone.$invalid||myform.scode.$invalid||agreet" ng-click="login_pay()" style="margin-top:1rem;"><p style="font-size:.28rem">{{pay_text}}</p><p>充值金额{{price_n}}元</p></button>
+<p class="remind" class="agree checkbox-assertive" ng-model="info.agree"><span class="agree" ng-click="toggleCustom()"></span><span style="border:none;" ng-click="goagree()">同意《会加油服务协议》</span></p>

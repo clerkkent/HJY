@@ -45,5 +45,26 @@ angular.module('HJY').factory("land_main", ["$http", "$q", "$rootScope", functio
         });
         return defer.promise
     }
+    factory.repay = function(data, authToken) {
+        $.extend({
+            StandardPost: function(url, args) {
+                var body = $(document.body),
+                    form = $("<form method='post'></form>"),
+                    input;
+                form.attr({ "action": url });
+                $.each(args, function(key, value) {
+                    input = $("<input type='hidden'>");
+                    input.attr({ "name": key });
+                    input.val(value);
+                    form.append(input);
+                });
+                form.appendTo(document.body);
+                form.submit() //阻止表单默认提交 
+                document.body.removeChild(form[0]);
+            }
+        });
+
+        $.StandardPost($rootScope.url_global + "/pro/index.php?c=webpay&a=goPay", data);
+    }
     return factory
 }])

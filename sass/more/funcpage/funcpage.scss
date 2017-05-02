@@ -149,8 +149,20 @@
                 font-size:.30059965rem; // 24px
             }
             .right{
+
+            }
+            .left:active{
                 color:#FFF;
                 background-image: linear-gradient(-38deg, #FDC499 0%, #FF952F 47%, #FC6C12 100%);
+            }
+            .right:active{
+                color:#FFF;
+                background-image: linear-gradient(-38deg, #FDC499 0%, #FF952F 47%, #FC6C12 100%);
+            }
+            .forbidden{
+                 color:#FFF;
+                 background: #ccc;
+                 border:none;
             }
             .center{
                 width:3.05493073rem; // 179px;
@@ -245,12 +257,15 @@
                     height:.92159921rem; // 54px;
                     width:1.62133195rem; // 95px;
                     text-align:center;
+                    display:flex;
+                    flex-flow:column;
+                    justify-content:space-between;
                     @include backgroundset("../../images/land/H5_Option_n.png",center,center,100%);
                     .pre_price{
                         font-size:.30719974rem; // 18px;
                         color: #F95B4E;
                         font-family: PingFangSC-Semibold;
-                        margin-top:10%;
+                        margin-top:8%;
                         span{
                             font-size:.20479983rem; // 12px;
                             padding-left:0.04rem;
@@ -279,6 +294,12 @@
                 border-radius:.4266663rem; // 25px;
                 font-size:.34133304rem; // 20px
                 font-family: PingFangSC-Semibold;
+                font-size:.30719974rem; // 18px
+                p{
+                    text-align:center;
+                    font-size:.23893313rem; // 14px;
+                    line-height:.37546635rem; // 22px
+                }
             }
             .my_order{
                 width:1.62133195rem; // 95px;
@@ -602,7 +623,7 @@
     }
 }
 .not_login{
-    height:9.38665866rem; // 550px;
+    height:11.4005236rem; // 668px
     background:#e8e8e8;
     overflow:hidden;
     .not_login_wrap{
