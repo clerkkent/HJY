@@ -51,7 +51,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         }
     }
     $scope.type = $scope.pre_type;
-
+    console.log(get_type)
     $scope.type_info = $scope.pre_type[$scope.recommend]; //页面预加载前获取套餐信息。
     $scope.unit_price = $scope.pre_price[$scope.recommend_p];
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
@@ -399,7 +399,7 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
                     $scope.timeout = true;
                     var timeout = $interval(function() {
                         if (a <= 0) {
-                            $scope.second = "获取验证码"
+                            $scope.second = "重新获取"
                             $scope.timeout = false;
                             a = 60;
                             $interval.cancel(timeout)
@@ -537,6 +537,7 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
         // }
         $scope.list_flag = {
             url: $rootScope.url_global + "/#/funcpage/not_login",
+            back_url: "/#/funcpage/pay_success",
             order_id: $stateParams.pro.id
         }
         $scope.login_pay_on = function() {
@@ -814,7 +815,7 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
     $scope.notice = "手机号码格式不正确,请重新输入";
     $scope.agree = false;
     $scope.send_scode_flag = false;
-    $scope.timeout = false; //倒数读秒按钮禁用
+    $scope.timeout = false; //倒数读秒按钮禁用、、
     $scope.icode_show = false; //是否为新注册用户
     login_logic.deal(); //输入框下划线等辅助性功能逻
     /*以上为页面操作功能*/
@@ -860,7 +861,7 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
                 $scope.timeout = true;
                 var timeout = $interval(function() {
                     if (a <= 0) {
-                        $scope.second = "获取验证码"
+                        $scope.second = "重新获取"
                         $scope.timeout = false;
                         a = 60;
                         $interval.cancel(timeout)
@@ -887,6 +888,8 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
 
     $scope.login = function() { //登录注册
         var list_login = null;
+        localStorage.setItem("phone", $scope.info.phone.replace(/\s/g, ""));
+
         if ($scope.info.icode != "") { //判断是否存在验证码
             list_login = {
                 "jsonrpc": "2.0",

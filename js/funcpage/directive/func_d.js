@@ -5,11 +5,7 @@ angular.module('HJY').directive("testT", function($timeout) {
 
             var belong = sessionStorage.getItem("belong");
             var test;
-            if (belong == 1) {
-                test = /^100011\d{13}$/;
-            } else if (belong == 2) {
-                test = /^9\d{15}$/;
-            }
+
         }
     }
 })
@@ -23,5 +19,12 @@ angular.module('HJY').directive("initT", function($timeout) {
                 });
             }
         }
+    }
+})
+HJY.directive("landmainDetails", function() { //购买页，个人中心，订单页下方菜单
+    return {
+        restrict: "ECMA",
+        replace: true,
+        templateUrl: "html/funpage/popum.html"
     }
 })

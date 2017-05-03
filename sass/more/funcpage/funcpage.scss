@@ -49,6 +49,7 @@
                font-family: PingFangSC-Medium;
                height:.46079961rem; // 27px;
                line-height:.46079961rem; // 27px;
+               letter-spacing:0px;
                 .mul {
                     font-size: .40959965rem; // 24px;
                     font-family: PingFangSC-Medium;
@@ -61,6 +62,7 @@
                     font-family: PingFangSC-Medium;
                     display:inline-block;
                     vertical-align:top;
+                    letter-spacing:8px;
                 }
                 .count{
                     font-size: .40959965rem; // 24px;
@@ -89,7 +91,7 @@
             .first{
                 text-align:center;
                 font-size:.22186648rem; // 13px
-                color: #3F3F3F;
+                color: #999999;
                 font-family: PingFangSC-Medium;
                 margin-top:.51199956rem; // 30px;
                 margin-bottom:.27306643rem; // 16px;
@@ -146,7 +148,7 @@
                 font-weight:600;
             }
             .left{
-                font-size:.30059965rem; // 24px
+                font-size:.20059965rem; // 24px
             }
             .right{
 
@@ -275,6 +277,7 @@
                         font-size:.18773317rem; // 11px;
                         color: #F95B4E;
                         font-family: PingFangSC-Regular;
+                        margin-bottom:8%;
                     }
                 }
                 .is_sellect{
@@ -295,6 +298,9 @@
                 font-size:.34133304rem; // 20px
                 font-family: PingFangSC-Semibold;
                 font-size:.30719974rem; // 18px
+                border:none;
+                appearance:button;
+                box-shadow: 0px 3px 0px  #f95b4e ;
                 p{
                     text-align:center;
                     font-size:.23893313rem; // 14px;
@@ -653,11 +659,14 @@
             }
         }
         footer{
-            margin-top:4.8732955rem; // 260px;
+            margin-top:5.5732955rem; // 260px;
             font-family: PingFangSC-Regular;
             color:#666;
             font-size:.25599978rem; // 15px
             text-align:center;
         }
     }
+}
+.popup-body{
+    text-align:center;
 }

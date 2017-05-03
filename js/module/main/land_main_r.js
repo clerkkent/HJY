@@ -93,6 +93,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                             "id": 1
                         }
                     }
+                    console.log(list)
                     sessionStorage.setItem("ch", channel);
                     localStorage.setItem("ch", channel);
                     // var type_data = [];
