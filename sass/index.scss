@@ -866,7 +866,7 @@ $breakpoints: (
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 10.8rem;
+    height: 9.8rem;
     -webkit-overflow-scrolling: touch;
     background: #FFF;    .popum_wrap {
         @include friend_request_details_pupum;
@@ -1031,10 +1031,10 @@ $breakpoints: (
                     @include backgroundset("../images/login/ic_default_order@3x.png",
                     top,
                     center,
-                    60%);
+                    50%);
                 }
                 ul {
-                    height: 4.2rem; // 210px;
+                    height: 3.5rem; // 210px;
                     background: #FFF;
                     li {
                         display: flex;
@@ -2175,19 +2175,20 @@ $breakpoints: (
     display: flex;
     height: 10.36rem; // 568px
     flex-direction: column;
+    justify-content:space-between;
     background-color: #fedb65;
     -webkit-overflow-scrolling: touch;
     header {
         width: 100%;
-        height: 2.9rem; // 145px;
+        height: 2rem; // 145px;
         color: #4A4A4A;
         margin-top: 0.1rem;
         font-family: PingFangSC-Medium;
         @include backgroundset("../images/friend/H5_title_driver.png",
         center,
-        15%,
+        0%,
         60%);
-        padding-top: 1.5rem;
+        padding-top: 1.1rem;
         .first {
             text-align: center;
             font-size: .28rem; // 14px;
@@ -2200,7 +2201,7 @@ $breakpoints: (
             text-align: center;
             font-size: .32rem; // 16px
             font-family: PingFangSC-Medium;
-            margin-top: 0.4rem;
+            margin-top: 0.2rem;
             span {
                 @include backgroundset("../images/friend/H5_backgroud.png",
                 center,
@@ -2221,7 +2222,7 @@ $breakpoints: (
         }
     }
     section {
-        height: 5.5rem; // 275px
+        height: 5rem; // 275px
         @include backgroundset("../images/friend/H5_pic.png",
         top,
         center,
@@ -2244,13 +2245,13 @@ $breakpoints: (
         }
     }
     footer {
-        flex: 1;
+        height:1rem;
         button {
             width: 5rem; // 250px;
             height: .9rem; // 45px;
             border-radius: 22.5px;
             display: block;
-            margin: .6rem auto;
+            margin: 0 auto;
         }
     }
     .popum_wrap {

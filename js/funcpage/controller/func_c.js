@@ -208,6 +208,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
                         localStorage.setItem("n_price", $scope.normal_price);
                         localStorage.setItem("f_price", $scope.final_price);
                         localStorage.setItem("u_price", $scope.unit_price);
+                        localStorage.setItem("flag_pay", 0);
                         $state.go("funcpage.land_main.login_on");
                     } else {
                         localStorage.setItem("card", $scope.info.card.replace(/\s/g, ""));
@@ -219,6 +220,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
                         localStorage.setItem("n_price", $scope.normal_price);
                         localStorage.setItem("f_price", $scope.final_price);
                         localStorage.setItem("u_price", $scope.unit_price);
+                        localStorage.setItem("flag_pay", 0);
                         $state.go("funcpage.land_main.pay_login");
                         //以上为备用参数
                     }
@@ -487,6 +489,14 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
     }
 }])
 angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$stateParams", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $stateParams, $rootScope) {
+    if ($stateParams.pro != null) {
+        localStorage.setItem("card", $stateParams.pro.card_number);
+        localStorage.setItem("pid", $stateParams.pro.product_id);
+        localStorage.setItem("order_id", $stateParams.pro.id);
+        localStorage.setItem("u_price", $stateParams.pro.unit_price);
+        localStorage.setItem("n_price", $stateParams.pro.discount_before_amount);
+        localStorage.setItem("f_price", $stateParams.pro.discount_after_amount);
+    }
     $scope.phone_on = localStorage.getItem("phone");
     $scope.card_s = localStorage.getItem("card");
     $scope.name_s = localStorage.getItem("name");
@@ -497,6 +507,8 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
     $scope.pid_s = localStorage.getItem("pid");
     $scope.uid_s = localStorage.getItem("uuid");
     $scope.u_price = localStorage.getItem("u_price");
+    $scope.flag_pay = localStorage.getItem("flag_pay");
+    $scope.order_id = localStorage.getItem("order_id");
     $scope.list_flag = null;
     $scope.agreet = false;
     $scope.toggleCustom = function() { //注册协议限制
@@ -512,12 +524,10 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
     $scope.go_agree = function() {
         $state.go("user_agreement")
     }
-    if ($stateParams.pro != null) {
+    if ($scope.flag_pay == 1) {
         //以上为备用参数
-        localStorage.setItem("card", $stateParams.pro.card_number);
-        localStorage.setItem("pid", $stateParams.pro.product_id);
-        localStorage.setItem("u_price", $stateParams.pro.unit_price);
-        $scope.pay_text = "支付" + $stateParams.pro.discount_after_amount + "元";
+        $scope.pay_text = "支付" + $scope.price_f + "元";
+
         // var mytime = new Date();
         // var t = mytime.getTime();
         // var params = {
@@ -536,14 +546,16 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
         //     "money": $stateParams.pro.unit_price
         // }
         $scope.list_flag = {
-            url: $rootScope.url_global + "/#/funcpage/not_login",
+            url: "/#/funcpage/land_main",
             back_url: "/#/funcpage/pay_success",
-            order_id: $stateParams.pro.id
+            order_id: $scope.order_id
+
         }
+        console.log($scope.list_flag)
         $scope.login_pay_on = function() {
             land_main.repay($scope.list_flag)
         }
-    } else if ($scope.u_price != undefined && $scope.pid_s != undefined && $scope.card_s != undefined) {
+    } else if ($scope.flag_pay == 0) {
         $scope.pay_text = "支付" + $scope.price_f + "元";
         var mytime = new Date();
         var t = mytime.getTime();
@@ -562,6 +574,7 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
             "sign": sign,
             "money": $scope.u_price
         }
+
         $scope.login_pay_on = function() {
             land_main.pay($scope.list_flag)
         }
@@ -719,7 +732,11 @@ angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic
 }]);
 angular.module('HJY').controller("order_details", ["$scope", "$state", "login_logic", "$http", "$stateParams", "land_main", "$ionicPopup", function($scope, $state, login_logic, $http, $stateParams, land_main, $ionicPopup) {
     $scope.go_pay = function(x) {
-        $state.go("funcpage.land_main.login_on", { pro: x })
+        localStorage.setItem("flag_pay", 1);
+        if (localStorage.getItem("flag_pay") == 1) {
+            $state.go("funcpage.land_main.login_on", { pro: x })
+        }
+
     }
     $scope.send_details = function(n) {
         var mytime = new Date();
@@ -758,10 +775,6 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
                 "id": 1
             }
         }
-
-
-
-        console.log(list)
         return list;
     }
     land_main.get_order_list($scope.send_details()).then(function(data) {

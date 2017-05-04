@@ -64,7 +64,7 @@ angular.module('HJY').factory("land_main", ["$http", "$q", "$rootScope", functio
             }
         });
 
-        $.StandardPost($rootScope.url_global + "/pro/index.php?c=webpay&a=goPay", data);
+        $.StandardPost($rootScope.url_global + "/pro/index.php?c=yimao&a=goPay", data);
     }
     return factory
 }])

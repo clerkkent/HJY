@@ -681,7 +681,7 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 10.8rem;
+  height: 9.8rem;
   -webkit-overflow-scrolling: touch;
   background: #FFF; }
   .friend_request .popum_wrap {
@@ -923,9 +923,9 @@ a:focus {
           background-size: 6%, 6%; }
         .friend_request section .friend_wrap .second .friend_none {
           background: url("../images/login/ic_default_order@3x.png") top center no-repeat;
-          background-size: 60%; }
+          background-size: 50%; }
         .friend_request section .friend_wrap .second ul {
-          height: 4.2rem;
+          height: 3.5rem;
           background: #FFF; }
           .friend_request section .friend_wrap .second ul li {
             display: -webkit-box;
@@ -1990,17 +1990,21 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: #fedb65;
   -webkit-overflow-scrolling: touch; }
   .friend_request_details header {
     width: 100%;
-    height: 2.9rem;
+    height: 2rem;
     color: #4A4A4A;
     margin-top: 0.1rem;
     font-family: PingFangSC-Medium;
-    background: url("../images/friend/H5_title_driver.png") center 15% no-repeat;
+    background: url("../images/friend/H5_title_driver.png") center 0% no-repeat;
     background-size: 60%;
-    padding-top: 1.5rem; }
+    padding-top: 1.1rem; }
     .friend_request_details header .first {
       text-align: center;
       font-size: .28rem;
@@ -2011,7 +2015,7 @@ a:focus {
       text-align: center;
       font-size: .32rem;
       font-family: PingFangSC-Medium;
-      margin-top: 0.4rem; }
+      margin-top: 0.2rem; }
       .friend_request_details header .second span {
         background: url("../images/friend/H5_backgroud.png") center center no-repeat;
         background-size: 95%;
@@ -2025,7 +2029,7 @@ a:focus {
           font-size: .4rem;
           font-weight: normal; }
   .friend_request_details section {
-    height: 5.5rem;
+    height: 5rem;
     background: url("../images/friend/H5_pic.png") top center no-repeat;
     background-size: 80%;
     position: relative;
@@ -2042,17 +2046,14 @@ a:focus {
       background: url("../images/friend/H5_info.png") left center no-repeat;
       background-size: 16%; }
   .friend_request_details footer {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1; }
+    height: 1rem; }
     .friend_request_details footer button {
       width: 5rem;
       height: .9rem;
       -webkit-border-radius: 22.5px;
               border-radius: 22.5px;
       display: block;
-      margin: .6rem auto; }
+      margin: 0 auto; }
   .friend_request_details .popum_wrap {
     width: 100%;
     height: 11.36rem;

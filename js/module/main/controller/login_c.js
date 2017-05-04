@@ -130,7 +130,7 @@ HJY.controller("help", ["$scope", "$state", "login_logic", "$http", function($sc
         $scope.help_information = data.data;
     })
 }]);
-HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "friend", "webappSDK", "$q", function($scope, $state, login_logic, $http, $ionicPopup, friend, webappSDK, $q) {
+HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "friend", "webappSDK", "$q", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, friend, webappSDK, $q, $rootScope) {
     $scope.userid = null; //userid
     $scope.strs = null; //token
     $scope.info = 0; //登录信息主体
@@ -144,8 +144,8 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
         var content = {
             title: "抢油滴省钱加油",
             content: "抢到多少送多少，额外再送200元加油礼券，用了就是赚到，我会加油我骄傲",
-            imageUrl: "http",
-            url: "url"
+            imageUrl: $rootScope.url_global + "/wechat/images/login/ic_login_logo.png",
+            url: $rootScope.url_global + "/wechat/#/game/main"
         }
         webappSDK.share();
     }
@@ -229,14 +229,14 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
         }
     }
 }]);
-HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPopup", "friend", "webappSDK", function($scope, $state, $http, $ionicPopup, friend, webappSDK) {
+HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPopup", "friend", "webappSDK", "$rootScope", function($scope, $state, $http, $ionicPopup, friend, webappSDK, $rootScope) {
     friend.popum();
     $scope.share = function() { //分享原生H5指令交互
         var content = {
-            title: "asda",
-            content: "xxxxxxx",
-            imageUrl: "http",
-            url: "url"
+            title: "抢油滴省钱加油",
+            content: "抢到多少送多少，额外再送200元加油礼券，用了就是赚到，我会加油我骄傲",
+            imageUrl: $rootScope.url_global + "/wechat/images/login/ic_login_logo.png",
+            url: $rootScope.url_global + "/wechat/#/game/main"
         }
         webappSDK.share();
     }

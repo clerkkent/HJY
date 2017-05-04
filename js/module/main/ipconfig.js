@@ -1,6 +1,6 @@
 HJY.run(['$rootScope', '$window', '$location', '$log', '$templateCache', function($rootScope, $window, $location, $log, $templateCache) {
     var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
-    // $rootScope.url_global = "http://192.168.11.153:8888"; //本地测试
+    // $rootScope.url_global = "http://192.168.10.197:8888"; //本地测试
     $rootScope.url_global = "http://test.1huangjin.cn"; //线上测试
     // $rootScope.url_global = "http://www.ihaomu.com"; //线上
     function stateChangeSuccess($rootScope) {
