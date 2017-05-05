@@ -12,7 +12,7 @@
                     <span class="total"><i>{{unit_price}}</i>元</span>即时充 可<span class="reduce">节省<i>{{reduce_price }}</i>元</span>
 
                 </div>
-                <input type="tel" id="card" placeholder="请输入油卡号" test-t ng-verify="pattern:/^([\d\s]{19}|[\d\s]{23})$/,max:23,min:19,errmsg:'油卡卡号格式错误',required: true" ng-model="info.card" ng-pattern="/^([\d\s]{19}|[\d\s]{23})$/" name="card" ng-blur="check_card()">
+                <input type="tel" id="card" placeholder="请输入中石化油卡号" test-t ng-verify="pattern:/^([\d\s]{19}|[\d\s]{23})$/,max:23,min:19,errmsg:'油卡卡号格式错误',required: true" ng-model="info.card" ng-pattern="/^([\d\s]{19}|[\d\s]{23})$/" name="card" ng-blur="check_card()">
             </div>
         </header>
         <section>

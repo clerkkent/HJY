@@ -161,9 +161,6 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
 
     sessionStorage.setItem("belong", $scope.belong);
     $scope.second = "获取验证码";
-
-
-
     $scope.cardinfo = { company: "", name: "" }
         // $scope.get_card_info = false;
 
@@ -730,6 +727,7 @@ angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic
         $state.go("funcpage.order_details", { id: p_id })
     }
 }]);
+
 angular.module('HJY').controller("order_details", ["$scope", "$state", "login_logic", "$http", "$stateParams", "land_main", "$ionicPopup", function($scope, $state, login_logic, $http, $stateParams, land_main, $ionicPopup) {
     $scope.go_pay = function(x) {
         localStorage.setItem("flag_pay", 1);

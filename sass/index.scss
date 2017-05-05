@@ -1034,9 +1034,14 @@ $breakpoints: (
                     50%);
                 }
                 ul {
-                    height: 3.5rem; // 210px;
+                    height: 3.2rem; // 210px;
                     background: #FFF;
+                     border-radius: .3rem; // 15px;
+                    @include respond-to(sm) {
+                        height:3.8rem;
+                    }
                     li {
+
                         display: flex;
                         flex-direction: row;
                         span {

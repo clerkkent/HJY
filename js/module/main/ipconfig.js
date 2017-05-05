@@ -3,6 +3,7 @@ HJY.run(['$rootScope', '$window', '$location', '$log', '$templateCache', functio
     // $rootScope.url_global = "http://192.168.10.197:8888"; //本地测试
     $rootScope.url_global = "http://test.1huangjin.cn"; //线上测试
     // $rootScope.url_global = "http://www.ihaomu.com"; //线上
+
     function stateChangeSuccess($rootScope) {
         $templateCache.removeAll();
     }

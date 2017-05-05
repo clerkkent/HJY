@@ -86,7 +86,7 @@ HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $ro
     }
     factory.deal_help = function() { //帮助页的详细信息隐藏出现
         $(".main_content").on("click", ".main_content_help li", (function(event) {
-            $(this).find(".answer").slideToggle("fast");
+            $(this).find(".answer").fadeToggle();
             if ($(this).find("span").hasClass("selected")) {
                 $(this).find("span").removeClass("selected")
             } else {
