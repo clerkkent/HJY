@@ -95,11 +95,21 @@
                 font-family: PingFangSC-Medium;
                 margin-top:.51199956rem; // 30px;
                 margin-bottom:.27306643rem; // 16px;
+                position:relative;
                 span{
                     color:#f95b4e;
                     i{
                         font-size:.27306643rem; // 16px;
                     }
+                }
+                .icon_details_pro{
+                    width:.35599978rem; // 15px;
+                    height:.35599978rem; // 15px;
+                    display:inline-block;
+                    position:absolute;
+                    right:10%;
+                    bottom:0;
+                    @include backgroundset("../../images/land/ic_home_info@3x.png",center,center,100%)
                 }
             }
             #card{
@@ -112,6 +122,95 @@
                  background-color:#FFF;
             }
 
+        }
+    }
+    .land_main_popum{
+        position:fixed;
+        width:100%;
+        height:100%;
+        background-color: rgba(black,.5);
+        z-index:10;
+        .popum_wrap{
+            width:4.77866259rem; // 280px;
+            height:6.82666084rem; // 400px;
+            @include center-block;
+            background:#FFF;
+            display:flex;
+            flex-direction:column;
+            border-radius:2%;
+            header{
+                height:50%;
+                @include backgroundset("../../images/land/ic_popup_huijiayou@3x.png",center,15%,30%);
+                background-color:#eadfcb;
+                text-align:center;
+                position:relative;
+                border-top-left-radius:2%;
+                border-top-right-radius:2%;
+                font-size:.27306643rem; // 16px;
+                p{
+                    position:absolute;
+                    bottom:8%;
+                    text-align:center;
+                    width:100%;
+                    color:#FFF;
+                }
+                .close{
+                    position:absolute;
+                    right:5%;
+                    top:5%;
+                    color:#FFF;
+                    font-size:.51199956rem; // 30px
+                }
+            }
+            section{
+                .popum_title{
+                    display:flex;
+                    flex-flow:row wrap;
+                    justify-content:space-between;
+                    height:.85333261rem; // 50px;
+                    line-height:.85333261rem; // 50px;
+                    border-bottom:1px solid #eee;
+                    margin-bottom:.17066652rem; // 10px;
+                    width:100%;
+                     font-size:.27306643rem; // 16px;
+                    span{
+                        display:block;
+                        font-family: PingFangSC-Regular;
+                        color: #E2BC85;
+                        letter-spacing: 0;
+                        margin-left:-0.1rem;
+                        i{
+                            width:.20479983rem; // 12px;
+                            height:.20479983rem; // 12px;
+                            display:inline-block;
+                            margin:0;
+                            @include backgroundset("../../images/land/ic_home_rmb@3x.png",center,center,150%);
+                        }
+                    }
+                    .sec{
+                        margin-right:-0.1rem;
+                    }
+                }
+                .popum_details{
+                    max-height:4.51333042rem; // 200px;
+                    overflow-y:scroll;
+                    li{
+                         display:flex;
+                        flex-flow:row wrap;
+                        justify-content:space-between;
+                        background:none;
+                        width:100%;
+                        height:.51199956rem; // 30px;
+                        margin:0;
+                    p{
+                        font-family: PingFangSC-Regular;
+                        color: #666666;
+                        letter-spacing: 0;
+                        font-size:.18773317rem; // 11px;
+                    }
+                    }
+                }
+            }
         }
     }
     section{

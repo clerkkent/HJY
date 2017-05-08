@@ -14,6 +14,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                         './css/funcpage/funcpage.css',
                         './js/plugins/underscore.js',
                         './js/plugins/md5.js',
+                        './js/plugins/moment.js'
                     ]); // 按需加载目标 js file
                 }]
             }
@@ -41,16 +42,27 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                 parse: "login_logic",
                 get_type: function(predata, parse) {
                     var x = parse.parse_url();
+                    console.log(11)
+                    console.log(x)
                     var channel = "yimao";
+                    var mytime = new Date();
+                    var t = mytime.getTime();
+                    var id = 3;
+                    var params = {
+                        "time": t,
+                        "type": id
+                    }
                     var list = {
                         "jsonrpc": "2.0",
                         "method": "productList",
                         "params": [{
-                            "user_id": "5",
-                            "channel": channel
+                            // "user_id": "5",
+                            "time": t,
+                            "type": id,
+                            "sign": parse.md(params)
                         }],
                         "id": 1
-                    };
+                    }
 
                     function judge(obj) {　　
                         for (var i in obj) { //如果不为空，则会执行到这一步，返回true
@@ -64,8 +76,10 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                                 "jsonrpc": "2.0",
                                 "method": "productList",
                                 "params": [{
-                                    "user_id": "5",
-                                    "channel": channel
+                                    // "user_id": "5",
+                                    "time": t,
+                                    "type": id,
+                                    "sign": parse.md(params)
                                 }],
                                 "id": 1
                             }
@@ -75,8 +89,10 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                                 "jsonrpc": "2.0",
                                 "method": "productList",
                                 "params": [{
-                                    "user_id": "5",
-                                    "channel": channel
+                                    // "user_id": "5",
+                                    "time": t,
+                                    "type": id,
+                                    "sign": parse.md(params)
                                 }],
                                 "id": 1
                             }
@@ -87,13 +103,14 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                             "jsonrpc": "2.0",
                             "method": "productList",
                             "params": [{
-                                "user_id": "5",
-                                "channel": channel
+                                // "user_id": "5",
+                                "time": t,
+                                "type": id,
+                                "sign": parse.md(params)
                             }],
                             "id": 1
                         }
                     }
-                    console.log(list)
                     sessionStorage.setItem("ch", channel);
                     localStorage.setItem("ch", channel);
                     // var type_data = [];

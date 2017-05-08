@@ -45,11 +45,13 @@ HJY.directive("scrollLs", function() {
                     viewH = $(this).height(), //可见高度
                     contentH = $(this).get(0).scrollHeight, //内容高度
                     scrollTop = $(this).scrollTop(); //滚动高度
-                if ((viewH + scrollTop) / contentH < g) {
-                    $(".download").css({ height: "0", opacity: "0" })
-                } else {
-                    $(".download").css({ height: "1.27999891rem", opacity: "1" })
-                }
+                // if ((viewH + scrollTop) / contentH < g) {
+                // if ((viewH + scrollTop) / contentH < g) {
+                //     $(".download").css({ height: "0", opacity: "0" })
+                // } else {
+                //     $(".download").css({ height: "1.27999891rem", opacity: "1" })
+                // }
+                $(".download").css({ height: "1.27999891rem", opacity: "1" })
             })
         }
     }

@@ -98,6 +98,25 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                     var x = parse.parse_url();
                     var channel = "renrenche";
                     var list = null;
+                    var id = 2;
+
+                    var mytime = new Date();
+                    var t = mytime.getTime();
+                    var params = {
+                        "time": t,
+                        "type": id
+                    }
+                    list = {
+                        "jsonrpc": "2.0",
+                        "method": "productList",
+                        "params": [{
+                            // "user_id": "5",
+                            "time": t,
+                            "type": id,
+                            "sign": parse.md(params)
+                        }],
+                        "id": 1
+                    }
 
                     function judge(obj) {　　
                         for (var i in obj) { //如果不为空，则会执行到这一步，返回true
@@ -111,8 +130,10 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                                 "jsonrpc": "2.0",
                                 "method": "productList",
                                 "params": [{
-                                    "user_id": "5",
-                                    "channel": channel
+                                    // "user_id": "5",
+                                    "time": t,
+                                    "type": id,
+                                    "sign": parse.md(params),
                                 }],
                                 "id": 1
                             }

@@ -3,8 +3,11 @@ angular.module('HJY').controller("funcpage", ["$scope", "$state", "login_logic",
 }]);
 angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
     login_logic.deal_help();
+
     $http.get("mock/func/help.json").then(function(data) {
         $scope.help_information = data.data;
+        console.log($(".main_content_help li"))
+        $(".main_content_help li").eq($(".main_content_help li").length - 1).css({ display: "none" })
     })
 }]);
 angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "get_price", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, get_price, _, land_main, $ionicPopup, $interval, land, $rootScope) {
@@ -18,6 +21,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.pre_price = [];
     $scope.recommend = 0;
     $scope.recommend_p = 0;
+
     if (get_type.result != undefined) {
         var type = get_type["result"]["list"];
         for (i = 0; i < type.length; i++) {
@@ -51,8 +55,18 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         }
     }
     $scope.type = $scope.pre_type;
-    console.log(get_type)
     $scope.type_info = $scope.pre_type[$scope.recommend]; //页面预加载前获取套餐信息。
+    $scope.date_list = ["支付后两小时内"];
+
+    function data() {
+        $scope.date_list = ["支付后两小时内"];
+        for (var i = 1; i < $scope.type_info.t; i++) {
+            var n = moment().add({ months: i });
+            var a = n.year() + "/" + (n.month() + 1) + "/" + n.date();
+            $scope.date_list.push(a);
+        }
+    }
+    data();
     $scope.unit_price = $scope.pre_price[$scope.recommend_p];
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
 
@@ -78,6 +92,14 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         $scope.belong = $scope.type_info.belong;
         $scope.normal_price = $scope.price_normal();
         $scope.get_card_info = false;
+        data();
+    }
+    $scope.detail = false;
+    $scope.details = function() {
+        $scope.detail = true;
+    }
+    $scope.close = function() {
+        $scope.detail = false;
     }
     $scope.add = function() {
         if ($scope.price_selected < $scope.pre_price.length - 1) {
@@ -112,7 +134,6 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         return (d * t * u).toFixed(1);
     }
     $scope.price_normal = function() {
-
         var t = $scope.type_info.t;
         var u = $scope.unit_price;
         return t * u;

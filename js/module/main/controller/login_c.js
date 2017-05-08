@@ -119,13 +119,17 @@ HJY.controller("weixin", ["$scope", "$state", "login_logic", function($scope, $s
         $state.go("^")
     }
 }]);
-HJY.controller("help", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
+HJY.controller("help", ["$scope", "$state", "login_logic", "$http", "webappSDK", function($scope, $state, login_logic, $http, webappSDK) {
     $scope.help_information = "";
     $scope.title_content = "帮助"
     login_logic.deal_help()
         // $scope.feed_return = function() {
         //     $state.go("help")
         // }
+    $scope.call = function() {
+        var phone = "4008518686";
+        webappSDK.call(phone)
+    }
     $http.get("mock/help/help.json").then(function(data) {
         $scope.help_information = data.data;
     })
@@ -140,14 +144,15 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     $scope.url = location.search; //参数
     $scope.theRequest = new Object();
     friend.popum();
+    // webappSDK.GetActiveId(1);
     $scope.share = function() { //分享原生H5指令交互
         var content = {
-            title: "抢油滴省钱加油",
-            content: "抢到多少送多少，额外再送200元加油礼券，用了就是赚到，我会加油我骄傲",
+            title: "必须看！老司机教你如何优惠充油卡！",
+            content: "低至85折充油再送200元加油券，车主必备，老司机快来~我会加油我骄傲！",
             imageUrl: $rootScope.url_global + "/wechat/images/login/ic_login_logo.png",
             url: $rootScope.url_global + "/wechat/#/game/main"
         }
-        webappSDK.share();
+        webappSDK.share(content);
     }
     webappSDK.getUserInfos(function(res) { //webbriage入口
         var info = JSON.parse(res)
@@ -231,14 +236,15 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
 }]);
 HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPopup", "friend", "webappSDK", "$rootScope", function($scope, $state, $http, $ionicPopup, friend, webappSDK, $rootScope) {
     friend.popum();
+    webappSDK.GetActiveId(1);
     $scope.share = function() { //分享原生H5指令交互
         var content = {
-            title: "抢油滴省钱加油",
-            content: "抢到多少送多少，额外再送200元加油礼券，用了就是赚到，我会加油我骄傲",
+            title: "必须看！老司机教你如何优惠充油卡！",
+            content: "低至85折充油再送200元加油券，车主必备，老司机快来~我会加油我骄傲！",
             imageUrl: $rootScope.url_global + "/wechat/images/login/ic_login_logo.png",
             url: $rootScope.url_global + "/wechat/#/game/main"
         }
-        webappSDK.share();
+        webappSDK.share(content);
     }
 }]);
 HJY.controller("pay", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
@@ -451,7 +457,7 @@ HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", func
     }
 }])
 
-HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", "login_logic", "land", "get_predata", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup, login_logic, land, get_predata) {
+HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", "login_logic", "land", "get_predata", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup, get_predata) {
     $scope.info = { card: "", phone: "", scode: "", agree: true };
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
     $scope.cardt = false;
@@ -489,7 +495,6 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
             $(".main_content .land .remind .agree").removeClass("selected")
             $scope.agreet = false;
         } else {
-
             $(".main_content .land .remind .agree").addClass("selected")
             $scope.agreet = true;
             $scope.notice = "同意《会加油服务协议》";
@@ -706,7 +711,6 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
                 okType: 'button-energized',
             });
         }
-
         if ($scope.error["oil_card"] != undefined) {
             $scope.info.card = $scope.error["oil_card"].replace(/(.{4})/g, "$1 ");
         }

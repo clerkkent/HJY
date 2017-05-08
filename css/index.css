@@ -83,12 +83,23 @@ a:focus {
   to {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg); } }
+@-moz-keyframes circledoes {
+  from {
+    -moz-transform: rotate(0deg);
+         transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(360deg);
+         transform: rotate(360deg); } }
 @keyframes circledoes {
   from {
     -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
             transform: rotate(0deg); }
   to {
     -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+         -o-transform: rotate(360deg);
             transform: rotate(360deg); } }
 
 @-webkit-keyframes circledoesX {
@@ -99,12 +110,24 @@ a:focus {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg); } }
 
+@-moz-keyframes circledoesX {
+  from {
+    -moz-transform: rotate(0deg);
+         transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(360deg);
+         transform: rotate(360deg); } }
+
 @keyframes circledoesX {
   from {
     -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
             transform: rotate(0deg); }
   to {
     -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+         -o-transform: rotate(360deg);
             transform: rotate(360deg); } }
 
 @-webkit-keyframes circledoesY {
@@ -115,12 +138,24 @@ a:focus {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg); } }
 
+@-moz-keyframes circledoesY {
+  from {
+    -moz-transform: rotate(0deg);
+         transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(360deg);
+         transform: rotate(360deg); } }
+
 @keyframes circledoesY {
   from {
     -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
             transform: rotate(0deg); }
   to {
     -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+         -o-transform: rotate(360deg);
             transform: rotate(360deg); } }
 
 @-webkit-keyframes myfirst
@@ -142,17 +177,47 @@ a:focus {
     -webkit-transform: scale(0) translateY(-100%);
             transform: scale(0) translateY(-100%); } }
 
+@-moz-keyframes disappear {
+  from {
+    opacity: 1;
+    -moz-transform: scale(1) translateY(0%);
+         transform: scale(1) translateY(0%); }
+  to {
+    opacity: 0;
+    -moz-transform: scale(0) translateY(-100%);
+         transform: scale(0) translateY(-100%); } }
+
 @keyframes disappear {
   from {
     opacity: 1;
     -webkit-transform: scale(1) translateY(0%);
+       -moz-transform: scale(1) translateY(0%);
+         -o-transform: scale(1) translateY(0%);
             transform: scale(1) translateY(0%); }
   to {
     opacity: 0;
     -webkit-transform: scale(0) translateY(-100%);
+       -moz-transform: scale(0) translateY(-100%);
+         -o-transform: scale(0) translateY(-100%);
             transform: scale(0) translateY(-100%); } }
 
 @-webkit-keyframes disappear_hjy {
+  0% {
+    opacity: 0;
+    display: block; }
+  30% {
+    opacity: 0.5; }
+  50% {
+    opacity: 1; }
+  80% {
+    opacity: 0.5; }
+  90% {
+    opacity: 0.1; }
+  100 {
+    opacity: 0;
+    display: none; } }
+
+@-moz-keyframes disappear_hjy {
   0% {
     opacity: 0;
     display: block; }
@@ -185,6 +250,35 @@ a:focus {
     display: none; } }
 
 @-webkit-keyframes borderTransform {
+  0% {
+    border-right-color: blue;
+    border-right-color: blue;
+    border-top-color: red;
+    border-top-color: red;
+    border-bottom-color: red;
+    border-bottom-color: red;
+    border-left-color: blue;
+    border-left-color: blue; }
+  50% {
+    border-right-color: red;
+    border-right-color: red;
+    border-top-color: blue;
+    border-top-color: blue;
+    border-bottom-color: blue;
+    border-bottom-color: blue;
+    border-left-color: red;
+    border-left-color: red; }
+  100% {
+    border-right-color: blue;
+    border-right-color: blue;
+    border-top-color: red;
+    border-top-color: red;
+    border-bottom-color: red;
+    border-bottom-color: red;
+    border-left-color: blue;
+    border-left-color: blue; } }
+
+@-moz-keyframes borderTransform {
   0% {
     border-right-color: blue;
     border-right-color: blue;
@@ -262,7 +356,9 @@ a:focus {
     width: .36rem;
     top: 25%;
     background: url("../images/login/ic_pay_return@3x.png") center center no-repeat;
-    background-size: 100%; }
+    -moz-background-size: 100%;
+      -o-background-size: 100%;
+         background-size: 100%; }
 
 /*menu_list*/
 .menu_list {
@@ -274,29 +370,40 @@ a:focus {
     color: #E2BC85; }
   .menu_list .main {
     background: url(../images/login/ic_tabar_home_n@3x.png) center 20% no-repeat;
-    background-size: .4rem .4rem; }
+    -moz-background-size: .4rem .4rem;
+      -o-background-size: .4rem .4rem;
+         background-size: .4rem .4rem; }
   .menu_list .order {
     background: url(../images/login/ic_tabar_recording_n@3x.png) center 20% no-repeat;
-    background-size: .4rem .4rem; }
+    -moz-background-size: .4rem .4rem;
+      -o-background-size: .4rem .4rem;
+         background-size: .4rem .4rem; }
   .menu_list .my {
     background: url(../images/login/ic_tabar_me_h@3x.png) center 20% no-repeat;
-    background-size: .4rem .4rem; }
+    -moz-background-size: .4rem .4rem;
+      -o-background-size: .4rem .4rem;
+         background-size: .4rem .4rem; }
 
 /*login_regist*/
 .login {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   height: 11.36rem;
   background: url("../images/login/ic_login_ pattern.png") center bottom no-repeat;
-  background-size: 100%;
+  -moz-background-size: 100%;
+    -o-background-size: 100%;
+       background-size: 100%;
   -webkit-overflow-scrolling: touch; }
   .login .user_pic {
     height: 4rem;
@@ -313,7 +420,9 @@ a:focus {
       bottom: 0;
       margin: auto;
       background: url("../images/login/ic_login_logo.png") center center no-repeat;
-      background-size: 100%;
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%;
       margin-bottom: 10%; }
     .login .user_pic b {
       display: block;
@@ -323,19 +432,25 @@ a:focus {
       top: .5rem;
       left: .3rem;
       background: url("../images/login/ic_login_return@3x.png") center center no-repeat;
-      background-size: 100%; }
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%; }
   .login section {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
+       -moz-box-orient: vertical;
+       -moz-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column; }
     .login section .list_information {
@@ -356,7 +471,9 @@ a:focus {
             height: .4rem;
             display: inline-block;
             background: url("../images/login/ic_login_account@2x.png") center center no-repeat;
-            background-size: 100%; }
+            -moz-background-size: 100%;
+              -o-background-size: 100%;
+                 background-size: 100%; }
           .login section .list_information .contain_information .information .second {
             float: right;
             width: 80%;
@@ -366,11 +483,14 @@ a:focus {
             *height: 1%;
             display: -webkit-box;
             display: -webkit-flex;
+            display: -moz-box;
             display: -ms-flexbox;
             display: flex;
             -webkit-box-orient: horizontal;
             -webkit-box-direction: normal;
             -webkit-flex-flow: row nowrap;
+               -moz-box-orient: horizontal;
+               -moz-box-direction: normal;
                 -ms-flex-flow: row nowrap;
                     flex-flow: row nowrap; }
             .login section .list_information .contain_information .information .second:after {
@@ -444,6 +564,7 @@ a:focus {
       width: 100%;
       -webkit-box-flex: 1;
       -webkit-flex: 1;
+         -moz-box-flex: 1;
           -ms-flex: 1;
               flex: 1;
       position: relative; }
@@ -461,7 +582,9 @@ a:focus {
           height: .8rem;
           margin-bottom: .12rem;
           background: url("../images/login/ic_login_wechat.png") center center no-repeat;
-          background-size: 80%; }
+          -moz-background-size: 80%;
+            -o-background-size: 80%;
+               background-size: 80%; }
         .login section .social_connection dl dd {
           color: #51586A;
           font-size: .18rem;
@@ -477,14 +600,18 @@ a:focus {
     .login footer span {
       display: inline-block;
       background: url("../images/login/ic_login_Check_h.png") center center no-repeat;
-      background-size: 100%;
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%;
       height: .5rem;
       width: .5rem;
       vertical-align: middle;
       margin-right: .16rem; }
     .login footer .selected {
       background-image: url(../images/login/ic_login_Check_n.png);
-      background-size: 100%; }
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%; }
     .login footer a {
       display: inline-block;
       color: #FFF;
@@ -505,7 +632,9 @@ a:focus {
     width: 100%;
     height: 1.5rem;
     background: url("../images/login/ic_tabar_me_h@3x.png") center center no-repeat;
-    background-size: 100%; }
+    -moz-background-size: 100%;
+      -o-background-size: 100%;
+         background-size: 100%; }
   #weixin_bind dd {
     width: 100%;
     text-align: center;
@@ -525,11 +654,14 @@ a:focus {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   background: #FFF;
@@ -539,6 +671,7 @@ a:focus {
     width: 100%;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     background: #f5f5f5;
@@ -561,7 +694,9 @@ a:focus {
         left: 5%;
         top: 20%;
         background: url("../images/login/ic_help@3x.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
       .all_help section .center_title .normal_question {
         display: inline-block;
         position: absolute;
@@ -590,15 +725,23 @@ a:focus {
             right: 0%;
             top: 25%;
             -webkit-transition: all .6s;
+            -o-transition: all .6s;
+            -moz-transition: all .6s;
             transition: all .6s;
             -webkit-transform: rotate(-90deg);
+               -moz-transform: rotate(-90deg);
                 -ms-transform: rotate(-90deg);
+                 -o-transform: rotate(-90deg);
                     transform: rotate(-90deg);
             background: url("../images/login/ic_navbar_arrow_down@3x.png") center center no-repeat;
-            background-size: 100%; }
+            -moz-background-size: 100%;
+              -o-background-size: 100%;
+                 background-size: 100%; }
           .all_help section .main_content_help li .question .selected {
             -webkit-transform: rotate(0deg);
+               -moz-transform: rotate(0deg);
                 -ms-transform: rotate(0deg);
+                 -o-transform: rotate(0deg);
                     transform: rotate(0deg); }
         .all_help section .main_content_help li .answer {
           padding: .36rem 0;
@@ -614,11 +757,14 @@ a:focus {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   background: #FFF;
@@ -641,7 +787,9 @@ a:focus {
       width: .36rem;
       top: 25%;
       background: url("../images/login/ic_pay_return@3x.png") center center no-repeat;
-      background-size: 100%; }
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%; }
     .feedback header .feedback_submit {
       font-size: .24rem;
       color: #FF7320;
@@ -652,6 +800,7 @@ a:focus {
     width: 100%;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     background: #f5f5f5; }
@@ -659,8 +808,8 @@ a:focus {
       width: 5.4rem;
       height: 3.4rem;
       border: .04rem solid #e5e5e5;
-      -webkit-border-radius: 3%;
-              border-radius: 3%;
+      -moz-border-radius: 3%;
+           border-radius: 3%;
       margin: .4rem auto;
       padding: .28rem;
       font-size: .24rem; }
@@ -674,11 +823,14 @@ a:focus {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   height: 9.8rem;
@@ -702,23 +854,28 @@ a:focus {
       margin: auto;
       margin-top: 30%;
       background: #FFF;
-      -webkit-border-radius: 3%;
-              border-radius: 3%;
+      -moz-border-radius: 3%;
+           border-radius: 3%;
       display: -webkit-box;
       display: -webkit-flex;
+      display: -moz-box;
       display: -ms-flexbox;
       display: flex;
       position: relative;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       -webkit-flex-direction: column;
+         -moz-box-orient: vertical;
+         -moz-box-direction: normal;
           -ms-flex-direction: column;
               flex-direction: column; }
       .friend_request .popum_wrap .popum .pic_show {
         height: 1.88rem;
         width: 100%;
         background: url("../images/friend/H5_popup.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
       .friend_request .popum_wrap .popum .rule_main {
         height: auto;
         overflow: hidden;
@@ -747,10 +904,12 @@ a:focus {
         height: .56rem;
         margin: 0 auto;
         padding: 0;
-        -webkit-border-radius: 50%;
-                border-radius: 50%;
+        -moz-border-radius: 50%;
+             border-radius: 50%;
         background: url("../images/friend/close.png") center center no-repeat;
-        background-size: 60%;
+        -moz-background-size: 60%;
+          -o-background-size: 60%;
+             background-size: 60%;
         color: #FFF;
         text-align: center;
         z-index: 16;
@@ -767,6 +926,7 @@ a:focus {
     letter-spacing: 0;
     position: relative;
     background-image: -webkit-radial-gradient(48% 125%, #F4D28A 50%, #F3B93E 100%);
+    background-image: -moz-radial-gradient(48% 125%, #F4D28A 50%, #F3B93E 100%);
     background-image: radial-gradient(48% 125%, #F4D28A 50%, #F3B93E 100%); }
     .friend_request header .friend_back {
       display: inline-block;
@@ -776,7 +936,9 @@ a:focus {
       width: .4rem;
       top: 10%;
       background: url("../images/login/ic_pay_return@3x.png") center center no-repeat;
-      background-size: 100%; }
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%; }
     .friend_request header .friend_title {
       position: relative;
       top: 5%; }
@@ -785,11 +947,14 @@ a:focus {
       height: 1.3rem;
       display: -webkit-box;
       display: -webkit-flex;
+      display: -moz-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
       -webkit-flex-direction: row;
+         -moz-box-orient: horizontal;
+         -moz-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row;
       position: absolute;
@@ -803,10 +968,13 @@ a:focus {
         width: 1.5rem;
         height: 1.2rem;
         background: url("../images/login/ic_invite_gas@3x.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
       .friend_request header .first .right {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
+           -moz-box-flex: 1;
             -ms-flex: 1;
                 flex: 1;
         margin-top: 0.1rem; }
@@ -841,7 +1009,9 @@ a:focus {
             left: -0.0rem;
             margin: 0;
             background: url("../images/login/ic_invite_oil@3x.png") center center no-repeat;
-            background-size: 100%; }
+            -moz-background-size: 100%;
+              -o-background-size: 100%;
+                 background-size: 100%; }
     .friend_request header .second {
       width: 100%;
       height: 1rem;
@@ -849,17 +1019,21 @@ a:focus {
       bottom: 0;
       display: -webkit-box;
       display: -webkit-flex;
+      display: -moz-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
       -webkit-flex-direction: row;
+         -moz-box-orient: horizontal;
+         -moz-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row; }
       .friend_request header .second .left,
       .friend_request header .second .right {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
+           -moz-box-flex: 1;
             -ms-flex: 1;
                 flex: 1;
         font-family: PingFangSC-Regular;
@@ -887,6 +1061,7 @@ a:focus {
   .friend_request section {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     width: 100%;
@@ -896,8 +1071,8 @@ a:focus {
       width: 80%;
       margin: .4rem 10%;
       margin-bottom: 0;
-      -webkit-border-radius: .3rem;
-              border-radius: .3rem; }
+      -moz-border-radius: .3rem;
+           border-radius: .3rem; }
       .friend_request section .friend_wrap h3 {
         text-align: center;
         font-family: PingFangSC-Regular;
@@ -906,8 +1081,8 @@ a:focus {
         letter-spacing: 0;
         line-height: .6rem;
         background: #F3B93E;
-        -webkit-border-radius: .3rem;
-                border-radius: .3rem; }
+        -moz-border-radius: .3rem;
+             border-radius: .3rem; }
       .friend_request section .friend_wrap .second {
         width: 100%; }
         .friend_request section .friend_wrap .second p {
@@ -920,32 +1095,40 @@ a:focus {
           background-image: url(../images/login/ic_home_tag_left@3x.png), url(../images/login/ic_home_tag_right@3x.png);
           background-repeat: no-repeat, no-repeat;
           background-position: 32% center, 68% center;
-          background-size: 6%, 6%; }
+          -moz-background-size: 6%, 6%;
+            -o-background-size: 6%, 6%;
+               background-size: 6%, 6%; }
         .friend_request section .friend_wrap .second .friend_none {
           background: url("../images/login/ic_default_order@3x.png") top center no-repeat;
-          background-size: 50%; }
+          -moz-background-size: 50%;
+            -o-background-size: 50%;
+               background-size: 50%; }
         .friend_request section .friend_wrap .second ul {
           height: 3.2rem;
           background: #FFF;
-          -webkit-border-radius: .3rem;
-                  border-radius: .3rem; }
+          -moz-border-radius: .3rem;
+               border-radius: .3rem; }
           @media only screen and (min-width: 375px) {
             .friend_request section .friend_wrap .second ul {
               height: 3.8rem; } }
           .friend_request section .friend_wrap .second ul li {
             display: -webkit-box;
             display: -webkit-flex;
+            display: -moz-box;
             display: -ms-flexbox;
             display: flex;
             -webkit-box-orient: horizontal;
             -webkit-box-direction: normal;
             -webkit-flex-direction: row;
+               -moz-box-orient: horizontal;
+               -moz-box-direction: normal;
                 -ms-flex-direction: row;
                     flex-direction: row; }
             .friend_request section .friend_wrap .second ul li span {
               display: inline-block;
               -webkit-box-flex: 1;
               -webkit-flex: 1;
+                 -moz-box-flex: 1;
                   -ms-flex: 1;
                       flex: 1; }
             .friend_request section .friend_wrap .second ul li .oil_drop {
@@ -979,11 +1162,14 @@ a:focus {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   background: #FFF;
@@ -992,15 +1178,19 @@ a:focus {
   .pay section {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
+       -moz-box-orient: vertical;
+       -moz-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     background: #f5f5f5; }
@@ -1009,7 +1199,9 @@ a:focus {
       width: 100%;
       overflow: hidden;
       background: url("../images/login/ic_pay_background@2x.png") center center no-repeat;
-      background-size: 100%; }
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%; }
       .pay section .first .type {
         margin-top: 1.2rem;
         margin-bottom: 0.3rem;
@@ -1033,7 +1225,9 @@ a:focus {
           font-size: .2rem;
           font-family: PingFangSC-Medium;
           background: url("../images/login/ic_home_price@3x.png") center center no-repeat;
-          background-size: 100%; }
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%; }
         .pay section .first .reduce .icon2 {
           margin-left: 0.3rem; }
       .pay section .first .go_pay_details {
@@ -1046,13 +1240,14 @@ a:focus {
           width: 2rem;
           height: .44rem;
           line-height: .44rem;
-          -webkit-border-radius: .14rem;
-                  border-radius: .14rem;
+          -moz-border-radius: .14rem;
+               border-radius: .14rem;
           border: .02rem solid #E2BC85; }
     .pay section .second {
       position: relative;
       -webkit-box-flex: 1;
       -webkit-flex: 1;
+         -moz-box-flex: 1;
           -ms-flex: 1;
               flex: 1; }
       .pay section .second p {
@@ -1079,7 +1274,9 @@ a:focus {
           vertical-align: middle;
           margin-left: 0.05rem;
           background: url("../images/login/ic_navbar_arrow_down@3x.png") center center no-repeat;
-          background-size: 100%; }
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%; }
       .pay section .second .card_num {
         height: .8rem;
         width: 100%;
@@ -1095,7 +1292,9 @@ a:focus {
           vertical-align: middle;
           margin-left: 1rem;
           background: url("../images/login/ic_popover_CNPC@3x.png") center center no-repeat;
-          background-size: 100%; }
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%; }
         .pay section .second .card_num .select {
           display: inline-block;
           width: .32rem;
@@ -1103,7 +1302,9 @@ a:focus {
           vertical-align: middle;
           margin-left: 0.05rem;
           background: url("../images/login/ic_navbar_arrow_down@3x.png") center center no-repeat;
-          background-size: 100%; }
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%; }
         .pay section .second .card_num input {
           height: 100%;
           width: 60%;
@@ -1135,7 +1336,9 @@ a:focus {
           display: inline-block;
           background: url("../images/login/ic_pay_Check@3x.png"), no-repeat;
           background-position: center -1px;
-          background-size: 100%;
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%;
           vertical-align: middle; }
         .pay section .second .notice .content {
           display: inline-block;
@@ -1164,15 +1367,19 @@ a:focus {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
+     -moz-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   background: #FFF;
@@ -1184,7 +1391,9 @@ a:focus {
     height: 3.5rem;
     position: relative;
     background: url("../images/login/ic_me_background@2x.png") center center no-repeat;
-    background-size: 100%; }
+    -moz-background-size: 100%;
+      -o-background-size: 100%;
+         background-size: 100%; }
     .my_center header .title {
       text-align: center;
       font-family: PingFangSC-Regular;
@@ -1194,8 +1403,12 @@ a:focus {
       height: .7rem;
       line-height: .7rem;
       background: url("../images/login/ic_navbar_news@3x.png") center right no-repeat;
-      background-size: 100%;
-      background-size: .6rem .4rem; }
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%;
+      -moz-background-size: .6rem .4rem;
+        -o-background-size: .6rem .4rem;
+           background-size: .6rem .4rem; }
     .my_center header .user_pic {
       width: 1.5rem;
       height: 1.9rem;
@@ -1211,7 +1424,9 @@ a:focus {
         height: 1.4rem;
         display: inline-block;
         background: url("../images/login/ic_tabar_me_n@3x.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
       .my_center header .user_pic .name {
         font-family: PingFangSC-Regular;
         font-size: .28rem;
@@ -1219,6 +1434,7 @@ a:focus {
   .my_center section {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     width: 100%;
@@ -1250,8 +1466,12 @@ a:focus {
             text-indent: .2rem;
             width: 1.2rem;
             background: url("../images/login/ic_tabar_home_h@3x.png") left center no-repeat;
-            background-size: 100%;
-            background-size: .3rem .3rem; }
+            -moz-background-size: 100%;
+              -o-background-size: 100%;
+                 background-size: 100%;
+            -moz-background-size: .3rem .3rem;
+              -o-background-size: .3rem .3rem;
+                 background-size: .3rem .3rem; }
       .my_center section .oil_drop .right {
         width: 2rem;
         height: 1.36rem;
@@ -1259,7 +1479,9 @@ a:focus {
         right: .3rem;
         top: 10%;
         background: url("../images/login/ic_me_Button@3x.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
     .my_center section .turn_list {
       width: 100%;
       height: .8rem;
@@ -1274,23 +1496,33 @@ a:focus {
         margin-left: 13%; }
     .my_center section .my_oil_card {
       background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_gas@3x.png") 7% center no-repeat;
-      background-size: .3rem .3rem;
+      -moz-background-size: .3rem .3rem;
+        -o-background-size: .3rem .3rem;
+           background-size: .3rem .3rem;
       background-color: #FFF; }
     .my_center section .coupon {
       background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_news_coupon@3x.png") 7% center no-repeat;
-      background-size: .3rem .3rem;
+      -moz-background-size: .3rem .3rem;
+        -o-background-size: .3rem .3rem;
+           background-size: .3rem .3rem;
       background-color: #FFF; }
     .my_center section .friend {
       background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_news_invite@3x.png") 7% center no-repeat;
-      background-size: .3rem .3rem;
+      -moz-background-size: .3rem .3rem;
+        -o-background-size: .3rem .3rem;
+           background-size: .3rem .3rem;
       background-color: #FFF; }
     .my_center section .help_center {
       background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_help@3x.png") 7% center no-repeat;
-      background-size: .3rem .3rem;
+      -moz-background-size: .3rem .3rem;
+        -o-background-size: .3rem .3rem;
+           background-size: .3rem .3rem;
       background-color: #FFF; }
     .my_center section .setting {
       background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_install@3x.png") 7% center no-repeat;
-      background-size: .3rem .3rem;
+      -moz-background-size: .3rem .3rem;
+        -o-background-size: .3rem .3rem;
+           background-size: .3rem .3rem;
       background-color: #FFF; }
   .my_center .popum_wrap {
     width: 100%;
@@ -1305,7 +1537,9 @@ a:focus {
       height: 2.9rem;
       z-index: 12;
       background-image: url("../images/login/ic_me_popover@3x.png");
-      background-size: 2.2rem 2.2rem;
+      -moz-background-size: 2.2rem 2.2rem;
+        -o-background-size: 2.2rem 2.2rem;
+           background-size: 2.2rem 2.2rem;
       background-position: center center;
       background-repeat: no-repeat;
       position: absolute;
@@ -1334,7 +1568,9 @@ a:focus {
         text-align: left;
         text-indent: .8rem;
         background-image: url("../images/login/ic_me_popover_add@3x.png"), url("../images/login/ic_me_popover_Text@3x.png");
-        background-size: 0.3rem 0.3rem, 0.88rem 0.52rem;
+        -moz-background-size: 0.3rem 0.3rem, 0.88rem 0.52rem;
+          -o-background-size: 0.3rem 0.3rem, 0.88rem 0.52rem;
+             background-size: 0.3rem 0.3rem, 0.88rem 0.52rem;
         background-position: .5rem center, 1.1rem center;
         background-repeat: no-repeat, no-repeat; }
       .my_center .popum_wrap .popum .user_name {
@@ -1345,11 +1581,14 @@ a:focus {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   background: #f5f5f5;
@@ -1367,8 +1606,12 @@ a:focus {
     color: #51586A;
     letter-spacing: 0;
     background: url("../images/login/ic_navbar_news@3x.png") center right no-repeat;
-    background-size: 100%;
-    background-size: .6rem .4rem;
+    -moz-background-size: 100%;
+      -o-background-size: 100%;
+         background-size: 100%;
+    -moz-background-size: .6rem .4rem;
+      -o-background-size: .6rem .4rem;
+         background-size: .6rem .4rem;
     background-color: #FFF; }
     .buy header .select_company {
       font-family: PingFangSC-Regular;
@@ -1379,11 +1622,16 @@ a:focus {
       left: 0.2rem;
       padding-right: .3rem;
       background: url("../images/login/ic_navbar_arrow_down@3x.png") center right no-repeat;
-      background-size: 100%;
-      background-size: .3rem .3rem; }
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%;
+      -moz-background-size: .3rem .3rem;
+        -o-background-size: .3rem .3rem;
+           background-size: .3rem .3rem; }
   .buy section {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     width: 100%;
@@ -1405,7 +1653,9 @@ a:focus {
         background-image: url("../images/login/ic_home_tag_left@3x.png"), url("../images/login/ic_home_tag_right@3x.png");
         background-repeat: no-repeat, no-repeat;
         background-position: 25% center, 75% center;
-        background-size: .36rem .12rem, .36rem .12rem; }
+        -moz-background-size: .36rem .12rem, .36rem .12rem;
+          -o-background-size: .36rem .12rem, .36rem .12rem;
+             background-size: .36rem .12rem, .36rem .12rem; }
       .buy section .first .index_banner {
         width: 100%;
         height: 3.64rem; }
@@ -1414,15 +1664,17 @@ a:focus {
           .buy section .first .index_banner ul li {
             width: 100%;
             text-align: center;
-            -webkit-border-radius: 5%;
-                    border-radius: 5%;
+            -moz-border-radius: 5%;
+                 border-radius: 5%;
             position: relative; }
             .buy section .first .index_banner ul li .privilege {
               width: .68rem;
               height: .44rem;
               display: block;
               background: url("../images/login/ic_home_sale@3x.png") center center no-repeat;
-              background-size: 100%;
+              -moz-background-size: 100%;
+                -o-background-size: 100%;
+                   background-size: 100%;
               position: absolute;
               right: 10%; }
             .buy section .first .index_banner ul li .details {
@@ -1446,8 +1698,8 @@ a:focus {
                 font-family: PingFangSC-Medium;
                 background: #f6d52d;
                 display: inline-block;
-                -webkit-border-radius: .14rem;
-                        border-radius: .14rem;
+                -moz-border-radius: .14rem;
+                     border-radius: .14rem;
                 margin-top: 0.15rem;
                 padding: 0rem .1rem;
                 position: relative;
@@ -1483,7 +1735,9 @@ a:focus {
           font-size: .2rem;
           font-family: PingFangSC-Medium;
           background: url("../images/login/ic_home_price@3x.png") center center no-repeat;
-          background-size: 100%; }
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%; }
         .buy section .first .reduce .icon2 {
           margin-left: 0.3rem; }
     .buy section .second {
@@ -1501,17 +1755,22 @@ a:focus {
         background-image: url("../images/login/ic_home_tag_left@3x.png"), url("../images/login/ic_home_tag_right@3x.png");
         background-repeat: no-repeat, no-repeat;
         background-position: 25% center, 75% center;
-        background-size: .36rem .12rem, .36rem .12rem; }
+        -moz-background-size: .36rem .12rem, .36rem .12rem;
+          -o-background-size: .36rem .12rem, .36rem .12rem;
+             background-size: .36rem .12rem, .36rem .12rem; }
       .buy section .second ul {
         height: 1.8rem;
         width: 100%;
         display: -webkit-box;
         display: -webkit-flex;
+        display: -moz-box;
         display: -ms-flexbox;
         display: flex;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
         -webkit-flex-flow: row wrap;
+           -moz-box-orient: horizontal;
+           -moz-box-direction: normal;
             -ms-flex-flow: row wrap;
                 flex-flow: row wrap;
         padding: 0 0.25rem; }
@@ -1525,12 +1784,16 @@ a:focus {
           color: #FF7320;
           margin: .05rem .25rem;
           background: url("../images/login/ic_home_money_n.png") center center no-repeat;
-          background-size: 100%; }
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%; }
           .buy section .second ul li span {
             font-size: .18rem; }
         .buy section .second ul .select {
           background: url("../images/login/ic_home_money_h@3x.png") center center no-repeat;
-          background-size: 100%; }
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%; }
     .buy section .third {
       height: .86rem;
       background: #FFF;
@@ -1556,28 +1819,36 @@ a:focus {
 
 .keyshow {
   -webkit-transform: translateY(-3rem);
+     -moz-transform: translateY(-3rem);
       -ms-transform: translateY(-3rem);
+       -o-transform: translateY(-3rem);
           transform: translateY(-3rem); }
 
 .friend_game {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   background: #fedb65;
   height: 11.36rem;
   -webkit-transition: all .1s;
+  -o-transition: all .1s;
+  -moz-transition: all .1s;
   transition: all .1s;
   -webkit-overflow-scrolling: touch; }
   .friend_game header {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     text-align: center;
@@ -1587,21 +1858,27 @@ a:focus {
       height: 2.1rem;
       display: inline-block;
       background: url("../images/game/h5_title.png") center center no-repeat;
-      background-size: 80%; }
+      -moz-background-size: 80%;
+        -o-background-size: 80%;
+           background-size: 80%; }
     .friend_game header .banner {
       width: 5.24rem;
       height: 3.52rem;
       display: inline-block;
       margin-top: -0.5rem;
       background: url("../images/game/h5_background.png") center center no-repeat;
-      background-size: 90%;
+      -moz-background-size: 90%;
+        -o-background-size: 90%;
+           background-size: 90%;
       position: relative; }
       .friend_game header .banner .result_icon {
         width: 1.2rem;
         height: 1.4rem;
         display: block;
         background: url("../images/game/气泡2.png") center center no-repeat;
-        background-size: 100%;
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%;
         position: absolute;
         left: 0.5rem;
         bottom: .85rem;
@@ -1627,7 +1904,9 @@ a:focus {
         position: absolute;
         left: 0.5rem;
         background: url("../images/game/h5_gas.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
         .friend_game section .first .left .point {
           display: block;
           border-style: solid;
@@ -1637,14 +1916,22 @@ a:focus {
           width: .14rem;
           height: .44rem;
           background: url("../images/game/h5_pointer.png") center center no-repeat;
-          background-size: 100%;
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%;
           -webkit-transform-origin: center .4rem;
+             -moz-transform-origin: center .4rem;
               -ms-transform-origin: center .4rem;
+               -o-transform-origin: center .4rem;
                   transform-origin: center .4rem;
           -webkit-transform: rotate(-80deg);
+             -moz-transform: rotate(-80deg);
               -ms-transform: rotate(-80deg);
+               -o-transform: rotate(-80deg);
                   transform: rotate(-80deg);
           -webkit-transition: all .2s linear;
+          -o-transition: all .2s linear;
+          -moz-transition: all .2s linear;
           transition: all .2s linear; }
         .friend_game section .first .left .time_leave {
           width: 1.8rem;
@@ -1668,7 +1955,9 @@ a:focus {
           opacity: 0;
           display: none;
           background: url("../images/game/h5_oil.png") center center no-repeat;
-          background-size: 100%; }
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%; }
         .friend_game section .first .left .addone {
           width: .5rem;
           height: .5rem;
@@ -1685,14 +1974,16 @@ a:focus {
         right: 0.5rem;
         bottom: 0;
         background: url("../images/game/h5_lecythus.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
         .friend_game section .first .right .level {
           width: 1rem;
           height: 0.1rem;
           background-color: #fe630d;
           position: absolute;
-          -webkit-border-radius: 10%;
-                  border-radius: 10%;
+          -moz-border-radius: 10%;
+               border-radius: 10%;
           left: 0.06rem;
           bottom: 0.1rem; }
     .friend_game section .second {
@@ -1706,8 +1997,8 @@ a:focus {
       font-weight: 500;
       font-size: .32rem;
       display: block;
-      -webkit-border-radius: .4rem;
-              border-radius: .4rem;
+      -moz-border-radius: .4rem;
+           border-radius: .4rem;
       border: none; }
     .friend_game section .third {
       width: 4rem;
@@ -1727,8 +2018,12 @@ a:focus {
       margin: 0 auto;
       text-align: center;
       background: url("../images/game/手指.png") 0.3rem center no-repeat;
-      background-size: .28rem .34rem;
+      -moz-background-size: .28rem .34rem;
+        -o-background-size: .28rem .34rem;
+           background-size: .28rem .34rem;
       -webkit-transition: all 1s;
+      -o-transition: all 1s;
+      -moz-transition: all 1s;
       transition: all 1s; }
     .friend_game section .result_select {
       height: 4rem;
@@ -1739,7 +2034,9 @@ a:focus {
         height: 2.8rem;
         margin: -0.4rem auto;
         background: url("../images/game/h5_total.png") center center no-repeat;
-        background-size: 100%;
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%;
         position: relative; }
         .friend_game section .result_select .result span {
           font-family: PingFangSC-Semibold;
@@ -1761,8 +2058,8 @@ a:focus {
         .friend_game section .result_select .choose .left {
           width: 2.2rem;
           height: .6rem;
-          -webkit-border-radius: .4rem;
-                  border-radius: .4rem;
+          -moz-border-radius: .4rem;
+               border-radius: .4rem;
           position: absolute;
           left: 0;
           background-color: #f8b23a;
@@ -1774,8 +2071,8 @@ a:focus {
         .friend_game section .result_select .choose .right {
           width: 2.2rem;
           height: .6rem;
-          -webkit-border-radius: .4rem;
-                  border-radius: .4rem;
+          -moz-border-radius: .4rem;
+               border-radius: .4rem;
           position: absolute;
           right: 0;
           font-family: PingFangSC-Medium;
@@ -1803,7 +2100,9 @@ a:focus {
         height: 1.34rem;
         margin: 0.0rem auto;
         background: url("../images/game/h5_total.png") center center no-repeat;
-        background-size: 100%;
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%;
         position: relative; }
         .friend_game section .get_award .result span {
           font-family: PingFangSC-Semibold;
@@ -1829,8 +2128,8 @@ a:focus {
           background: #FFF;
           border: none;
           text-align: left;
-          -webkit-border-radius: .5rem;
-                  border-radius: .5rem;
+          -moz-border-radius: .5rem;
+               border-radius: .5rem;
           margin-bottom: 0.2rem;
           position: relative;
           font-size: .28rem; }
@@ -1850,8 +2149,8 @@ a:focus {
           height: .94rem;
           border: none;
           text-align: center;
-          -webkit-border-radius: .5rem;
-                  border-radius: .5rem; }
+          -moz-border-radius: .5rem;
+               border-radius: .5rem; }
       .friend_game section .get_award .remind {
         width: 4.8rem;
         height: .6rem;
@@ -1871,12 +2170,14 @@ a:focus {
           height: .3rem;
           border: .02rem solid #f95b4e;
           display: inline-block;
-          -webkit-border-radius: 20%;
-                  border-radius: 20%;
+          -moz-border-radius: 20%;
+               border-radius: 20%;
           position: absolute;
           left: 19%;
           background: url("../images/game/H5_Check@3x.png") center center no-repeat;
-          background-size: 100%;
+          -moz-background-size: 100%;
+            -o-background-size: 100%;
+               background-size: 100%;
           top: 25%; }
         .friend_game section .get_award .remind .selected {
           background-image: none; }
@@ -1888,12 +2189,15 @@ a:focus {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   height: 11.36rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #fedb65;
@@ -1904,7 +2208,9 @@ a:focus {
     width: 100%;
     height: 6.7rem;
     background: url("../images/game/H5_accomplish.png") center center no-repeat;
-    background-size: 80%; }
+    -moz-background-size: 80%;
+      -o-background-size: 80%;
+         background-size: 80%; }
     .game_success header h3 {
       text-align: center;
       margin-top: 1.5rem;
@@ -1915,14 +2221,19 @@ a:focus {
       height: .94rem;
       line-height: .94rem;
       background: url(../images/game/H5_accomplish_option.png) 20% center no-repeat;
-      background-size: .36rem .36rem;
+      -moz-background-size: .36rem .36rem;
+        -o-background-size: .36rem .36rem;
+           background-size: .36rem .36rem;
       display: -webkit-box;
       display: -webkit-flex;
+      display: -moz-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
       -webkit-flex-direction: row;
+         -moz-box-orient: horizontal;
+         -moz-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row; }
       .game_success header p .left {
@@ -1933,10 +2244,10 @@ a:focus {
         margin-left: 1.8rem;
         text-align: center;
         font-size: .32rem;
-        -webkit-border-top-left-radius: 5%;
-                border-top-left-radius: 5%;
-        -webkit-border-bottom-left-radius: 5%;
-                border-bottom-left-radius: 5%; }
+        -moz-border-radius-topleft: 5%;
+             border-top-left-radius: 5%;
+        -moz-border-radius-bottomleft: 5%;
+             border-bottom-left-radius: 5%; }
         .game_success header p .left b {
           color: #eb1b05;
           font-size: .36rem; }
@@ -1948,15 +2259,20 @@ a:focus {
         color: #FFF;
         font-size: .44rem;
         background: url("../images/game/H5_accomplish_list.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
         .game_success header p .right b {
           font-size: .24rem; }
       .game_success header p .oil {
         background: url("../images/game/H5_accomplish_huijiayou.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
   .game_success section {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     position: relative; }
@@ -1970,7 +2286,9 @@ a:focus {
       bottom: 0;
       margin: auto;
       background: url("../images/game/H5_accomplish_QR code.png") center center no-repeat;
-      background-size: 100%;
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%;
       margin-top: .4rem; }
       .game_success section .download img {
         position: absolute;
@@ -1987,16 +2305,20 @@ a:focus {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   height: 10.36rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: #fedb65;
@@ -2008,7 +2330,9 @@ a:focus {
     margin-top: 0.1rem;
     font-family: PingFangSC-Medium;
     background: url("../images/friend/H5_title_driver.png") center 0% no-repeat;
-    background-size: 60%;
+    -moz-background-size: 60%;
+      -o-background-size: 60%;
+         background-size: 60%;
     padding-top: 1.1rem; }
     .friend_request_details header .first {
       text-align: center;
@@ -2023,7 +2347,9 @@ a:focus {
       margin-top: 0.2rem; }
       .friend_request_details header .second span {
         background: url("../images/friend/H5_backgroud.png") center center no-repeat;
-        background-size: 95%;
+        -moz-background-size: 95%;
+          -o-background-size: 95%;
+             background-size: 95%;
         padding: .2rem .2rem;
         font-family: PingFangSC-Medium; }
         .friend_request_details header .second span i {
@@ -2036,7 +2362,9 @@ a:focus {
   .friend_request_details section {
     height: 5rem;
     background: url("../images/friend/H5_pic.png") top center no-repeat;
-    background-size: 80%;
+    -moz-background-size: 80%;
+      -o-background-size: 80%;
+         background-size: 80%;
     position: relative;
     text-align: center;
     width: 100%; }
@@ -2049,14 +2377,16 @@ a:focus {
       color: #e8514e;
       font-size: .24rem;
       background: url("../images/friend/H5_info.png") left center no-repeat;
-      background-size: 16%; }
+      -moz-background-size: 16%;
+        -o-background-size: 16%;
+           background-size: 16%; }
   .friend_request_details footer {
     height: 1rem; }
     .friend_request_details footer button {
       width: 5rem;
       height: .9rem;
-      -webkit-border-radius: 22.5px;
-              border-radius: 22.5px;
+      -moz-border-radius: 22.5px;
+           border-radius: 22.5px;
       display: block;
       margin: 0 auto; }
   .friend_request_details .popum_wrap {
@@ -2077,23 +2407,28 @@ a:focus {
       margin: auto;
       margin-top: 30%;
       background: #FFF;
-      -webkit-border-radius: 3%;
-              border-radius: 3%;
+      -moz-border-radius: 3%;
+           border-radius: 3%;
       display: -webkit-box;
       display: -webkit-flex;
+      display: -moz-box;
       display: -ms-flexbox;
       display: flex;
       position: relative;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       -webkit-flex-direction: column;
+         -moz-box-orient: vertical;
+         -moz-box-direction: normal;
           -ms-flex-direction: column;
               flex-direction: column; }
       .friend_request_details .popum_wrap .popum .pic_show {
         height: 1.88rem;
         width: 100%;
         background: url("../images/friend/H5_popup.png") center center no-repeat;
-        background-size: 100%; }
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%; }
       .friend_request_details .popum_wrap .popum .rule_main {
         height: auto;
         overflow: hidden;
@@ -2122,10 +2457,12 @@ a:focus {
         height: .56rem;
         margin: 0 auto;
         padding: 0;
-        -webkit-border-radius: 50%;
-                border-radius: 50%;
+        -moz-border-radius: 50%;
+             border-radius: 50%;
         background: url("../images/friend/close.png") center center no-repeat;
-        background-size: 60%;
+        -moz-background-size: 60%;
+          -o-background-size: 60%;
+             background-size: 60%;
         color: #FFF;
         text-align: center;
         z-index: 16;
@@ -2135,11 +2472,14 @@ a:focus {
 .land {
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   height: 21rem;
@@ -2148,8 +2488,12 @@ a:focus {
   .land header {
     height: 3.92532998rem;
     background: url("../images/land/H5_banner@3x.png") center center no-repeat;
-    background-size: auto;
-    background-size: contain;
+    -moz-background-size: auto;
+      -o-background-size: auto;
+         background-size: auto;
+    -moz-background-size: contain;
+      -o-background-size: contain;
+         background-size: contain;
     margin-top: 0.1rem; }
   .land section {
     height: 4.4885295rem;
@@ -2164,9 +2508,13 @@ a:focus {
       color: #699896;
       font-size: .17066652rem;
       background: url("../images/land/H5_mark.png") left center no-repeat;
-      background-size: 15%;
+      -moz-background-size: 15%;
+        -o-background-size: 15%;
+           background-size: 15%;
       -webkit-transform: scale(0.9);
+         -moz-transform: scale(0.9);
           -ms-transform: scale(0.9);
+           -o-transform: scale(0.9);
               transform: scale(0.9);
       padding-left: 0.3rem; }
       .land section .express .details_express {
@@ -2179,15 +2527,21 @@ a:focus {
         display: none;
         line-height: .28rem;
         background: url("../images/land/H5_bubble.png") top center no-repeat;
-        background-size: 80%;
+        -moz-background-size: 80%;
+          -o-background-size: 80%;
+             background-size: 80%;
         color: #FFF;
-        background-size: 100% 100%; }
+        -moz-background-size: 100% 100%;
+          -o-background-size: 100% 100%;
+             background-size: 100% 100%; }
     .land section .notice {
       color: #f95b4e;
       margin-left: 5%;
       text-indent: 0.3rem;
       background: url("../images/land/H5_info.png") left 25% no-repeat;
-      background-size: 4%;
+      -moz-background-size: 4%;
+        -o-background-size: 4%;
+           background-size: 4%;
       margin-bottom: 0.3rem;
       font-size: .2rem;
       height: .5rem;
@@ -2198,8 +2552,8 @@ a:focus {
     .land section .info {
       width: 100%;
       height: .85333261rem;
-      -webkit-border-radius: .46rem;
-              border-radius: .46rem;
+      -moz-border-radius: .46rem;
+           border-radius: .46rem;
       padding-left: .46rem;
       font-size: .23893313rem;
       color: #858585;
@@ -2220,8 +2574,8 @@ a:focus {
     .land section .second_i {
       width: 100%;
       height: .85333261rem;
-      -webkit-border-radius: .46rem;
-              border-radius: .46rem;
+      -moz-border-radius: .46rem;
+           border-radius: .46rem;
       font-size: 0.32rem;
       padding: 0;
       color: #858585;
@@ -2255,7 +2609,9 @@ a:focus {
       overflow: hidden;
       position: relative;
       -webkit-transform: scale(1.1);
+         -moz-transform: scale(1.1);
           -ms-transform: scale(1.1);
+           -o-transform: scale(1.1);
               transform: scale(1.1);
       color: #FDA174; }
       .land section .remind b {
@@ -2263,15 +2619,19 @@ a:focus {
         color: #FF7320; }
       .land section .remind .agree {
         display: inline-block;
-        -webkit-border-radius: 20%;
-                border-radius: 20%;
+        -moz-border-radius: 20%;
+             border-radius: 20%;
         position: absolute;
         left: 19%;
         background: url("../images/game/H5_Check@3x.png") center center no-repeat;
-        background-size: 100%;
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%;
         top: 25%;
         -webkit-transform: scale(0.7);
+           -moz-transform: scale(0.7);
             -ms-transform: scale(0.7);
+             -o-transform: scale(0.7);
                 transform: scale(0.7); }
       .land section .remind .selected {
         background-image: none; }
@@ -2283,6 +2643,7 @@ a:focus {
   .land footer {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     width: 100%;
@@ -2292,7 +2653,9 @@ a:focus {
       height: 8.53332605rem;
       width: 100%;
       background: url("../images/land/H5_ drawing@3x.png") center center no-repeat;
-      background-size: 100%; }
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%; }
     .land footer .connect {
       margin-top: 0.4rem; }
       .land footer .connect .tel {
@@ -2313,21 +2676,28 @@ a:focus {
         font-size: .20479983rem;
         color: #d97f47;
         -webkit-transform: scale(0.8);
+           -moz-transform: scale(0.8);
             -ms-transform: scale(0.8);
+             -o-transform: scale(0.8);
                 transform: scale(0.8); }
 
 .download {
   height: 1.27999891rem;
   background: url("../images/land/H5_ arrow@3x.png") 35% 85% no-repeat;
-  background-size: 18%;
+  -moz-background-size: 18%;
+    -o-background-size: 18%;
+       background-size: 18%;
   background-color: #ffedac;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
   position: fixed;
@@ -2337,15 +2707,21 @@ a:focus {
   overflow: hidden;
   width: 100%;
   -webkit-transition: all .6s;
+  -o-transition: all .6s;
+  -moz-transition: all .6s;
   transition: all .6s; }
   .download .left {
     width: 2.5rem;
     height: 2.5rem;
     -webkit-transform: scale(0.4);
+       -moz-transform: scale(0.4);
         -ms-transform: scale(0.4);
+         -o-transform: scale(0.4);
             transform: scale(0.4);
     background: url("../images/land/H5_logo@3x.png") center 20% no-repeat;
-    background-size: 100%;
+    -moz-background-size: 100%;
+      -o-background-size: 100%;
+         background-size: 100%;
     background-color: #FFF;
     margin: -0.6rem;
     margin-left: -0.25rem;
@@ -2370,7 +2746,9 @@ a:focus {
     margin-left: 0.1rem;
     margin-top: -0.15rem;
     -webkit-transform: scale(0.9);
+       -moz-transform: scale(0.9);
         -ms-transform: scale(0.9);
+         -o-transform: scale(0.9);
             transform: scale(0.9); }
     .download .center p {
       margin: 0; }
@@ -2388,18 +2766,23 @@ a:focus {
     margin-top: 0.29rem;
     margin-left: -3%;
     -webkit-transform: scale(0.8);
+       -moz-transform: scale(0.8);
         -ms-transform: scale(0.8);
+         -o-transform: scale(0.8);
             transform: scale(0.8); }
 
 .pay_success {
   height: 11.36rem;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: PingFangSC-Medium;
@@ -2407,21 +2790,27 @@ a:focus {
   .pay_success .pay_details {
     display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
+       -moz-box-orient: vertical;
+       -moz-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+       -moz-box-flex: 1;
         -ms-flex: 1;
             flex: 1; }
     .pay_success .pay_details header {
       height: 2.36rem;
       background: url("../images/land/H5_complete@3x.png") 20% center no-repeat;
-      background-size: 18%;
+      -moz-background-size: 18%;
+        -o-background-size: 18%;
+           background-size: 18%;
       background-color: #ffdc5a;
       position: relative; }
       .pay_success .pay_details header p {
@@ -2441,6 +2830,7 @@ a:focus {
     .pay_success .pay_details section {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
+         -moz-box-flex: 1;
           -ms-flex: 1;
               flex: 1;
       background: #FFF;
@@ -2476,19 +2866,26 @@ a:focus {
       height: 8.58rem;
       width: 100%;
       background: url("../images/land/H5_ drawing@3x.png") center center no-repeat;
-      background-size: 100%; }
+      -moz-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%; }
     .pay_success footer .downloadp {
       height: 1.27999891rem;
       background: url("../images/land/H5_ arrow@3x.png") 35% 85% no-repeat;
-      background-size: 18%;
+      -moz-background-size: 18%;
+        -o-background-size: 18%;
+           background-size: 18%;
       background-color: #ffedac;
       display: -webkit-box;
       display: -webkit-flex;
+      display: -moz-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
       -webkit-flex-direction: row;
+         -moz-box-orient: horizontal;
+         -moz-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row;
       z-index: 1500;
@@ -2497,15 +2894,21 @@ a:focus {
       overflow: hidden;
       width: 100%;
       -webkit-transition: all .6s;
+      -o-transition: all .6s;
+      -moz-transition: all .6s;
       transition: all .6s; }
       .pay_success footer .downloadp .left {
         width: 2.5rem;
         height: 2.5rem;
         -webkit-transform: scale(0.4);
+           -moz-transform: scale(0.4);
             -ms-transform: scale(0.4);
+             -o-transform: scale(0.4);
                 transform: scale(0.4);
         background: url("../images/land/H5_logo@3x.png") center 20% no-repeat;
-        background-size: 100%;
+        -moz-background-size: 100%;
+          -o-background-size: 100%;
+             background-size: 100%;
         background-color: #FFF;
         margin: -0.6rem;
         margin-left: -0.25rem;
@@ -2530,7 +2933,9 @@ a:focus {
         margin-left: 0.1rem;
         margin-top: -0.15rem;
         -webkit-transform: scale(0.9);
+           -moz-transform: scale(0.9);
             -ms-transform: scale(0.9);
+             -o-transform: scale(0.9);
                 transform: scale(0.9); }
         .pay_success footer .downloadp .center p {
           margin: 0; }
@@ -2548,7 +2953,9 @@ a:focus {
         margin-top: 0.29rem;
         margin-left: -3%;
         -webkit-transform: scale(0.8);
+           -moz-transform: scale(0.8);
             -ms-transform: scale(0.8);
+             -o-transform: scale(0.8);
                 transform: scale(0.8); }
     .pay_success footer .connect .tel {
       color: #f9614e;
