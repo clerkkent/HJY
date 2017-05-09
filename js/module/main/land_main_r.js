@@ -40,48 +40,89 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                 // },
                 predata: "land",
                 parse: "login_logic",
-                get_type: function(predata, parse) {
-                    var x = parse.parse_url();
-                    console.log(11)
-                    console.log(x)
-                    var channel = "yimao";
+                get: function(predata, parse) {
                     var mytime = new Date();
                     var t = mytime.getTime();
-                    var id = 3;
                     var params = {
-                        "time": t,
-                        "type": id
+                        "time": t
                     }
                     var list = {
                         "jsonrpc": "2.0",
-                        "method": "productList",
+                        "method": "GetMoneyType",
                         "params": [{
-                            // "user_id": "5",
                             "time": t,
-                            "type": id,
-                            "sign": parse.md(params)
+                            "sign": parse.md(params),
                         }],
                         "id": 1
                     }
+                    return predata.get_type(list);
+                },
+                get_type: function(predata, parse, get) {
+                        var x = parse.parse_url();
+                        var channel = "yimao";
+                        var mytime = new Date();
+                        var all = get["result"];
+                        var name = "yimao";
+                        var id = null;
+                        var a = function(arr) {
+                            for (var i = 0; i < arr.length; i++) {
+                                if (arr[i]["type_name"] == name) {
+                                    id = arr[i]["id"]
+                                }
+                            }
+                        }
+                        a(all);
+                        console.log(id)
+                        var t = mytime.getTime();
+                        var id = 3;
+                        var params = {
+                            "time": t,
+                            "type": id
+                        }
+                        var list = {
+                            "jsonrpc": "2.0",
+                            "method": "productList",
+                            "params": [{
+                                // "user_id": "5",
+                                "time": t,
+                                "type": id,
+                                "sign": parse.md(params)
+                            }],
+                            "id": 1
+                        }
 
-                    function judge(obj) {　　
-                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
-                            　　　　 return true;　　 }　
-                        return false;
-                    }
-                    if (judge(x)) {
-                        if (x["ch"] != undefined) {
-                            channel = x["ch"];
-                            list = {
-                                "jsonrpc": "2.0",
-                                "method": "productList",
-                                "params": [{
-                                    // "user_id": "5",
-                                    "time": t,
-                                    "type": id,
-                                    "sign": parse.md(params)
-                                }],
-                                "id": 1
+                        function judge(obj) {　　
+                            for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                                　　　　 return true;　　 }　
+                            return false;
+                        }
+                        if (judge(x)) {
+                            if (x["ch"] != undefined) {
+                                channel = x["ch"];
+                                list = {
+                                    "jsonrpc": "2.0",
+                                    "method": "productList",
+                                    "params": [{
+                                        // "user_id": "5",
+                                        "time": t,
+                                        "type": id,
+                                        "sign": parse.md(params)
+                                    }],
+                                    "id": 1
+                                }
+                            } else if (localStorage.getItem("ch") != null) {
+                                channel = localStorage.getItem("ch");
+                                list = {
+                                    "jsonrpc": "2.0",
+                                    "method": "productList",
+                                    "params": [{
+                                        // "user_id": "5",
+                                        "time": t,
+                                        "type": id,
+                                        "sign": parse.md(params)
+                                    }],
+                                    "id": 1
+                                }
                             }
                         } else if (localStorage.getItem("ch") != null) {
                             channel = localStorage.getItem("ch");
@@ -97,102 +138,65 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                                 "id": 1
                             }
                         }
-                    } else if (localStorage.getItem("ch") != null) {
-                        channel = localStorage.getItem("ch");
-                        list = {
-                            "jsonrpc": "2.0",
-                            "method": "productList",
-                            "params": [{
-                                // "user_id": "5",
-                                "time": t,
-                                "type": id,
-                                "sign": parse.md(params)
-                            }],
-                            "id": 1
-                        }
+                        sessionStorage.setItem("ch", channel);
+                        localStorage.setItem("ch", channel);
+                        // var type_data = [];
+                        return predata.submit(list);
                     }
-                    sessionStorage.setItem("ch", channel);
-                    localStorage.setItem("ch", channel);
-                    // var type_data = [];
-                    return predata.submit(list);
-                    // predata.submit(list).then(function(data) {
-                    //     if (data.result != undefined) {
-                    //         var type = data["result"]["list"];
-                    //         for (i = 0; i < type.length; i++) {
-                    //             var dis = type[i].product_discount;
-                    //             var ty = {
-                    //                 "discount": (dis * 10).toFixed(2),
-                    //                 "disn": (dis * 1).toFixed(2),
-                    //                 "t": type[i].product_time,
-                    //                 "method": type[i].product_time + "期",
-                    //                 "text": "/月*" + type[i].product_time + "个月套餐",
-                    //                 "belong": type[i].belong,
-                    //                 "product_id": type[i].id
+                    //     get_price: function(predata, parse) {
+                    //         var x = parse.parse_url();
+                    //         var channel = "yimao";
+                    //         if (judge(x)) {
+                    //             if (x["ch"] != undefined) {
+                    //                 channel = x["ch"];
+                    //             } else if (localStorage.getItem("ch") != null) {
+                    //                 channel = localStorage.getItem("ch")
                     //             }
-                    //             type_data.push(ty)
+                    //         } else if (localStorage.getItem("ch") != null) {
+                    //             channel = localStorage.getItem("ch")
                     //         }
-                    //         console.log(type_data)
-                    //             // console.log(type_data)
-                    //     }
-                    // });
 
+                //         function judge(obj) {　　
+                //             for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                //                 　　　　 return true;　　 }　
+                //             return false;
+                //         }
 
-
-                },
-                get_price: function(predata, parse) {
-                    var x = parse.parse_url();
-                    var channel = "yimao";
-                    if (judge(x)) {
-                        if (x["ch"] != undefined) {
-                            channel = x["ch"];
-                        } else if (localStorage.getItem("ch") != null) {
-                            channel = localStorage.getItem("ch")
-                        }
-                    } else if (localStorage.getItem("ch") != null) {
-                        channel = localStorage.getItem("ch")
-                    }
-
-                    function judge(obj) {　　
-                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
-                            　　　　 return true;　　 }　
-                        return false;
-                    }
-
-                    var mytime = new Date();
-                    var t = mytime.getTime();
-                    var params = {
-                            "time": t,
-                            "channel": channel,
-                        }
-                        // console.log(parse.md(params))
-                    var pricelist = {
-                            "jsonrpc": "2.0",
-                            "method": "getMoneyByChannel",
-                            "params": [{
-                                "time": t,
-                                "sign": parse.md(params),
-                                "channel": channel
-                            }],
-                            "id": 1
-                        }
-                        // var price_data = [];
-                        // var final_list = null;
-                        // predata.submit(pricelist).then(function(data) {
-                        //     if (data.result != undefined) {
-                        //         var ty = data["result"]["list"];
-                        //         for (i = 0; i < ty.length; i++) {
-                        //             var dis = Number(ty[i].name);
-                        //             price_data.push(dis);
-                        //         }
-                        //     }
-                        // })
-                        // final_list = {
-                        //     "price": price_data,
-                        //     "type": type_data
-                        // }
-                    console.log(pricelist)
-                    return predata.submit(pricelist);
-                }
+                //         var mytime = new Date();
+                //         var t = mytime.getTime();
+                //         var params = {
+                //                 "time": t,
+                //                 "channel": channel,
+                //             }
+                //             // console.log(parse.md(params))
+                //         var pricelist = {
+                //                 "jsonrpc": "2.0",
+                //                 "method": "getMoneyByChannel",
+                //                 "params": [{
+                //                     "time": t,
+                //                     "sign": parse.md(params),
+                //                     "channel": channel
+                //                 }],
+                //                 "id": 1
+                //             }
+                //             // var price_data = [];
+                //             // var final_list = null;
+                //             // predata.submit(pricelist).then(function(data) {
+                //             //     if (data.result != undefined) {
+                //             //         var ty = data["result"]["list"];
+                //             //         for (i = 0; i < ty.length; i++) {
+                //             //             var dis = Number(ty[i].name);
+                //             //             price_data.push(dis);
+                //             //         }
+                //             //     }
+                //             // })
+                //             // final_list = {
+                //             //     "price": price_data,
+                //             //     "type": type_data
+                //             // }
+                //         console.log(pricelist)
+                //         return predata.submit(pricelist);
+                //     }
             }
         })
         .state("funcpage.land_main.pay_login", {

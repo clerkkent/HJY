@@ -1,14 +1,14 @@
-angular.module('HJY').directive("testT", function($timeout) {
-    return {
-        restrict: "ECMA",
-        link: function(scope, element, attr) {
+// angular.module('HJY').directive("testT", function($timeout) {
+//     return {
+//         restrict: "ECMA",
+//         link: function(scope, element, attr) {
 
-            var belong = sessionStorage.getItem("belong");
-            var test;
+//             var belong = sessionStorage.getItem("belong");
+//             var test;
 
-        }
-    }
-})
+//         }
+//     }
+// })
 angular.module('HJY').directive("initT", function($timeout) {
     return {
         restrict: "ECMA",

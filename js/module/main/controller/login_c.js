@@ -149,7 +149,7 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
         var content = {
             title: "必须看！老司机教你如何优惠充油卡！",
             content: "低至85折充油再送200元加油券，车主必备，老司机快来~我会加油我骄傲！",
-            imageUrl: $rootScope.url_global + "/wechat/images/login/ic_login_logo.png",
+            imageUrl: $rootScope.url_global + "/wechat/images/分享.jpg",
             url: $rootScope.url_global + "/wechat/#/game/main"
         }
         webappSDK.share(content);
@@ -191,7 +191,6 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             })
         }
     });
-
     if ($scope.url.indexOf("?") != -1) { //URL入口
         var str = $scope.url.substr(1);
         $scope.strs = str.split("&");
@@ -241,7 +240,7 @@ HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPo
         var content = {
             title: "必须看！老司机教你如何优惠充油卡！",
             content: "低至85折充油再送200元加油券，车主必备，老司机快来~我会加油我骄傲！",
-            imageUrl: $rootScope.url_global + "/wechat/images/login/ic_login_logo.png",
+            imageUrl: $rootScope.url_global + "/wechat/images/分享.jpg",
             url: $rootScope.url_global + "/wechat/#/game/main"
         }
         webappSDK.share(content);
@@ -457,7 +456,7 @@ HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", func
     }
 }])
 
-HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", "login_logic", "land", "get_predata", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup, get_predata) {
+HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ionicPopup", "login_logic", "get_predata", function($scope, $state, $http, land, $interval, $ionicPopup, login_logic, get_predata) {
     $scope.info = { card: "", phone: "", scode: "", agree: true };
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
     $scope.cardt = false;
@@ -480,7 +479,6 @@ HJY.controller("land", ["$scope", "$state", "login_logic", "$http", "land", "$in
         $scope.belong = get_predata["result"]["list"][0]["belong"];
     }
     $scope.pay_on = false; //支付中，防止用户重复请求
-
     if ($scope.belong == 1) {
         $scope.test = /^100011\d{13}$/;
     } else if ($scope.belong == 2) {

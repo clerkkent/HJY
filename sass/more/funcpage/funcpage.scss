@@ -354,13 +354,14 @@
                 display:flex;
                 flex-flow: row wrap;
                 justify-content: flex-start;
+                overflow: hidden;
                 li{
                     height:.92159921rem; // 54px;
                     width:1.62133195rem; // 95px;
                     text-align:center;
                     display:flex;
                     flex-flow:column;
-                    margin:auto 0.06rem;
+                    margin:0.1rem 0.06rem;
                     justify-content:space-between;
                     @include backgroundset("../../images/land/H5_Option_n.png",center,center,100%);
                     .pre_price{

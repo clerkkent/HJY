@@ -1,6 +1,24 @@
 ;
-HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $locationProvider) {
     $ionicConfigProvider.views.maxCache(5);
+
+    function stateChangeSuccess($rootScope) {
+        $templateCache.removeAll();
+    }
+
+
+    function accMul(arg1, arg2) {
+        var m = 0,
+            s1 = arg1.toString(),
+            s2 = arg2.toString();
+        try { m += s1.split(".")[1].length } catch (e) {}
+        try { m += s2.split(".")[1].length } catch (e) {}
+        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+    }
+    //给Number类型增加一个mul方法，调用起来更加方便。
+    Number.prototype.mul = function(arg) {
+        return accMul(arg, this);
+    }
     $stateProvider.state("login", {
             url: "/login",
             controller: "loginc",
@@ -94,12 +112,38 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             resolve: {
                 predata: "land",
                 parse: "login_logic",
-                get_predata: function(predata, parse) {
+                get: function(predata, parse) {
+                    var mytime = new Date();
+                    var t = mytime.getTime();
+                    var params = {
+                        "time": t
+                    }
+                    var list = {
+                        "jsonrpc": "2.0",
+                        "method": "GetMoneyType",
+                        "params": [{
+                            "time": t,
+                            "sign": parse.md(params),
+                        }],
+                        "id": 1
+                    }
+                    return predata.get_type(list);
+                },
+                get_predata: function(predata, parse, get) {
                     var x = parse.parse_url();
                     var channel = "renrenche";
                     var list = null;
-                    var id = 2;
-
+                    var all = get["result"];
+                    var name = "yimao";
+                    var id = null;
+                    var a = function(arr) {
+                        for (var i = 0; i < arr.length; i++) {
+                            if (arr[i]["type_name"] == name) {
+                                id = arr[i]["id"]
+                            }
+                        }
+                    }
+                    a(all);
                     var mytime = new Date();
                     var t = mytime.getTime();
                     var params = {
@@ -139,8 +183,10 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                             }
                         }
                     }
+
                     return predata.submit(list);
                 }
+
             }
         })
         .state("land.pay_success", {
@@ -199,4 +245,5 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
     if (!(browser.versions.mobile || browser.versions.android || browser.versions.ios)) {
         location.hash = "/error"
     }
+    $locationProvider.html5Mode(false);
 }]);

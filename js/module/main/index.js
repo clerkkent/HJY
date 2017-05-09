@@ -8,8 +8,9 @@ HJY.controller("MainCtrl", ["$scope", "$state", "$ionicSideMenuDelegate", "$time
     $ionicLoading.show({
         content: 'Loading',
         animation: 'fade-in',
+        template: '<ion-spinner icon="ripple" class="spinner-calm"></ion-spinner>',
         showBackdrop: true,
-        maxWidth: 200,
+        maxWidth: 800,
         showDelay: 0
     });
     // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.

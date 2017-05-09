@@ -10,7 +10,7 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
         $(".main_content_help li").eq($(".main_content_help li").length - 1).css({ display: "none" })
     })
 }]);
-angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "get_price", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, get_price, _, land_main, $ionicPopup, $interval, land, $rootScope) {
+angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $rootScope) {
     $scope.text = "确认套餐";
     $scope.pay_text = "确认支付"
     $scope.main_title = "每月充值";
@@ -21,7 +21,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.pre_price = [];
     $scope.recommend = 0;
     $scope.recommend_p = 0;
-
+    console.log(get_type)
     if (get_type.result != undefined) {
         var type = get_type["result"]["list"];
         for (i = 0; i < type.length; i++) {
@@ -42,8 +42,8 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
             $scope.pre_type.push(ty)
         }
     }
-    if (get_price.result != undefined) {
-        var ty = get_price["result"]["list"];
+    if (get_type.result != undefined) {
+        var ty = get_type["result"]["money"];
         for (i = 0; i < ty.length; i++) {
             var dis = Number(ty[i].name);
             $scope.pre_price.push(dis);

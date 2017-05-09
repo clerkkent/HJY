@@ -24,7 +24,6 @@ HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $ro
                 $(this).addClass("selected")
             }
         }));
-        console.log($rootScope.url_global)
         $(".main_content").on("focus", ".get_award input", (function(event) {
             $(".friend_game").addClass("keyshow");
         }));
@@ -426,7 +425,7 @@ HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
-            console.log(data)
+
             defer.resolve(data); //声明执行成功
         }).error(function(data, header, config, status) {
             defer.reject(); //声明执行失败
