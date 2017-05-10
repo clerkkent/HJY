@@ -62,7 +62,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                         var channel = "yimao";
                         var mytime = new Date();
                         var all = get["result"];
-                        var name = "yimao";
+                        var name = "功能位";
                         var id = null;
                         var a = function(arr) {
                             for (var i = 0; i < arr.length; i++) {
@@ -72,9 +72,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                             }
                         }
                         a(all);
-                        console.log(id)
                         var t = mytime.getTime();
-                        var id = 3;
                         var params = {
                             "time": t,
                             "type": id
@@ -90,6 +88,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                             }],
                             "id": 1
                         }
+                        console.log(list)
 
                         function judge(obj) {　　
                             for (var i in obj) { //如果不为空，则会执行到这一步，返回true

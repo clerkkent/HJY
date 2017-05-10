@@ -1065,12 +1065,19 @@ a:focus {
         -ms-flex: 1;
             flex: 1;
     width: 100%;
-    background: #f5f5f5; }
+    background: #f5f5f5;
+    position: relative; }
     .friend_request section .friend_wrap {
       background: #FFF;
       width: 80%;
-      margin: .4rem 10%;
-      margin-bottom: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      margin-top: 0.4rem;
+      height: 60%;
       -moz-border-radius: .3rem;
            border-radius: .3rem; }
       .friend_request section .friend_wrap h3 {
@@ -1119,28 +1126,32 @@ a:focus {
             display: flex;
             -webkit-box-orient: horizontal;
             -webkit-box-direction: normal;
-            -webkit-flex-direction: row;
+            -webkit-flex-flow: row wrap;
                -moz-box-orient: horizontal;
                -moz-box-direction: normal;
-                -ms-flex-direction: row;
-                    flex-direction: row; }
+                -ms-flex-flow: row wrap;
+                    flex-flow: row wrap;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+               -moz-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+            line-height: .31199956rem;
+            height: .31199956rem;
+            position: relative; }
             .friend_request section .friend_wrap .second ul li span {
               display: inline-block;
-              -webkit-box-flex: 1;
-              -webkit-flex: 1;
-                 -moz-box-flex: 1;
-                  -ms-flex: 1;
-                      flex: 1; }
+              position: absolute; }
             .friend_request section .friend_wrap .second ul li .oil_drop {
               text-align: right;
-              padding-right: 8%;
+              right: 0;
               font-family: PingFangSC-Regular;
               font-size: .2rem;
               color: #FF7320;
               letter-spacing: 0; }
             .friend_request section .friend_wrap .second ul li .phone_number {
               text-align: left;
-              padding-left: 8%;
+              left: 0;
               font-family: PingFangSC-Regular;
               font-size: .2rem;
               color: #51586A;

@@ -40,19 +40,18 @@ HJY.directive("scrollLs", function() {
             } else {
                 $(".download").css({ height: "1.27999891rem", opacity: "1" })
             }
-            $(element[0]).scroll(function() {
-                var $this = $(this),
-                    viewH = $(this).height(), //可见高度
-                    contentH = $(this).get(0).scrollHeight, //内容高度
-                    scrollTop = $(this).scrollTop(); //滚动高度
-                // if ((viewH + scrollTop) / contentH < g) {
-                // if ((viewH + scrollTop) / contentH < g) {
-                //     $(".download").css({ height: "0", opacity: "0" })
-                // } else {
-                //     $(".download").css({ height: "1.27999891rem", opacity: "1" })
-                // }
-                $(".download").css({ height: "1.27999891rem", opacity: "1" })
-            })
+            var a = function xx() {
+                var $this = $(element[0]),
+                    viewH = $(element[0]).height(), //可见高度
+                    contentH = $(element[0]).get(0).scrollHeight, //内容高度
+                    scrollTop = $(element[0]).scrollTop(); //滚动高度
+                if ((viewH + scrollTop) / contentH < g) {
+                    $(".download").css({ height: "0", opacity: "0" })
+                } else {
+                    $(".download").css({ height: "1.27999891rem", opacity: "1" })
+                }
+            }
+            setInterval(a, 100)
         }
     }
 })

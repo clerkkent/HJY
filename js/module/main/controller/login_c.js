@@ -147,9 +147,9 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     // webappSDK.GetActiveId(1);
     $scope.share = function() { //分享原生H5指令交互
         var content = {
-            title: "必须看！老司机教你如何优惠充油卡！",
-            content: "低至85折充油再送200元加油券，车主必备，老司机快来~我会加油我骄傲！",
-            imageUrl: $rootScope.url_global + "/wechat/images/分享.jpg",
+            title: "必须看！老司机教你8.5折充油卡！",
+            content: "注册就送200元加油券，车主必备，老司机快来~",
+            imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
             url: $rootScope.url_global + "/wechat/#/game/main"
         }
         webappSDK.share(content);
@@ -238,9 +238,9 @@ HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPo
     webappSDK.GetActiveId(1);
     $scope.share = function() { //分享原生H5指令交互
         var content = {
-            title: "必须看！老司机教你如何优惠充油卡！",
-            content: "低至85折充油再送200元加油券，车主必备，老司机快来~我会加油我骄傲！",
-            imageUrl: $rootScope.url_global + "/wechat/images/分享.jpg",
+            title: "必须看！老司机教你8.5折充油卡！",
+            content: "注册就送200元加油券，车主必备，老司机快来~",
+            imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
             url: $rootScope.url_global + "/wechat/#/game/main"
         }
         webappSDK.share(content);
@@ -471,8 +471,9 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
     $scope.card_info_get = false; //请求卡信息时禁用按钮
     $scope.text = "立即支付";
     $scope.price = 100; //当前商品原价,用于乘以折扣使用
-    $scope.pre_price = 100; //用于传递后台原价，或者进行测试使用
+    $scope.pre_price = get_predata["result"]["money"][0].name; //用于传递后台原价，或者进行测试使用
     $scope.discount = 1; //当前卡所享折扣
+    console.log(get_predata)
     if (get_predata["result"] != undefined) {
         $scope.info_send.product_id = get_predata["result"]["list"][0]["id"]; //get_predata为页面加载前返回的商品信息
         $scope.discount = get_predata["result"]["list"][0]["product_discount"]; //折扣
@@ -658,12 +659,14 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
                         }],
                         "id": 1
                     }
+
                     var login = login_logic.submit(list)
                     login.then(function(data) {
                             if (data.result != undefined) {
                                 if (data.result.checkSms) {
                                     $scope.scodet = false;
                                     $scope.pay_on = true;
+
                                     sessionStorage.setItem("channel", $scope.info_send.channel);
                                     land.pay($scope.info_send);
                                     $scope.text = "正在前往支付页";

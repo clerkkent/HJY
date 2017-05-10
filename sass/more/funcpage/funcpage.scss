@@ -459,7 +459,7 @@
                 text-indent:0.2rem;
                 color:#6DC152;
                 margin-left:0.2rem;
-                @include backgroundset("../../images/land/ic_recording_green@3x.png",left,0.18rem,100%);
+                @include backgroundset("../../images/land/ic_recording_green@3x.png",0.1rem,0.18rem,100%);
                 transform:scale(1.3);
                 padding-left:.30719974rem; // 18px;
             }

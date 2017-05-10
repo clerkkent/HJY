@@ -126,7 +126,6 @@ HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $ro
         for (var i in objKeySort(params)) {
             st = st + objKeySort(params)[i] + "&"
         }
-        console.log(st + "HUIJIAYOU_TOKEN")
         return $.md5(st + "HUIJIAYOU_TOKEN")
     }
     return factory;
@@ -392,6 +391,12 @@ HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope
             var v = $this.val();
             /\S{5}/.test(v) && $this.val(v.replace(/\s/g, '').replace(/(.{3})(.{4})/g, "$1 $2 "));
         });
+        // $('.main_content').on('focus', 'input', function() {
+        //     $(".download").css({ height: "0", opacity: "0" })
+        // });
+        // $('.main_content').on('blur', 'input', function() {
+        //     $(".download").css({ height: "1.27999891rem", opacity: "1" })
+        // });
         $(".main_content").on("click", ".land .express", function(event) {
             $(".main_content .land .details_express").show();
             event.stopPropagation()
@@ -472,6 +477,7 @@ HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }
+        console.log($rootScope.url_global)
         $http({
             method: 'POST',
             url: $rootScope.url_global + '/pro/index.php?c=getmoney',

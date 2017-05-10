@@ -134,7 +134,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
                     var channel = "renrenche";
                     var list = null;
                     var all = get["result"];
-                    var name = "yimao";
+                    var name = "落地页";
                     var id = null;
                     var a = function(arr) {
                         for (var i = 0; i < arr.length; i++) {

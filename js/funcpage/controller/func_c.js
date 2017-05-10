@@ -601,6 +601,7 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
 }])
 HJY.controller("m_pay_success", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.url_data = login_logic.parse_url();
+    console.log($scope.url_data)
     $scope.go_order_list = function() {
         $state.go("funcpage.order_list")
     }
@@ -615,6 +616,7 @@ HJY.controller("m_pay_success", ["$scope", "$state", "login_logic", "$http", "la
     $scope.getdata = function(send) {
         var good_list = land.get_good_list(send);
         good_list.then(function(data) {
+            console.log(data)
             if (data["result"] != undefined) {
                 clearInterval(time);
                 if (data["result"]["status"] == 1) {
@@ -650,7 +652,6 @@ HJY.controller("m_pay_fails", ["$scope", "$state", "login_logic", "$http", "land
     }
 }])
 angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic", "$http", "land_main", "$ionicPopup", function($scope, $state, login_logic, $http, land_main, $ionicPopup) {
-
     $scope.send_list = function(n) {
         var mytime = new Date();
         var t = mytime.getTime();
