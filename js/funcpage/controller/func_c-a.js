@@ -3,10 +3,8 @@ angular.module('HJY').controller("funcpage", ["$scope", "$state", "login_logic",
 }]);
 angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
     login_logic.deal_help();
-
     $http.get("mock/func/help.json").then(function(data) {
         $scope.help_information = data.data;
-        console.log($(".main_content_help li"))
         $(".main_content_help li").eq($(".main_content_help li").length - 1).css({ display: "none" })
     })
 }]);
@@ -21,7 +19,6 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.pre_price = [];
     $scope.recommend = 0;
     $scope.recommend_p = 0;
-    console.log(get_type)
     if (get_type.result != undefined) {
         var type = get_type["result"]["list"];
         for (i = 0; i < type.length; i++) {
@@ -303,7 +300,6 @@ angular.module('HJY').controller("pay_login_info", ["$scope", "$state", "login_l
     $scope.phone_on = localStorage.getItem("phone");
     $scope.card_s = localStorage.getItem("card");
     $scope.name_s = localStorage.getItem("name");
-
     $scope.company_s = localStorage.getItem("company");
     $scope.price_n = localStorage.getItem("n_price");
     $scope.price_f = localStorage.getItem("f_price");
@@ -601,7 +597,6 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
 }])
 HJY.controller("m_pay_success", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.url_data = login_logic.parse_url();
-    console.log($scope.url_data)
     $scope.go_order_list = function() {
         $state.go("funcpage.order_list")
     }

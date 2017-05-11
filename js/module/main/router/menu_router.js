@@ -2,11 +2,6 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $locationProvider) {
     $ionicConfigProvider.views.maxCache(5);
 
-    function stateChangeSuccess($rootScope) {
-        $templateCache.removeAll();
-    }
-
-
     function accMul(arg1, arg2) {
         var m = 0,
             s1 = arg1.toString(),
@@ -246,4 +241,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
         location.hash = "/error"
     }
     $locationProvider.html5Mode(false);
+}]);
+HJY.run(['$rootScope', function($rootScope) {
+    $rootScope.url_global = window.glo_url_api; //本地测试
 }]);

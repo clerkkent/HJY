@@ -7,10 +7,10 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             resolve: {
                 loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load([
-                        './js/funcpage/controller/func_c.js',
-                        './js/funcpage/directive/func_d.js',
-                        './js/funcpage/filter/func_f.js',
-                        './js/funcpage/service/func_s.js',
+                        './js/funcpage/controller/func_c-a.js',
+                        './js/funcpage/directive/func_d-a.js',
+                        './js/funcpage/filter/func_f-a.js',
+                        './js/funcpage/service/func_s-a.js',
                         './css/funcpage/funcpage.css',
                         './js/plugins/underscore.js',
                         './js/plugins/md5.js',
@@ -41,6 +41,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                 predata: "land",
                 parse: "login_logic",
                 get: function(predata, parse) {
+                    console.log(1)
                     var mytime = new Date();
                     var t = mytime.getTime();
                     var params = {
@@ -88,7 +89,6 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                             }],
                             "id": 1
                         }
-                        console.log(list)
 
                         function judge(obj) {　　
                             for (var i in obj) { //如果不为空，则会执行到这一步，返回true

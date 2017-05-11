@@ -15,28 +15,28 @@
                         
                     </span>
                 </div>
-                <input type="tel" id="card" placeholder="请输入中石化油卡号" ng-verify="pattern:/^([\d\s]{19}|[\d\s]{23})$/,max:23,min:19,errmsg:'油卡卡号格式错误',required: true" ng-model="info.card" ng-pattern="/^([\d\s]{19}|[\d\s]{23})$/" name="card" ng-blur="check_card()">
+                <input type="tel" id="card" placeholder="请输入中石化油卡号" ng-verify="pattern:/^([\d\s]{19}|[\d\s]{23})$/,max:23,min:19,errmsg: '油卡卡号格式错误',required: true " ng-model="info.card " ng-pattern="/^([\d\s]{19}|[\d\s]{23})$/ " name="card " ng-blur="check_card() ">
             </div>
         </header>
         <section>
-            <div ui-view="body">
-                <h3 class="title">{{main_title}}</h3>
-                <div class="select">
-                    <div class="left" ng-click="sub()">—</div>
-                    <div class="center">{{unit_price}}<i> 元</i></div>
-                    <div class="right" ng-click="add()">+</div>
+            <div ui-view="body ">
+                <h3 class="title ">{{main_title}}</h3>
+                <div class="select ">
+                    <div class="left " ng-click="sub() ">—</div>
+                    <div class="center ">{{unit_price}}<i> 元</i></div>
+                    <div class="right " ng-click="add() ">+</div>
                 </div>
-                <p class="help" ng-click="go_help()">充值帮助</p>
+                <p class="help " ng-click="go_help() ">充值帮助</p>
                 <ul>
-                    <li ng-repeat="x in type | orderBy:order:'desc' " ng-if="$index<6" ng-click="select_type(x,$index)" init-t>
-                        <p class="pre_price">{{x.discount}}<span>折</span></p>
-                        <p class="dis_price" ng-if="x.t!=1">{{x.t}}期</p>
-                        <p class="dis_price" ng-if="x.t==1">即时充值</p>
+                    <li ng-repeat="x in type | orderBy:order: 'desc' " ng-if="$index<6 " ng-click="select_type(x,$index) " init-t>
+                        <p class="pre_price ">{{x.discount}}<span>折</span></p>
+                        <p class="dis_price " ng-if="x.t!=1 ">{{x.t}}期</p>
+                        <p class="dis_price " ng-if="x.t==1 ">即时充值</p>
                     </li>
                 </ul>
-                <input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled="myform.card.$invalid||get_card_info" ng-click="check_send()">
+                <input class="second_i button button-assertive info " type="submit " value="{{text}} " ng-disabled="myform.card.$invalid||get_card_info " ng-click="check_send() ">
             </div>
-            <p class="my_order" ng-click="go_order()"></p>
+            <p class="my_order " ng-click="go_order() "></p>
         </section>
     </form>
 </div>
