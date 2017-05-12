@@ -3,7 +3,8 @@ angular.module('HJY').controller("funcpage", ["$scope", "$state", "login_logic",
 }]);
 angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
     login_logic.deal_help();
-    $http.get("mock/func/help.json").then(function(data) {
+    var v = "?" + window.version_glo;
+    $http.get("mock/func/help.json" + v).then(function(data) {
         $scope.help_information = data.data;
         $(".main_content_help li").eq($(".main_content_help li").length - 1).css({ display: "none" })
     })

@@ -126,11 +126,12 @@ HJY.controller("help", ["$scope", "$state", "login_logic", "$http", "webappSDK",
         // $scope.feed_return = function() {
         //     $state.go("help")
         // }
+    var v = "?" + window.version_glo;
     $scope.call = function() {
         var phone = "4008518686";
         webappSDK.call(phone)
     }
-    $http.get("mock/help/help.json").then(function(data) {
+    $http.get("mock/help/help.json" + v).then(function(data) {
         $scope.help_information = data.data;
     })
 }]);
@@ -150,7 +151,8 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             title: "必须看！老司机教你8.5折充油卡！",
             content: "注册就送200元加油券，车主必备，老司机快来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
-            url: $rootScope.url_global + "/wechat/#/game/main"
+            // url: $rootScope.url_global + "/wechat/?"+""+"#/game/main"
+            url: ""
         }
         webappSDK.share(content);
     }
@@ -241,7 +243,8 @@ HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPo
             title: "必须看！老司机教你8.5折充油卡！",
             content: "注册就送200元加油券，车主必备，老司机快来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
-            url: $rootScope.url_global + "/wechat/#/game/main"
+            // url: $rootScope.url_global + "/wechat/#/game/main",
+            url: ""
         }
         webappSDK.share(content);
     }
@@ -471,9 +474,10 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
     $scope.card_info_get = false; //请求卡信息时禁用按钮
     $scope.text = "立即支付";
     $scope.price = 100; //当前商品原价,用于乘以折扣使用
+    console.log(get_predata)
     $scope.pre_price = get_predata["result"]["money"][0].name; //用于传递后台原价，或者进行测试使用
     $scope.discount = 1; //当前卡所享折扣
-    console.log(get_predata)
+
     if (get_predata["result"] != undefined) {
         $scope.info_send.product_id = get_predata["result"]["list"][0]["id"]; //get_predata为页面加载前返回的商品信息
         $scope.discount = get_predata["result"]["list"][0]["product_discount"]; //折扣

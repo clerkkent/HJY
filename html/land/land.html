@@ -12,7 +12,7 @@
                 <input class="first_i info" autocomplete="off" type="tel" ng-model="info.scode" name="scode" ng-verify="max:6" required placeholder="请输入验证码">
                 <button class="get_scode" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">获取短信验证码</button>
                 <p class="notice" ng-show="cardt||phonet||scodet||agreet">{{notice}}</p>
-                <input class="second_i button button-assertive info" type="submit" value="{{text}}" ng-disabled=" price_get || agreet||pay_on||card_info_get" ng-click="login()">
+                <input class="second_i button button-assertive info" type="button" value="{{text}}" ng-disabled=" price_get || agreet||pay_on||card_info_get" ng-click="login()">
                 <p class="remind" class="agree checkbox-assertive" ng-model="info.agree"><span class="agree" ng-click="toggleCustom()"></span><span ng-click="go_p()" style="border:none;">同意《会加油服务协议》</span></p>
             </form>
         </section>

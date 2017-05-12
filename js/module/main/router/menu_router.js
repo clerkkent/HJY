@@ -1,6 +1,8 @@
 ;
-HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $locationProvider) {
+HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$locationProvider", "$httpProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $locationProvider, $httpProvider) {
+    window.version_glo = "2.1";
     $ionicConfigProvider.views.maxCache(5);
+    var v = "?" + window.version_glo;
 
     function accMul(arg1, arg2) {
         var m = 0,
@@ -17,50 +19,50 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
     $stateProvider.state("login", {
             url: "/login",
             controller: "loginc",
-            templateUrl: "html/login/login_regist.html",
+            templateUrl: "html/login/login_regist.html" + v,
         })
         .state("login.weixinbind", {
             url: "/weixinbind",
             controller: "weixin",
-            templateUrl: "html/login/weixin_bind.html",
+            templateUrl: "html/login/weixin_bind.html" + v,
         })
         .state("error", {
             url: "/error",
-            templateUrl: "html/login/error.html",
+            templateUrl: "html/login/error.html" + v,
         })
         .state("help", {
             url: "/help",
             controller: "help",
-            templateUrl: "html/help/help.html",
+            templateUrl: "html/help/help.html" + v,
         })
         .state("friend_invi", {
             url: "/friend_invi",
             controller: "friend",
             cache: 'false',
-            templateUrl: "html/friend/friendRequest.html",
+            templateUrl: "html/friend/friendRequest.html" + v,
         })
         .state("friend_request_details", {
             url: "/friend_request_details",
             controller: "friend_request_details",
-            templateUrl: "html/friend/friend_request_details.html",
+            templateUrl: "html/friend/friend_request_details.html" + v,
         })
         .state("pay", {
             url: "/pay",
             controller: "pay",
-            templateUrl: "html/pay/pay.html"
+            templateUrl: "html/pay/pay.html" + v
         })
         .state("mycenter", {
             url: "/mycenter",
             controller: "mycenter",
-            templateUrl: "html/mycenter/my_center.html"
+            templateUrl: "html/mycenter/my_center.html" + v
         })
         .state("buy", {
             url: "/buy",
             controller: "buy",
-            templateUrl: "html/buy/index01.html",
+            templateUrl: "html/buy/index01.html" + v,
             resolve: {
                 loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load('./js/plugins/swiper-3.4.0.min.js'); // 按需加载目标 js file
+                    return $ocLazyLoad.load('./js/plugins/swiper-3.4.0.min.js' + v); // 按需加载目标 js file
                 }]
             }
         })
@@ -68,42 +70,42 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
             url: "/game",
             controller: "game",
             cache: "false",
-            templateUrl: "html/game/game.html"
+            templateUrl: "html/game/game.html" + v
         })
         .state("game.select", {
             url: "/select",
             controller: "game_select",
             cache: 'false',
-            templateUrl: "html/game/select.html"
+            templateUrl: "html/game/select.html" + v
         })
         .state("game.login", {
             url: "/login",
             controller: "game_login",
             cache: "false",
-            templateUrl: "html/game/get_login.html",
+            templateUrl: "html/game/get_login.html" + v,
         })
         .state("game.main", {
             url: "/main",
             controller: "game",
             cache: 'false',
-            templateUrl: "html/game/game_main.html"
+            templateUrl: "html/game/game_main.html" + v
         })
         .state("game_success", {
             url: "/game_success",
             cache: 'false',
             controller: "game_success",
-            templateUrl: "html/game/game_success.html"
+            templateUrl: "html/game/game_success.html" + v
         })
         .state("download", {
             url: "/download",
             cache: 'false',
             controller: "download",
-            templateUrl: "html/game/appdown.html"
+            templateUrl: "html/game/appdown.html" + v
         })
         .state("land", {
             url: "/land",
             controller: "land",
-            templateUrl: "html/land/land.html",
+            templateUrl: "html/land/land.html" + v,
             resolve: {
                 predata: "land",
                 parse: "login_logic",
@@ -115,7 +117,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
                     }
                     var list = {
                         "jsonrpc": "2.0",
-                        "method": "GetMoneyType",
+                        "method": "getProductType",
                         "params": [{
                             "time": t,
                             "sign": parse.md(params),
@@ -133,7 +135,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
                     var id = null;
                     var a = function(arr) {
                         for (var i = 0; i < arr.length; i++) {
-                            if (arr[i]["type_name"] == name) {
+                            if (arr[i]["product_name"] == name) {
                                 id = arr[i]["id"]
                             }
                         }
@@ -187,7 +189,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
         .state("land.pay_success", {
             url: "/pay_success",
             controller: "pay_success",
-            templateUrl: "html/land/pay_success.html"
+            templateUrl: "html/land/pay_success.html" + v
                 // onEnter: function() { //此处处理父组件的download出现在子组件中的BUG
                 //     $(".download").hide()
                 // },
@@ -198,17 +200,17 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
         .state("land.pay_success.pay_fails", {
             url: "/pay_fails",
             controller: "pay_fails",
-            templateUrl: "html/land/payfail.html"
+            templateUrl: "html/land/payfail.html" + v
         })
         .state("register_agreement", {
             url: "/register_agreement",
             controller: "help",
-            templateUrl: "html/agreement/register_agreement.html"
+            templateUrl: "html/agreement/register_agreement.html" + v
         })
         .state("user_agreement", {
             url: "/user_agreement",
             controller: "help",
-            templateUrl: "html/agreement/user_agreement.html"
+            templateUrl: "html/agreement/user_agreement.html" + v
         })
         // .state("feedback", {
         //     url: "/feedback",
@@ -243,5 +245,5 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
     $locationProvider.html5Mode(false);
 }]);
 HJY.run(['$rootScope', function($rootScope) {
-    $rootScope.url_global = window.glo_url_api; //本地测试
+    $rootScope.url_global = "http://www.ihaomu.com"; //本地测试
 }]);

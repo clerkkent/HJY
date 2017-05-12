@@ -1,20 +1,22 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.views.maxCache(5);
+    window.version_glo = "2.1";
+    var v = "?" + window.version_glo;
     $stateProvider.state("funcpage", {
             url: "/funcpage",
             controller: "funcpage",
-            templateUrl: "html/funpage/func.html",
+            templateUrl: "html/funpage/func.html" + v,
             resolve: {
                 loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load([
-                        './js/funcpage/controller/func_c-a.js',
-                        './js/funcpage/directive/func_d-a.js',
-                        './js/funcpage/filter/func_f-a.js',
-                        './js/funcpage/service/func_s-a.js',
-                        './css/funcpage/funcpage.css',
-                        './js/plugins/underscore.js',
-                        './js/plugins/md5.js',
-                        './js/plugins/moment.js'
+                        './js/funcpage/controller/func_c-a.js' + v,
+                        './js/funcpage/directive/func_d-a.js' + v,
+                        './js/funcpage/filter/func_f-a.js' + v,
+                        './js/funcpage/service/func_s-a.js' + v,
+                        './css/funcpage/funcpage.css' + v,
+                        './js/plugins/underscore.js' + v,
+                        './js/plugins/md5.js' + v,
+                        './js/plugins/moment.js' + v
                     ]); // 按需加载目标 js file
                 }]
             }
@@ -22,11 +24,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("funcpage.help", {
             url: "/help",
             controller: "func_help",
-            templateUrl: "html/help/help.html"
+            templateUrl: "html/help/help.html" + v
         }).state("funcpage.land_main", {
             url: "/land_main",
             controller: "land_main",
-            templateUrl: "html/funpage/land_main.html",
+            templateUrl: "html/funpage/land_main.html" + v,
             resolve: {
                 // get_type: function($http, $q) {
                 //     var defer = $q.defer();
@@ -49,7 +51,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                     }
                     var list = {
                         "jsonrpc": "2.0",
-                        "method": "GetMoneyType",
+                        "method": "getProductType",
                         "params": [{
                             "time": t,
                             "sign": parse.md(params),
@@ -59,69 +61,55 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                     return predata.get_type(list);
                 },
                 get_type: function(predata, parse, get) {
-                        var x = parse.parse_url();
-                        var channel = "yimao";
-                        var mytime = new Date();
-                        var all = get["result"];
-                        var name = "功能位";
-                        var id = null;
-                        var a = function(arr) {
-                            for (var i = 0; i < arr.length; i++) {
-                                if (arr[i]["type_name"] == name) {
-                                    id = arr[i]["id"]
-                                }
+                    var x = parse.parse_url();
+                    var channel = "yimao";
+                    var mytime = new Date();
+                    var all = get["result"];
+                    var name = "功能页";
+                    var id = null;
+                    var a = function(arr) {
+                        for (var i = 0; i < arr.length; i++) {
+                            if (arr[i]["product_name"] == name) {
+                                id = arr[i]["id"]
                             }
                         }
-                        a(all);
-                        var t = mytime.getTime();
-                        var params = {
+                    }
+                    a(all);
+                    var t = mytime.getTime();
+                    var params = {
+                        "time": t,
+                        "type": id
+                    }
+                    var list = {
+                        "jsonrpc": "2.0",
+                        "method": "productList",
+                        "params": [{
+                            // "user_id": "5",
                             "time": t,
-                            "type": id
-                        }
-                        var list = {
-                            "jsonrpc": "2.0",
-                            "method": "productList",
-                            "params": [{
-                                // "user_id": "5",
-                                "time": t,
-                                "type": id,
-                                "sign": parse.md(params)
-                            }],
-                            "id": 1
-                        }
+                            "type": id,
+                            "sign": parse.md(params)
+                        }],
+                        "id": 1
+                    }
 
-                        function judge(obj) {　　
-                            for (var i in obj) { //如果不为空，则会执行到这一步，返回true
-                                　　　　 return true;　　 }　
-                            return false;
-                        }
-                        if (judge(x)) {
-                            if (x["ch"] != undefined) {
-                                channel = x["ch"];
-                                list = {
-                                    "jsonrpc": "2.0",
-                                    "method": "productList",
-                                    "params": [{
-                                        // "user_id": "5",
-                                        "time": t,
-                                        "type": id,
-                                        "sign": parse.md(params)
-                                    }],
-                                    "id": 1
-                                }
-                            } else if (localStorage.getItem("ch") != null) {
-                                channel = localStorage.getItem("ch");
-                                list = {
-                                    "jsonrpc": "2.0",
-                                    "method": "productList",
-                                    "params": [{
-                                        // "user_id": "5",
-                                        "time": t,
-                                        "type": id,
-                                        "sign": parse.md(params)
-                                    }],
-                                    "id": 1
-                                }
+                    function judge(obj) {　　
+                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                            　　　　 return true;　　 }　
+                        return false;
+                    }
+                    if (judge(x)) {
+                        if (x["ch"] != undefined) {
+                            channel = x["ch"];
+                            list = {
+                                "jsonrpc": "2.0",
+                                "method": "productList",
+                                "params": [{
+                                    // "user_id": "5",
+                                    "time": t,
+                                    "type": id,
+                                    "sign": parse.md(params)
+                                }],
+                                "id": 1
                             }
                         } else if (localStorage.getItem("ch") != null) {
                             channel = localStorage.getItem("ch");
@@ -137,76 +125,36 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                                 "id": 1
                             }
                         }
-                        sessionStorage.setItem("ch", channel);
-                        localStorage.setItem("ch", channel);
-                        // var type_data = [];
-                        return predata.submit(list);
+                    } else if (localStorage.getItem("ch") != null) {
+                        channel = localStorage.getItem("ch");
+                        list = {
+                            "jsonrpc": "2.0",
+                            "method": "productList",
+                            "params": [{
+                                // "user_id": "5",
+                                "time": t,
+                                "type": id,
+                                "sign": parse.md(params)
+                            }],
+                            "id": 1
+                        }
                     }
-                    //     get_price: function(predata, parse) {
-                    //         var x = parse.parse_url();
-                    //         var channel = "yimao";
-                    //         if (judge(x)) {
-                    //             if (x["ch"] != undefined) {
-                    //                 channel = x["ch"];
-                    //             } else if (localStorage.getItem("ch") != null) {
-                    //                 channel = localStorage.getItem("ch")
-                    //             }
-                    //         } else if (localStorage.getItem("ch") != null) {
-                    //             channel = localStorage.getItem("ch")
-                    //         }
-
-                //         function judge(obj) {　　
-                //             for (var i in obj) { //如果不为空，则会执行到这一步，返回true
-                //                 　　　　 return true;　　 }　
-                //             return false;
-                //         }
-
-                //         var mytime = new Date();
-                //         var t = mytime.getTime();
-                //         var params = {
-                //                 "time": t,
-                //                 "channel": channel,
-                //             }
-                //             // console.log(parse.md(params))
-                //         var pricelist = {
-                //                 "jsonrpc": "2.0",
-                //                 "method": "getMoneyByChannel",
-                //                 "params": [{
-                //                     "time": t,
-                //                     "sign": parse.md(params),
-                //                     "channel": channel
-                //                 }],
-                //                 "id": 1
-                //             }
-                //             // var price_data = [];
-                //             // var final_list = null;
-                //             // predata.submit(pricelist).then(function(data) {
-                //             //     if (data.result != undefined) {
-                //             //         var ty = data["result"]["list"];
-                //             //         for (i = 0; i < ty.length; i++) {
-                //             //             var dis = Number(ty[i].name);
-                //             //             price_data.push(dis);
-                //             //         }
-                //             //     }
-                //             // })
-                //             // final_list = {
-                //             //     "price": price_data,
-                //             //     "type": type_data
-                //             // }
-                //         console.log(pricelist)
-                //         return predata.submit(pricelist);
-                //     }
+                    sessionStorage.setItem("ch", channel);
+                    localStorage.setItem("ch", channel);
+                    // var type_data = [];
+                    return predata.submit(list);
+                }
             }
         })
         .state("funcpage.land_main.pay_login", {
             url: "/pay_login",
             views: {
                 'header': {
-                    templateUrl: "html/funpage/pay_login/header.html",
+                    templateUrl: "html/funpage/pay_login/header.html" + v,
                     controller: "pay_login_info"
                 },
                 'body': {
-                    templateUrl: "html/funpage/pay_login/body.html",
+                    templateUrl: "html/funpage/pay_login/body.html" + v,
                     controller: "pay_login",
 
                 }
@@ -217,11 +165,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             params: { pro: null },
             views: {
                 'header': {
-                    templateUrl: "html/funpage/pay_login/header.html",
+                    templateUrl: "html/funpage/pay_login/header.html" + v,
                     controller: "pay_login_info",
                 },
                 'body': {
-                    templateUrl: "html/funpage/pay_login/login_on.html",
+                    templateUrl: "html/funpage/pay_login/login_on.html" + v,
                     controller: "pay_login_on",
 
                 }
@@ -230,7 +178,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("funcpage.pay_success", {
             url: "/pay_success",
             controller: "m_pay_success",
-            templateUrl: "html/funpage/pay_state/pay_success.html"
+            templateUrl: "html/funpage/pay_state/pay_success.html" + v
                 // onEnter: function() { //此处处理父组件的download出现在子组件中的BUG
                 //     $(".download").hide()
                 // },
@@ -241,28 +189,28 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("funcpage.pay_success.pay_fails", {
             url: "/pay_fails",
             controller: "m_pay_fails",
-            templateUrl: "html/funpage/pay_state/payfail.html"
+            templateUrl: "html/funpage/pay_state/payfail.html" + v
         })
         .state("funcpage.order_list", {
             url: "/order_list",
             controller: "order_list",
-            templateUrl: "html/funpage/order_list/order_list.html"
+            templateUrl: "html/funpage/order_list/order_list.html" + v
         })
         .state("funcpage.order_details", {
             url: "/order_details",
             controller: "order_details",
             params: { id: null },
-            templateUrl: "html/funpage/order_list/order_details.html"
+            templateUrl: "html/funpage/order_list/order_details.html" + v
         })
         .state("funcpage.not_login", {
             url: "/not_login",
             controller: "not_login",
-            templateUrl: "html/funpage/order_list/not_login.html"
+            templateUrl: "html/funpage/order_list/not_login.html" + v
         })
         .state("funcpage.login", {
             url: "/login",
             controller: "land_main_login",
-            templateUrl: "html/funpage/login.html"
+            templateUrl: "html/funpage/login.html" + v
         })
         // .state("feedback", {
         //     url: "/feedback",
@@ -270,4 +218,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         //     templateUrl: "html/help/feedback.html",
         // })//信息反馈页面
 
+}]);
+HJY.run(['$rootScope', function($rootScope) {
+    $rootScope.url_global = "http://www.ihaomu.com"; //本地测试
 }]);

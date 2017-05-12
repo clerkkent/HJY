@@ -477,10 +477,10 @@ HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }
-        console.log($rootScope.url_global)
+        console.log($rootScope.url_global + '/pro/index.php?c=oilcard' + "xxxxxxxxxxxx")
         $http({
             method: 'POST',
-            url: $rootScope.url_global + '/pro/index.php?c=getmoney',
+            url: $rootScope.url_global + '/pro/index.php?c=oilcard',
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
