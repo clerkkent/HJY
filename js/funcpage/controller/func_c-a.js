@@ -914,12 +914,13 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
             console.log("验证码信息获取失败");
         })
     }
-
+    $scope.channel = sessionStorage.getItem("ch");
+    console.log($scope.channel)
     $scope.login = function() { //登录注册
         var list_login = null;
         localStorage.setItem("phone", $scope.info.phone.replace(/\s/g, ""));
 
-        if ($scope.info.icode != "") { //判断是否存在验证码
+        if ($scope.info.icode != "") { //判断是否存在邀请码
             list_login = {
                 "jsonrpc": "2.0",
                 "method": "signin",
@@ -927,7 +928,8 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
                     "username": $scope.info.phone, //电话号
                     "sms_key": $scope.key, //短信接口收到的key
                     "sms_code": $scope.info.scode, //验证码
-                    "invite_code ": $scope.info.icode
+                    "invite_code ": $scope.info.icode,
+                    "channel": $scope.channel
                 }],
                 "id": 1
             }
@@ -939,11 +941,11 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
                     "username": $scope.info.phone, //电话号
                     "sms_key": $scope.key, //短信接口收到的key
                     "sms_code": $scope.info.scode, //验证码
+                    "channel": $scope.channel
                 }],
                 "id": 1
             }
         }
-
         var promise_login = login_logic.submit(list_login);
         promise_login.then(function(data) {
             if (data.result != undefined) {
