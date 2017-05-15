@@ -2281,7 +2281,7 @@ $breakpoints: (
     -webkit-overflow-scrolling: touch;
     header {
         height: 3.92532998rem; // 230px
-        @include backgroundset("../images/land/H5_banner@3x.png",
+        @include backgroundset("../images/land/H5_banner.png",
         center,
         center,
         auto);

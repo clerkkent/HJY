@@ -242,8 +242,18 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
     if (!(browser.versions.mobile || browser.versions.android || browser.versions.ios)) {
         location.hash = "/error"
     }
-    $locationProvider.html5Mode(false);
+    // $locationProvider.html5Mode(true);
 }]);
 HJY.run(['$rootScope', function($rootScope) {
-    $rootScope.url_global = "http://www.ihaomu.com"; //本地测试
+    console.log(location.hostname)
+    if (location.hostname == "www.ihaomu.com") {
+        console.log("统计")
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fdb9e557f9cc49a60c8ed0c30b13a40e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    }
+    // $rootScope.url_global = "http://192.168.11.179:8888";
+    $rootScope.url_global = "http://" + location.hostname; //本地测试
+
 }]);

@@ -2158,7 +2158,7 @@ a:focus {
   -webkit-overflow-scrolling: touch; }
   .land header {
     height: 3.92532998rem;
-    background: url("../images/land/H5_banner@3x.png") center center no-repeat;
+    background: url("../images/land/H5_banner.png") center center no-repeat;
     background-size: auto;
     background-size: contain;
     margin-top: 0.1rem; }

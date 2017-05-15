@@ -473,7 +473,7 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
     $scope.price_get = false; //读取价格时禁用按钮
     $scope.card_info_get = false; //请求卡信息时禁用按钮
     $scope.text = "立即支付";
-    $scope.price = 100; //当前商品原价,用于乘以折扣使用
+    $scope.price = get_predata["result"]["money"][0].name; //当前商品原价,用于乘以折扣使用
     console.log(get_predata)
     $scope.pre_price = get_predata["result"]["money"][0].name; //用于传递后台原价，或者进行测试使用
     $scope.discount = 1; //当前卡所享折扣
@@ -531,10 +531,10 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
                     if ($scope.phone_flag != null && $scope.card_flag != null) {
                         $scope.price_get = false;
                         if ($scope.phone_flag == 1 && $scope.card_flag == 1) {
-                            $scope.price = Math.ceil((dc * 100 - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                            $scope.price = Math.ceil((dc * $scope.price - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
                             $scope.text = "确认支付" + String($scope.price) + "元";
                         } else {
-                            $scope.price = Math.ceil((dc * 100) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                            $scope.price = Math.ceil((dc * $scope.price) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
                             $scope.text = "确认支付" + String($scope.price) + "元";
                         }
                     } else {
@@ -593,10 +593,10 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
                         var dc = parseFloat($scope.discount);
                         if ($scope.phone_flag != null && $scope.card_flag != null) {
                             if ($scope.phone_flag == 1 && $scope.card_flag == 1) {
-                                $scope.price = Math.ceil((dc * 100 - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                                $scope.price = Math.ceil((dc * $scope.price - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
                                 $scope.text = "确认支付" + String($scope.price) + "元";
                             } else {
-                                $scope.price = Math.ceil((dc * 100) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
+                                $scope.price = Math.ceil((dc * $scope.price) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
                                 $scope.text = "确认支付" + String($scope.price) + "元";
                             }
                             $scope.price_get = false;
@@ -750,8 +750,8 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
         var good_list = land.get_good_list(send);
         good_list.then(function(data) {
             if (data["result"] != undefined) {
-                $interval.cancel(time);
                 if (data["result"]["status"] == 1) {
+                    $interval.cancel(time);
                     $scope.list = data["result"];
                     if ($scope.list.uuid == "") {
                         $scope.redpack = false;
@@ -759,6 +759,7 @@ HJY.controller("pay_success", ["$scope", "$state", "login_logic", "$http", "land
                         $scope.redpack = true;
                     }
                 } else if (data["result"]["status"] == 2) {
+                    $interval.cancel(time);
                     $state.go("land.pay_success.pay_fails")
                 }
             }
