@@ -1,6 +1,6 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.views.maxCache(5);
-    window.version_glo = "2.3";
+    window.version_glo = "2.5";
     var v = "?" + window.version_glo;
     $stateProvider.state("funcpage", {
             url: "/funcpage",
@@ -28,7 +28,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         }).state("funcpage.land_main", {
             url: "/land_main",
             controller: "land_main",
-            templateUrl: "html/funpage/land_main.html" + v,
+            templateUrl: "html/funpage/land_mainx.html" + v,
             resolve: {
                 // get_type: function($http, $q) {
                 //     var defer = $q.defer();
@@ -43,7 +43,6 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                 predata: "land",
                 parse: "login_logic",
                 get: function(predata, parse) {
-                    console.log(1)
                     var mytime = new Date();
                     var t = mytime.getTime();
                     var params = {
@@ -67,6 +66,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                     var all = get["result"];
                     var name = "功能页";
                     var id = null;
+                    if (judge(x)) {
+                        if (x["test_money_HJY_ts"] != undefined) {
+                            name = "其他"
+                        }
+                    }
                     var a = function(arr) {
                         for (var i = 0; i < arr.length; i++) {
                             if (arr[i]["product_name"] == name) {
@@ -223,5 +227,4 @@ HJY.run(['$rootScope', function($rootScope) {
     console.log(location.hostname)
     $rootScope.url_global = "http://" + location.hostname; //本地测试
     // $rootScope.url_global = "http://192.168.11.179:8888";
-
 }]);

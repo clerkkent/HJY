@@ -163,7 +163,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         })
         return $scope.login_flag;
     }
-    setInterval($scope.login_state_confirm(), 2000)
+    setInterval($scope.login_state_confirm(), 5000)
     $scope.go_order = function() {
             if ($scope.login_flag) {
                 $state.go("funcpage.order_list")

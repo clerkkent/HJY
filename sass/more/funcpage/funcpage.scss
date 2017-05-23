@@ -1,7 +1,7 @@
 @import '../template/temp.scss';
 .land_main{
     width:100%;
-    height:10.27412457rem; // 602px;
+    height:11.27412457rem; // 602px;
     display:flex;
     flex-direction:column;
      -webkit-overflow-scrolling: touch;
@@ -414,9 +414,19 @@
                 position:absolute;
                 right:10%;
                 font-size:.20479983rem; // 12px;
+                color:#F95B4E;
+                margin-top:.40306643rem; // 16px;
+                @include backgroundset("../../images/land/ic_Order.png",center,center,100%);
+            }
+            .consult{
+                width:1.62133195rem; // 95px;
+                height:.98266608rem; // 40px;
+                position:absolute;
+                left:3%;
+                font-size:.20479983rem; // 12px;
                 color:#F95B4E ;
                 margin-top:.27306643rem; // 16px;
-                @include backgroundset("../../images/land/H5_My Order.png",center,center,100%);
+                @include backgroundset("../../images/land/ic_ service ic_service.png",center,center,50%);
             }
             .login_on{
                 text-align:center;
@@ -616,9 +626,9 @@
                 height:.61439948rem; // 36px;
                 border-bottom:1px solid  #E5E5E5;
                 margin-top:.25599978rem; // 15px;
-                 display:flex;
-            flex-flow:row wrap;
-            justify-content: space-between;
+                display:flex;
+                flex-flow:row wrap;
+                justify-content: space-between;
                 span{
                     font-size:.23893313rem; // 14px
                     color: #2A2A2A;

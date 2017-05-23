@@ -11,7 +11,7 @@
                     <div class="user_name information">
                         <span class="first"></span>
                         <span class="second">
-                                <input type="tel"  id="phone"  class="phone" ng-model="info.phone" ng-pattern="/^0?1[0-9][0-9]\d{4}\d{4}$/"    name="phone"  required  placeholder="请输入手机号码登录" maxlength="11"/> 
+                                <input type="tel" autocomplete="off" id="phone"  class="phone" ng-model="info.phone" ng-pattern="/^0?1[0-9][0-9]\d{4}\d{4}$/"    name="phone"  required  placeholder="请输入手机号码登录" maxlength="11"/> 
                                 <!--<span class="test"></span>-->
                         <span class="four notice" id="phone_check" style="display:none;">{{notice}}</span>
                         </span>
@@ -19,7 +19,7 @@
                     <div class="scode information">
                         <span class="first" style="background-image:url(images/login/ic_login_password.png)"></span>
                         <span class="second">
-                                <input type="text" name="scode" ng-model="info.scode" required placeholder="请输入短信验证码" style="width:60%;" maxlength="6">
+                                <input type="text" autocomplete="off" name="scode" ng-model="info.scode" required placeholder="请输入短信验证码" style="width:60%;" maxlength="6">
                                 <span class="third notice" ng-hide="true">验证码输入错误</span>
                         <button class="scode_get" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">
                                 </button>

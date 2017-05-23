@@ -732,7 +732,7 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
             }
         }
         if ($scope.error["test_money_HJY"] != undefined) {
-            $scope.pre_price = $scope.error["test_money"];
+            $scope.pre_price = $scope.error["test_money_HJY"];
         }
     }
 }])

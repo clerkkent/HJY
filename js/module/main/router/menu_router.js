@@ -1,6 +1,6 @@
 ;
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$locationProvider", "$httpProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $locationProvider, $httpProvider) {
-    window.version_glo = "2.3";
+    window.version_glo = "2.5";
     $ionicConfigProvider.views.maxCache(5);
     var v = "?" + window.version_glo;
 
@@ -133,6 +133,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
                     var all = get["result"];
                     var name = "落地页";
                     var id = null;
+                    if (judge(x)) {
+                        if (x["test_money_HJY_ts"] != undefined) {
+                            name = "其他"
+                        }
+                    }
                     var a = function(arr) {
                         for (var i = 0; i < arr.length; i++) {
                             if (arr[i]["product_name"] == name) {
