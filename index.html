@@ -20,10 +20,63 @@
     <title>会加油</title>
     <link href="css/common.css?v=1.3.4" type="text/css" rel="stylesheet" />
     <link rel="shortcut icon" href="images/bitbug_favicon.ico">
+    <script>
+        var imgUrl = "images/share.jpg";
+        var lineLink = "http://www.ihaomu.com//wechat/#/game/main";
+        var descContent = '会加油';
+        var shareTitle = '会加油';
+        var appid = 'wx5c8141694c6e0854';
+
+        function shareFriend() {
+            WeixinJSBridge.invoke('sendAppMessage', {
+                "appid": appid,
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {})
+        }
+
+        function shareTimeline() {
+            WeixinJSBridge.invoke('shareTimeline', {
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {});
+        }
+
+        function shareWeibo() {
+            WeixinJSBridge.invoke('shareWeibo', {
+                "content": descContent,
+                "url": lineLink,
+            }, function(res) {});
+        }
+            // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+                shareFriend();
+            });
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function(argv) {
+                shareTimeline();
+            });
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function(argv) {
+                shareWeibo();
+            });
+        }, false);
+    </script>
     <!--<base href="/">-->
 </head>
 
 <body ng-app="HJY" ng-controller="MainCtrl" style="display: flex;flex-direction:column;background-color:#fff;overflow:hidden;">
+    <!-- <img src="images/share.jpg" alt="" style="width:0;height:0;overflow:hidden;"> -->
     <div class="main_content" style="height:100%;width:100%;overflow:hidden;" ui-view>
 
     </div>

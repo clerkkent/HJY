@@ -146,13 +146,13 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     $scope.theRequest = new Object();
     friend.popum();
     // webappSDK.GetActiveId(1);
+    webappSDK.GetActiveId(1);
     $scope.share = function() { //分享原生H5指令交互
         var content = {
             title: "必须看！老司机教你8.5折充油卡！",
             content: "注册就送200元加油券，车主必备，老司机快来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
-            // url: $rootScope.url_global + "/wechat/?"+""+"#/game/main"
-            url: ""
+            url: $rootScope.url_global + "/wechat/?" + "" + "#/game/main"
         }
         webappSDK.share(content);
     }
@@ -243,8 +243,7 @@ HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPo
             title: "必须看！老司机教你8.5折充油卡！",
             content: "注册就送200元加油券，车主必备，老司机快来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
-            // url: $rootScope.url_global + "/wechat/#/game/main",
-            url: ""
+            url: $rootScope.url_global + "/wechat/?#/game/main"
         }
         webappSDK.share(content);
     }
@@ -812,4 +811,7 @@ HJY.controller("download", ["$scope", "$state", "login_logic", "$http", function
         window.location.href = "https://itunes.apple.com/us/app/hui-jia-you-qi-che-zhe-kou-jia-you-di-zhi-8.5-zhe/id1225155226?mt=8"
 
     }
+}])
+HJY.controller("guide", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
+
 }])

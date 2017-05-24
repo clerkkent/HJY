@@ -384,23 +384,22 @@ $background) {
     }
 }
 
-$breakpoints: (
-  'xs': 'only screen and ( min-width: 320px)',
-  'sm': 'only screen and ( min-width: 375px)',
-  'md': 'only screen and ( min-width: 414px)',
-  'lg': 'only screen and ( min-width: 520px)',
+$breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
+'sm': 'only screen and ( min-width: 375px)',
+'md': 'only screen and ( min-width: 414px)',
+'lg': 'only screen and ( min-width: 520px)',
 ) !default;
 @mixin respond-to($breakpoint) {
-  $query: map-get($breakpoints, $breakpoint);
-
-  @if not $query {
-    @error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
-  }
-
-  @media #{if(type-of($query) == 'string', unquote($query), inspect($query))} {
-    @content;
-  }
+    $query: map-get($breakpoints, $breakpoint);
+    @if not $query {
+        @error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
+    }
+    @media #{if(type-of($query) == 'string', unquote($query), inspect($query))} {
+        @content;
+    }
 }
+
+
 /*commonbackheader*/
 
 .common_backheader {
@@ -528,8 +527,8 @@ $breakpoints: (
                         border-bottom: .02rem solid #D8D8D8; // 2px;
                         position: relative;
                         @include clearfix;
-                        display:flex;
-                        flex-flow:row nowrap;
+                        display: flex;
+                        flex-flow: row nowrap;
                         input {
                             height: 90%;
                             border: 0;
@@ -545,7 +544,6 @@ $breakpoints: (
                             // color:#FFF;
                         }
                         .scode_get {
-
                             width: 1.4rem; // 70px; // 60px; // 58px;
                             font-size: .24rem; // 12px;
                             color: #F18A30;
@@ -861,14 +859,14 @@ $breakpoints: (
 
 /*friendRequest*/
 
-
 .friend_request {
     width: 100%;
     display: flex;
     flex-direction: column;
     height: 9.8rem;
     -webkit-overflow-scrolling: touch;
-    background: #FFF;    .popum_wrap {
+    background: #FFF;
+    .popum_wrap {
         @include friend_request_details_pupum;
     }
     header {
@@ -905,7 +903,7 @@ $breakpoints: (
             display: flex;
             flex-direction: row;
             @include center-block;
-            margin-top:10%;
+            margin-top: 10%;
             .left {
                 width: 1.5rem; // 75px
                 height: 1.2rem; // 60px;
@@ -1002,8 +1000,8 @@ $breakpoints: (
             background: #FFF;
             width: 80%;
             @include center-block;
-            margin-top:0.4rem;
-            height:60%;
+            margin-top: 0.4rem;
+            height: 60%;
             border-radius: .3rem; // 15px;
             h3 {
                 text-align: center;
@@ -1038,25 +1036,24 @@ $breakpoints: (
                 ul {
                     height: 3.2rem; // 210px;
                     background: #FFF;
-                     border-radius: .3rem; // 15px;
+                    border-radius: .3rem; // 15px;
                     @include respond-to(sm) {
-                        height:3.8rem;
+                        height: 3.8rem;
                     }
                     li {
-
                         display: flex;
                         flex-flow: row wrap;
-                        justify-content:space-between;
-                        line-height:.31199956rem; // 30px;
-                        height:.31199956rem; // 30px;
-                        position:relative;
+                        justify-content: space-between;
+                        line-height: .31199956rem; // 30px;
+                        height: .31199956rem; // 30px;
+                        position: relative;
                         span {
                             display: inline-block;
-                            position:absolute;
+                            position: absolute;
                         }
                         .oil_drop {
                             text-align: right;
-                            right:0;
+                            right: 0;
                             font-family: PingFangSC-Regular;
                             font-size: .2rem;
                             color: #FF7320;
@@ -1064,7 +1061,7 @@ $breakpoints: (
                         }
                         .phone_number {
                             text-align: left;
-                            left:0;
+                            left: 0;
                             font-family: PingFangSC-Regular;
                             font-size: .2rem;
                             color: #51586A;
@@ -1075,17 +1072,17 @@ $breakpoints: (
             }
         }
     }
-    footer{
-            width:100%;
-            height:1rem; // 42px;
-            background:#FF7320;
-            text-align:center;
-            line-height:1rem;
-            font-size:.30719974rem; // 18px
-            color:#FFF;
-            font-family: PingFangSC-Medium;
-            position:fixed;
-            bottom:0;
+    footer {
+        width: 100%;
+        height: 1rem; // 42px;
+        background: #FF7320;
+        text-align: center;
+        line-height: 1rem;
+        font-size: .30719974rem; // 18px
+        color: #FFF;
+        font-family: PingFangSC-Medium;
+        position: fixed;
+        bottom: 0;
     }
 }
 
@@ -2186,7 +2183,7 @@ $breakpoints: (
     display: flex;
     height: 10.36rem; // 568px
     flex-direction: column;
-    justify-content:space-between;
+    justify-content: space-between;
     background-color: #fedb65;
     -webkit-overflow-scrolling: touch;
     header {
@@ -2256,7 +2253,7 @@ $breakpoints: (
         }
     }
     footer {
-        height:1rem;
+        height: 1rem;
         button {
             width: 5rem; // 250px;
             height: .9rem; // 45px;
@@ -2276,7 +2273,7 @@ $breakpoints: (
 .land {
     display: flex;
     flex-direction: column;
-    height:21rem;
+    height: 21rem;
     background: #ffdc5a;
     -webkit-overflow-scrolling: touch;
     header {
@@ -2285,38 +2282,43 @@ $breakpoints: (
         center,
         center,
         auto);
-        background-size:contain;
-        margin-top:0.1rem;
+        background-size: contain;
+        margin-top: 0.1rem;
     }
     section {
         height: 4.4885295rem; // 263px
         padding: 0 .55199956rem; // 30px
         position: relative;
         font-family: PingFangSC-Regular;
-        padding-top:0.34rem;
-        .express{
-            position:absolute;
-            right:10%;
-            top:-2%;
-            color:#699896;
-            font-size:.17066652rem; // 10px
-
-            @include backgroundset("../images/land/H5_mark.png",left,center,15%);
-            transform:scale(0.9);
-            padding-left:0.3rem;
-            .details_express{
-            width:3.2426639rem;
-            padding:0.15rem;
-            padding-bottom:0.5rem;
-            position:absolute;
-            right:-5%;
-            bottom:100%;
-            display:none;
-            line-height:.28rem; // 12px;
-            @include backgroundset("../images/land/H5_bubble.png",top,center,80%);
-            color:#FFF;
-            background-size:100% 100%;
-        }
+        padding-top: 0.34rem;
+        .express {
+            position: absolute;
+            right: 10%;
+            top: -2%;
+            color: #699896;
+            font-size: .17066652rem; // 10px
+            @include backgroundset("../images/land/H5_mark.png",
+            left,
+            center,
+            15%);
+            transform: scale(0.9);
+            padding-left: 0.3rem;
+            .details_express {
+                width: 3.2426639rem;
+                padding: 0.15rem;
+                padding-bottom: 0.5rem;
+                position: absolute;
+                right: -5%;
+                bottom: 100%;
+                display: none;
+                line-height: .28rem; // 12px;
+                @include backgroundset("../images/land/H5_bubble.png",
+                top,
+                center,
+                80%);
+                color: #FFF;
+                background-size: 100% 100%;
+            }
         }
         .notice {
             color: #f95b4e;
@@ -2336,7 +2338,7 @@ $breakpoints: (
         }
         .info {
             width: 100%;
-            height:.85333261rem; // 50px
+            height: .85333261rem; // 50px
             border-radius: .46rem; // 23px;
             padding-left: .46rem; // 23px;
             font-size: .23893313rem; // 14px
@@ -2359,7 +2361,7 @@ $breakpoints: (
         }
         .second_i {
             width: 100%;
-           height:.85333261rem; // 50px
+            height: .85333261rem; // 50px
             border-radius: .46rem; // 23px;
             font-size: 0.32rem;
             padding: 0;
@@ -2379,7 +2381,7 @@ $breakpoints: (
             position: absolute;
             right: 10%;
             top: 56.2%;
-             font-size: .22rem; // 14px
+            font-size: .22rem; // 14px
             font-family: PingFangSC-Regular;
         }
         .remind {
@@ -2428,7 +2430,7 @@ $breakpoints: (
         flex: 1;
         width: 100%;
         font-family: PingFangSC-Medium;
-        margin-top:1.04799825rem; // 120px;
+        margin-top: 1.04799825rem; // 120px;
         .first {
             height: 8.53332605rem; // 500px
             width: 100%;
@@ -2437,9 +2439,8 @@ $breakpoints: (
             center,
             100%)
         }
-
         .connect {
-            margin-top:0.4rem;
+            margin-top: 0.4rem;
             .tel {
                 color: #f9614e;
                 text-align: center;
@@ -2464,78 +2465,81 @@ $breakpoints: (
         }
     }
 }
- .download {
-            height: 1.27999891rem; // 75px
-            @include backgroundset("../images/land/H5_ arrow@3x.png",
-            35%,
-            85%,
-            18%) ;background-color: rgba(#FFEDAC, 1);
-            display: flex;
-            flex-direction: row;
-            position:fixed;
-            z-index:1500;
-            bottom:0%;
-            left:0;
-            overflow:hidden;
-            width:100%;
-            transition:all .6s;
-            .left {
-                width: 2.5rem;
-                height: 2.5rem;
-                transform: scale(0.4);
-                @include backgroundset("../images/land/H5_logo@3x.png",
-                center,
-                20%,
-                100%);
-                background-color: #FFF;
-                margin: -0.6rem;
-                margin-left: -0.25rem;
-                text-align: center;
-                font-size: 0.2rem;
-                font-family: PingFangSC-Medium;
-                color: #838383;
-                .chinese {
-                    font-size: 0.38rem;
-                    line-height: 0.28rem;
-                    margin: 0;
-                    margin-top: 60%;
-                }
-                .english {
-                    margin-top: 0.1rem;
-                    font-size: 0.12rem;
-                }
-            }
-            .center {
-                width: 2.4rem;
-                height: 0.64rem;
-                color: #f95b4e;
-                font-family: PingFangSC-Medium;
-                font-size: 0.28rem;
-                margin-left: 0.1rem;
-                margin-top:-0.15rem;
-                transform:scale(0.9);
-                p {
-                    margin: 0;
-                }
-                .top {
-                    margin-top: 0.3rem;
-                }
-                .sec {
-                    font-size: 0.16rem;
-                }
-            }
-            .right {
-                width: 2.4rem;
-                height: 0.4rem;
-                text-align: center;
-                color: #FFF;
-                padding: 0;
-                font-family: PingFangSC-Medium;
-                margin-top: 0.29rem;
-                margin-left: -3%;
-                transform: scale(0.8);
-            }
+
+.download {
+    height: 1.27999891rem; // 75px
+    @include backgroundset("../images/land/H5_ arrow@3x.png",
+    35%,
+    85%,
+    18%);
+    background-color: rgba(#FFEDAC, 1);
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    z-index: 1500;
+    bottom: 0%;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    transition: all .6s;
+    .left {
+        width: 2.5rem;
+        height: 2.5rem;
+        transform: scale(0.4);
+        @include backgroundset("../images/land/H5_logo@3x.png",
+        center,
+        20%,
+        100%);
+        background-color: #FFF;
+        margin: -0.6rem;
+        margin-left: -0.25rem;
+        text-align: center;
+        font-size: 0.2rem;
+        font-family: PingFangSC-Medium;
+        color: #838383;
+        .chinese {
+            font-size: 0.38rem;
+            line-height: 0.28rem;
+            margin: 0;
+            margin-top: 60%;
         }
+        .english {
+            margin-top: 0.1rem;
+            font-size: 0.12rem;
+        }
+    }
+    .center {
+        width: 2.4rem;
+        height: 0.64rem;
+        color: #f95b4e;
+        font-family: PingFangSC-Medium;
+        font-size: 0.28rem;
+        margin-left: 0.1rem;
+        margin-top: -0.15rem;
+        transform: scale(0.9);
+        p {
+            margin: 0;
+        }
+        .top {
+            margin-top: 0.3rem;
+        }
+        .sec {
+            font-size: 0.16rem;
+        }
+    }
+    .right {
+        width: 2.4rem;
+        height: 0.4rem;
+        text-align: center;
+        color: #FFF;
+        padding: 0;
+        font-family: PingFangSC-Medium;
+        margin-top: 0.29rem;
+        margin-left: -3%;
+        transform: scale(0.8);
+    }
+}
+
 .pay_success {
     height: 11.36rem;
     display: flex;
@@ -2566,7 +2570,7 @@ $breakpoints: (
             }
         }
         section {
-            flex:1;
+            flex: 1;
             background: #FFF;
             padding-left: .58rem; // 29px;
             padding-top: .52rem; // 26px;
@@ -2605,20 +2609,21 @@ $breakpoints: (
             center,
             100%)
         }
-       .downloadp {
+        .downloadp {
             height: 1.27999891rem; // 75px
             @include backgroundset("../images/land/H5_ arrow@3x.png",
             35%,
             85%,
-            18%) ;background-color: rgba(#FFEDAC, 1);
+            18%);
+            background-color: rgba(#FFEDAC, 1);
             display: flex;
             flex-direction: row;
-            z-index:1500;
-            bottom:0%;
-            left:0;
-            overflow:hidden;
-            width:100%;
-            transition:all .6s;
+            z-index: 1500;
+            bottom: 0%;
+            left: 0;
+            overflow: hidden;
+            width: 100%;
+            transition: all .6s;
             .left {
                 width: 2.5rem;
                 height: 2.5rem;
@@ -2652,8 +2657,8 @@ $breakpoints: (
                 font-family: PingFangSC-Medium;
                 font-size: 0.28rem;
                 margin-left: 0.1rem;
-                margin-top:-0.15rem;
-                transform:scale(0.9);
+                margin-top: -0.15rem;
+                transform: scale(0.9);
                 p {
                     margin: 0;
                 }
@@ -2683,8 +2688,96 @@ $breakpoints: (
                 font-size: 0.24rem;
                 margin: 0.2rem 0;
                 font-family: PingFangSC-Medium;
-                margin-top:0.4rem;
+                margin-top: 0.4rem;
             }
+        }
+    }
+}
+
+.guide {
+    width: 100%;
+    height: 29.92770805rem; // 1736px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    header {
+        height: 3.81573033rem; // 206px;
+        width: 100%;        width: 100%;        height: 26.58264424rem; // 1540px;
+
+
+        z-index: 200;
+        position: relative;
+        @include backgroundset("../images/guide/banner.png",
+        -0.20079983rem, // 12px, // 10px,
+        center,
+        100%);
+    }
+    section {
+        margin-top: -.32186648rem; // 13px;
+        z-index: 1;
+        background: #FFD34E;
+        border-top-left-radius: .91199956rem; // 30px;
+        border-top-right-radius: .91199956rem; // 30px;
+        div {
+            width: 100%;
+        }
+        .tran01 {
+            height: 5.80266172rem; // 340px;
+            @include backgroundset("../images/guide/ic_part1.png",
+            center,
+            center,
+            90%);
+            margin-top: .51199956rem; // 30px;
+        }
+        .tran02 {
+            height: 12.83412238rem; // 752px;
+            width: 6.075728rem;
+            background: #FFF;
+            border-radius: 1%;
+            z-index: 1;
+            margin: 0 auto;
+            margin-top: .4266663rem; // 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: .4266663rem 0; // 25px;
+            .con01 {
+                width: 100%;
+                height: 3.41333042rem; // 200px;
+                @include backgroundset("../images/guide/ic_part2.png",
+                center,
+                center,
+                90%);
+            }
+            .con02 {
+                width: 100%;
+                height: 4.26666303rem; // 250px;
+                @include backgroundset("../images/guide/ic_part3.png",
+                center,
+                center,
+                90%);
+            }
+            .con03 {
+                width: 90%;
+                margin: 0 auto;
+                height: 3.2426639rem; // 190px;
+                @include backgroundset("../images/guide/ic_part4.png",
+                center,
+                center,
+                90%);
+                background-color: rgba( #FFBA2E, .17);
+                border-radius: 3px;
+            }
+        }
+        .tran03 {
+            height: 340px;
+            width: 100%;
+            margin: .51199956rem 0; // 30px
+            @include backgroundset("../images/guide/ic_part5.png",
+            center,
+            center,
+            80%);
         }
     }
 }

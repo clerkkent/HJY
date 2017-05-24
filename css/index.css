@@ -2568,3 +2568,93 @@ a:focus {
       margin: 0.2rem 0;
       font-family: PingFangSC-Medium;
       margin-top: 0.4rem; }
+
+.guide {
+  width: 100%;
+  height: 29.92770805rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0; }
+  .guide header {
+    height: 3.81573033rem;
+    width: 100%;
+    width: 100%;
+    height: 26.58264424rem;
+    z-index: 200;
+    position: relative;
+    background: url("../images/guide/banner.png") -0.2008rem center no-repeat;
+    background-size: 100%; }
+  .guide section {
+    margin-top: -.32186648rem;
+    z-index: 1;
+    background: #FFD34E;
+    -webkit-border-top-left-radius: .91199956rem;
+            border-top-left-radius: .91199956rem;
+    -webkit-border-top-right-radius: .91199956rem;
+            border-top-right-radius: .91199956rem; }
+    .guide section div {
+      width: 100%; }
+    .guide section .tran01 {
+      height: 5.80266172rem;
+      background: url("../images/guide/ic_part1.png") center center no-repeat;
+      background-size: 90%;
+      margin-top: .51199956rem; }
+    .guide section .tran02 {
+      height: 12.83412238rem;
+      width: 6.075728rem;
+      background: #FFF;
+      -webkit-border-radius: 1%;
+              border-radius: 1%;
+      z-index: 1;
+      margin: 0 auto;
+      margin-top: .4266663rem;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      padding: .4266663rem 0; }
+      .guide section .tran02 .con01 {
+        width: 100%;
+        height: 3.41333042rem;
+        background: url("../images/guide/ic_part2.png") center center no-repeat;
+        background-size: 90%; }
+      .guide section .tran02 .con02 {
+        width: 100%;
+        height: 4.26666303rem;
+        background: url("../images/guide/ic_part3.png") center center no-repeat;
+        background-size: 90%; }
+      .guide section .tran02 .con03 {
+        width: 90%;
+        margin: 0 auto;
+        height: 3.2426639rem;
+        background: url("../images/guide/ic_part4.png") center center no-repeat;
+        background-size: 90%;
+        background-color: rgba(255, 186, 46, 0.17);
+        -webkit-border-radius: 3px;
+                border-radius: 3px; }
+    .guide section .tran03 {
+      height: 340px;
+      width: 100%;
+      margin: .51199956rem 0;
+      background: url("../images/guide/ic_part5.png") center center no-repeat;
+      background-size: 80%; }

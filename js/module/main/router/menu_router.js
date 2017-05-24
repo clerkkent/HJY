@@ -217,6 +217,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
             controller: "help",
             templateUrl: "html/agreement/user_agreement.html" + v
         })
+        .state("guide", {
+            url: "/guide",
+            controller: "guide",
+            templateUrl: "html/guide/guide.html" + v
+        })
         // .state("feedback", {
         //     url: "/feedback",
         //     controller: "help",
