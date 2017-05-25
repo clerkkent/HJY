@@ -76,6 +76,7 @@ HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $ro
             data: data_send,
             headers: head
         }).success(function(data, header, config, status) {
+
             defer.resolve(data); //声明执行成功
         }).error(function(data, header, config, status) {
             defer.reject(); //声明执行失败
@@ -476,7 +477,6 @@ HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }
-        console.log($rootScope.url_global + '/pro/index.php?c=oilcard' + "xxxxxxxxxxxx")
         $http({
             method: 'POST',
             url: $rootScope.url_global + '/pro/index.php?c=oilcard',
@@ -511,4 +511,59 @@ HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope
         $.StandardPost($rootScope.url_global + "/pro/index.php?c=webpay", data);
     }
     return factory
+}])
+HJY.factory("wxSDK", [function() {
+    var factory = {}
+    factory.wx = function() {
+        var imgUrl = "images/share.jpg";
+        var lineLink = "http://www.ihaomu.com//wechat/#/game/main";
+        var descContent = '会加油';
+        var shareTitle = '会加油';
+        var appid = 'wx5c8141694c6e0854';
+
+        function shareFriend() {
+            WeixinJSBridge.invoke('sendAppMessage', {
+                "appid": appid,
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {})
+        }
+
+        function shareTimeline() {
+            WeixinJSBridge.invoke('shareTimeline', {
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {});
+        }
+
+        function shareWeibo() {
+            WeixinJSBridge.invoke('shareWeibo', {
+                "content": descContent,
+                "url": lineLink,
+            }, function(res) {});
+        }
+        // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+                shareFriend();
+            });
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function(argv) {
+                shareTimeline();
+            });
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function(argv) {
+                shareWeibo();
+            });
+        }, false);
+    }
 }])

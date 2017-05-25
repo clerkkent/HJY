@@ -30,16 +30,6 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "land_main",
             templateUrl: "html/funpage/land_mainx.html" + v,
             resolve: {
-                // get_type: function($http, $q) {
-                //     var defer = $q.defer();
-                //     console.log($(".land_main section li"))
-                //     $http.get("mock/func/price_degree.json").success(function(data) {
-                //         defer.resolve(data);
-                //     }).error(function() {
-                //         defer.reject(); //声明执行失败
-                //     })
-                //     return defer.promise;
-                // },
                 predata: "land",
                 parse: "login_logic",
                 get: function(predata, parse) {
@@ -225,6 +215,6 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
 }]);
 HJY.run(['$rootScope', function($rootScope) {
     console.log(location.hostname)
-    $rootScope.url_global = "http://" + location.hostname; //本地测试
-    // $rootScope.url_global = "http://192.168.11.179:8888";
+        // $rootScope.url_global = "http://" + location.hostname; //本地测试
+    $rootScope.url_global = "http://192.168.10.240:8888";
 }]);

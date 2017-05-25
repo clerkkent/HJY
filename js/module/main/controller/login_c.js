@@ -473,7 +473,6 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
     $scope.card_info_get = false; //请求卡信息时禁用按钮
     $scope.text = "立即支付";
     $scope.price = get_predata["result"]["money"][0].name; //当前商品原价,用于乘以折扣使用
-    console.log(get_predata)
     $scope.pre_price = get_predata["result"]["money"][0].name; //用于传递后台原价，或者进行测试使用
     $scope.discount = 1; //当前卡所享折扣
 

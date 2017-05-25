@@ -2696,27 +2696,24 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
 
 .guide {
     width: 100%;
-    height: 29.92770805rem; // 1736px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 24.92770805rem; // 1736px;
     margin: 0;
     header {
         height: 3.81573033rem; // 206px;
-        width: 100%;        width: 100%;        height: 26.58264424rem; // 1540px;
-
-
+        width: 100%;
         z-index: 200;
         position: relative;
         @include backgroundset("../images/guide/banner.png",
         -0.20079983rem, // 12px, // 10px,
         center,
         100%);
+        background-size:100% 100%;
     }
     section {
-        margin-top: -.32186648rem; // 13px;
+        margin-top: -.886648rem; // 13px;
         z-index: 1;
         background: #FFD34E;
+        padding-bottom:1rem;
         border-top-left-radius: .91199956rem; // 30px;
         border-top-right-radius: .91199956rem; // 30px;
         div {
@@ -2774,6 +2771,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             height: 340px;
             width: 100%;
             margin: .51199956rem 0; // 30px
+            margin-bottom:0;
             @include backgroundset("../images/guide/ic_part5.png",
             center,
             center,

@@ -2571,34 +2571,21 @@ a:focus {
 
 .guide {
   width: 100%;
-  height: 29.92770805rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  height: 24.92770805rem;
   margin: 0; }
   .guide header {
     height: 3.81573033rem;
     width: 100%;
-    width: 100%;
-    height: 26.58264424rem;
     z-index: 200;
     position: relative;
     background: url("../images/guide/banner.png") -0.2008rem center no-repeat;
-    background-size: 100%; }
+    background-size: 100%;
+    background-size: 100% 100%; }
   .guide section {
-    margin-top: -.32186648rem;
+    margin-top: -.886648rem;
     z-index: 1;
     background: #FFD34E;
+    padding-bottom: 1rem;
     -webkit-border-top-left-radius: .91199956rem;
             border-top-left-radius: .91199956rem;
     -webkit-border-top-right-radius: .91199956rem;
@@ -2656,5 +2643,6 @@ a:focus {
       height: 340px;
       width: 100%;
       margin: .51199956rem 0;
+      margin-bottom: 0;
       background: url("../images/guide/ic_part5.png") center center no-repeat;
       background-size: 80%; }

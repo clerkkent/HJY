@@ -255,15 +255,56 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
     // $locationProvider.html5Mode(true);
 }]);
 HJY.run(['$rootScope', function($rootScope) {
-    console.log(location.hostname)
+    console.log(location.hostname);
+    $.extend({
+        uncode: function(x) {
+            var data = null;
+            if (x.result != undefined) {
+                if ($.md5(x.result.info + "HUIJIAYOU_TOKEN") == x.result.sign) {
+                    var ri = x.result.info;
+                    var uri = Base64.decode(ri)
+                    for (var key in x.result) {
+                        delete x.result[key];
+                    }
+                    x.result = JSON.parse(uri);
+                    data = x;
+                }
+            } else {
+                data = x;
+            }
+            return x;
+        }
+    });
     if (location.hostname == "www.ihaomu.com") {
-        console.log("统计")
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?fdb9e557f9cc49a60c8ed0c30b13a40e";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     }
-    // $rootScope.url_global = "http://192.168.11.179:8888";
-    $rootScope.url_global = "http://" + location.hostname; //本地测试
-
+    $rootScope.url_global = "http://192.168.10.240:8888";
+    // $rootScope.url_global = "http://" + location.hostname; //本地测试
 }]);
+HJY.config(["$httpProvider", function($httpProvider) {　　
+    $httpProvider.interceptors.push("httpInterceptor");
+}])
+HJY.factory("httpInterceptor", ["$q", "$rootScope", function($q, $rootScope) {
+    return {
+        request: function(config) {
+            // do something on request success
+            return config || $q.when(config);
+        },
+        　　requestError: function(rejection) {　　　　 // do something on request error
+            　　　　 return $q.reject(rejection)　　 },
+        response: function(response) {
+            // do something on response success
+            if (response.data.result != undefined) {
+                response.data = $.uncode(response.data);
+            }
+            return response || $q.when(response);
+        },
+        responseError: function(rejection) {
+            // do something on response error
+            return $q.reject(rejection);
+        }
+    };
+}]);;
