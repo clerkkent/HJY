@@ -281,8 +281,8 @@ HJY.run(['$rootScope', function($rootScope) {
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     }
-    $rootScope.url_global = "http://192.168.10.240:8888";
-    // $rootScope.url_global = "http://" + location.hostname; //本地测试
+    // $rootScope.url_global = "http://192.168.10.240:8888";
+    $rootScope.url_global = "http://" + location.hostname; //本地测试
 }]);
 HJY.config(["$httpProvider", function($httpProvider) {　　
     $httpProvider.interceptors.push("httpInterceptor");

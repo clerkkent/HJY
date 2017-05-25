@@ -215,6 +215,6 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
 }]);
 HJY.run(['$rootScope', function($rootScope) {
     console.log(location.hostname)
-        // $rootScope.url_global = "http://" + location.hostname; //本地测试
-    $rootScope.url_global = "http://192.168.10.240:8888";
+    $rootScope.url_global = "http://" + location.hostname; //本地测试
+    // $rootScope.url_global = "http://192.168.10.240:8888";
 }]);
