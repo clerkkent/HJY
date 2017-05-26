@@ -10,6 +10,9 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
     })
 }]);
 angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $rootScope) {
+    $scope.gonote = function() {
+        $state.go("funcpage.db_festival")
+    }
     $scope.text = "确认套餐";
     $scope.pay_text = "确认支付"
     $scope.main_title = "每月充值";
@@ -969,4 +972,7 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
             });
         })
     }
+}]);
+angular.module('HJY').controller("db_festival", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
+
 }]);

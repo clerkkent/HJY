@@ -28,3 +28,10 @@ HJY.directive("landmainDetails", function() { //购买页，个人中心，订�
         templateUrl: "html/funpage/popum.html"
     }
 })
+HJY.directive("activeIcon", function() { //购买页，个人中心，订单页下方菜单
+    return {
+        restrict: "ECMA",
+        replace: true,
+        templateUrl: "html/funpage/active/icon.html"
+    }
+})

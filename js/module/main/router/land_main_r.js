@@ -1,6 +1,6 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.views.maxCache(5);
-    window.version_glo = "2.5";
+    window.version_glo = "2.6";
     var v = "?" + window.version_glo;
     $stateProvider.state("funcpage", {
             url: "/funcpage",
@@ -20,6 +20,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                     ]); // 按需加载目标 js file
                 }]
             }
+        })
+        .state("funcpage.db_festival", {
+            url: "/db_festival",
+            controller: "db_festival",
+            templateUrl: "html/funpage/active/Dragon_Boat_Festival.html" + v
         })
         .state("funcpage.help", {
             url: "/help",
@@ -216,5 +221,5 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
 HJY.run(['$rootScope', function($rootScope) {
     console.log(location.hostname)
     $rootScope.url_global = "http://" + location.hostname; //本地测试
-    // $rootScope.url_global = "http://192.168.10.240:8888";
+    // $rootScope.url_global = "http://192.168.10.240:8888"
 }]);
