@@ -152,7 +152,8 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             title: "必须看！老司机教你8.5折充油卡！",
             content: "注册就送200元加油券，车主必备，老司机快来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
-            url: $rootScope.url_global + "/wechat/?" + "" + "#/game/main"
+            // url: $rootScope.url_global + "/wechat/?" + "" + "#/game/main",
+            url: ""
         }
         webappSDK.share(content);
     }
@@ -243,7 +244,8 @@ HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPo
             title: "必须看！老司机教你8.5折充油卡！",
             content: "注册就送200元加油券，车主必备，老司机快来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
-            url: $rootScope.url_global + "/wechat/?#/game/main"
+            // url: $rootScope.url_global + "/wechat/?#/game/main"
+            url: ""
         }
         webappSDK.share(content);
     }

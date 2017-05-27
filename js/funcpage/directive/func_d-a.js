@@ -21,14 +21,21 @@ angular.module('HJY').directive("initT", function($timeout) {
         }
     }
 })
-HJY.directive("landmainDetails", function() { //购买页，个人中心，订单页下方菜单
+HJY.directive("landmainDetails", function() {
     return {
         restrict: "ECMA",
         replace: true,
         templateUrl: "html/funpage/popum.html"
     }
 })
-HJY.directive("activeIcon", function() { //购买页，个人中心，订单页下方菜单
+HJY.directive("registerDownload", function() {
+    return {
+        restrict: "ECMA",
+        replace: true,
+        templateUrl: "html/funpage/download.html"
+    }
+})
+HJY.directive("activeIcon", function() {
     return {
         restrict: "ECMA",
         replace: true,

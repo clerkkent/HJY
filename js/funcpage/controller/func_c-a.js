@@ -11,7 +11,8 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
 }]);
 angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $rootScope) {
     $scope.gonote = function() {
-        $state.go("funcpage.db_festival")
+        location.search = "from=duanwujie";
+        $state.go("funcpage.db_festival");
     }
     $scope.text = "确认套餐";
     $scope.pay_text = "确认支付"
@@ -918,7 +919,6 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
         })
     }
     $scope.channel = sessionStorage.getItem("ch");
-    console.log($scope.channel)
     $scope.login = function() { //登录注册
         var list_login = null;
         localStorage.setItem("phone", $scope.info.phone.replace(/\s/g, ""));
@@ -976,3 +976,153 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
 angular.module('HJY').controller("db_festival", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
 
 }]);
+angular.module('HJY').controller("register", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "$interval", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, $interval, $rootScope) {
+    $scope.registed = false;
+    $rootScope.popum = true;
+    $scope.channel = sessionStorage.getItem("ch");
+    $scope.info = { phone: "", scode: "", icode: "" } //表单验证信息,此处用对象绑定一是因为IONIC的作用域不清，二是方便表单信息处理
+    $scope.notice = "手机号码错误";
+    // $scope.agree = false;//此处无用
+    $scope.state_sign = true; //true为填写手机号码，false为填写
+    $scope.loginc = function() { //登录注册
+        var list_login = null;
+        var promise_login = null;
+        list_login = {
+            "jsonrpc": "2.0",
+            "method": "isRegisterForBefore",
+            "params": [{
+                "phone": $scope.info.phone
+            }],
+            "id": 1
+        }
+        promise_login = login_logic.submit(list_login);
+        promise_login.then(function(data) {
+            if (data.result != undefined) {
+                if (data["result"]["isRegister"] == 0) {
+                    $scope.state = 1;
+                    $scope.registed = true;
+                    $state.go("funcpage.register.login");
+                } else {
+                    $(".main_content .register_popum").css({ backgroundImage: "url(images/land/register/Group(1).png)" })
+                    $(".main_content .register_popum").fadeIn("slow");
+                    // $ionicPopup.show({
+                    //     templateUrl: 'html/funpage/download.html',
+                    //     scope: $scope,
+                    //     buttons: [{
+                    //         text: '<b>Save</b>',
+                    //         type: 'button-energized',
+                    //         onTap: function(e) {
+
+                    //         }
+                    //     }, ]
+                    // });
+                }
+            }
+        }, function() {
+            $ionicPopup.alert({
+                title: '提示',
+                template: "网络异常",
+                okText: '嗯！知道了', // String
+                okType: 'button-energized',
+            });
+        })
+    }
+    $scope.download = function() {
+        location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.huijiayou.huijiayou"
+    }
+}]);
+angular.module('HJY').controller("register_login", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "$interval", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, $interval, $rootScope) {
+    $rootScope.popum = true;
+    $scope.timeout = false; //倒数读秒按钮禁用
+    // $scope.icode_show = false;
+    $scope.second = "获取验证码";
+    console.log($scope.channel)
+    $scope.scode_get = function() { //获取验证码
+        var list = {
+            "jsonrpc": "2.0",
+            "method": "messageAuth",
+            "params": [{
+                "mobile": $scope.info.phone
+            }],
+            "id": 1
+        }
+        var promise_scode = login_logic.submit(list);
+        promise_scode.then(function(data) {
+            var a = 60;
+            $scope.second = a + "s"
+            $scope.timeout = true;
+            $scope.icode_show = true;
+            var timeout = $interval(function() {
+                if (a <= 0) {
+                    $scope.second = "获取验证码"
+                    $scope.timeout = false;
+                    a = 60;
+                    $interval.cancel(timeout)
+                } else {
+                    a--;
+                    $scope.second = a + "s"
+                }
+            }, 1000);
+            if (data.result != undefined) {
+                $scope.icode_show = data["result"]["data"]["key"]
+                $scope.key = data["result"]["data"]["key"]
+            } else { //错误信息弹窗
+                $ionicPopup.alert({
+                    title: '提示',
+                    template: data["error"]["message"],
+                    okText: '嗯！知道了', // String
+                    okType: 'button-energized',
+                });
+            }
+
+        }, function() {
+            $ionicPopup.alert({
+                title: '提示',
+                template: "网络异常",
+                okText: '嗯！知道了', // String
+                okType: 'button-energized',
+            });
+        })
+    }
+    $scope.login = function() { //登录注册
+        var list_login = null;
+        var promise_login = null;
+        list_login = {
+            "jsonrpc": "2.0",
+            "method": "signin",
+            "params": [{
+                "username": $scope.info.phone, //电话号
+                "sms_key": $scope.key, //短信接口收到的key
+                "sms_code": $scope.info.scode, //验证码
+                "channel": $scope.channel
+
+            }],
+            "id": 1
+        }
+
+        promise_login = login_logic.submit(list_login);
+        promise_login.then(function(data) {
+            console.log(data)
+            if (data.result != undefined) {
+                // $state.go("game_success")
+                $(".main_content .register_popum").css({ backgroundImage: "url(images/land/register/Group.png)" })
+                $(".main_content .register_popum").fadeIn("slow");
+            } else { //错误信息弹窗
+                $ionicPopup.alert({
+                    title: '提示',
+                    template: data["error"]["message"],
+                    okText: '嗯！知道了', // String
+                    okType: 'button-energized',
+                });
+            }
+
+        }, function() {
+            $ionicPopup.alert({
+                title: '提示',
+                template: "网络异常",
+                okText: '嗯！知道了', // String
+                okType: 'button-energized',
+            });
+        })
+    }
+}])

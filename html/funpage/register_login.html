@@ -1,0 +1,4 @@
+<button class="get_scode" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">
+                                </button>
+<input class="first_i" type="text" autocomplete="off" ng-maxlength="6" ng-minlength="6" name="scode" ng-model="info.scode" ng-verify="max:6,min:6" required placeholder="请输入短信验证码">
+<input class="second_i button button-assertive" type="submit" value="还差一步就可以领取了" ng-disabled="myForm.scode.$invalid" ng-click="login()">

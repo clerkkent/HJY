@@ -458,14 +458,14 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 11.36rem; // 568px;
+    height: 10.36rem; // 568px;
     @include backgroundset("../images/login/ic_login_ pattern.png",
     center,
     bottom,
     100%);
     -webkit-overflow-scrolling: touch;
     .user_pic {
-        height: 4rem; // 170px
+        height: 3rem; // 170px
         width: 100%;
         position: relative;
         span {
@@ -1050,9 +1050,10 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                         span {
                             display: inline-block;
                             position: absolute;
+                            width:50%;
                         }
                         .oil_drop {
-                            text-align: right;
+                            text-align: center;
                             right: 0;
                             font-family: PingFangSC-Regular;
                             font-size: .2rem;
@@ -1060,7 +1061,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                             letter-spacing: 0;
                         }
                         .phone_number {
-                            text-align: left;
+                            text-align: center;
                             left: 0;
                             font-family: PingFangSC-Regular;
                             font-size: .2rem;

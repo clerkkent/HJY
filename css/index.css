@@ -294,12 +294,12 @@ a:focus {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 11.36rem;
+  height: 10.36rem;
   background: url("../images/login/ic_login_ pattern.png") center bottom no-repeat;
   background-size: 100%;
   -webkit-overflow-scrolling: touch; }
   .login .user_pic {
-    height: 4rem;
+    height: 3rem;
     width: 100%;
     position: relative; }
     .login .user_pic span {
@@ -958,16 +958,17 @@ a:focus {
             position: relative; }
             .friend_request section .friend_wrap .second ul li span {
               display: inline-block;
-              position: absolute; }
+              position: absolute;
+              width: 50%; }
             .friend_request section .friend_wrap .second ul li .oil_drop {
-              text-align: right;
+              text-align: center;
               right: 0;
               font-family: PingFangSC-Regular;
               font-size: .2rem;
               color: #FF7320;
               letter-spacing: 0; }
             .friend_request section .friend_wrap .second ul li .phone_number {
-              text-align: left;
+              text-align: center;
               left: 0;
               font-family: PingFangSC-Regular;
               font-size: .2rem;

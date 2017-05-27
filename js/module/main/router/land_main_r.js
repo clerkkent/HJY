@@ -1,6 +1,6 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.views.maxCache(5);
-    window.version_glo = "2.6";
+    window.version_glo = "2.9";
     var v = "?" + window.version_glo;
     $stateProvider.state("funcpage", {
             url: "/funcpage",
@@ -18,7 +18,24 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                         './js/plugins/md5.js' + v,
                         './js/plugins/moment.js' + v
                     ]); // 按需加载目标 js file
-                }]
+                }],
+                parse: "login_logic",
+                get: function(parse) {
+                    var x = parse.parse_url();
+
+                    function judge(obj) {　　
+                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                            　　　　 return true;　　 }　
+                        return false;
+                    }
+                    if (judge(x)) {
+                        if (x["ch"] != undefined) {
+                            var channel = x["ch"];
+                            sessionStorage.setItem("ch", channel);
+                            localStorage.setItem("ch", channel);
+                        }
+                    }
+                }
             }
         })
         .state("funcpage.db_festival", {
@@ -211,6 +228,16 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "land_main_login",
             templateUrl: "html/funpage/login.html" + v
         })
+        .state("funcpage.register", {
+            url: "/register",
+            controller: "register",
+            templateUrl: "html/funpage/register.html" + v
+        })
+        .state("funcpage.register.login", {
+            url: "/login",
+            controller: "register_login",
+            templateUrl: "html/funpage/register_login.html" + v
+        })
         // .state("feedback", {
         //     url: "/feedback",
         //     controller: "help",
@@ -219,7 +246,9 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
 
 }]);
 HJY.run(['$rootScope', function($rootScope) {
-    console.log(location.hostname)
-    $rootScope.url_global = "http://" + location.hostname; //本地测试
-    // $rootScope.url_global = "http://192.168.10.240:8888"
+    if (location.hostname == "192.168.10.240") {
+        $rootScope.url_global = "http://192.168.10.240:8888";
+    } else {
+        $rootScope.url_global = "http://" + location.hostname; //本地测试
+    }
 }]);
