@@ -1,6 +1,6 @@
 ;
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$locationProvider", "$httpProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $locationProvider, $httpProvider) {
-    window.version_glo = "2.9";
+    window.version_glo = "3.0";
     $ionicConfigProvider.views.maxCache(5);
     var v = "?" + window.version_glo;
 
@@ -284,31 +284,31 @@ HJY.run(['$rootScope', function($rootScope) {
     if (location.hostname == "192.168.10.240") {
         $rootScope.url_global = "http://192.168.10.240:8888";
     } else {
-        $rootScope.url_global = "http://" + location.hostname; //本地测试
+        $rootScope.url_global = window.location.protocol + "//" + location.hostname; //本地测试
     }
 
 }]);
-// HJY.config(["$httpProvider", function($httpProvider) {　　
-//     $httpProvider.interceptors.push("httpInterceptor");
-// }])
-// HJY.factory("httpInterceptor", ["$q", "$rootScope", function($q, $rootScope) {
-//     return {
-//         request: function(config) {
-//             // do something on request success
-//             return config || $q.when(config);
-//         },
-//         　　requestError: function(rejection) {　　　　 // do something on request error
-//             　　　　 return $q.reject(rejection)　　 },
-//         response: function(response) {
-//             // do something on response success
-//             if (response.data.result != undefined) {
-//                 response.data = $.uncode(response.data);
-//             }
-//             return response || $q.when(response);
-//         },
-//         responseError: function(rejection) {
-//             // do something on response error
-//             return $q.reject(rejection);
-//         }
-//     };
-// }]);;
+HJY.config(["$httpProvider", function($httpProvider) {　　
+    $httpProvider.interceptors.push("httpInterceptor");
+}])
+HJY.factory("httpInterceptor", ["$q", "$rootScope", function($q, $rootScope) {
+    return {
+        request: function(config) {
+            // do something on request success
+            return config || $q.when(config);
+        },
+        　　requestError: function(rejection) {　　　　 // do something on request error
+            　　　　 return $q.reject(rejection)　　 },
+        response: function(response) {
+            // do something on response success
+            if (response.data.result != undefined) {
+                response.data = $.uncode(response.data);
+            }
+            return response || $q.when(response);
+        },
+        responseError: function(rejection) {
+            // do something on response error
+            return $q.reject(rejection);
+        }
+    };
+}]);;

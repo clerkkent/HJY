@@ -85,7 +85,7 @@ HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $ro
         return defer.promise
     }
     factory.deal_help = function() { //帮助页的详细信息隐藏出现
-        $(".main_content").on("touchend", ".main_content_help li .question", (function(event) {
+        $(".main_content").on("click", ".main_content_help li .question", (function(event) {
             $(this).parent("li").find(".answer").fadeToggle();
             if ($(this).find("span").hasClass("selected")) {
                 $(this).find("span").removeClass("selected")
@@ -512,14 +512,61 @@ HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope
     }
     return factory
 }])
-HJY.factory("wxSDK", [function() {
+HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScope) {
     var factory = {}
-    factory.wx = function() {
+    factory.wx = function(x) {
         var imgUrl = "images/share.jpg";
         var lineLink = "http://www.ihaomu.com//wechat/#/game/main";
         var descContent = '会加油';
         var shareTitle = '会加油';
         var appid = 'wx5c8141694c6e0854';
+
+        wx.config({
+            debug: false,
+            appId: x.AppId,
+            timestamp: x.timestamp,
+            nonceStr: x.noncestr,
+            signature: x.signature,
+            debug: true,
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'onMenuShareQZone',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onVoiceRecordEnd',
+                'playVoice',
+                'onVoicePlayEnd',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+        });
 
         function shareFriend() {
             WeixinJSBridge.invoke('sendAppMessage', {
@@ -566,4 +613,30 @@ HJY.factory("wxSDK", [function() {
             });
         }, false);
     }
+    factory.post = function(url, data_send, authToken) {
+        var defer = $q.defer();
+        var head = null
+        if (authToken != undefined) { //此处的登录状态cookie设置还需要更改
+            head = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            };
+            window.document.cookie = "OIL_TOKEN=" + authToken + ";path=/;";
+        } else {
+            head = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+        $http({
+            method: 'POST',
+            url: $rootScope.url_global + url,
+            headers: head,
+            data: data_send
+        }).success(function(data, header, config, status) {
+            defer.resolve(data); //声明执行成功
+        }).error(function(data, header, config, status) {
+            defer.reject(); //声明执行失败
+        });
+        return defer.promise
+    }
+    return factory
 }])

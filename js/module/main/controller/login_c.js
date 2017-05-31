@@ -272,7 +272,7 @@ HJY.controller("buy", ["$scope", "$state", "buy", "$http", function($scope, $sta
         }
     })
 }]);
-HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", function($scope, $state, game_play, $http, $timeout) {
+HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", "wxsdk", function($scope, $state, game_play, $http, $timeout, wxsdk) {
     $scope.text = "连续点击，赢取油滴"; //按钮内文字
     $scope.state = 0; //按钮点击所触发状态
     $scope.url = location.search;
@@ -285,7 +285,17 @@ HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", fu
         }
         console.log($scope.theRequest.mobile)
     }
-    game_play.start()
+    game_play.start();
+    var list = {
+        "jsonrpc": "2.0",
+        "method": "getAll",
+        "params": [],
+        "id": 1
+    }
+    var wx = wxsdk.post("/operate/index.php?c=wechat", list);
+    wx.then(function(data) {
+        wxsdk.wx(data.result);
+    })
 }])
 HJY.controller("game_select", ["$scope", "$state", "game_play", "$http", "$timeout", function($scope, $state, game_play, $http, $timeout) {
     $scope.score = sessionStorage.getItem("score");
@@ -670,7 +680,6 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
                                 if (data.result.checkSms) {
                                     $scope.scodet = false;
                                     $scope.pay_on = true;
-
                                     sessionStorage.setItem("channel", $scope.info_send.channel);
                                     land.pay($scope.info_send);
                                     $scope.text = "正在前往支付页";
@@ -678,6 +687,13 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
                                     $scope.scodet = true;
                                     $scope.notice = "验证码错误";
                                 }
+                            } else {
+                                $ionicPopup.alert({
+                                    title: '提示',
+                                    template: data["error"]["message"],
+                                    okText: '嗯！知道了', // String
+                                    okType: 'button-energized',
+                                });
                             }
                         }, function() {
 

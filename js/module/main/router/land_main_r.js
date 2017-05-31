@@ -1,6 +1,6 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.views.maxCache(5);
-    window.version_glo = "2.9";
+    window.version_glo = "3.0";
     var v = "?" + window.version_glo;
     $stateProvider.state("funcpage", {
             url: "/funcpage",
@@ -249,6 +249,6 @@ HJY.run(['$rootScope', function($rootScope) {
     if (location.hostname == "192.168.10.240") {
         $rootScope.url_global = "http://192.168.10.240:8888";
     } else {
-        $rootScope.url_global = "http://" + location.hostname; //本地测试
+        $rootScope.url_global = window.location.protocol + "//" + location.hostname; //本地测试
     }
 }]);

@@ -6,7 +6,7 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
     var v = "?" + window.version_glo;
     $http.get("mock/func/help.json" + v).then(function(data) {
         $scope.help_information = data.data;
-        $(".main_content_help li").eq($(".main_content_help li").length - 1).css({ display: "none" })
+        // $(".main_content_help li").eq($(".main_content_help li").length - 1).css({ display: "none" })
     })
 }]);
 angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $rootScope) {
@@ -68,6 +68,8 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
             $scope.date_list.push(a);
         }
     }
+    $scope.date = moment().year() + "/" + moment().month() + "/" + moment().date();
+    console.log($scope.date)
     data();
     $scope.unit_price = $scope.pre_price[$scope.recommend_p];
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
@@ -167,7 +169,9 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         })
         return $scope.login_flag;
     }
-    setInterval($scope.login_state_confirm(), 5000)
+    $scope.login_state_confirm();
+    setInterval($scope.login_state_confirm(), 5000);
+    //此处需要优化，减少服务器压力~,直接网页跳转时拦截上面状态确认函数即可，取消定时器轮询
     $scope.go_order = function() {
             if ($scope.login_flag) {
                 $state.go("funcpage.order_list")
