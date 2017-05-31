@@ -35,6 +35,13 @@ HJY.directive("registerDownload", function() {
         templateUrl: "html/funpage/download.html"
     }
 })
+HJY.directive("activePopum", function() {
+    return {
+        restrict: "ECMA",
+        replace: true,
+        templateUrl: "html/funpage/active/popum.html"
+    }
+})
 HJY.directive("activeIcon", function() {
     return {
         restrict: "ECMA",

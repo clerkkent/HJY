@@ -68,9 +68,21 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
             $scope.date_list.push(a);
         }
     }
-    $scope.date = moment().year() + "/" + moment().month() + "/" + moment().date();
-    console.log($scope.date)
+    $scope.date = moment().year() + "/" + (moment().month() + 1) + "/" + moment().date();
     data();
+    console.log($scope.date)
+    if ($scope.date == "2017/5/31") {
+        $scope.active = false;
+    } else {
+        $scope.active = true;
+    }
+    $scope.prize = false;
+    $scope.open = function() {
+        $scope.prize = true;
+    }
+    $scope.closep = function() {
+        $scope.prize = false;
+    }
     $scope.unit_price = $scope.pre_price[$scope.recommend_p];
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
 

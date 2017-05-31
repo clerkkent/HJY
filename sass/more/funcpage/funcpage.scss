@@ -20,6 +20,50 @@
     position: relative;
     flex-direction: column;
     -webkit-overflow-scrolling: touch;
+    .activepopum {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(black, .5);
+        z-index: 201;
+        .popum_wrap{
+        width:4.22673797rem;
+        height:2.51550802rem;
+        @include center-block;
+        background:#FFF;
+        border-radius:.13653322rem;
+        padding:.42780749rem .25668449rem;
+        .active_p{
+            width:100%;
+            height:2.39572193rem;
+            position:absolute;
+            @include backgroundset("../../images/active/tanchuang(1).png",
+        center,
+        center,
+        70%);
+            top:-2.09572193rem;
+            left:0;
+            z-index:200;
+        }
+        .redownload {
+            font-family:PingFangSC-Regular;
+            font-size:.25668449rem;
+            line-height:.40802139rem;
+            color:#676767;
+            span{
+                color:#ffbd95;
+            }
+        }
+        .confirm{
+            width:100%;
+            font-size:.25668449rem;
+            color:#ff843c;
+            text-align:center;
+            margin-top:.27112299rem;
+        }
+    }
+
+    }
     .aicon {
         position: absolute;
         width: 1.57433155rem; // 92px;
@@ -29,7 +73,12 @@
         right: 0;
         z-index: 200;
         animation: db 1s ease;
+
         // animation: db 1s ease;
+    }
+    .aicon2{
+         @include backgroundset("../../images/active/zhongjiang.png", center, top, 90%);
+         transform:scale(1.3);
     }
     header {
         height: 2.98666412rem; // 175px
@@ -908,103 +957,113 @@
         }
     }
 }
-.funcpage_register{
-    width:100%;
-    height:18.34665101rem; // 1075px;
-    @include backgroundset("../../images/land/register/TopBar.png",center,center,100%);
-    background-color:#FFDC5A;
+
+.funcpage_register {
+    width: 100%;
+    height: 18.34665101rem; // 1075px;
+    @include backgroundset("../../images/land/register/TopBar.png",
+    center,
+    center,
+    100%);
+    background-color: #FFDC5A;
     position: relative;
-    .register_popum{
+    .register_popum {
         position: fixed;
         width: 100%;
         height: 100%;
-        display:none;
-        @include backgroundset("../../images/land/register/Group(1).png",right,0.806665rem,90%)
+        display: none;
+        @include backgroundset("../../images/land/register/Group(1).png",
+        right,
+        0.806665rem,
+        90%);
         background-color: rgba(black, .5);
         z-index: 201;
-        .redownload{
-            width:3.41333042rem; // 200px;
-            height:50px;
+        .redownload {
+            width: 3.41333042rem; // 200px;
+            height: 50px;
             @include center-block;
-            margin-top:5.81999563rem; // 300px
-            @include backgroundset("../../images/land/register/Rectangle 62.png",center,center,100%)
+            margin-top: 5.81999563rem; // 300px
+            @include backgroundset("../../images/land/register/Rectangle 62.png",
+            center,
+            center,
+            100%)
         }
     }
     .get_award {
-            height: 4rem; // 200px;
-            width: 5.12rem; // 256px;
-             @include center-block;
-             margin-top:5.35892876rem; // 314px;
-            .information {
-                width: 5.04rem; // 252px;
-                height: 3.44rem; // 102px;
-                .first_i {
-                    width: 100%;
-                    height: .32rem; // 16px
-                    line-height: .32rem; // 16px
-                    padding: 0.47rem 0;
-                    padding-left: 20%;
-                    background: #FFF;
-                    border: none;
-                    text-align: left;
-                    border-radius: .5rem; // 20px
-                    margin-bottom: 0.2rem;
-                    position: relative;
-                    font-size: .28rem; // 14px
-                }
-                .get_scode {
-                    position: absolute;
-                    top: 0.05rem;
-                    right: 0.1rem;
-                    border: none;
-                    color: #f3b93e;
-                    width: 1.6rem;
-                    height: 0.9rem;
-                    z-index: 100;
-                    font-size: .2rem; // 10px
-                    background: none
-                }
-                .second_i {
-                    width: 100%;
-                    height: .94rem; // 47px;
-                    border: none;
-                    text-align: center;
-                    border-radius: .5rem; // 20px
-                }
-            }
-            .remind {
-                width: 4.8rem; // 240px
-                height: .6rem; // 30px;
-                line-height: .6rem;
-                margin: 0 auto;
-                margin-top: -0.2rem;
-                text-align: center;
-                padding-left: 0.3rem;
-                font-family: PingFangSC-Regular;
-                font-size: .24rem; // 12px
-                color: #343434;
-                letter-spacing: 0;
-                overflow: hidden;
+        height: 4rem; // 200px;
+        width: 5.12rem; // 256px;
+        @include center-block;
+        margin-top: 5.35892876rem; // 314px;
+        .information {
+            width: 5.04rem; // 252px;
+            height: 3.44rem; // 102px;
+            .first_i {
+                width: 100%;
+                height: .32rem; // 16px
+                line-height: .32rem; // 16px
+                padding: 0.47rem 0;
+                padding-left: 20%;
+                background: #FFF;
+                border: none;
+                text-align: left;
+                border-radius: .5rem; // 20px
+                margin-bottom: 0.2rem;
                 position: relative;
-                .agree {
-                    width: .3rem; // 15px;
-                    height: .3rem; // 15px;
-                    border: .02rem solid #f95b4e;
-                    display: inline-block;
-                    border-radius: 20%;
-                    position: absolute;
-                    left: 19%;
-                    @include backgroundset("../images/game/H5_Check@3x.png",
-                    center,
-                    center,
-                    100%) top: 25%;
-                }
-                .selected {
-                    background-image: none;
-                }
-                span {
-                    color: #f95b4e;
-                }
+                font-size: .28rem; // 14px
+            }
+            .get_scode {
+                position: absolute;
+                top: 0.05rem;
+                right: 0.1rem;
+                border: none;
+                color: #f3b93e;
+                width: 1.6rem;
+                height: 0.9rem;
+                z-index: 100;
+                font-size: .2rem; // 10px
+                background: none
+            }
+            .second_i {
+                width: 100%;
+                height: .94rem; // 47px;
+                border: none;
+                text-align: center;
+                border-radius: .5rem; // 20px
             }
         }
+        .remind {
+            width: 4.8rem; // 240px
+            height: .6rem; // 30px;
+            line-height: .6rem;
+            margin: 0 auto;
+            margin-top: -0.2rem;
+            text-align: center;
+            padding-left: 0.3rem;
+            font-family: PingFangSC-Regular;
+            font-size: .24rem; // 12px
+            color: #343434;
+            letter-spacing: 0;
+            overflow: hidden;
+            position: relative;
+            .agree {
+                width: .3rem; // 15px;
+                height: .3rem; // 15px;
+                border: .02rem solid #f95b4e;
+                display: inline-block;
+                border-radius: 20%;
+                position: absolute;
+                left: 19%;
+                @include backgroundset("../images/game/H5_Check@3x.png",
+                center,
+                center,
+                100%) top: 25%;
+            }
+            .selected {
+                background-image: none;
+            }
+            span {
+                color: #f95b4e;
+            }
+        }
+    }
 }
