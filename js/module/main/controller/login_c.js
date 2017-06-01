@@ -121,7 +121,8 @@ HJY.controller("weixin", ["$scope", "$state", "login_logic", function($scope, $s
 }]);
 HJY.controller("help", ["$scope", "$state", "login_logic", "$http", "webappSDK", function($scope, $state, login_logic, $http, webappSDK) {
     $scope.help_information = "";
-    $scope.title_content = "帮助"
+    $scope.title_content = "帮助";
+    $scope.ap = false;
     login_logic.deal_help()
         // $scope.feed_return = function() {
         //     $state.go("help")
@@ -272,9 +273,7 @@ HJY.controller("buy", ["$scope", "$state", "buy", "$http", function($scope, $sta
         }
     })
 }]);
-HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", "wxsdk", function($scope, $state, game_play, $http, $timeout, wxsdk) {
-    $scope.text = "连续点击，赢取油滴"; //按钮内文字
-    $scope.state = 0; //按钮点击所触发状态
+HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", "wxsdk", "$rootScope", "login_logic", function($scope, $state, game_play, $http, $timeout, wxsdk, $rootScope, login_logic) {
     $scope.url = location.search;
     $scope.theRequest = new Object();
     if ($scope.url.indexOf("?") != -1) {
@@ -285,17 +284,34 @@ HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", "w
         }
         console.log($scope.theRequest.mobile)
     }
-    game_play.start();
+    var url = encodeURIComponent(location.href.split('#')[0]);
+    console.log(location)
+    alert(location.port)
+    var mytime = new Date();
+    var t = mytime.getTime();
+    var params = {
+        "time": t,
+        "url": url
+    }
     var list = {
         "jsonrpc": "2.0",
         "method": "getAll",
-        "params": [],
+        "params": [{
+            "time": t,
+            "url": url,
+            "sign": login_logic.md(params)
+        }],
         "id": 1
     }
-    var wx = wxsdk.post("/operate/index.php?c=wechat", list);
-    wx.then(function(data) {
+
+    wxsdk.post("/operate/index.php?c=wechat", list).then(function(data) {
         wxsdk.wx(data.result);
     })
+}])
+HJY.controller("game_main", ["$scope", "$state", "game_play", "$http", "$timeout", "wxsdk", "$rootScope", "login_logic", function($scope, $state, game_play, $http, $timeout, wxsdk, $rootScope, login_logic) {
+    $scope.text = "连续点击，赢取油滴"; //按钮内文字
+    $scope.state = 0; //按钮点击所触发状态
+    game_play.start();
 }])
 HJY.controller("game_select", ["$scope", "$state", "game_play", "$http", "$timeout", function($scope, $state, game_play, $http, $timeout) {
     $scope.score = sessionStorage.getItem("score");

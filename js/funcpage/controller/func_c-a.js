@@ -4,6 +4,7 @@ angular.module('HJY').controller("funcpage", ["$scope", "$state", "login_logic",
 angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
     login_logic.deal_help();
     var v = "?" + window.version_glo;
+    $scope.ap = true;
     $http.get("mock/func/help.json" + v).then(function(data) {
         $scope.help_information = data.data;
         // $(".main_content_help li").eq($(".main_content_help li").length - 1).css({ display: "none" })
@@ -11,8 +12,7 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
 }]);
 angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $rootScope) {
     $scope.gonote = function() {
-        location.search = "from=duanwujie";
-        $state.go("funcpage.db_festival");
+        location.href = $rootScope.url_global + "/wechat/?from=duanwujie#/funcpage/db_festival"
     }
     $scope.text = "确认套餐";
     $scope.pay_text = "确认支付"
@@ -68,10 +68,20 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
             $scope.date_list.push(a);
         }
     }
-    $scope.date = moment().year() + "/" + (moment().month() + 1) + "/" + moment().date();
     data();
+
+    $scope.date = moment().isAfter("2017/06/02");
+
+    // var a = moment([2017, 6, 1]).fromNow()
+    // console.log(a)
     console.log($scope.date)
-    if ($scope.date == "2017/5/31") {
+
+
+    // var a = moment();
+    // var b = moment([2017, 5, 2]);
+    // // 86400000
+    // console.log(a.diff(b))
+    if ($scope.date) {
         $scope.active = false;
     } else {
         $scope.active = true;
@@ -467,7 +477,7 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
         ////////////
         ////////////
 
-    $scope.login_pay = function() {
+    function loginpay() {
         var list = {
             "jsonrpc": "2.0",
             "method": "signinForChannel",
@@ -522,6 +532,8 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
             });
         })
     }
+    var login_pay_go = _.throttle(loginpay, 5000)
+    $scope.login_pay = login_pay_go
 }])
 angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$stateParams", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $stateParams, $rootScope) {
     if ($stateParams.pro != null) {
@@ -562,34 +574,17 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
     if ($scope.flag_pay == 1) {
         //以上为备用参数
         $scope.pay_text = "支付" + $scope.price_f + "元";
-
-        // var mytime = new Date();
-        // var t = mytime.getTime();
-        // var params = {
-        //     "oil_card": $stateParams.pro.card_number,
-        //     "product_id": $stateParams.pro.product_id,
-        //     "time": t,
-        //     "money": $stateParams.pro.unit_price
-        // }
-        // var sign = login_logic.md(params);
-
-        // $scope.list_flag = {
-        //     "oil_card": $stateParams.pro.card_number,
-        //     "product_id": $stateParams.pro.product_id,
-        //     "time": t,
-        //     "sign": sign,
-        //     "money": $stateParams.pro.unit_price
-        // }
         $scope.list_flag = {
             url: "/#/funcpage/land_main",
             back_url: "/#/funcpage/pay_success",
             order_id: $scope.order_id
-
         }
-        console.log($scope.list_flag)
-        $scope.login_pay_on = function() {
+
+        function repay() {
             land_main.repay($scope.list_flag)
         }
+        var repaya = _.throttle(repay, 5000)
+        $scope.login_pay_on = repaya;
     } else if ($scope.flag_pay == 0) {
         $scope.pay_text = "支付" + $scope.price_f + "元";
         var mytime = new Date();
@@ -610,9 +605,11 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
             "money": $scope.u_price
         }
 
-        $scope.login_pay_on = function() {
-            land_main.pay($scope.list_flag)
+        function repayx() {
+            land_main.pay($scope.list_flag);
         }
+        var repayb = _.throttle(repayx, 5000);
+        $scope.login_pay_on = repayb;
     }
 
 }])

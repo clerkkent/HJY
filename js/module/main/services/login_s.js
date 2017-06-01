@@ -519,15 +519,14 @@ HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScop
         var lineLink = "http://www.ihaomu.com//wechat/#/game/main";
         var descContent = '会加油';
         var shareTitle = '会加油';
-        var appid = 'wx5c8141694c6e0854';
-
+        var appid = x.appId;
+        console.log("返回", x)
         wx.config({
-            debug: false,
-            appId: x.AppId,
+            debug: true,
+            appId: x.appId,
             timestamp: x.timestamp,
             nonceStr: x.noncestr,
             signature: x.signature,
-            debug: true,
             jsApiList: [
                 'checkJsApi',
                 'onMenuShareTimeline',
@@ -632,6 +631,7 @@ HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScop
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
+            console.log(data)
             defer.resolve(data); //声明执行成功
         }).error(function(data, header, config, status) {
             defer.reject(); //声明执行失败
