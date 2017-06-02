@@ -813,6 +813,7 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
     land_main.get_order_list($scope.send_details()).then(function(data) {
         if (data["result"] != undefined) {
             $scope.order_details = data["result"];
+            console.log($scope.order_details)
             $scope.length = $scope.order_details.oil_info.length;
         } else {
             $ionicPopup.alert({

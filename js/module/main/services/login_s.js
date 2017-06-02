@@ -522,10 +522,10 @@ HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScop
         var appid = x.appId;
         console.log("返回", x)
         wx.config({
-            debug: true,
+            debug: false,
             appId: x.appId,
             timestamp: x.timestamp,
-            nonceStr: x.noncestr,
+            nonceStr: x.nonceStr,
             signature: x.signature,
             jsApiList: [
                 'checkJsApi',
@@ -533,84 +533,47 @@ HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScop
                 'onMenuShareAppMessage',
                 'onMenuShareQQ',
                 'onMenuShareWeibo',
-                'onMenuShareQZone',
-                'hideMenuItems',
-                'showMenuItems',
-                'hideAllNonBaseMenuItem',
-                'showAllNonBaseMenuItem',
-                'translateVoice',
-                'startRecord',
-                'stopRecord',
-                'onVoiceRecordEnd',
-                'playVoice',
-                'onVoicePlayEnd',
-                'pauseVoice',
-                'stopVoice',
-                'uploadVoice',
-                'downloadVoice',
-                'chooseImage',
-                'previewImage',
-                'uploadImage',
-                'downloadImage',
-                'getNetworkType',
-                'openLocation',
-                'getLocation',
-                'hideOptionMenu',
-                'showOptionMenu',
-                'closeWindow',
-                'scanQRCode',
-                'chooseWXPay',
-                'openProductSpecificView',
-                'addCard',
-                'chooseCard',
-                'openCard'
+                'onMenuShareQZone'
             ]
         });
-
-        function shareFriend() {
-            WeixinJSBridge.invoke('sendAppMessage', {
-                "appid": appid,
-                "img_url": imgUrl,
-                "img_width": "200",
-                "img_height": "200",
-                "link": lineLink,
-                "desc": descContent,
-                "title": shareTitle
-            }, function(res) {})
-        }
-
-        function shareTimeline() {
-            WeixinJSBridge.invoke('shareTimeline', {
-                "img_url": imgUrl,
-                "img_width": "200",
-                "img_height": "200",
-                "link": lineLink,
-                "desc": descContent,
-                "title": shareTitle
-            }, function(res) {});
-        }
-
-        function shareWeibo() {
-            WeixinJSBridge.invoke('shareWeibo', {
-                "content": descContent,
-                "url": lineLink,
-            }, function(res) {});
-        }
-        // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
-        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            // 发送给好友
-            WeixinJSBridge.on('menu:share:appmessage', function(argv) {
-                shareFriend();
+    }
+    factory.shareo = function() {
+        wx.ready(function() {
+            console.log($rootScope.share)
+            wx.onMenuShareTimeline({
+                title: "会加油，请你来加油", // 分享标题
+                link: $rootScope.share, // 分享链接
+                imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
+                    // 分享图标
             });
-            // 分享到朋友圈
-            WeixinJSBridge.on('menu:share:timeline', function(argv) {
-                shareTimeline();
+            wx.onMenuShareAppMessage({
+                title: "会加油，请你来加油",
+                desc: "会加油，帮您省钱的加油最佳方案",
+                link: $rootScope.share,
+                imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
             });
-            // 分享到微博
-            WeixinJSBridge.on('menu:share:weibo', function(argv) {
-                shareWeibo();
+
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+        });
+    }
+    factory.shares = function() {
+        wx.ready(function() {
+            console.log($rootScope.share)
+            wx.onMenuShareTimeline({
+                title: "会加油，请你来加油", // 分享标题
+                link: $rootScope.share, // 分享链接
+                imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
+                    // 分享图标
             });
-        }, false);
+            wx.onMenuShareAppMessage({
+                title: "会加油，请你来加油",
+                desc: "会加油，帮您省钱的加油最佳方案",
+                link: $rootScope.share,
+                imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
+            });
+
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+        });
     }
     factory.post = function(url, data_send, authToken) {
         var defer = $q.defer();

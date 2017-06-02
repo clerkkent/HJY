@@ -274,7 +274,7 @@ HJY.run(['$rootScope', function($rootScope) {
             return x;
         }
     });
-    if (location.hostname == "www.ihaomu.com") {
+    if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?fdb9e557f9cc49a60c8ed0c30b13a40e";
         var s = document.getElementsByTagName("script")[0];

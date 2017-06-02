@@ -285,8 +285,6 @@ HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", "w
         console.log($scope.theRequest.mobile)
     }
     var url = encodeURIComponent(location.href.split('#')[0]);
-    console.log(location)
-    alert(location.port)
     var mytime = new Date();
     var t = mytime.getTime();
     var params = {
@@ -303,10 +301,13 @@ HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", "w
         }],
         "id": 1
     }
-
     wxsdk.post("/operate/index.php?c=wechat", list).then(function(data) {
-        wxsdk.wx(data.result);
+        $rootScope.share = location.href;
+        $scope.data = data.result
+        wxsdk.wx($scope.data);
+        wxsdk.shareo();
     })
+
 }])
 HJY.controller("game_main", ["$scope", "$state", "game_play", "$http", "$timeout", "wxsdk", "$rootScope", "login_logic", function($scope, $state, game_play, $http, $timeout, wxsdk, $rootScope, login_logic) {
     $scope.text = "连续点击，赢取油滴"; //按钮内文字
@@ -323,7 +324,7 @@ HJY.controller("game_select", ["$scope", "$state", "game_play", "$http", "$timeo
         $state.go("game.login")
     }
 }])
-HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeout", "ngVerify", "login_logic", "$interval", "$ionicPopup", function($scope, $state, game_play, $http, $timeout, ngVerify, login_logic, $interval, $ionicPopup) {
+HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeout", "ngVerify", "login_logic", "$interval", "$ionicPopup", "$rootScope", "wxsdk", function($scope, $state, game_play, $http, $timeout, ngVerify, login_logic, $interval, $ionicPopup, $rootScope, wxsdk) {
     $scope.score_login = sessionStorage.getItem("score");
     game_play.deal_icon();
     $scope.state = 0;
@@ -414,12 +415,10 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
             }
             promise_login = login_logic.submit(list_login);
             promise_login.then(function(data) {
-
                 if (data.result != undefined) {
                     if (data["result"]["isRegister"] == 0) {
                         $scope.state = 1;
                         $scope.registed = true;
-
                     } else {
                         $ionicPopup.alert({
                             title: '提示',
@@ -452,11 +451,12 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
                 }],
                 "id": 1
             }
-
             promise_login = login_logic.submit(list_login);
             promise_login.then(function(data) {
                 if (data.result != undefined) {
-                    $state.go("game_success")
+                    $rootScope.share = $rootScope.url_global + "/wechat/?mobile=" + $scope.info.phone + "&" + "invite_code=" + data["result"]["data"]["invite_code"] + "#/game/main";
+                    $state.go("game_success");
+                    wxsdk.shares();
                 } else { //错误信息弹窗
                     $ionicPopup.alert({
                         title: '提示',
