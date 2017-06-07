@@ -43,10 +43,10 @@
             <h3 class="title" ng-if="order_details.belong==2&&order_details.total_time==1">中石油即时充加油套餐</h3>-->
             <h3 class="title">{{order_details.product_name}}</h3>
             <div class="first">
-                <p class="type" ng-if="order_details.status==1&&order_details.count<order_details.total_time">{{order_details.count}}/{{order_details.total_time}}</p>
+                <!--<p class="type" ng-if="order_details.status==1&&order_details.count<order_details.total_time">{{order_details.count}}/{{order_details.total_time}}</p>
                 <p class="type" ng-if="order_details.status==0" style="background-image:url(images/land/ic_recording_Orange@3x.png);"></p>
                 <p class="type" ng-if="order_details.status==1&&order_details.count==order_details.total_time" style="background-image:url(images/land/ic_recording_red@3x.png);"></p>
-                <p class="type" ng-if="order_details.status==2||order_details.status==4" style="background:none"></p>
+                <p class="type" ng-if="order_details.status==2||order_details.status==4" style="background:none"></p>-->
                 <p class="pay_amount"> <span>充值金额<i>￥</i>{{order_details.discount_before_amount}}</span> <span> 实际支付<i>￥</i>{{order_details.discount_after_amount}}</span>
                 </p>
                 <p class="list_title" ng-if="order_details.status==1||order_details.status==3">
@@ -73,7 +73,37 @@
                             </span>
                         </p>
                     </li>
-                    <li ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==0||x.status==2">
+
+
+                    <li class="refund_part" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==2&&x.total_price!=null">
+                        <p class="icon_re">
+                            <span>  
+                                成功充油{{x.total_price}}元，<i>{{x.refund_price}}</i>元已退款
+                            </span>
+                        </p>
+                        <p>{{x.recharge_amount}}({{$index+1}}/{{order_details.total_time}})</p>
+                        <p>{{x.recharge_time}}</p style="overflow:hidden;">
+                        <p class="icon_current">
+                            <span class="concat" ng-if="($index+1)!=order_details.oil_info.length">
+                                
+                            </span>
+                        </p>
+                    </li>
+                    <li class="refund_all" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==2&&x.total_price==null">
+                        <p class="icon_re">
+                            <span>  
+                                <i>充油失败，{{x.refund_price}}</i>元已退款
+                            </span>
+                        </p>
+                        <p>{{x.recharge_amount}}({{$index+1}}/{{order_details.total_time}})</p>
+                        <p>{{x.recharge_time}}</p style="overflow:hidden;">
+                        <p class="icon_current">
+                            <span class="concat" ng-if="($index+1)!=order_details.oil_info.length">
+                                
+                            </span>
+                        </p>
+                    </li>
+                    <li ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==0">
                         <p>{{x.recharge_amount}}({{$index+1}}/{{order_details.total_time}})</p>
                         <p>{{x.recharge_time}}</p style="overflow:hidden;">
                         <p class="icon_current">

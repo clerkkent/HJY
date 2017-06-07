@@ -541,14 +541,14 @@ HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScop
         wx.ready(function() {
             console.log($rootScope.share)
             wx.onMenuShareTimeline({
-                title: "会加油，请你来加油", // 分享标题
+                title: "必须看！老司机教你8.5折充油卡！", // 分享标题
                 link: $rootScope.share, // 分享链接
                 imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
                     // 分享图标
             });
             wx.onMenuShareAppMessage({
-                title: "会加油，请你来加油",
-                desc: "会加油，帮您省钱的加油最佳方案",
+                title: "必须看！老司机教你8.5折充油卡！",
+                desc: "注册就送200元加油券，车主必备，老司机快来~",
                 link: $rootScope.share,
                 imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
             });
@@ -558,16 +558,15 @@ HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScop
     }
     factory.shares = function() {
         wx.ready(function() {
-            console.log($rootScope.share)
             wx.onMenuShareTimeline({
-                title: "会加油，请你来加油", // 分享标题
+                title: "必须看！老司机教你8.5折充油卡！", // 分享标题
                 link: $rootScope.share, // 分享链接
                 imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
                     // 分享图标
             });
             wx.onMenuShareAppMessage({
-                title: "会加油，请你来加油",
-                desc: "会加油，帮您省钱的加油最佳方案",
+                title: "必须看！老司机教你8.5折充油卡！",
+                desc: "注册就送200元加油券，车主必备，老司机快来~",
                 link: $rootScope.share,
                 imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
             });
@@ -594,7 +593,6 @@ HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScop
             headers: head,
             data: data_send
         }).success(function(data, header, config, status) {
-            console.log(data)
             defer.resolve(data); //声明执行成功
         }).error(function(data, header, config, status) {
             defer.reject(); //声明执行失败

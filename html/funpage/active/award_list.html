@@ -1,0 +1,32 @@
+<div style="width:100%; -webkit-overflow-scrolling: touch;overflow-y:auto;" scroll-height>
+    <div class="award_list" style=" -webkit-overflow-scrolling: touch;">
+        <header>
+
+        </header>
+        <section>
+            <ul class="a_one">
+                <li ng-repeat="x in award.redpackage">
+                    <p class="a_phone">{{x.phone | encryPt}}</p>
+                    <p class="a_price">{{x.prize}}</p>
+                </li>
+            </ul>
+            <ul class="a_two">
+                <li ng-repeat="x in award.movie_ticket">
+                    <p class="a_phone">{{x | encryPt}}</p>
+                    <p class="a_price">奖励双人电影票</p>
+                </li>
+            </ul>
+            <div class="a_three">
+                <p>
+                    1.累计充值金额500≤x≤2000元，赠送5元充油直抵红包一个，奖品已发放，请符合条件的用户直接查收短信。
+                </p>
+                <p>
+                    2.累计充值金额x>2000元，赠送10元充油直抵红包一个，奖品已发放，请符合条件的用户直接查收短信。
+                </p>
+            </div>
+            <p class="consult">
+                客服电话：400-851-8686
+            </p>
+        </section>
+    </div>
+</div>

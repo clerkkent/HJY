@@ -284,7 +284,8 @@ HJY.controller("game", ["$scope", "$state", "game_play", "$http", "$timeout", "w
         }
         console.log($scope.theRequest.mobile)
     }
-    var url = encodeURIComponent(location.href.split('#')[0]);
+    var url = encodeURIComponent(location.href.split("#")[0]);
+    console.log(location.href.split("#")[0])
     var mytime = new Date();
     var t = mytime.getTime();
     var params = {
@@ -556,6 +557,7 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
                     var dc = parseFloat($scope.discount);
                     if ($scope.phone_flag != null && $scope.card_flag != null) {
                         $scope.price_get = false;
+                        $scope.price = $scope.pre_price;
                         if ($scope.phone_flag == 1 && $scope.card_flag == 1) {
                             $scope.price = Math.ceil((dc * $scope.price - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
                             $scope.text = "确认支付" + String($scope.price) + "元";
@@ -618,6 +620,7 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
                         $scope.info_send.sms_key = data["result"]["data"]["key"]; //短信验证key
                         var dc = parseFloat($scope.discount);
                         if ($scope.phone_flag != null && $scope.card_flag != null) {
+                            $scope.price = $scope.pre_price;
                             if ($scope.phone_flag == 1 && $scope.card_flag == 1) {
                                 $scope.price = Math.ceil((dc * $scope.price - 10) * 100) / 100; //乘以100，向上去整，等价于舍去小数点后三位，并进1.
                                 $scope.text = "确认支付" + String($scope.price) + "元";

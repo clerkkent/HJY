@@ -8,7 +8,7 @@ HJY.directive('scrollHeight', function() { //赋予元素当前可见窗口高�
             // console.log($(element[0]).height())
             // console.log(y)
             // $(element[0]).css({ transform: "scale(" + y + ")" })
-            element[0].style.height = document.body.clientHeight + 'px';
+            element[0].style.height = document.documentElement.clientHeight + 'px';
             var x = document.body.clientHeight / window.screen.height;
             // var w = $(element[0]).find(".wrap").css("height")
             //     // var h = $(element[0]).find("header").css("height")

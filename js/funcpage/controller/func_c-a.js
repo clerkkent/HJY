@@ -24,6 +24,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.pre_price = [];
     $scope.recommend = 0;
     $scope.recommend_p = 0;
+    console.log(get_type)
     if (get_type.result != undefined) {
         var type = get_type["result"]["list"];
         for (i = 0; i < type.length; i++) {
@@ -87,9 +88,19 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         $scope.active = true;
     }
     $scope.prize = false;
-    $scope.open = function() {
-        $scope.prize = true;
+    var testH = moment().isAfter("2017/06/08") && (moment().hours() > 13)
+    var testD = moment().isAfter("2017/06/09")
+    if (testH || testD) {
+        $scope.open = function() {
+            _hmt.push(['_trackPageview', "/funcpage/award"]);
+            $state.go("funcpage.award")
+        }
+    } else {
+        $scope.open = function() {
+            $scope.prize = true;
+        }
     }
+
     $scope.closep = function() {
         $scope.prize = false;
     }
@@ -327,7 +338,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
 
     }
 }]);
-angular.module('HJY').controller("pay_login_info", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$stateParams", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $stateParams) {
+angular.module('HJY').controller("pay_login_info", ["$scope", "$state", "login_logic", "$http", "get_type", "land_main", "$ionicPopup", "$interval", "land", "$stateParams", function($scope, $state, login_logic, $http, get_type, land_main, $ionicPopup, $interval, land, $stateParams) {
     $scope.phone_on = localStorage.getItem("phone");
     $scope.card_s = localStorage.getItem("card");
     $scope.name_s = localStorage.getItem("name");
@@ -771,6 +782,7 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
         }
 
     }
+    land_main.toggle();
     $scope.send_details = function(n) {
         var mytime = new Date();
         var t = mytime.getTime();
@@ -1139,4 +1151,13 @@ angular.module('HJY').controller("register_login", ["$scope", "$state", "login_l
             });
         })
     }
+}])
+angular.module('HJY').controller("award", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "$interval", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, $interval, $rootScope) {
+    $scope.award = [];
+    $http.get("mock/func/price_list.json").success(
+        function(data) {
+            $scope.award = data[0];
+            console.log($scope.award)
+        }
+    )
 }])
