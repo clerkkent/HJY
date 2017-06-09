@@ -782,7 +782,8 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
         }
 
     }
-    land_main.toggle();
+
+
     $scope.send_details = function(n) {
         var mytime = new Date();
         var t = mytime.getTime();
@@ -836,6 +837,15 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
             });
         }
 
+    })
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+        $(".icon_re").click(function(event) {
+            if ($(this).find("span").hasClass("selected")) {
+                $(this).find("span").removeClass("selected")
+            } else {
+                $(this).find("span").addClass("selected")
+            }
+        });
     })
 }]);
 angular.module('HJY').controller("not_login", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {

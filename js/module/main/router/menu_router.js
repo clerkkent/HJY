@@ -1,6 +1,6 @@
 ;
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$locationProvider", "$httpProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $locationProvider, $httpProvider) {
-    window.version_glo = "3.6";
+    window.version_glo = "3.9";
     $ionicConfigProvider.views.maxCache(5);
     var v = "?" + window.version_glo;
 
@@ -222,6 +222,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
             controller: "guide",
             templateUrl: "html/guide/guide.html" + v
         })
+        .state("help_guide", {
+            url: "/help_guide",
+            controller: "help_guide",
+            templateUrl: "html/help/help_guide.html" + v
+        })
         // .state("feedback", {
         //     url: "/feedback",
         //     controller: "help",
@@ -281,8 +286,8 @@ HJY.run(['$rootScope', function($rootScope) {
         s.parentNode.insertBefore(hm, s);
     }
     //
-    if (location.hostname == "192.168.11.164") {
-        $rootScope.url_global = "http://192.168.11.164:8888";
+    if (location.hostname == "192.168.10.52") {
+        $rootScope.url_global = "http://192.168.10.52:8888";
     } else {
         $rootScope.url_global = window.location.protocol + "//" + location.hostname; //本地测试
     }

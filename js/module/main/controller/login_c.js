@@ -147,7 +147,6 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     $scope.theRequest = new Object();
     friend.popum();
     // webappSDK.GetActiveId(1);
-    webappSDK.GetActiveId(1);
     $scope.share = function() { //分享原生H5指令交互
         var content = {
             title: "必须看！老司机教你8.5折充油卡！",
@@ -484,6 +483,9 @@ HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", func
     $scope.score_login = sessionStorage.getItem("score");
     if ($scope.score_login == undefined) {
         $state.go("game.main")
+    }
+    $scope.download = function() {
+        location.href = ""
     }
 }])
 
@@ -849,5 +851,8 @@ HJY.controller("download", ["$scope", "$state", "login_logic", "$http", function
     }
 }])
 HJY.controller("guide", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
+
+}])
+HJY.controller("help_guide", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
 
 }])

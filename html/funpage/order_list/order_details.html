@@ -55,7 +55,7 @@
                     <span class="state" style="">充值状态</span>
                 </p>
                 <ul>
-                    <li class="past" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==1">
+                    <li class="past" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==1" init-t>
                         <p>{{x.recharge_amount}}({{$index+1}}/{{order_details.total_time}})</p>
                         <p>支付后两小时内</p>
                         <p class="icon_current">
@@ -64,7 +64,7 @@
                             </span>
                         </p>
                     </li>
-                    <li class="now" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==3">
+                    <li class="now" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==3" init-t>
                         <p>{{x.recharge_amount}}({{$index+1}}/{{order_details.total_time}})</p>
                         <p>{{x.recharge_time}}</p style="overflow:hidden;">
                         <p class="icon_current">
@@ -75,7 +75,7 @@
                     </li>
 
 
-                    <li class="refund_part" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==2&&x.total_price!=null">
+                    <li class="refund_part" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==2&&x.total_price!=null" init-t>
                         <p class="icon_re">
                             <span>  
                                 成功充油{{x.total_price}}元，<i>{{x.refund_price}}</i>元已退款
@@ -89,7 +89,7 @@
                             </span>
                         </p>
                     </li>
-                    <li class="refund_all" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==2&&x.total_price==null">
+                    <li class="refund_all" ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==2&&x.total_price==null" init-t>
                         <p class="icon_re">
                             <span>  
                                 <i>充油失败，{{x.refund_price}}</i>元已退款
@@ -103,7 +103,7 @@
                             </span>
                         </p>
                     </li>
-                    <li ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==0">
+                    <li ng-repeat="x in order_details.oil_info track by $index" ng-if="x.status==0" init-t>
                         <p>{{x.recharge_amount}}({{$index+1}}/{{order_details.total_time}})</p>
                         <p>{{x.recharge_time}}</p style="overflow:hidden;">
                         <p class="icon_current">

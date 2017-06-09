@@ -4,9 +4,9 @@
             <li ng-repeat="x in order_list" ng-click="go_details(x.id)">
                 <p class="title">
                     <span class="company">{{x.product_name}}</span>
-                    <span class="state" ng-if="x.status==1&&x.count<x.total_time">{{x.count}}/{{x.total_time}}</span>
-                    <span class="state un_pay" ng-if="x.status==0"></span>
-                    <span class="state pay_success" ng-if="x.status==1&&x.count==x.total_time"></span>
+                    <!--<span class="state" ng-if="x.status==1&&x.count<x.total_time">{{x.count}}/{{x.total_time}}</span>-->
+                    <!--<span class="state un_pay" ng-if="x.status==0"></span>
+                    <span class="state pay_success" ng-if="x.status==1&&x.count==x.total_time"></span>-->
                     <span class="icon_order"></span>
                 </p>
                 <div class="details">

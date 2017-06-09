@@ -1911,86 +1911,34 @@ a:focus {
   -webkit-overflow-scrolling: touch; }
   .game_success header {
     width: 100%;
-    height: 6.7rem;
-    background: url("../images/game/H5_accomplish.png") center center no-repeat;
-    background-size: 80%; }
-    .game_success header h3 {
-      text-align: center;
-      margin-top: 1.5rem;
-      margin-bottom: 0.8rem;
-      font-size: .24rem; }
-    .game_success header p {
-      width: 100%;
-      height: .94rem;
-      line-height: .94rem;
-      background: url(../images/game/H5_accomplish_option.png) 20% center no-repeat;
-      background-size: .36rem .36rem;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: row;
-          -ms-flex-direction: row;
-              flex-direction: row; }
-      .game_success header p .left {
-        background: #FFF;
-        height: 100%;
-        display: block;
-        width: 2.1rem;
-        margin-left: 1.8rem;
-        text-align: center;
-        font-size: .32rem;
-        -webkit-border-top-left-radius: 5%;
-                border-top-left-radius: 5%;
-        -webkit-border-bottom-left-radius: 5%;
-                border-bottom-left-radius: 5%; }
-        .game_success header p .left b {
-          color: #eb1b05;
-          font-size: .36rem; }
-      .game_success header p .right {
-        display: block;
-        width: 1.24rem;
-        height: 100%;
-        text-align: center;
-        color: #FFF;
-        font-size: .44rem;
-        background: url("../images/game/H5_accomplish_list.png") center center no-repeat;
-        background-size: 100%; }
-        .game_success header p .right b {
-          font-size: .24rem; }
-      .game_success header p .oil {
-        background: url("../images/game/H5_accomplish_huijiayou.png") center center no-repeat;
-        background-size: 100%; }
+    height: 8.90399257rem;
+    background: url("../images/game/Group4.png") center -0.9rem no-repeat;
+    background-size: 100%; }
   .game_success section {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
     position: relative; }
-    .game_success section .download {
-      width: 2.9rem;
-      height: 2.9rem;
+    .game_success section .downloadr {
       position: absolute;
       left: 0;
       top: 0;
       right: 0;
       bottom: 0;
       margin: auto;
-      background: url("../images/game/H5_accomplish_QR code.png") center center no-repeat;
-      background-size: 100%;
-      margin-top: .4rem; }
-      .game_success section .download img {
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        margin-left: 0.8rem;
-        margin-top: 0.5rem;
-        width: 1.4rem; }
+      margin-top: .0rem;
+      width: 4.26666303rem; }
+      .game_success section .downloadr p {
+        width: 4.26666303rem;
+        height: .85333261rem;
+        -webkit-border-radius: .4066663rem;
+                border-radius: .4066663rem;
+        font-size: .40959965rem;
+        font-family: PingFangSC-Regular;
+        background: -webkit-gradient(linear, left top, left bottom, from(#ff6929), to(#ff534a));
+        background: -webkit-linear-gradient(#ff6929, #ff534a);
+        background: linear-gradient(#ff6929, #ff534a); }
 
 .friend_request_details {
   width: 100%;
@@ -2644,3 +2592,53 @@ a:focus {
       margin-bottom: 0;
       background: url("../images/guide/ic_part5.png") center center no-repeat;
       background-size: 80%; }
+
+.help_guide {
+  width: 100%;
+  height: 18.28158611rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap; }
+  .help_guide .first {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    background-image: url("../../images/help/Group7.png"), url("../../images/help/Group4.png");
+    background-size: 70%,80%;
+    margin-top: .25599978rem;
+    background-position: top center,center 80%;
+    background-repeat: no-repeat,no-repeat;
+    font-size: .22893313rem;
+    color: #666;
+    font-family: PingFangSC-Regular; }
+    .help_guide .first p {
+      padding: 25% 3%; }
+  .help_guide .second {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    background-image: url("../../images/help/Group7.png"), url("../../images/help/Group5.png");
+    background-size: 70%,80%;
+    margin-top: 1rem;
+    background-position: top center,center 80%;
+    background-repeat: no-repeat,no-repeat;
+    font-size: .22893313rem;
+    color: #666;
+    font-family: PingFangSC-Regular; }
+    .help_guide .second p {
+      padding: 25% 3%; }
+  .help_guide footer {
+    text-align: center;
+    height: 1.87999891rem;
+    line-height: 1.87999891rem;
+    font-size: .23893313rem;
+    color: #666;
+    font-family: PingFangSC-Regular; }

@@ -12,7 +12,7 @@
             background-size: 90%;
         }
     }
-
+    
     .land_main {
         width: 100%;
         height: 11.27412457rem; // 602px;
@@ -535,7 +535,7 @@
             }
         }
     }
-
+    
     .order_list {
         background-color: #f5f5f5;
         li {
@@ -642,7 +642,7 @@
             }
         }
     }
-
+    
     .order_details {
         display: flex;
         flex-flow: column wrap;
@@ -710,7 +710,6 @@
                 width: 100%;
                 max-height: 5.87092832rem; // 344px;
                 overflow-y: hidden;
-                padding: 0 .41199956rem; // 30px;
                 background-image: url("../../images/land/ic_details_frame_l@3x.png"), url("../../images/land/ic_details_frame_r@3x.png");
                 background-size: 30%, 30%;
                 background-position: -0.15rem -0.25rem, 104% -0.25rem;
@@ -738,11 +737,11 @@
                     color: #666666;
                     margin: 0 auto;
                     height: .61439948rem; // 36px;
-                    border-bottom: 1px solid #E5E5E5;
                     margin-top: .25599978rem; // 15px;
                     display: flex;
                     flex-flow: row wrap;
                     justify-content: space-between;
+                    padding: 0 .41199956rem; // 30px;
                     span {
                         font-size: .23893313rem; // 14px
                         color: #2A2A2A;
@@ -753,14 +752,17 @@
                     }
                 }
                 .list_title {
-                    margin-top: .34133304rem; // 20px;
+                    margin: .34133304rem auto; // 20px;
                     font-size: .20479983rem; // 12px;
                     color: #3F3F3F;
                     font-family: PingFangSC-Regular;
-                    width: 4.77866259rem; // 280px;
+                    width: 5.07866259rem; // 280px;
                     display: flex;
+                    border-top: 1px solid #E5E5E5;
                     flex-flow: row wrap;
                     justify-content: space-between;
+                    padding-top: 0.3rem;
+                    margin-top: 0;
                     span {
                         padding-left: .30719974rem; // 18px;
                         @include backgroundset("../../images/land/ic_details_recharge@3x.png",
@@ -769,7 +771,7 @@
                         14%);
                     }
                     .money {
-                        margin-left: -0.2rem;
+                        // margin-left: -0.2rem;
                     }
                     .time {
                         background-image: url(../../images/land/ic_details_time@3x.png);
@@ -783,6 +785,10 @@
                 ul {
                     margin-top: .34133304rem; // 20px;
                     max-height: 3.58399694rem; // 210px;
+                    padding-left: .1rem; // 40px;
+                    overflow-y: auto;
+                    padding: 0 0.4rem;
+                    padding-left: 0.6rem;
                     li {
                         display: flex;
                         flex-flow: row wrap;
@@ -871,31 +877,35 @@
                             }
                         }
                         .icon_re {
-                            width: .25668449rem;
-                            height: .25668449rem;
+                            width: .55668449rem;
+                            height: .55668449rem;
                             @include backgroundset("../../images/land/ic_pay_Details@3x.png",
                             center,
                             center,
-                            100%);
-                            position:absolute;
-                            left:-7%;
-                            top:5%;
+                            60%);
+                            position: absolute;
+                            left: -12%;
+                            top: -30%;
                             span {
                                 display: none;
                                 position: absolute;
                                 font-family: PingFangSC-Regular;
-                                left: .3rem;
-                                top: -0.3rem;
+                                left: .4rem;
+                                top: -0.25rem;
                                 font-size: .22245989rem;
-                                width: 2.05347594rem;
+                                width: 4.8rem;
+                                text-align: center;
                                 height: 1.02673797rem;
+                                line-height: 0.9rem;
                                 padding-left: 0.3rem;
                                 padding-top: 0.1rem;
                                 color: white;
+                                z-index: 10;
                                 @include backgroundset("../../images/land/ic_pay_bubble@3x.png",
                                 center,
                                 center,
                                 100%);
+                                background-size: 100% 50%;
                                 i {
                                     color: #ee7323;
                                 }
@@ -926,23 +936,26 @@
                             }
                         }
                         .icon_re {
-                            width: .25668449rem;
-                            height: .25668449rem;
+                            width: .55668449rem;
+                            height: .55668449rem;
                             @include backgroundset("../../images/land/ic_pay_Details@3x.png",
                             center,
                             center,
-                            100%);
-                            position:absolute;
-                            left:-7%;
-                            top:5%;
+                            60%);
+                            position: absolute;
+                            left: -12%;
+                            top: -30%;
                             span {
                                 display: none;
                                 position: absolute;
                                 font-family: PingFangSC-Regular;
-                                left: .3rem;
-                                top: -0.3rem;
+                                left: .4rem;
+                                top: -0.25rem;
+                                z-index: 10;
+                                text-align: center;
+                                line-height: 0.9rem;
                                 font-size: .22245989rem;
-                                width: 2.05347594rem;
+                                width: 4.8rem;
                                 height: 1.02673797rem;
                                 padding-left: 0.3rem;
                                 padding-top: 0.1rem;
@@ -951,6 +964,7 @@
                                 center,
                                 center,
                                 100%);
+                                background-size: 100% 50%;
                                 i {
                                     color: #ee7323;
                                 }
@@ -973,7 +987,7 @@
             }
         }
     }
-
+    
     .not_login {
         height: 11.4005236rem; // 668px
         background: #e8e8e8;
@@ -1016,11 +1030,11 @@
             }
         }
     }
-
+    
     .popup-body {
         text-align: center;
     }
-
+    
     .dbf {
         width: 100%;
         height: 22.83957219rem; // 1510px
@@ -1062,7 +1076,7 @@
             }
         }
     }
-
+    
     .funcpage_register {
         width: 100%;
         height: 18.34665101rem; // 1075px;
@@ -1173,7 +1187,7 @@
             }
         }
     }
-
+    
     .award_list {
         width: 100%;
         height: 21.50398165rem; // 1075px;

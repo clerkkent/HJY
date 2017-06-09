@@ -2097,81 +2097,85 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     -webkit-overflow-scrolling: touch;
     header {
         width: 100%;
-        height: 6.7rem; // 335px;
-        @include backgroundset("../images/game/H5_accomplish.png",
+        height: 8.90399257rem;
+        @include backgroundset("../images/game/Group4.png",
         center,
-        center,
-        80%);
-        h3 {
-            text-align: center;
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
-            font-size: .24rem; // 12px
-        }
-        p {
-            width: 100%;
-            height: .94rem; // 47px;
-            line-height: .94rem; // 47px;
-            background: url(../images/game/H5_accomplish_option.png) 20% center no-repeat;
-            background-size: .36rem .36rem; // 18px; // 18px;
-            display: flex;
-            flex-direction: row;
-            .left {
-                background: #FFF;
-                height: 100%;
-                display: block;
-                width: 2.1rem; // 102px;
-                margin-left: 1.8rem;
-                text-align: center;
-                font-size: .32rem; // 16px
-                border-top-left-radius: 5%;
-                border-bottom-left-radius: 5%;
-                b {
-                    color: #eb1b05;
-                    font-size: .36rem; // 18px
-                }
-            }
-            .right {
-                display: block;
-                width: 1.24rem; // 62px;
-                height: 100%;
-                text-align: center;
-                color: #FFF;
-                font-size: .44rem; // 22px;
-                b {
-                    font-size: .24rem; // 12px;
-                }
-                @include backgroundset("../images/game/H5_accomplish_list.png",
-                center,
-                center,
-                100%)
-            }
-            .oil {
-                @include backgroundset("../images/game/H5_accomplish_huijiayou.png",
-                center,
-                center,
-                100%)
-            }
-        }
+        -.9rem,
+        100%);
+        // h3 {
+        //     text-align: center;
+        //     margin-top: 1.5rem;
+        //     margin-bottom: 0.8rem;
+        //     font-size: .24rem; // 12px
+        // }
+        // p {
+        //     width: 100%;
+        //     height: .94rem; // 47px;
+        //     line-height: .94rem; // 47px;
+        //     background: url(../images/game/H5_accomplish_option.png) 20% center no-repeat;
+        //     background-size: .36rem .36rem; // 18px; // 18px;
+        //     display: flex;
+        //     flex-direction: row;
+        //     .left {
+        //         background: #FFF;
+        //         height: 100%;
+        //         display: block;
+        //         width: 2.1rem; // 102px;
+        //         margin-left: 1.8rem;
+        //         text-align: center;
+        //         font-size: .32rem; // 16px
+        //         border-top-left-radius: 5%;
+        //         border-bottom-left-radius: 5%;
+        //         b {
+        //             color: #eb1b05;
+        //             font-size: .36rem; // 18px
+        //         }
+        //     }
+        //     .right {
+        //         display: block;
+        //         width: 1.24rem; // 62px;
+        //         height: 100%;
+        //         text-align: center;
+        //         color: #FFF;
+        //         font-size: .44rem; // 22px;
+        //         b {
+        //             font-size: .24rem; // 12px;
+        //         }
+        //         @include backgroundset("../images/game/H5_accomplish_list.png",
+        //         center,
+        //         center,
+        //         100%)
+        //     }
+        //     .oil {
+        //         @include backgroundset("../images/game/H5_accomplish_huijiayou.png",
+        //         center,
+        //         center,
+        //         100%)
+        //     }
+        // }
     }
     section {
         flex: 1;
         position: relative;
-        .download {
-            width: 2.9rem; // 145px;
-            height: 2.9rem; // 145px;
+        .downloadr {
             @include center-block;
-            @include backgroundset("../images/game/H5_accomplish_QR code.png",
-            center,
-            center,
-            100%);
-            margin-top: .4rem; // 20px
-            img {
-                @include center-block;
-                margin-left: 0.8rem;
-                margin-top: 0.5rem;
-                width: 1.4rem; // 70px
+            margin-top: .0rem; // 20px
+            width:4.26666303rem; // 250px;
+            p{
+                width:4.26666303rem; // 250px;
+                height:.85333261rem; // 50px;
+                border-radius:.4066663rem; // 25px;
+                font-size:.40959965rem; // 24px;
+                font-family:PingFangSC-Regular;
+                background:linear-gradient(#ff6929, #ff534a);
+
             }
+            // img {
+            //     @include center-block;
+            //     margin-left: 0.8rem;
+            //     margin-top: 0.5rem;
+            //     width: 1.4rem; // 70px
+            // }
         }
     }
 }
@@ -2537,7 +2541,6 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         transform: scale(0.8);
     }
 }
-
 .pay_success {
     height: 11.36rem;
     display: flex;
@@ -2775,5 +2778,49 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             center,
             80%);
         }
+    }
+}
+.help_guide{
+    width: 100%;
+    height: 18.28158611rem;
+    display:flex;
+    flex-flow:column nowrap;
+    .first{
+        flex:1;
+        background-image:url("../../images/help/Group7.png"),url("../../images/help/Group4.png");
+        background-size:70%,80%;
+        margin-top:.25599978rem; // 15px
+        background-position:top center,center 80%;
+        background-repeat:no-repeat,no-repeat;
+        font-size:.22893313rem; // 14px;
+        color:#666;
+        font-family:PingFangSC-Regular;
+
+        p{
+            padding:25% 3%;
+        }
+    }
+     .second{
+        flex:1;
+        background-image:url("../../images/help/Group7.png"),url("../../images/help/Group5.png");
+        background-size:70%,80%;
+         margin-top:1rem;
+        background-position:top center,center 80%;
+        background-repeat:no-repeat,no-repeat;
+        font-size:.22893313rem; // 14px;
+        color:#666;
+        font-family:PingFangSC-Regular;
+
+        p{
+            padding:25% 3%;
+        }
+    }
+    footer{
+        text-align:center;
+        height:1.87999891rem; // 75px;
+        line-height:1.87999891rem; // 75px;
+        font-size:.23893313rem; // 14px;
+        color:#666;
+        font-family:PingFangSC-Regular;
     }
 }

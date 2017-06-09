@@ -50,7 +50,17 @@ HJY.directive("scrollLs", function() {
                 } else {
                     $(".download").css({ height: "1.27999891rem", opacity: "1" })
                 }
+
+                // if (document.activeElement.tagName == "INPUT" || document.activeElement.tagName == "TEXTAREA") {
+                //     window.setTimeout(function() {
+                //         console.log(1)
+                //         $(".download").css({ height: "0", opacity: "0" })
+                //     }, 0);
+                // }
             }
+
+
+
             setInterval(a, 100)
         }
     }
@@ -137,6 +147,47 @@ HJY.directive("cardFormat", function() { //个人中心探弹窗
                 var v = $this.val();
                 /\S{5}/.test(v) && $this.val(v.replace(/\s/g, '').replace(/(.{4})/g, "$1 "));
             });
+        }
+    }
+})
+HJY.directive("scrollLh", function() {
+    return {
+        restrict: "AE",
+        link: function(scope, element, attr) {
+            var flag = false;
+            var g = 0.5;
+            if (location.hash == "#/land/pay_success") {
+                g = 0.8
+            } else {
+                g = 0.5;
+            }
+            if (navigator.userAgent.indexOf('iPhone') > -1) {
+                flag = true;
+            }
+            if ($(element[0]).height() / $(element[0]).get(0).scrollHeight < g) {
+                $(".download").css({ height: "0", opacity: "0" })
+            } else {
+                $(".download").css({ height: "1.27999891rem", opacity: "1" })
+            }
+            var a = function() {
+                var $this = $(element[0]),
+                    viewH = $(element[0]).height(), //可见高度
+                    contentH = $(element[0]).get(0).scrollHeight, //内容高度
+                    scrollTop = $(element[0]).scrollTop(); //滚动高度
+                if ((viewH + scrollTop) / contentH < g) {
+                    $(".download").css({ height: "0", opacity: "0" })
+                } else {
+                    $(".download").css({ height: "1.27999891rem", opacity: "1" })
+                }
+                // if (document.activeElement.tagName == "INPUT" || document.activeElement.tagName == "TEXTAREA") {
+                //     window.setTimeout(function() {
+                //         $(".download").css({ height: "0", opacity: "0" })
+                //     }, 0);
+                // }
+                // console.log((viewH + scrollTop) / contentH)
+            }
+
+            setInterval(a, 100)
         }
     }
 })
