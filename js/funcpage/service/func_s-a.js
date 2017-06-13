@@ -67,13 +67,7 @@ angular.module('HJY').factory("land_main", ["$http", "$q", "$rootScope", functio
         $.StandardPost($rootScope.url_global + "/pro/index.php?c=yimao&a=goPay", data);
     }
     factory.toggle = function() {
-        $(".main_content").on("click", ".icon_re", (function(event) {
-            if ($(this).find("span").hasClass("selected")) {
-                $(this).find("span").removeClass("selected")
-            } else {
-                $(this).find("span").addClass("selected")
-            }
-        }));
+       
 
     }
     return factory

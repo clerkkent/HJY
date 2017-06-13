@@ -1912,8 +1912,17 @@ a:focus {
   .game_success header {
     width: 100%;
     height: 8.90399257rem;
-    background: url("../images/game/Group4.png") center -0.9rem no-repeat;
+    position: relative;
+    background: url("../images/game/Group41.png") center -0.9rem no-repeat;
     background-size: 100%; }
+    .game_success header span {
+      display: block;
+      position: absolute;
+      color: red;
+      left: 27%;
+      font-family: PingFangSC-Medium;
+      top: 83.5%;
+      font-size: 0.4rem; }
   .game_success section {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -2610,11 +2619,11 @@ a:focus {
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    background-image: url("../../images/help/Group7.png"), url("../../images/help/Group4.png");
-    background-size: 70%,80%;
+    background-image: url("../images/help/Group7.png"), url("../images/help/Group4.png");
+    background-size: 70%, 80%;
     margin-top: .25599978rem;
-    background-position: top center,center 80%;
-    background-repeat: no-repeat,no-repeat;
+    background-position: top center, center 80%;
+    background-repeat: no-repeat, no-repeat;
     font-size: .22893313rem;
     color: #666;
     font-family: PingFangSC-Regular; }
@@ -2625,11 +2634,11 @@ a:focus {
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    background-image: url("../../images/help/Group7.png"), url("../../images/help/Group5.png");
-    background-size: 70%,80%;
+    background-image: url("../images/help/Group7.png"), url("../images/help/Group5.png");
+    background-size: 70%, 80%;
     margin-top: 1rem;
-    background-position: top center,center 80%;
-    background-repeat: no-repeat,no-repeat;
+    background-position: top center, center 80%;
+    background-repeat: no-repeat, no-repeat;
     font-size: .22893313rem;
     color: #666;
     font-family: PingFangSC-Regular; }

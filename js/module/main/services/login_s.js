@@ -76,7 +76,7 @@ HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $ro
             data: data_send,
             headers: head
         }).success(function(data, header, config, status) {
-
+            
             defer.resolve(data); //声明执行成功
         }).error(function(data, header, config, status) {
             defer.reject(); //声明执行失败

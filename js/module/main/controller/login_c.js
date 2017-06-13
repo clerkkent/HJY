@@ -157,8 +157,10 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
         }
         webappSDK.share(content);
     }
+
     webappSDK.getUserInfos(function(res) { //webbriage入口
         var info = JSON.parse(res)
+
         $scope.userid = info.user_id
         $scope.strs = info.OIL_TOKEN
         if ($scope.userid != null) {
@@ -172,6 +174,7 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             }
             var promise_scode = login_logic.submit(list, $scope.strs);
             promise_scode.then(function(data) {
+                console.log(data)
                 if (data.result != undefined) {
                     $scope.todayOilNum = data["result"]["todayOilNum"]
                     $scope.allOilNum = data["result"]["allOilNum"]
@@ -482,7 +485,7 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
 HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
     $scope.score_login = sessionStorage.getItem("score");
     if ($scope.score_login == undefined) {
-        $state.go("game.main")
+        //     $state.go("game.main")
     }
     $scope.download = function() {
         location.href = ""

@@ -295,7 +295,7 @@ HJY.run(['$rootScope', function($rootScope) {
 }]);
 HJY.config(["$httpProvider", function($httpProvider) {　　
     $httpProvider.interceptors.push("httpInterceptor");
-}])
+}]);
 HJY.factory("httpInterceptor", ["$q", "$rootScope", function($q, $rootScope) {
     return {
         request: function(config) {
@@ -316,4 +316,4 @@ HJY.factory("httpInterceptor", ["$q", "$rootScope", function($q, $rootScope) {
             return $q.reject(rejection);
         }
     };
-}]);;
+}]);

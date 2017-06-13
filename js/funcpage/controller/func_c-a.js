@@ -24,7 +24,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.pre_price = [];
     $scope.recommend = 0;
     $scope.recommend_p = 0;
-    console.log(get_type)
+    console.log(get_type);
     if (get_type.result != undefined) {
         var type = get_type["result"]["list"];
         for (i = 0; i < type.length; i++) {

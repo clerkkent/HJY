@@ -2098,10 +2098,20 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     header {
         width: 100%;
         height: 8.90399257rem;
-        @include backgroundset("../images/game/Group4.png",
+        position:relative;
+        @include backgroundset("../images/game/Group41.png",
         center,
         -.9rem,
         100%);
+        span{
+            display:block;
+            position:absolute;
+            color:red;
+            left:27%;
+            font-family: PingFangSC-Medium;
+            top:83.5%;
+            font-size:0.4rem;
+        }
         // h3 {
         //     text-align: center;
         //     margin-top: 1.5rem;
@@ -2160,15 +2170,14 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         .downloadr {
             @include center-block;
             margin-top: .0rem; // 20px
-            width:4.26666303rem; // 250px;
-            p{
-                width:4.26666303rem; // 250px;
-                height:.85333261rem; // 50px;
-                border-radius:.4066663rem; // 25px;
-                font-size:.40959965rem; // 24px;
-                font-family:PingFangSC-Regular;
-                background:linear-gradient(#ff6929, #ff534a);
-
+            width: 4.26666303rem; // 250px;
+            p {
+                width: 4.26666303rem; // 250px;
+                height: .85333261rem; // 50px;
+                border-radius: .4066663rem; // 25px;
+                font-size: .40959965rem; // 24px;
+                font-family: PingFangSC-Regular;
+                background: linear-gradient(#ff6929, #ff534a);
             }
             // img {
             //     @include center-block;
@@ -2541,6 +2550,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         transform: scale(0.8);
     }
 }
+
 .pay_success {
     height: 11.36rem;
     display: flex;
@@ -2780,47 +2790,46 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         }
     }
 }
-.help_guide{
+
+.help_guide {
     width: 100%;
     height: 18.28158611rem;
-    display:flex;
-    flex-flow:column nowrap;
-    .first{
-        flex:1;
-        background-image:url("../../images/help/Group7.png"),url("../../images/help/Group4.png");
-        background-size:70%,80%;
-        margin-top:.25599978rem; // 15px
-        background-position:top center,center 80%;
-        background-repeat:no-repeat,no-repeat;
-        font-size:.22893313rem; // 14px;
-        color:#666;
-        font-family:PingFangSC-Regular;
-
-        p{
-            padding:25% 3%;
+    display: flex;
+    flex-flow: column nowrap;
+    .first {
+        flex: 1;
+        background-image: url("../images/help/Group7.png"), url("../images/help/Group4.png");
+        background-size: 70%, 80%;
+        margin-top: .25599978rem; // 15px
+        background-position: top center, center 80%;
+        background-repeat: no-repeat, no-repeat;
+        font-size: .22893313rem; // 14px;
+        color: #666;
+        font-family: PingFangSC-Regular;
+        p {
+            padding: 25% 3%;
         }
     }
-     .second{
-        flex:1;
-        background-image:url("../../images/help/Group7.png"),url("../../images/help/Group5.png");
-        background-size:70%,80%;
-         margin-top:1rem;
-        background-position:top center,center 80%;
-        background-repeat:no-repeat,no-repeat;
-        font-size:.22893313rem; // 14px;
-        color:#666;
-        font-family:PingFangSC-Regular;
-
-        p{
-            padding:25% 3%;
+    .second {
+        flex: 1;
+        background-image: url("../images/help/Group7.png"), url("../images/help/Group5.png");
+        background-size: 70%, 80%;
+        margin-top: 1rem;
+        background-position: top center, center 80%;
+        background-repeat: no-repeat, no-repeat;
+        font-size: .22893313rem; // 14px;
+        color: #666;
+        font-family: PingFangSC-Regular;
+        p {
+            padding: 25% 3%;
         }
     }
-    footer{
-        text-align:center;
-        height:1.87999891rem; // 75px;
-        line-height:1.87999891rem; // 75px;
-        font-size:.23893313rem; // 14px;
-        color:#666;
-        font-family:PingFangSC-Regular;
+    footer {
+        text-align: center;
+        height: 1.87999891rem; // 75px;
+        line-height: 1.87999891rem; // 75px;
+        font-size: .23893313rem; // 14px;
+        color: #666;
+        font-family: PingFangSC-Regular;
     }
 }
