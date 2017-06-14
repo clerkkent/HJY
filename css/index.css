@@ -161,7 +161,7 @@ a:focus {
     opacity: 0.5; }
   90% {
     opacity: 0.1; }
-  100 {
+  100% {
     opacity: 0;
     display: none; } }
 
@@ -177,7 +177,7 @@ a:focus {
     opacity: 0.5; }
   90% {
     opacity: 0.1; }
-  100 {
+  100% {
     opacity: 0;
     display: none; } }
 
