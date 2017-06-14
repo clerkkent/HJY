@@ -2328,8 +2328,10 @@ a:focus {
       margin-top: 0.1rem;
       font-size: 0.12rem; }
   .download .center {
-    width: 2.4rem;
-    height: 0.64rem;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     color: #f95b4e;
     font-family: PingFangSC-Medium;
     font-size: 0.28rem;
@@ -2338,10 +2340,12 @@ a:focus {
     -webkit-transform: scale(0.9);
         -ms-transform: scale(0.9);
             transform: scale(0.9); }
-    .download .center p {
-      margin: 0; }
     .download .center .top {
-      margin-top: 0.3rem; }
+      display: block;
+      margin-top: .3rem; }
+    @media screen and (min-width: 640px) {
+      .download .center .sec {
+        margin-top: .2rem; } }
     .download .center .sec {
       font-size: 0.16rem; }
   .download .right {
@@ -2355,7 +2359,8 @@ a:focus {
     margin-left: -3%;
     -webkit-transform: scale(0.8);
         -ms-transform: scale(0.8);
-            transform: scale(0.8); }
+            transform: scale(0.8);
+    font-size: 0.28rem; }
 
 .pay_success {
   height: 11.36rem;

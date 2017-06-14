@@ -255,7 +255,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
         language: (navigator.browserLanguage || navigator.language).toLowerCase()
     }
     if (!(browser.versions.mobile || browser.versions.android || browser.versions.ios)) {
-        location.hash = "/error"
+        // location.hash = "/error"
     }
     // $locationProvider.html5Mode(true);
 }]);
