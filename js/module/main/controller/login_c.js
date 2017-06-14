@@ -483,7 +483,7 @@ HJY.controller("game_login", ["$scope", "$state", "game_play", "$http", "$timeou
     }
 }])
 HJY.controller("game_success", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
-    $scope.score_login = sessionStorage.getItem("score");
+    $scope.score_login = "50";
     if ($scope.score_login == undefined) {
         //     $state.go("game.main")
     }

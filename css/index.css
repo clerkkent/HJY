@@ -1590,7 +1590,9 @@ a:focus {
         -ms-flex: 1;
             flex: 1;
     text-align: center;
-    overflow: hidden; }
+    overflow: hidden;
+    background: url("../images/game/invite2.png") center center no-repeat;
+    background-size: 95%; }
     .friend_game header .title {
       width: 5.2rem;
       height: 2.1rem;
@@ -1623,8 +1625,9 @@ a:focus {
           left: 0.45rem;
           bottom: 0.1rem; }
   .friend_game section {
-    height: 5.5rem;
-    width: 100%; }
+    height: 4.3rem;
+    width: 100%;
+    margin-top: 0.7rem; }
     .friend_game section .first {
       width: 5.26rem;
       height: 2.34rem;
@@ -1719,7 +1722,7 @@ a:focus {
               border-radius: .4rem;
       border: none; }
     .friend_game section .third {
-      width: 4rem;
+      width: 4.5rem;
       font-family: PingFangSC-Regular;
       color: #343434;
       display: block;
@@ -1913,7 +1916,7 @@ a:focus {
     width: 100%;
     height: 8.90399257rem;
     position: relative;
-    background: url("../images/game/Group41.png") center -0.9rem no-repeat;
+    background: url("../images/game/game_s.png") center -0.9rem no-repeat;
     background-size: 100%; }
     .game_success header span {
       display: block;
@@ -1969,12 +1972,12 @@ a:focus {
   -webkit-overflow-scrolling: touch; }
   .friend_request_details header {
     width: 100%;
-    height: 2rem;
+    height: 8rem;
     color: #4A4A4A;
     margin-top: 0.1rem;
     font-family: PingFangSC-Medium;
-    background: url("../images/friend/H5_title_driver.png") center 0% no-repeat;
-    background-size: 60%;
+    background: url("../images/friend/invite.png") center center no-repeat;
+    background-size: 90%;
     padding-top: 1.1rem; }
     .friend_request_details header .first {
       text-align: center;
@@ -2000,24 +2003,24 @@ a:focus {
           font-size: .4rem;
           font-weight: normal; }
   .friend_request_details section {
-    height: 5rem;
-    background: url("../images/friend/H5_pic.png") top center no-repeat;
-    background-size: 80%;
+    height: 1rem;
     position: relative;
     text-align: center;
     width: 100%; }
     .friend_request_details section .remind {
       position: relative;
-      margin-top: 80%;
       text-align: center;
       display: inline-block;
       width: 1.56rem;
       color: #e8514e;
+      height: 100%;
+      line-height: 1rem;
       font-size: .24rem;
       background: url("../images/friend/H5_info.png") left center no-repeat;
       background-size: 16%; }
   .friend_request_details footer {
-    height: 1rem; }
+    height: 1rem;
+    margin-bottom: 0.2rem; }
     .friend_request_details footer button {
       width: 5rem;
       height: .9rem;

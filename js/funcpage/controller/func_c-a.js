@@ -1012,7 +1012,7 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
 angular.module('HJY').controller("db_festival", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
 
 }]);
-angular.module('HJY').controller("register", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "$interval", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, $interval, $rootScope) {
+angular.module('HJY').controller("register", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "$interval", "$rootScope", "land_main", function($scope, $state, login_logic, $http, $ionicPopup, $interval, $rootScope, land_main) {
     $scope.registed = false;
     $rootScope.popum = true;
     $scope.channel = sessionStorage.getItem("ch");

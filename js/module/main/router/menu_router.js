@@ -79,13 +79,13 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
             templateUrl: "html/game/select.html" + v
         })
         .state("game.login", {
-            url: "/login",
+            url: "/main",
             controller: "game_login",
             cache: "false",
             templateUrl: "html/game/get_login.html" + v,
         })
         .state("game.main", {
-            url: "/main",
+            url: "/login",
             controller: "game_main",
             cache: 'false',
             templateUrl: "html/game/game_main.html" + v

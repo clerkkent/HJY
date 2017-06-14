@@ -1736,6 +1736,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         flex: 1;
         text-align: center;
         overflow: hidden;
+        @include backgroundset("../images/game/invite2.png",center,center,95%);
         .title {
             width: 5.2rem; // 260px;
             height: 2.1rem; // 105px;
@@ -1779,8 +1780,9 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         }
     }
     section {
-        height: 5.5rem;
+        height: 4.3rem;
         width: 100%;
+        margin-top:0.7rem;
         .first {
             width: 5.26rem; // 263px;
             height: 2.34rem; // 117px;
@@ -1888,7 +1890,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             // transform:translateZ(-1rem);
         }
         .third {
-            width: 4rem;
+            width: 4.5rem;
             font-family: PingFangSC-Regular;
             color: #343434;
             display: block;
@@ -2099,7 +2101,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         width: 100%;
         height: 8.90399257rem;
         position: relative;
-        @include backgroundset("../images/game/Group41.png",
+        @include backgroundset("../images/game/game_s.png",
         center,
         -.9rem,
         100%);
@@ -2199,14 +2201,14 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     -webkit-overflow-scrolling: touch;
     header {
         width: 100%;
-        height: 2rem; // 145px;
+        height: 8rem; // 145px;
         color: #4A4A4A;
         margin-top: 0.1rem;
         font-family: PingFangSC-Medium;
-        @include backgroundset("../images/friend/H5_title_driver.png",
+        @include backgroundset("../images/friend/invite.png",
         center,
-        0%,
-        60%);
+        center,
+        90%);
         padding-top: 1.1rem;
         .first {
             text-align: center;
@@ -2241,21 +2243,23 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         }
     }
     section {
-        height: 5rem; // 275px
-        @include backgroundset("../images/friend/H5_pic.png",
-        top,
-        center,
-        80%);
+        // @include backgroundset("../images/friend/invite.png",
+        // top,
+        // center,
+        // 80%);
+        height: 1rem; // 275px
+        //
         position: relative;
         text-align: center;
         width: 100%;
         .remind {
             position: relative;
-            margin-top: 80%;
             text-align: center;
             display: inline-block;
             width: 1.56rem; // 78px;
             color: #e8514e;
+            height:100%;
+            line-height:1rem;
             font-size: .24rem; // 12px
             @include backgroundset("../images/friend/H5_info.png",
             left,
@@ -2265,6 +2269,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     }
     footer {
         height: 1rem;
+        margin-bottom:0.2rem;
         button {
             width: 5rem; // 250px;
             height: .9rem; // 45px;

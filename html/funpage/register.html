@@ -4,9 +4,8 @@
         <div class="get_award">
             <form class="information" name="myForm" novalidate verify-scope="tipStyle: 1">
                 <div ui-view>
-                    <input class="first_i" autocomplete="off" type="tel" id="phone" name="phone" ng-verify="pattern:/^0?1[0-9][0-9]\d{4}\d{4}$/,max:11,errmsg:'手机号码格式错误',required: false" ng-model="info.phone" ng-pattern="/^0?1[0-9][0-9]\d{4}\d{4}$/" name="phone" required
-                        placeholder="请输入手机号码">
-                    <input class="second_i button button-assertive" type="submit" value="领取礼包" ng-disabled="myForm.phone.$invalid" ng-click="loginc()">
+                    <input class="first_i" autocomplete="off" type="tel" id="phone" name="phone" name="phone" required placeholder="请输入手机号码" ng-focus="scroll()"  scroll-i>
+                    <input class="second_i button button-assertive" type="submit" value="领取礼包" ng-disabled="myForm.phone.$invalid">
                 </div>
             </form>
             <!--<p class="remind" ng-if="registed"><span class="agree" ng-click="toggleCustom()"></span><span ng-click="go_register_agreement()">同意会加油注册协议</span></p>-->
