@@ -8,6 +8,7 @@
                 docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
             } else {
                 docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+
             }
         };
 
