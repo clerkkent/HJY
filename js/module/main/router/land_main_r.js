@@ -15,7 +15,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                         './css/funcpage/funcpage.css' + v,
                         './js/plugins/underscore.js' + v,
                         './js/plugins/md5.js' + v,
-                        './js/plugins/moment.js' + v
+                        './js/plugins/moment.min.js' + v
                     ]); // 按需加载目标 js file
                 }],
                 parse: "login_logic",
@@ -248,11 +248,4 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         //     templateUrl: "html/help/feedback.html",
         // })//信息反馈页面
 
-}]);
-HJY.run(['$rootScope', function($rootScope) {
-    if (location.hostname == "192.168.10.52") {
-        $rootScope.url_global = "http://192.168.10.52:8888";
-    } else {
-        $rootScope.url_global = window.location.protocol + "//" + location.hostname; //本地测试
-    }
 }]);

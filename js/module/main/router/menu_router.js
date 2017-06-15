@@ -286,8 +286,9 @@ HJY.run(['$rootScope', function($rootScope) {
         s.parentNode.insertBefore(hm, s);
     }
     //
-    if (location.hostname == "192.168.10.52") {
-        $rootScope.url_global = "http://192.168.10.52:8888";
+    if (location.hostname == "192.168.11.158") {
+        $rootScope.url_global = "http://192.168.11.158:8888";
+        console.log($rootScope.url_global)
     } else {
         $rootScope.url_global = window.location.protocol + "//" + location.hostname; //本地测试
     }
