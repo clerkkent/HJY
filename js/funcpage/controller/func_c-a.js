@@ -1066,9 +1066,33 @@ angular.module('HJY').controller("register", ["$scope", "$state", "login_logic",
     $scope.download = function() {
         location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.huijiayou.huijiayou"
     }
+
+    function judge(obj) {　　
+        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+            　　　　 return true;　　 }　
+        return false;
+    }
+    $scope.error = login_logic.parse_url();
+    $scope.download_show = true;
+    $scope.no_download = ["momo"];
+    if (judge($scope.error)) {
+        if ($scope.error["ch"] != undefined) {
+            sessionStorage.setItem("channel", $scope.error["ch"]);
+            $scope.channel = sessionStorage.getItem("ch");
+            for (i = 0; i < $scope.no_download.length; i++) {
+                if ($scope.channel == $scope.no_download[i]) {
+                    $scope.download_show = false;
+                }
+            }
+        }
+        if ($scope.error["test_money_HJY"] != undefined) {
+            $scope.pre_price = $scope.error["test_money_HJY"];
+        }
+    }
 }]);
 angular.module('HJY').controller("register_login", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "$interval", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, $interval, $rootScope) {
     $rootScope.popum = true;
+    $scope.channel = sessionStorage.getItem("ch");
     $scope.timeout = false; //倒数读秒按钮禁用
     // $scope.icode_show = false;
     $scope.second = "获取验证码";
