@@ -99,3 +99,21 @@
             }
         }
 }
+.sign_popum{
+    width:2.38933129rem; // 140px;
+    height:3.41333042rem; // 200px;
+    font-family: ComicSansMS-Bold;
+    letter-spacing: 0;
+    z-index:12;
+    .first{
+        height:1.27999891rem; // 75px;
+        width:100%;
+        text-align:center;
+        font-size:.69973274rem; // 41px;
+        color: #FFE958;
+    }
+    .second{
+        color:#FFF;
+    }
+    @include center-block;
+}

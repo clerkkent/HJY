@@ -1,7 +1,7 @@
 HJY.controller("v11", ["$scope", "$state", "login_logic", function($scope, $state, login_logic) {
     $scope.test = "dasdad";
 }])
-HJY.controller("sign", ["$scope", "$state", "login_logic", "v11", "$rootScope", "_", function($scope, $state, login_logic, v11, $rootScope, _) {
+HJY.controller("sign", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login_logic", "v11", "$rootScope", "_", "$ionicPopup", "$http", function($timeout, $ionicBackdrop, $scope, $state, login_logic, v11, $rootScope, _, $ionicPopup, $http) {
     $scope.test = "dasdad";
     var list = {
         "jsonrpc": "2.0",
@@ -10,12 +10,13 @@ HJY.controller("sign", ["$scope", "$state", "login_logic", "v11", "$rootScope", 
         "id": 1
     }
     $scope.signx = [];
-    v11.get($rootScope.url_global + '/passport/service.php?c=account', list, "plbheqqf1j6rb8cv3n1gtjjg27").then(function(data) {
+    v11.get($rootScope.url_global + '/passport/service.php?c=account', list, "voqa3luonfc34bbeju2jnooja3").then(function(data) {
         if (data["result"] != undefined) {
             $scope.data = v11.date(data["result"]["year"], data["result"]["month"] - 1, data["result"]["day"]);
             $scope.w = $scope.data.w;
             $scope.d = $scope.data.d;
             $scope.t = $scope.data.t;
+            console.log(data)
             for (var i = 0; i < data["result"]["checkin"].length; i++) {
                 $scope.signx.push(moment(data["result"]["checkin"][i]["checkin_date"]).date())
             }
@@ -30,7 +31,20 @@ HJY.controller("sign", ["$scope", "$state", "login_logic", "v11", "$rootScope", 
                             }
                         }
                 }
+                $http.get("html/v1.1/sign/popum.html").success(function(date) {
+                    $ionicBackdrop.retain({});
+                    $(".backdrop").html(date);
+                    $timeout(function() {
+                        $(".backdrop").html();
+                        $ionicBackdrop.release();
+                    }, 2000);
+                })
+
             })
+
         }
     })
+}])
+HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login_logic", "v11", "$rootScope", "_", "$ionicPopup", "$http", function($timeout, $ionicBackdrop, $scope, $state, login_logic, v11, $rootScope, _, $ionicPopup, $http) {
+
 }])

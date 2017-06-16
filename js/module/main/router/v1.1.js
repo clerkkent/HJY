@@ -25,4 +25,9 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "sign",
             templateUrl: "html/v1.1/sign/sign.html" + v,
         })
+        .state("v11.task", {
+            url: "/task",
+            controller: "task",
+            templateUrl: "html/v1.1/task/task.html" + v,
+        })
 }]);
