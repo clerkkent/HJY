@@ -1,0 +1,25 @@
+<div style="width:100%;overflow:auto;" scroll-height>
+    <!--原生的滚动条，提升性能，减少BUG-->
+    <div class="sign_v11" style="-webkit-overflow-scrolling: touch">
+        <section>
+            <h3 class="first">已连续签到3天</h3>
+            <h3 class="second">{{t}}</h3>
+            <ul class="week">
+                <li ng-repeat="x in w track by $index">{{x}}</li>
+            </ul>
+            <ul class="days">
+                <li ng-repeat="x in d track by $index" repeat-f>{{x}}</li>
+            </ul>
+        </section>
+        <footer>
+            <h3>活动规则</h3>
+            <ul>
+                <li>1.油滴可在支付时抵扣现金，100油滴可抵扣1元。</li>
+                <li>2.第一天签到可获得5油滴，连续签到递增5油滴，单日上限30油滴。</li>
+                <li>3.签到中断后将重新从5油滴开始累计。</li>
+                <li>4.本活动为长期活动，具体结束时间以公告为准。</li>
+                <li>5.本活动由会加油提供，与苹果公司（Apple Inc.）无关。</li>
+            </ul>
+        </footer>
+    </div>
+</div>

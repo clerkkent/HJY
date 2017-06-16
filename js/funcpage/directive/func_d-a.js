@@ -9,7 +9,7 @@
 //         }
 //     }
 // })
-angular.module('HJY').directive("initT", function($timeout) {
+angular.module('HJY').directive("initT", ["$timeout", function($timeout) {
     return {
         restrict: "ECMA",
         link: function(scope, element, attr) {
@@ -20,17 +20,17 @@ angular.module('HJY').directive("initT", function($timeout) {
             }
         }
     }
-})
-angular.module('HJY').directive("scrollI", function($timeout) {
+}])
+angular.module('HJY').directive("scrollI", ["$timeout", function($timeout) {
     return {
         restrict: "ECMA",
         link: function(scope, element, attr) {
             $(element).focus(function() {
-                 $(".funcpage_register").parent().scrollTop(200)
+                $(".funcpage_register").parent().scrollTop(200)
             })
         }
     }
-})
+}])
 HJY.directive("landmainDetails", function() {
     return {
         restrict: "ECMA",
