@@ -1,5 +1,70 @@
 <div style="width:100%;overflow:auto;" scroll-height>
     <!--原生的滚动条，提升性能，减少BUG-->
     <div class="help_v11" style="-webkit-overflow-scrolling: touch">
+        <header>
+            <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                <ion-slide>
+                    <ul>
+                        <li>
+                            使用说明
+                        </li>
+                        <li>
+                            使用说明
+                        </li>
+                        <li>
+                            使用说明
+                        </li>
+                        <li>
+                            使用说明
+                        </li>
+                        <li>
+                            使用说明
+                        </li>
+                    </ul>
+                </ion-slide>
+                <ion-slide>
+                    <ul>
+                        <li>
+                            使用说明
+                        </li>
+                        <li>
+                            使用说明
+                        </li>
+                        <li>
+                            使用说明
+                        </li>
+                        <li>
+                            使用说明
+                        </li>
+                        <li>
+                            使用说明
+                        </li>
+                    </ul>
+                </ion-slide>
+            </ion-slide-box>
+        </header>
+        <section>
+            <h3>热门问题</h3>
+            <ul>
+                <li ng-repeat="x in help_information">
+                    <p class="question"><span>{{x.question}}</span><span class="help_iconb"></span></p>
+                    <div class="answer" style="display: none">
+                        <p ng-repeat="y in x.answer"> {{y}}</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <footer>
+            <div>
+                关于会加油
+            </div>
+            <div>
+                <p>在线客服</p>
+                <p>客服电话</p>
+            </div>
+            <div>
+                服务时间：9:00-18:00（法定节假日除外）
+            </div>
+        </footer>
     </div>
 </div>
