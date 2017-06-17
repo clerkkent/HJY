@@ -3,26 +3,22 @@
     <div class="task_v11" style="-webkit-overflow-scrolling: touch">
         <header>
             <h3>新手奖励计划</h3>
-            <div>
-                <ul>
-                    <li>
+            <div class="fourth">
+                <ul class="pic">
+                    <li ng-repeat="x in task" class="a_get" style="background-image:url({{b[0]}});" ng-if="">
                         <p class="first">奖励一</p>
                         <p class="second"></p>
                     </li>
-                    <li>
+                    <li ng-repeat="x in task" class="get" style="background-image:url({{b[1]}});" ng-if="">
                         <p class="first">奖励一</p>
                         <p class="second"></p>
                     </li>
-                    <li>
-                        <p class="first">奖励一</p>
-                        <p class="second"></p>
-                    </li>
-                    <li>
+                    <li ng-repeat="x in task" class="un_get" style="background-image:url({{b[2]}});" ng-if="">
                         <p class="first">奖励一</p>
                         <p class="second"></p>
                     </li>
                 </ul>
-                <ul>
+                <ul class="connect">
                     <li>
                         <span class="icon"></span>
                         <span class="line"></span>
@@ -43,17 +39,17 @@
             </div>
         </header>
         <section>
-            <div>
+            <div class="task_list">
                 <p class="til">
-                    <span>奖励一</span>
-                    <span>500<i>滴油</i></span>
+                    <span class="fir">奖励一</span>
+                    <span class="sec">500<i>滴油</i></span>
                 </p>
                 <p class="des">
                     成功完成500元及以上直充
                 </p>
-                <button class="done">已完成</button>
-                <button class="get">领取</button>
-                <button class="gotask">做任务</button>
+                <button class="done button button-dark">已完成</button>
+                <button class="get button  button-dark" ng-if="false">领取</button>
+                <button class="gotask button  button-dark" ng-if="false">做任务</button>
             </div>
         </section>
         <footer>
@@ -86,7 +82,7 @@
                 <span>7.</span>
                 <span>本次活动解释权归会加油所有，对于恶意刷单、蓄意捣乱等行为，会加油有权取消其加油订单，情节严重者将追究其法律责任。</span>
             </p>
-            <p>本活动由会加油提供，与苹果公司（Apple Inc.）无关。</p>
+            <a class="icp">本活动由会加油提供，与苹果公司（Apple Inc.）无关。</a>
         </footer>
     </div>
 </div>

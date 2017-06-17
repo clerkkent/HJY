@@ -10,3 +10,16 @@ angular.module('HJY').directive("repeatF", ["$timeout", function($timeout) {
         }
     }
 }])
+HJY.directive('v11Popum', ["$timeout", "$ionicBackdrop", function($timeout, $ionicBackdrop) { //赋予元素当前可见窗口高度
+    return {
+        restrict: 'AE',
+        link: function(scope, element, attr) {
+            $ionicBackdrop.retain();
+            $(element).show()
+            $timeout(function() {
+                $(element).hide()
+                $ionicBackdrop.release();
+            }, 2000);
+        }
+    }
+}]);

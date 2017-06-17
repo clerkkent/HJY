@@ -1,119 +1,400 @@
 @import '../template/temp.scss';
-.sign_v11{
-     width: 100%;
-        height: 12.16852295rem; // 602px;
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        justify-content:space-between;
-        @include backgroundset("../../images/v11/sign/ic_background.png",center,center,100%);
-        section{
-            height: 8.53332605rem; // 500px;
-            width:100%;
-            @include backgroundset("../../images/v11/sign/ic_check_calendar.png",center,bottom,95%);
-            overflow:hidden;
-            .first{
-                font-family: PingFangSC-Medium;
-                font-size: .34133304rem; // 20px
-                color: #FFFFFF;
-                letter-spacing: 0;
-                text-align:center;
-                margin-top:.75rem;
+.sign_v11 {
+    width: 100%;
+    height: 12.16852295rem; // 602px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    @include backgroundset("../../images/v11/sign/ic_background.png", center, center, 100%);
+    .sign_popum {
+        width: 2.38933129rem; // 140px;
+        height: 3.41333042rem; // 200px;
+        font-family: ComicSansMS-Bold;
+        letter-spacing: 0;
+        z-index: 12;
+        .first {
+            height: 1.27999891rem; // 75px;
+            width: 100%;
+            text-align: center;
+            font-size: .69973274rem; // 41px;
+            color: #FFE958;
+        }
+        .second {
+            color: #FFF;
+        }
+        @include center-block;
+    }
+    section {
+        height: 8.53332605rem; // 500px;
+        width: 100%;
+        @include backgroundset("../../images/v11/sign/ic_check_calendar.png", center, bottom, 95%);
+        overflow: hidden;
+        .first {
+            font-family: PingFangSC-Medium;
+            font-size: .34133304rem; // 20px
+            color: #FFFFFF;
+            letter-spacing: 0;
+            text-align: center;
+            margin-top: .75rem;
+        }
+        .second {
+            text-align: center;
+            margin-top: 1.45rem;
+            font-family: PingFangSC-Medium;
+            font-size: 18px;
+            color: #666666;
+            letter-spacing: 0;
+        }
+        .week {
+            width: 5.99039489rem; // 351px;
+            margin: .7rem auto;
+            margin-bottom: 0;
+            height: .8191993rem; // 48px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+            font-family: PingFangSC-Regular;
+            font-size: 18px;
+            color: #666666;
+            letter-spacing: 0;
+        }
+        .days {
+            width: 5.99039489rem; // 351px;
+            margin: .0rem auto;
+            height: 3.75466346rem; // 220px
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            font-family: PingFangSC-Regular;
+            font-size: 18px;
+            color: #666666;
+            letter-spacing: 0;
+            li {
+                width: .84733282rem; // 35px;
+                text-align: center;
+                height: .59733282rem; // 35px;
+                line-height: .59733282rem; // 35px;
+                display: inline-block;
             }
-            .second{
-                text-align:center;
-                margin-top:1.45rem;
-                font-family: PingFangSC-Medium;
-                font-size: 18px;
-                color: #666666;
-                letter-spacing: 0;
+            .select {
+                @include backgroundset("../../images/v11/sign/ic_check_Selected.png", center, center, 80%);
             }
-            .week{
-                width:5.99039489rem; // 351px;
-                margin:.7rem auto;
-                margin-bottom:0;
-                height:.8191993rem; // 48px;
+            .tselect {
+                @include backgroundset("../../images/v11/sign/ic_check_Nowadays.png", center, center, 80%);
+            }
+        }
+    }
+    footer {
+        width: 100%;
+        height: 3.05493073rem; // 179px;
+        @include backgroundset("../../images/v11/sign/ic_check_calendar2.png", center, center, 95%);
+        overflow: hidden;
+        padding: .3rem;
+        padding-top: 0.1rem;
+        margin-bottom: 0.3rem;
+        box-sizing: border-box;
+        h3 {
+            font-family: PingFangSC-Regular;
+            font-size: .30019974rem; // 18px
+            color: #666666;
+            letter-spacing: 0;
+            text-align: center;
+            margin-bottom: .2rem;
+        }
+        ul {
+            width: 100%;
+            height: 1.96266499rem;
+            overflow: auto;
+            li {
+                font-family: PingFangSC-Regular;
+                font-size: .20479983rem; // 12px;
+                color: #999999;
+                letter-spacing: 0;
+                padding: 0 10%;
+            }
+        }
+    }
+}
+
+.help_v11 {
+    width: 100%;
+    position: relative;
+    min-height: 11.4005236rem; // 668px;
+    background: #f5f5f5;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    header {
+        background: #fff;
+        .slider {
+            height: 2.13333151rem; // 125px;
+            width: 100%;
+            .slider-slide {
+                background: red;
+                ul {
+                    width: 100%;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-around;
+                    li {
+                        padding-top: 1.1rem;
+                        font-family: PingFangSC-Regular;
+                        font-size: .22186648rem; // 13px
+                        color: #606060;
+                        letter-spacing: 0;
+                    }
+                }
+            }
+        }
+    }
+    section {
+        margin-top: .20479983rem; // 12px;
+        background: #fff;
+        flex: 1;
+        h3 {
+            height: .85333261rem; // 50px;
+            line-height: .85333261rem; // 50px;
+            width: 100%;
+            font-family: PingFangSC-Regular;
+            font-size: .30719974rem; // 18px;
+            color: #606060;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        .main_content_help {
+            width: 100%;
+            background: #fff;
+            li {
+                height: 100%;
+                padding: 0 .36rem; // 18px;
+                border-bottom: .08rem solid #f9f9f9;
+                .question {
+                    height: .88rem; // 44px
+                    line-height: .88rem;
+                    position: relative;
+                    font-size: .24rem; // 12px;
+                    font-family: PingFangSC-Regular;
+                    color: #51586A;
+                    .help_iconb {
+                        display: inline-block;
+                        width: .5rem; // 25px // 15px;
+                        height: .5rem; // 25px // 15px;
+                        position: absolute;
+                        right: 0%;
+                        top: 25%;
+                        transition: all .6s;
+                        transform: rotate(-90deg);
+                        @include backgroundset("../../images/login/ic_navbar_arrow_down@3x.png", center, center, 100%)
+                    }
+                    .selected {
+                        transform: rotate(0deg);
+                    }
+                }
+                .answer {
+                    padding: .36rem 0; // 18px 0;
+                    border-top: .04rem dotted #CCCCCC;
+                    p {
+                        font-size: .24rem; // 12px;
+                        font-family: PingFangSC-Regular;
+                        color: #999999;
+                        line-height: .4rem;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        height: 2.90133086rem; // 170px;
+        width: 100%;
+        .first {
+            height: 1.19466565rem; // 70px;
+            line-height: 1.19466565rem; // 70px;
+            text-align: center;
+            font-family: FZCQJW--GB1-0;
+            font-size: 20px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            background: black;
+        }
+        .second {
+            display: flex;
+            height: 1.02399913rem; // 60px;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+            a {
+                width: 2.8159976rem; // 165px;
+                height: .68266608rem; // 40px;
+                border: .0341333rem solid #E2BC85; // 2px;
+                text-align: center;
+                line-height: .68266608rem; // 40px;
+                margin: auto;
+            }
+        }
+        .third {
+            text-align: center;
+            font-family: PingFangSC-Regular;
+            font-size: .20479983rem; // 12px;
+            color: #999999;
+            letter-spacing: 0;
+        }
+    }
+}
+.task_v11{
+    header{
+        height:2.25279808rem; // 132px;
+        width:100%;
+        @include backgroundset("../../images/v11/ic_novice_back.png",center,center,100%);
+        h3{
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            text-align:center;
+            padding:.2rem 0;
+        }
+        .fourth{
+            overflow-y:auto;
+            .pic{
+                width:100%;
+                height:1.16053234rem; // 68px;
                 display:flex;
                 flex-flow:row nowrap;
                 justify-content:space-around;
-                font-family: PingFangSC-Regular;
-                font-size: 18px;
-                color: #666666;
-                letter-spacing: 0;
-            }
-            .days{
-                width:5.99039489rem; // 351px;
-                margin:.0rem auto;
-                height:3.75466346rem; // 220px
-                display:flex;
-                flex-flow:row wrap;
-                justify-content:flex-start;
-                font-family: PingFangSC-Regular;
-                font-size: 18px;
-                color: #666666;
-                letter-spacing: 0;
                 li{
-                    width:.84733282rem; // 35px;
-                    text-align:center;
-                    height:.59733282rem; // 35px;
-                    line-height:.59733282rem; // 35px;
-                    display:inline-block;
+                      width:1.02399913rem; // 60px;
+                      height:1.19466565rem; // 70px;
+                      font-family: PingFangSC-Regular;
+                        font-size: 12px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        .first{
+                            text-align:center;
+                        }
+                      @include backgroundset("../../images/v11/ic_novice_one.png",center,bottom,120%);
                 }
-                .select{
-                    @include backgroundset("../../images/v11/sign/ic_check_Selected.png",center,center,80%);
+                .unget{
+                      width:1.02399913rem; // 60px;
+                      height:1.19466565rem; // 70px;
+                      font-family: PingFangSC-Regular;
+                        font-size: 12px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        .first{
+                            text-align:center;
+                        }
+                      @include backgroundset("../../images/v11/ic_novice_one.png",center,bottom,100%);
                 }
-                .tselect{
-                    @include backgroundset("../../images/v11/sign/ic_check_Nowadays.png",center,center,80%);
+                .get{
+                      width:1.02399913rem; // 60px;
+                      height:1.19466565rem; // 70px;
+                      font-family: PingFangSC-Regular;
+                        font-size: 12px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        .first{
+                            text-align:center;
+                        }
+                      @include backgroundset("../../images/v11/ic_novice_one.png",center,bottom,100%);
                 }
             }
-        }
-        footer{
-            width:100%;
-            height:3.05493073rem; // 179px;
-            @include backgroundset("../../images/v11/sign/ic_check_calendar2.png",center,center,95%);
-            overflow:hidden;
-            padding:.3rem;
-            padding-top:0.1rem;
-            margin-bottom:0.3rem;
-            box-sizing:border-box;
-            h3{
-                font-family:PingFangSC-Regular;
-                font-size: .30019974rem; // 18px
-                color: #666666;
-                letter-spacing: 0;
-                text-align:center;
-                margin-bottom:.2rem;
-            }
-            ul{
+            .connect{
                 width:100%;
-                height:1.96266499rem;
-                overflow:auto;
+                height:1.16053234rem; // 68px;
+                display:flex;
+                flex-flow:row nowrap;
+                justify-content:space-around;
                 li{
-                    font-family: PingFangSC-Regular;
-                    font-size: .20479983rem; // 12px;
-                    color: #999999;
-                    letter-spacing: 0;
-                    padding:0 10%;
-
+                    width:.34133304rem; // 20px; // 60px;
+                    height:.34133304rem; // 20px;
                 }
             }
         }
-}
-.sign_popum{
-    width:2.38933129rem; // 140px;
-    height:3.41333042rem; // 200px;
-    font-family: ComicSansMS-Bold;
-    letter-spacing: 0;
-    z-index:12;
-    .first{
-        height:1.27999891rem; // 75px;
+    }
+    section{
+        height:auto;
+        .task_list{
+            width:5.97332824rem; // 350px;
+            height:1.45066543rem; // 85px;
+            position:relative;
+            @include backgroundset("../../images/v11/ic_novice_background.png",center,center,100%);
+            margin:.3rem auto;
+            overflow:hidden;
+            .til{
+                margin-top:5%;
+                .fir{
+                     font-family: PingFangSC-Medium;
+                    font-size: .25599978rem; // 15px;
+                    color: #FFFFFF;
+                    letter-spacing: 0;
+                    margin-left:.3rem;
+                }
+                .sec{
+                    font-family: PingFangSC-Medium;
+                    font-size: .25599978rem; // 15px;
+                    color: #666666;
+                    letter-spacing: 0;
+                    margin-left:.3rem;
+                    i{
+                        font-size:.20479983rem; // 12px;
+                    }
+                }
+
+            }
+            .des{
+                font-family: PingFangSC-Regular;
+                font-size: .20479983rem; // 12px;
+                color: #606060;
+                letter-spacing: 0;
+                margin-left:.3rem;
+                margin-top:.1rem;
+            }
+            button{
+                position:absolute;
+                right:5%;
+                bottom:.3rem;
+                width:1.8599869rem; // 90px;
+                height:.31199956rem; // 30px;
+                transform:scale(.8);
+            }
+        }
+    }
+    footer{
         width:100%;
-        text-align:center;
-        font-size:.69973274rem; // 41px;
-        color: #FFE958;
+        height:8.87465909rem; // 520px;
+        h3{
+            font-family: PingFangSC-Medium;
+            font-size: .29013309rem; // 17px;
+            color: #FF7320;
+            letter-spacing: 0;
+            text-align:center;
+            @include backgroundset("../../images/v11/ic_novice_.png",center,center,100%);
+            padding:.5rem 0;
+        }
+        p{
+            padding:.1rem .2rem;
+            display:flex;
+            flex-flow:row nowrap;
+            font-family: PingFangSC-Regular;
+            font-size: 13px;
+            color: #666666;
+            letter-spacing: 0;
+        }
+        p:nth-child(1){
+
+        }
+        p:nth-child(2){
+            flex:1;
+        }
+        .icp{
+            font-family: PingFangSC-Regular;
+            font-size: .18773317rem; // 11px;
+            color: #666666;
+            letter-spacing: 0;
+            text-align:center;
+            width:100%;
+            display:block;
+            margin:.3rem auto;
+        }
     }
-    .second{
-        color:#FFF;
-    }
-    @include center-block;
 }

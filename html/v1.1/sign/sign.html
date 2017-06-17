@@ -2,7 +2,7 @@
     <!--原生的滚动条，提升性能，减少BUG-->
     <div class="sign_v11" style="-webkit-overflow-scrolling: touch">
         <section>
-            <h3 class="first">已连续签到3天</h3>
+            <h3 class="first">已连续签到{{c}}天</h3>
             <h3 class="second">{{t}}</h3>
             <ul class="week">
                 <li ng-repeat="x in w track by $index">{{x}}</li>
@@ -21,5 +21,9 @@
                 <li>5.本活动由会加油提供，与苹果公司（Apple Inc.）无关。</li>
             </ul>
         </footer>
+        <div class="sign_popum" v11-popum>
+            <p class="first">{{oil}}</p>
+            <p class="second">明日可获取{{toil}}滴油呦！</p>
+        </div>
     </div>
 </div>
