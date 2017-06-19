@@ -35,13 +35,13 @@
             <div class="task_list" ng-repeat="x in task track by $index">
                 <p class="til">
                     <span class="fir">{{x.title}}</span>
-                    <span class="sec">500<i>滴油</i></span>
+                    <span class="sec">{{x.oil_number}}<i>滴油</i></span>
                 </p>
                 <p class="des">
                     {{x.des}}
                 </p>
                 <button class="done button  button-dark" ng-if="x.status==1&&x.user_get_status==2">已完成</button>
-                <button class="get button  button-dark" ng-if="x.status==1&&x.user_get_status==1">领取</button>
+                <button class="get button  button-dark" ng-if="x.status==1&&x.user_get_status==1" ng-click="goget()">领取</button>
                 <button class="gotask button  button-dark" ng-if="x.status==0&&x.user_get_status==1">做任务</button>
             </div>
         </section>

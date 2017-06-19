@@ -267,7 +267,7 @@
                 justify-content: space-around;
                 li {
                     flex: 1;
-                    height: 1.19466565rem; // 70px;
+                    height: 1.29466565rem; // 70px;
                     font-family: PingFangSC-Regular;
                     font-size: 12px;
                     color: #FFFFFF;
@@ -275,11 +275,11 @@
                     .first {
                         text-align: center;
                     }
-                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, 100%);
+                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, 80%);
                 }
                 .a_get {
                     width: 1.02399913rem; // 60px;
-                    height: 1.19466565rem; // 70px;
+
                     font-family: PingFangSC-Regular;
                     font-size: 12px;
                     color: #FFFFFF;
@@ -287,11 +287,11 @@
                     .first {
                         text-align: center;
                     }
-                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, 100%);
+                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, 80%);
                 }
                 .get {
                     width: 1.02399913rem; // 60px;
-                    height: 1.19466565rem; // 70px;
+
                     font-family: PingFangSC-Regular;
                     font-size: 12px;
                     color: #FFFFFF;
@@ -300,18 +300,16 @@
                         text-align: center;
                         opacity: .5;
                     }
-                    background-image:url("../../images/v11/ic_novice_light.png"),
-                    url("../../images/v11/ic_novice_one.png");
                     background-repeat:no-repeat,
                     no-repeat;
-                    background-size:100%,
-                    100%;
-                    background-position:center bottom,
+                    background-size:80%,
+                    80%;
+                    background-position:center .55rem,
                     center bottom;
                 }
                 .unget {
                     width: 1.02399913rem; // 60px;
-                    height: 1.19466565rem; // 70px;
+
                     font-family: PingFangSC-Regular;
                     font-size: 12px;
                     color: #FFFFFF;
@@ -323,7 +321,7 @@
                     @include backgroundset("../../images/v11/ic_novice_one.png",
                     center,
                     bottom,
-                    100%);
+                    80%);
                 }
             }
             .connect {
@@ -352,8 +350,8 @@
                     center,
                     .34133304rem);
                     span {
-                        width: 90%;
-                        left: 60%;
+                        width: 85%;
+                        left: 65%;
                     }
                 }
                 .get {
@@ -362,8 +360,8 @@
                     center,
                     .34133304rem);
                     span {
-                        width: 90%;
-                        left: 60%;
+                       width: 88%;
+                        left: 62%;
                     }
                 }
                 .un_get {
@@ -372,8 +370,8 @@
                     center,
                     .34133304rem);
                     span {
-                        width: 95%;
-                        left: 55%;
+                        width: 92%;
+                        left: 58%;
                     }
                 }
             }
@@ -421,9 +419,9 @@
             button {
                 position: absolute;
                 font-family: PingFangSC-Medium;
-                right: 3%;
+                right: 2%;
                 bottom: .3rem;
-                width: 1.8599869rem; // 90px;
+                width: 1.9599869rem; // 90px;
                 height: .31199956rem; // 30px;
                 transform: scale(.8);
             }
