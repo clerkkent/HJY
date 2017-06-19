@@ -5,51 +5,44 @@
             <h3>新手奖励计划</h3>
             <div class="fourth">
                 <ul class="pic">
-                    <li ng-repeat="x in task" class="a_get" style="background-image:url({{b[0]}});" ng-if="">
-                        <p class="first">奖励一</p>
+                    <li ng-repeat="x in task track by $index" class="a_get" style="background-image:url({{b[$index]}});" ng-if="x.status==1&&x.user_get_status==2">
+                        <p class="first">{{x.title}}</p>
                         <p class="second"></p>
                     </li>
-                    <li ng-repeat="x in task" class="get" style="background-image:url({{b[1]}});" ng-if="">
-                        <p class="first">奖励一</p>
+                    <li ng-repeat="x in task" class="get" style="background-image:url('../../images/v11/ic_novice_light.png'),url('{{b[$index]}}')" ng-if="x.status==1&&x.user_get_status==1">
+                        <p class="first">{{x.title}}</p>
                         <p class="second"></p>
                     </li>
-                    <li ng-repeat="x in task" class="un_get" style="background-image:url({{b[2]}});" ng-if="">
-                        <p class="first">奖励一</p>
+                    <li ng-repeat="x in task" class="un_get" style="background-image:url({{b[$index]}});" ng-if="x.status==0&&x.user_get_status==1">
+                        <p class="first">{{x.title}}</p>
                         <p class="second"></p>
                     </li>
                 </ul>
                 <ul class="connect">
-                    <li>
-                        <span class="icon"></span>
-                        <span class="line"></span>
+                    <li ng-repeat="x in task track by $index" class="a_get" ng-if="x.status==1&&x.user_get_status==2">
+                        <span class="line" ng-if="($index+1)!=task.length"></span>
                     </li>
-                    <li>
-                        <span class="icon"></span>
-                        <span class="line"></span>
+                    <li ng-repeat="x in task track by $index" class="get" ng-if="x.status==1&&x.user_get_status==1">
+                        <span class="line" ng-if="($index+1)!=task.length"></span>
                     </li>
-                    <li>
-                        <span class="icon"></span>
-                        <span class="line"></span>
-                    </li>
-                    <li>
-                        <span class="icon"></span>
-                        <span class="line"></span>
+                    <li ng-repeat="x in task track by $index" class="un_get" ng-if="x.status==0&&x.user_get_status==1">
+                        <span class="line" ng-if="($index+1)!=task.length"></span>
                     </li>
                 </ul>
             </div>
         </header>
         <section>
-            <div class="task_list">
+            <div class="task_list" ng-repeat="x in task track by $index">
                 <p class="til">
-                    <span class="fir">奖励一</span>
+                    <span class="fir">{{x.title}}</span>
                     <span class="sec">500<i>滴油</i></span>
                 </p>
                 <p class="des">
-                    成功完成500元及以上直充
+                    {{x.des}}
                 </p>
-                <button class="done button button-dark">已完成</button>
-                <button class="get button  button-dark" ng-if="false">领取</button>
-                <button class="gotask button  button-dark" ng-if="false">做任务</button>
+                <button class="done button  button-dark" ng-if="x.status==1&&x.user_get_status==2">已完成</button>
+                <button class="get button  button-dark" ng-if="x.status==1&&x.user_get_status==1">领取</button>
+                <button class="gotask button  button-dark" ng-if="x.status==0&&x.user_get_status==1">做任务</button>
             </div>
         </section>
         <footer>

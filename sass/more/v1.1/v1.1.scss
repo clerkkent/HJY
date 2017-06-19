@@ -127,11 +127,13 @@
     justify-content: space-between;
     header {
         background: #fff;
+        height: 2.13333151rem; // 125px;
         .slider {
             height: 2.13333151rem; // 125px;
             width: 100%;
             .slider-slide {
                 background: red;
+                height:2.13333151rem;
                 ul {
                     width: 100%;
                     display: flex;
@@ -143,6 +145,7 @@
                         font-size: .22186648rem; // 13px
                         color: #606060;
                         letter-spacing: 0;
+                        text-align:center;
                     }
                 }
             }
@@ -240,161 +243,241 @@
         }
     }
 }
-.task_v11{
-    header{
-        height:2.25279808rem; // 132px;
-        width:100%;
-        @include backgroundset("../../images/v11/ic_novice_back.png",center,center,100%);
-        h3{
+
+.task_v11 {
+    header {
+        height: 2.25279808rem; // 132px;
+        width: 100%;
+        @include backgroundset("../../images/v11/ic_novice_back.png", center, center, 100%);
+        h3 {
             font-family: PingFangSC-Regular;
             font-size: 12px;
             color: #FFFFFF;
             letter-spacing: 0;
-            text-align:center;
-            padding:.2rem 0;
+            text-align: center;
+            padding: .2rem 0;
         }
-        .fourth{
-            overflow-y:auto;
-            .pic{
-                width:100%;
-                height:1.16053234rem; // 68px;
-                display:flex;
-                flex-flow:row nowrap;
-                justify-content:space-around;
-                li{
-                      width:1.02399913rem; // 60px;
-                      height:1.19466565rem; // 70px;
-                      font-family: PingFangSC-Regular;
-                        font-size: 12px;
-                        color: #FFFFFF;
-                        letter-spacing: 0;
-                        .first{
-                            text-align:center;
-                        }
-                      @include backgroundset("../../images/v11/ic_novice_one.png",center,bottom,120%);
+        .fourth {
+            overflow-y: auto;
+            .pic {
+                width: 100%;
+                height: 1.16053234rem; // 68px;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-around;
+                li {
+                    flex: 1;
+                    height: 1.19466565rem; // 70px;
+                    font-family: PingFangSC-Regular;
+                    font-size: 12px;
+                    color: #FFFFFF;
+                    letter-spacing: 0;
+                    .first {
+                        text-align: center;
+                    }
+                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, 100%);
                 }
-                .unget{
-                      width:1.02399913rem; // 60px;
-                      height:1.19466565rem; // 70px;
-                      font-family: PingFangSC-Regular;
-                        font-size: 12px;
-                        color: #FFFFFF;
-                        letter-spacing: 0;
-                        .first{
-                            text-align:center;
-                        }
-                      @include backgroundset("../../images/v11/ic_novice_one.png",center,bottom,100%);
+                .a_get {
+                    width: 1.02399913rem; // 60px;
+                    height: 1.19466565rem; // 70px;
+                    font-family: PingFangSC-Regular;
+                    font-size: 12px;
+                    color: #FFFFFF;
+                    letter-spacing: 0;
+                    .first {
+                        text-align: center;
+                    }
+                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, 100%);
                 }
-                .get{
-                      width:1.02399913rem; // 60px;
-                      height:1.19466565rem; // 70px;
-                      font-family: PingFangSC-Regular;
-                        font-size: 12px;
-                        color: #FFFFFF;
-                        letter-spacing: 0;
-                        .first{
-                            text-align:center;
-                        }
-                      @include backgroundset("../../images/v11/ic_novice_one.png",center,bottom,100%);
+                .get {
+                    width: 1.02399913rem; // 60px;
+                    height: 1.19466565rem; // 70px;
+                    font-family: PingFangSC-Regular;
+                    font-size: 12px;
+                    color: #FFFFFF;
+                    letter-spacing: 0;
+                    .first {
+                        text-align: center;
+                        opacity: .5;
+                    }
+                    background-image:url("../../images/v11/ic_novice_light.png"),
+                    url("../../images/v11/ic_novice_one.png");
+                    background-repeat:no-repeat,
+                    no-repeat;
+                    background-size:100%,
+                    100%;
+                    background-position:center bottom,
+                    center bottom;
+                }
+                .unget {
+                    width: 1.02399913rem; // 60px;
+                    height: 1.19466565rem; // 70px;
+                    font-family: PingFangSC-Regular;
+                    font-size: 12px;
+                    color: #FFFFFF;
+                    letter-spacing: 0;
+                    opacity: .5;
+                    .first {
+                        text-align: center;
+                    }
+                    @include backgroundset("../../images/v11/ic_novice_one.png",
+                    center,
+                    bottom,
+                    100%);
                 }
             }
-            .connect{
-                width:100%;
-                height:1.16053234rem; // 68px;
-                display:flex;
-                flex-flow:row nowrap;
-                justify-content:space-around;
-                li{
-                    width:.34133304rem; // 20px; // 60px;
-                    height:.34133304rem; // 20px;
+            .connect {
+                width: 100%;
+                height: 1.16053234rem; // 68px;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-around;
+                li {
+                    flex: 1; // 20px; // 60px;
+                    height: .34133304rem; // 20px;
+                    position: relative;
+                    span {
+                        display: block;
+                        height: 0;
+                        width: 100%;
+                        border-top: .01706665rem solid #686868; // 1px;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                    }
+                }
+                .a_get {
+                    @include backgroundset("../../images/v11/ic_novice_finish.png",
+                    center,
+                    center,
+                    .34133304rem);
+                    span {
+                        width: 90%;
+                        left: 60%;
+                    }
+                }
+                .get {
+                    @include backgroundset("../../images/v11/ic_novice_ing.png",
+                    center,
+                    center,
+                    .34133304rem);
+                    span {
+                        width: 90%;
+                        left: 60%;
+                    }
+                }
+                .un_get {
+                    @include backgroundset("../../images/v11/ic_novice_undone.png",
+                    center,
+                    center,
+                    .34133304rem);
+                    span {
+                        width: 95%;
+                        left: 55%;
+                    }
                 }
             }
         }
     }
-    section{
-        height:auto;
-        .task_list{
-            width:5.97332824rem; // 350px;
-            height:1.45066543rem; // 85px;
-            position:relative;
-            @include backgroundset("../../images/v11/ic_novice_background.png",center,center,100%);
-            margin:.3rem auto;
-            overflow:hidden;
-            .til{
-                margin-top:5%;
-                .fir{
-                     font-family: PingFangSC-Medium;
+    section {
+        height: auto;
+        .task_list {
+            width: 5.97332824rem; // 350px;
+            height: 1.45066543rem; // 85px;
+            position: relative;
+            @include backgroundset("../../images/v11/ic_novice_background.png",
+            center,
+            center,
+            100%);
+            margin: .3rem auto;
+            overflow: hidden;
+            .til {
+                margin-top: 5%;
+                .fir {
+                    font-family: PingFangSC-Medium;
                     font-size: .25599978rem; // 15px;
                     color: #FFFFFF;
                     letter-spacing: 0;
-                    margin-left:.3rem;
+                    margin-left: .3rem;
                 }
-                .sec{
+                .sec {
                     font-family: PingFangSC-Medium;
-                    font-size: .25599978rem; // 15px;
+                    font-size: .27306643rem; // 16px
                     color: #666666;
-                    letter-spacing: 0;
-                    margin-left:.3rem;
-                    i{
-                        font-size:.20479983rem; // 12px;
+                    margin-left: .5rem;
+                    i {
+                        font-size: .20479983rem; // 12px;
                     }
                 }
-
             }
-            .des{
+            .des {
                 font-family: PingFangSC-Regular;
-                font-size: .20479983rem; // 12px;
+                font-size: .23893313rem; // 14px
                 color: #606060;
                 letter-spacing: 0;
-                margin-left:.3rem;
-                margin-top:.1rem;
+                margin-left: .3rem;
+                margin-top: .1rem;
             }
-            button{
-                position:absolute;
-                right:5%;
-                bottom:.3rem;
-                width:1.8599869rem; // 90px;
-                height:.31199956rem; // 30px;
-                transform:scale(.8);
+            button {
+                position: absolute;
+                font-family: PingFangSC-Medium;
+                right: 3%;
+                bottom: .3rem;
+                width: 1.8599869rem; // 90px;
+                height: .31199956rem; // 30px;
+                transform: scale(.8);
+            }
+            .done {
+                background: #dad4c9;
+                color: #FFF;
+            }
+            .get {
+                background: #FF7320;
+                color: #FFF;
+            }
+            .gotask {
+                background: #5BDBAB;
+                color: #FFF;
             }
         }
     }
-    footer{
-        width:100%;
-        height:8.87465909rem; // 520px;
-        h3{
+    footer {
+        width: 100%;
+        height: 8.87465909rem; // 520px;
+        h3 {
             font-family: PingFangSC-Medium;
             font-size: .29013309rem; // 17px;
             color: #FF7320;
             letter-spacing: 0;
-            text-align:center;
-            @include backgroundset("../../images/v11/ic_novice_.png",center,center,100%);
-            padding:.5rem 0;
+            text-align: center;
+            @include backgroundset("../../images/v11/ic_novice_.png",
+            center,
+            center,
+            100%);
+            padding: .5rem 0;
         }
-        p{
-            padding:.1rem .2rem;
-            display:flex;
-            flex-flow:row nowrap;
+        p {
+            padding: .1rem .2rem;
+            display: flex;
+            flex-flow: row nowrap;
             font-family: PingFangSC-Regular;
             font-size: 13px;
             color: #666666;
             letter-spacing: 0;
         }
-        p:nth-child(1){
-
+        p:nth-child(1) {}
+        p:nth-child(2) {
+            flex: 1;
         }
-        p:nth-child(2){
-            flex:1;
-        }
-        .icp{
+        .icp {
             font-family: PingFangSC-Regular;
             font-size: .18773317rem; // 11px;
             color: #666666;
             letter-spacing: 0;
-            text-align:center;
-            width:100%;
-            display:block;
-            margin:.3rem auto;
+            text-align: center;
+            width: 100%;
+            display: block;
+            margin: .3rem auto;
         }
     }
 }

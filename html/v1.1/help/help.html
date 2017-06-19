@@ -1,7 +1,7 @@
 <div style="width:100%;overflow:auto;" scroll-height>
     <!--原生的滚动条，提升性能，减少BUG-->
     <div class="help_v11" style="-webkit-overflow-scrolling: touch">
-        <header>
+        <header ng-if="page">
             <ion-slide-box on-slide-changed="slideHasChanged($index)">
                 <ion-slide ng-repeat="x in page">
                     <ul>
