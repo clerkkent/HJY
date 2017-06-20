@@ -1,16 +1,19 @@
-<div style="width:100%;overflow:auto;" scroll-height>
+<div style="width:100%;overflow:auto;">
     <!--原生的滚动条，提升性能，减少BUG-->
-    <div class="help_v11" style="-webkit-overflow-scrolling: touch">
+    <div class="help_v11" style="-webkit-overflow-scrolling: touch" scroll-height>
         <header ng-if="page">
-            <ion-slide-box on-slide-changed="slideHasChanged($index)">
+            <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">
                 <ion-slide ng-repeat="x in page">
                     <ul>
-                        <li ng-repeat="y in x" ng-click="se(y.con)">
+                        <li ng-repeat="y in x track by $index" ng-click="se(y.con)" style="background-image:url({{img[$index]}});">
                             {{y.type}}
                         </li>
                     </ul>
                 </ion-slide>
             </ion-slide-box>
+            <div class="pagen_v11" init-page>
+                <span class="pagenicon_v11" ng-repeat="x in page" repeat-f></span>
+            </div>
         </header>
         <section>
             <h3>热门问题</h3>
@@ -24,12 +27,12 @@
             </ul>
         </section>
         <footer>
-            <div class="first">
-                关于会加油
+            <div class="first" ng-click="gonote()">
+
             </div>
             <div class="second">
                 <a href="http://a1.7x24cc.com/phone_webChat.html?accountId=N000000010362&chatId=yykj-c5867180-39d1-11e7-bd22-61f4856f24a8">在线客服</a>
-                <a href="tel:4008518686">客服电话</a>
+                <a ng-click="call(4008518686)">客服电话</a>
             </div>
             <div class="third">
                 服务时间：9:00-18:00（法定节假日除外）

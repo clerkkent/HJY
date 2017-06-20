@@ -4,15 +4,23 @@
         <div class="get_award">
             <form class="information" name="myForm" novalidate verify-scope="tipStyle: 1">
                 <div ui-view>
-                    <input class="first_i" autocomplete="off" type="tel" id="phone" name="phone" name="phone" required placeholder="请输入手机号码" ng-focus="scroll()"  scroll-i>
+                    <input class="first_i" autocomplete="off" type="tel" id="phone" name="phone" name="phone" required placeholder="请输入手机号码" ng-focus="scroll()" scroll-i>
                     <input class="second_i button button-assertive" type="submit" value="领取礼包" ng-disabled="myForm.phone.$invalid">
                 </div>
             </form>
             <!--<p class="remind" ng-if="registed"><span class="agree" ng-click="toggleCustom()"></span><span ng-click="go_register_agreement()">同意会加油注册协议</span></p>-->
         </div>
     </div>
+    <div class="funcpage_icp" style=" -webkit-overflow-scrolling: touch;" ng-if="baidu_icp">
+        <p class="tel">客服热线：400-851-8686</p>
+        <p class="cr">Copyright<span style="font-family:'microsoft yahei';">©</span> Beijing Youyou technology Co Ltd All Rights Reserved
+        </p>
+        <p class="cr">
+            北京优油科技有限公司 京ICP备17021936号-1
+        </p>
+    </div>
 </div>
-<div class="download">
+<div class="download" ng-if="download_show">
     <div class="left">
 
     </div>

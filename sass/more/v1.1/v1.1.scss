@@ -13,17 +13,27 @@
         font-family: ComicSansMS-Bold;
         letter-spacing: 0;
         z-index: 12;
+        @include backgroundset("../../images/v11/ic_check_oil.png",-0rem,center,120%);
         .first {
             height: 1.27999891rem; // 75px;
             width: 100%;
             text-align: center;
-            font-size: .69973274rem; // 41px;
+            font-size: .49973274rem; // 41px;
             color: #FFE958;
+            margin-top:.6rem;
         }
         .second {
             color: #FFF;
+            width:1.5rem;
+            padding-left:.3rem;
+            line-height:.25rem;
+            font-family: PingFangSC-Semibold;
+            font-size: .10973274rem; // 41px;
+            margin:0 auto;
+            margin-top:.6rem;
         }
         @include center-block;
+        margin-top:2.9rem;
     }
     section {
         height: 8.53332605rem; // 500px;
@@ -120,7 +130,7 @@
 .help_v11 {
     width: 100%;
     position: relative;
-    min-height: 11.4005236rem; // 668px;
+    // min-height: 11.4005236rem; // 668px;
     background: #f5f5f5;
     display: flex;
     flex-flow: column nowrap;
@@ -128,33 +138,54 @@
     header {
         background: #fff;
         height: 2.13333151rem; // 125px;
+        position: relative;
+        text-align:center;
+        .pagen_v11 {
+                position:absolute;
+                bottom:0;
+                display:inline-block;
+                margin-left:-5%;
+                .pagenicon_v11 {
+                    transition:all .6s;
+                    display: inline-block;
+                    width: .14133304rem; // 20px
+                    height: .14133304rem; // 20px;
+                    background: #e8e8e8;
+                    border-radius:0.07rem;
+                    margin:0 .05rem;
+                }
+         }
         .slider {
             height: 2.13333151rem; // 125px;
             width: 100%;
             .slider-slide {
-                background: red;
-                height:2.13333151rem;
+                height: 2.13333151rem;
                 ul {
                     width: 100%;
                     display: flex;
                     flex-flow: row nowrap;
-                    justify-content: space-around;
+                    justify-content: flex-start;
                     li {
                         padding-top: 1.1rem;
                         font-family: PingFangSC-Regular;
+                        margin:0 .3rem;
                         font-size: .22186648rem; // 13px
                         color: #606060;
                         letter-spacing: 0;
-                        text-align:center;
+                        text-align: center;
+                        @include backgroundset("../../images/v11/ic_help_directions.png", center, center, 80%)
                     }
                 }
             }
+
         }
     }
     section {
         margin-top: .20479983rem; // 12px;
         background: #fff;
         flex: 1;
+        overflow: scroll;
+        padding-bottom: .1rem;
         h3 {
             height: .85333261rem; // 50px;
             line-height: .85333261rem; // 50px;
@@ -171,10 +202,10 @@
             li {
                 height: 100%;
                 padding: 0 .36rem; // 18px;
-                border-bottom: .08rem solid #f9f9f9;
+                border-bottom: .05rem solid #f9f9f9;
                 .question {
-                    height: .88rem; // 44px
-                    line-height: .88rem;
+                    height: .78rem; // 44px
+                    line-height: .68rem;
                     position: relative;
                     font-size: .24rem; // 12px;
                     font-family: PingFangSC-Regular;
@@ -219,6 +250,7 @@
             color: #FFFFFF;
             letter-spacing: 0;
             background: black;
+            @include backgroundset("../../images/v11/ic_help_gas.png", center, center, 100%)
         }
         .second {
             display: flex;
@@ -245,6 +277,36 @@
 }
 
 .task_v11 {
+     .task_popum {
+        width: 3.38933129rem; // 140px;
+        height: 3.41333042rem; // 200px;
+        font-family: ComicSansMS-Bold;
+        letter-spacing: 0;
+        z-index: 12;
+        display:none;
+         position: relative;
+        background-image:url(../../images/v11/ic_novice_four.png),url(../../images/v11/ic_novice_light.png);
+        background-repeat:no-repeat,no-repeat;
+        background-size:80%,90%;
+        background-position:center bottom,center 40%;
+        .first {
+           font-family: PingFangSC-Medium;
+            font-size: .37546635rem; // 22px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            text-align:center;
+        }
+        .second {
+          font-family: PingFangSC-Medium;
+            font-size: .27306643rem; // 16px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            text-align:center;
+            margin-top:.2rem;
+        }
+        @include center-block;
+        margin-top:2.9rem;
+    }
     header {
         height: 2.25279808rem; // 132px;
         width: 100%;
@@ -275,11 +337,10 @@
                     .first {
                         text-align: center;
                     }
-                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, 80%);
+                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, .95333261rem);
                 }
                 .a_get {
                     width: 1.02399913rem; // 60px;
-
                     font-family: PingFangSC-Regular;
                     font-size: 12px;
                     color: #FFFFFF;
@@ -287,11 +348,10 @@
                     .first {
                         text-align: center;
                     }
-                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, 80%);
+                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, .95333261rem);
                 }
                 .get {
                     width: 1.02399913rem; // 60px;
-
                     font-family: PingFangSC-Regular;
                     font-size: 12px;
                     color: #FFFFFF;
@@ -307,9 +367,8 @@
                     background-position:center .55rem,
                     center bottom;
                 }
-                .unget {
+                .un_get {
                     width: 1.02399913rem; // 60px;
-
                     font-family: PingFangSC-Regular;
                     font-size: 12px;
                     color: #FFFFFF;
@@ -318,10 +377,7 @@
                     .first {
                         text-align: center;
                     }
-                    @include backgroundset("../../images/v11/ic_novice_one.png",
-                    center,
-                    bottom,
-                    80%);
+                    @include backgroundset("../../images/v11/ic_novice_one.png", center, bottom, .95333261rem);
                 }
             }
             .connect {
@@ -345,30 +401,21 @@
                     }
                 }
                 .a_get {
-                    @include backgroundset("../../images/v11/ic_novice_finish.png",
-                    center,
-                    center,
-                    .34133304rem);
+                    @include backgroundset("../../images/v11/ic_novice_finish.png", center, center, .34133304rem);
                     span {
                         width: 85%;
                         left: 65%;
                     }
                 }
                 .get {
-                    @include backgroundset("../../images/v11/ic_novice_ing.png",
-                    center,
-                    center,
-                    .34133304rem);
+                    @include backgroundset("../../images/v11/ic_novice_ing.png", center, center, .34133304rem);
                     span {
-                       width: 88%;
+                        width: 88%;
                         left: 62%;
                     }
                 }
                 .un_get {
-                    @include backgroundset("../../images/v11/ic_novice_undone.png",
-                    center,
-                    center,
-                    .34133304rem);
+                    @include backgroundset("../../images/v11/ic_novice_undone.png", center, center, .34133304rem);
                     span {
                         width: 92%;
                         left: 58%;
@@ -383,10 +430,7 @@
             width: 5.97332824rem; // 350px;
             height: 1.45066543rem; // 85px;
             position: relative;
-            @include backgroundset("../../images/v11/ic_novice_background.png",
-            center,
-            center,
-            100%);
+            @include backgroundset("../../images/v11/ic_novice_background.png", center, center, 100%);
             margin: .3rem auto;
             overflow: hidden;
             .til {
@@ -448,10 +492,7 @@
             color: #FF7320;
             letter-spacing: 0;
             text-align: center;
-            @include backgroundset("../../images/v11/ic_novice_.png",
-            center,
-            center,
-            100%);
+            @include backgroundset("../../images/v11/ic_novice_.png", center, center, 100%);
             padding: .5rem 0;
         }
         p {
@@ -469,7 +510,7 @@
         }
         .icp {
             font-family: PingFangSC-Regular;
-            font-size: .18773317rem; // 11px;
+            font-size: .1773317rem; // 11px;
             color: #666666;
             letter-spacing: 0;
             text-align: center;

@@ -1074,14 +1074,17 @@ angular.module('HJY').controller("register", ["$scope", "$state", "login_logic",
     }
     $scope.error = login_logic.parse_url();
     $scope.download_show = true;
-    $scope.no_download = ["momo"];
+    $scope.baidu_icp = false;
+    $scope.no_download = ["momo", "baidu"];
     if (judge($scope.error)) {
         if ($scope.error["ch"] != undefined) {
             sessionStorage.setItem("channel", $scope.error["ch"]);
             $scope.channel = sessionStorage.getItem("ch");
             for (i = 0; i < $scope.no_download.length; i++) {
-                if ($scope.channel == $scope.no_download[i]) {
+                if ($scope.channel == $scope.no_download[i] && $scope.no_download[i] != "baidu") {
                     $scope.download_show = false;
+                } else if ($scope.channel == $scope.no_download[i] && $scope.no_download[i] == "baidu") {
+                    $scope.baidu_icp = true
                 }
             }
         }

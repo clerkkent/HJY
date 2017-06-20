@@ -1,6 +1,10 @@
 <div style="width:100%;overflow:auto;" scroll-height>
     <!--原生的滚动条，提升性能，减少BUG-->
     <div class="task_v11" style="-webkit-overflow-scrolling: touch">
+        <div class="task_popum">
+            <p class="first">恭喜您！领取成功</p>
+            <p class="second">奖品已发放到您的账户</p>
+        </div>
         <header>
             <h3>新手奖励计划</h3>
             <div class="fourth">
@@ -41,8 +45,8 @@
                     {{x.des}}
                 </p>
                 <button class="done button  button-dark" ng-if="x.status==1&&x.user_get_status==2">已完成</button>
-                <button class="get button  button-dark" ng-if="x.status==1&&x.user_get_status==1" ng-click="goget()">领取</button>
-                <button class="gotask button  button-dark" ng-if="x.status==0&&x.user_get_status==1">做任务</button>
+                <button class="get button  button-dark" ng-if="x.status==1&&x.user_get_status==1" ng-click="goget(x)">领取</button>
+                <button class="gotask button  button-dark" ng-if="x.status==0&&x.user_get_status==1" ng-click="gobuy()">做任务</button>
             </div>
         </section>
         <footer>

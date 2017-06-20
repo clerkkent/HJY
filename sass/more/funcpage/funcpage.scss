@@ -1080,9 +1080,9 @@
     .funcpage_register {
         width: 100%;
         height: 18.34665101rem; // 1075px;
-        @include backgroundset("../../images/land/register/TopBar.png",
+        @include backgroundset("../../images/land/register/TopBar_2.png",
         center,
-        center,
+        top,
         100%);
         background-color: #FFDC5A;
         position: relative;
@@ -1188,7 +1188,23 @@
             }
         }
     }
-
+    .funcpage_icp{
+        height:3rem;
+        background-color: #FFDC5A;
+        font-family: PingFangSC-Regular;
+        p{
+            text-align:center;
+        }
+        .tel{
+            color:#f95b4e;
+            font-size:.3266663rem; // 25px;
+        }
+        .cr{
+            color:#da8147;
+            font-size:.20479983rem; // 12px
+            padding:0 .8rem;
+        }
+    }
     .award_list {
         width: 100%;
         height: 21.50398165rem; // 1075px;

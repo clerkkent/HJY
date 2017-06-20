@@ -16,16 +16,17 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
     Number.prototype.mul = function(arg) {
         return accMul(arg, this);
     }
-    $stateProvider.state("login", {
-            url: "/login",
-            controller: "loginc",
-            templateUrl: "html/login/login_regist.html" + v,
-        })
-        .state("login.weixinbind", {
-            url: "/weixinbind",
-            controller: "weixin",
-            templateUrl: "html/login/weixin_bind.html" + v,
-        })
+    $stateProvider
+    // .state("login", {
+    //         url: "/login",
+    //         controller: "loginc",
+    //         templateUrl: "html/login/login_regist.html" + v,
+    //     })
+    //     .state("login.weixinbind", {
+    //         url: "/weixinbind",
+    //         controller: "weixin",
+    //         templateUrl: "html/login/weixin_bind.html" + v,
+    //     })
         .state("error", {
             url: "/error",
             templateUrl: "html/login/error.html" + v,
@@ -46,26 +47,26 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
             controller: "friend_request_details",
             templateUrl: "html/friend/friend_request_details.html" + v,
         })
-        .state("pay", {
-            url: "/pay",
-            controller: "pay",
-            templateUrl: "html/pay/pay.html" + v
-        })
-        .state("mycenter", {
-            url: "/mycenter",
-            controller: "mycenter",
-            templateUrl: "html/mycenter/my_center.html" + v
-        })
-        .state("buy", {
-            url: "/buy",
-            controller: "buy",
-            templateUrl: "html/buy/index01.html" + v,
-            resolve: {
-                loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load('./js/plugins/swiper-3.4.0.min.js' + v); // 按需加载目标 js file
-                }]
-            }
-        })
+        // .state("pay", {
+        //     url: "/pay",
+        //     controller: "pay",
+        //     templateUrl: "html/pay/pay.html" + v
+        // })
+        // .state("mycenter", {
+        //     url: "/mycenter",
+        //     controller: "mycenter",
+        //     templateUrl: "html/mycenter/my_center.html" + v
+        // })
+        // .state("buy", {
+        //     url: "/buy",
+        //     controller: "buy",
+        //     templateUrl: "html/buy/index01.html" + v,
+        //     resolve: {
+        //         loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+        //             return $ocLazyLoad.load('./js/plugins/swiper-3.4.0.min.js' + v); // 按需加载目标 js file
+        //         }]
+        //     }
+        // })
         .state("game", {
             url: "/game",
             controller: "game",
@@ -286,8 +287,8 @@ HJY.run(['$rootScope', function($rootScope) {
         s.parentNode.insertBefore(hm, s);
     }
     //
-    if (location.hostname == "192.168.11.158") {
-        $rootScope.url_global = "http://192.168.11.158:8888";
+    if (location.hostname == "192.168.11.153") {
+        $rootScope.url_global = "http://192.168.11.153:8888";
         console.log($rootScope.url_global)
     } else {
         $rootScope.url_global = window.location.protocol + "//" + location.hostname; //本地测试
