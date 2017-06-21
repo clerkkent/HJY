@@ -64,6 +64,14 @@ HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $ro
             head = {
                 'Content-Type': 'application/x-www-form-urlencoded'
             };
+
+            function clearCookie() {
+                var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+                if (keys) {
+                    for (var i = keys.length; i--;)
+                        document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+                }
+            }
             window.document.cookie = "OIL_TOKEN=" + authToken + ";path=/;";
         } else {
             head = {
@@ -86,7 +94,7 @@ HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $ro
     }
     factory.deal_help = function() { //帮助页的详细信息隐藏出现
         $(".main_content").on("click", ".main_content_help li .question", (function(event) {
-            $(this).parent("li").find(".answer").fadeToggle();
+            $(this).parent("li").find(".answer").slideToggle();
             if ($(this).find("span").hasClass("selected")) {
                 $(this).find("span").removeClass("selected")
             } else {
@@ -370,7 +378,6 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
         })
     }
     factory.call = function(phone) {
-        console.log(phone)
         this.webview(function(bridge) {
             console.log(phone)
             bridge.callHandler('call', phone, function(responseData) { //请求OC

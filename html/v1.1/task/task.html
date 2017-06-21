@@ -9,29 +9,33 @@
             <h3>新手奖励计划</h3>
             <div class="fourth">
                 <ul class="pic">
-                    <li ng-repeat="x in task track by $index" class="a_get" style="background-image:url({{b[$index]}});" ng-if="x.status==1&&x.user_get_status==2">
-                        <p class="first">{{x.title}}</p>
-                        <p class="second"></p>
-                    </li>
-                    <li ng-repeat="x in task" class="get" style="background-image:url('../../images/v11/ic_novice_light.png'),url('{{b[$index]}}')" ng-if="x.status==1&&x.user_get_status==1">
-                        <p class="first">{{x.title}}</p>
-                        <p class="second"></p>
-                    </li>
-                    <li ng-repeat="x in task" class="un_get" style="background-image:url({{b[$index]}});" ng-if="x.status==0&&x.user_get_status==1">
-                        <p class="first">{{x.title}}</p>
-                        <p class="second"></p>
-                    </li>
+                    <div ng-repeat="x in task track by $index">
+                        <li class="a_get" style="background-image:url({{b[$index]}});" ng-if="x.status==1&&x.user_get_status==2">
+                            <p class="first">{{x.title}}</p>
+                            <p class="second"></p>
+                        </li>
+                        <li class="get" style="background-image:url('../../images/v11/ic_novice_light.png'),url('{{b[$index]}}')" ng-if="x.status==1&&x.user_get_status==1">
+                            <p class="first">{{x.title}}</p>
+                            <p class="second"></p>
+                        </li>
+                        <li class="un_get" style="background-image:url({{b[$index]}});" ng-if="x.status==0&&x.user_get_status==1">
+                            <p class="first">{{x.title}}</p>
+                            <p class="second"></p>
+                        </li>
+                    </div>
                 </ul>
                 <ul class="connect">
-                    <li ng-repeat="x in task track by $index" class="a_get" ng-if="x.status==1&&x.user_get_status==2">
-                        <span class="line" ng-if="($index+1)!=task.length"></span>
-                    </li>
-                    <li ng-repeat="x in task track by $index" class="get" ng-if="x.status==1&&x.user_get_status==1">
-                        <span class="line" ng-if="($index+1)!=task.length"></span>
-                    </li>
-                    <li ng-repeat="x in task track by $index" class="un_get" ng-if="x.status==0&&x.user_get_status==1">
-                        <span class="line" ng-if="($index+1)!=task.length"></span>
-                    </li>
+                    <div ng-repeat="x in task track by $index">
+                        <li class="a_get" ng-if="x.status==1&&x.user_get_status==2">
+                            <span class="line" ng-if="($index+1)!=task.length"></span>
+                        </li>
+                        <li class="get" ng-if="x.status==1&&x.user_get_status==1">
+                            <span class="line" ng-if="($index+1)!=task.length"></span>
+                        </li>
+                        <li class="un_get" ng-if="x.status==0&&x.user_get_status==1">
+                            <span class="line" ng-if="($index+1)!=task.length"></span>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </header>

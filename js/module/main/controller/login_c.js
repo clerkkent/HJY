@@ -221,6 +221,7 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
                     $scope.allOilNum = data["result"]["allOilNum"]
                     $scope.allFriendNum = data["result"]["allFriendNum"]
                     $scope.frienddetails = data["result"]["list"]
+                    console.log(data)
                     if ($scope.frienddetails == 0) {
                         friend.friend_none()
                     }

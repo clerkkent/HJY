@@ -365,7 +365,7 @@
                     background-size:80%,
                     80%;
                     background-position:center .55rem,
-                    center bottom;
+                    center .5rem;
                 }
                 .un_get {
                     width: 1.02399913rem; // 60px;
@@ -390,17 +390,20 @@
                     flex: 1; // 20px; // 60px;
                     height: .34133304rem; // 20px;
                     position: relative;
+                    width:.51199956rem; // 30px;
                     span {
-                        display: block;
+                        display:none;
                         height: 0;
                         width: 100%;
                         border-top: .01706665rem solid #686868; // 1px;
                         position: absolute;
                         left: 50%;
                         top: 50%;
+                        z-index:0;
                     }
                 }
                 .a_get {
+
                     @include backgroundset("../../images/v11/ic_novice_finish.png", center, center, .34133304rem);
                     span {
                         width: 85%;
@@ -408,6 +411,7 @@
                     }
                 }
                 .get {
+
                     @include backgroundset("../../images/v11/ic_novice_ing.png", center, center, .34133304rem);
                     span {
                         width: 88%;
@@ -415,6 +419,7 @@
                     }
                 }
                 .un_get {
+
                     @include backgroundset("../../images/v11/ic_novice_undone.png", center, center, .34133304rem);
                     span {
                         width: 92%;
@@ -503,11 +508,14 @@
             font-size: 13px;
             color: #666666;
             letter-spacing: 0;
+            span:nth-child(1) {
+            width:.37066652rem; // 10px;
+                }
+                span:nth-child(2) {
+                    flex: 1;
+                }
         }
-        p:nth-child(1) {}
-        p:nth-child(2) {
-            flex: 1;
-        }
+
         .icp {
             font-family: PingFangSC-Regular;
             font-size: .1773317rem; // 11px;

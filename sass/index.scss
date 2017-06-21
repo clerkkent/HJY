@@ -320,6 +320,7 @@ $background) {
     display: none;
     .popum {
         width: 4.8rem; // 240px
+
         z-index: 12;
         @include center-block;
         margin-top: 30%;
@@ -338,7 +339,8 @@ $background) {
         }
         .rule_main {
             height: auto;
-            overflow: hidden;
+             height:6rem;
+        overflow:scroll;
             font-family: PingFangSC-Regular;
             padding: 0 0.2rem;
             padding-bottom: 0.5rem;
@@ -877,7 +879,8 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         color: #FFFFFF;
         letter-spacing: 0;
         position: relative;
-        background-image: radial-gradient(48% 125%, #F4D28A 50%, #F3B93E 100%);
+        @include backgroundset("../images/friend/ic_invite_pic.png",center,center,100%);
+        // background-image: radial-gradient(48% 125%, #F4D28A 50%, #F3B93E 100%);
         .friend_back {
             display: inline-block;
             position: absolute;
@@ -888,7 +891,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             @include backgroundset("../images/login/ic_pay_return@3x.png",
             center,
             center,
-            100%)
+            100%);
         }
         .friend_title {
             position: relative;
@@ -901,6 +904,23 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             flex-direction: row;
             @include center-block;
             margin-top: 10%;
+            p{
+                text-align:center;
+                @include center-block;
+
+                font-family: PingFangSC-Regular;
+                line-height:.52906622rem; // 31px;
+                .number{
+                    font-size:.34133304rem; // 20px;
+                    color:#FFF;
+                    display:inline-block;
+
+                    width:1.79199847rem; // 105px;
+                    height:.52906622rem; // 31px;
+                    line-height:.52906622rem; // 31px;
+                    @include backgroundset("../images/friend/ic_invite_number.png",center,center,100%);
+                }
+            }
             .left {
                 width: 1.5rem; // 75px
                 height: 1.2rem; // 60px;
@@ -914,6 +934,10 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 margin-top: 0.1rem;
                 .r_first {
                     font-size: .24rem; // 12px
+                .txt{
+                    font-size:.25599978rem; // 15px;
+                    color:#000;
+                }
                     font-family: PingFangSC-Medium;
                     color: #51586A;
                     margin: 0;
@@ -956,28 +980,53 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             width: 100%;
             height: 1rem; // 50px
             position: absolute;
-            bottom: 0;
+            bottom: 5%;
             display: flex;
-            flex-direction: row;
+            flex-flow: row nowrap;
+            justify-content:space-around;
             .left,
             .right {
-                flex: 1;
+                width:2.93546416rem; // 172px;
+                height:1.02399913rem; // 60px;
                 font-family: PingFangSC-Regular;
-                font-size: .2rem;
+                font-size: .30479983rem; // 12px;
                 color: #51586A;
                 letter-spacing: 0;
                 margin-top: 0rem;
+                border-radius:3%;
+                border:.01706665rem solid #fff; // 2px;
                 .number {
-                    text-align: center;
                     margin: 0;
                     padding: 0;
                     margin-top: 0.1rem;
                     line-height: .5rem; // 25px
+                    text-align:left;
+                    transform:scale(.7);
+                    white-space:nowrap;
+
+                    margin-left:20%;
+                    i{
+                        font-size:.17066652rem; // 10px;
+                    }
                 }
                 .title {
-                    text-align: center;
                     line-height: .25rem;
+                    text-align:left;
+                    transform:scale(.7);
+                     white-space:nowrap;
+                    margin-left:20%;
+                    i{
+                        font-size:.17066652rem; // 10px;
+                    }
                 }
+            }
+            .left{
+                 @include backgroundset("../images/friend/ic_invite_money.png",10%,center,23%);
+                  background-color:rgba(#F4CB77,.5);
+            }
+            .right{
+                @include backgroundset("../images/friend/ic_invite_oil.png",10%,center,18%);
+                 background-color:rgba(#F4CB77,.5);
             }
             .center {
                 width: none;
@@ -1732,6 +1781,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     height: 11.36rem; // 568px
     transition: all .1s;
     -webkit-overflow-scrolling: touch;
+    overflow:hidden;
     header {
         flex: 1;
         text-align: center;
@@ -2742,7 +2792,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             height: 5.80266172rem; // 340px;
             @include backgroundset("../images/guide/ic_part1.png",
             center,
-            center,
+            bottom,
             90%);
             margin-top: .51199956rem; // 30px;
         }

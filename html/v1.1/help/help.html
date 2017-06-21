@@ -1,6 +1,6 @@
-<div style="width:100%;overflow:auto;">
+<div style="width:100%;overflow:auto;" scroll-height>
     <!--原生的滚动条，提升性能，减少BUG-->
-    <div class="help_v11" style="-webkit-overflow-scrolling: touch" scroll-height>
+    <div class="help_v11" style="-webkit-overflow-scrolling: touch">
         <header ng-if="page">
             <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">
                 <ion-slide ng-repeat="x in page">
@@ -32,7 +32,7 @@
             </div>
             <div class="second">
                 <a href="http://a1.7x24cc.com/phone_webChat.html?accountId=N000000010362&chatId=yykj-c5867180-39d1-11e7-bd22-61f4856f24a8">在线客服</a>
-                <a ng-click="call(4008518686)">客服电话</a>
+                <a ng-click="call('400-851-8686')">客服电话</a>
             </div>
             <div class="third">
                 服务时间：9:00-18:00（法定节假日除外）

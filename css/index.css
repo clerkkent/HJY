@@ -718,7 +718,8 @@ a:focus {
         background-size: 100%; }
       .friend_request .popum_wrap .popum .rule_main {
         height: auto;
-        overflow: hidden;
+        height: 6rem;
+        overflow: scroll;
         font-family: PingFangSC-Regular;
         padding: 0 0.2rem;
         padding-bottom: 0.5rem;
@@ -763,8 +764,8 @@ a:focus {
     color: #FFFFFF;
     letter-spacing: 0;
     position: relative;
-    background-image: -webkit-radial-gradient(48% 125%, #F4D28A 50%, #F3B93E 100%);
-    background-image: radial-gradient(48% 125%, #F4D28A 50%, #F3B93E 100%); }
+    background: url("../images/friend/ic_invite_pic.png") center center no-repeat;
+    background-size: 100%; }
     .friend_request header .friend_back {
       display: inline-block;
       position: absolute;
@@ -796,6 +797,25 @@ a:focus {
       bottom: 0;
       margin: auto;
       margin-top: 10%; }
+      .friend_request header .first p {
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        font-family: PingFangSC-Regular;
+        line-height: .52906622rem; }
+        .friend_request header .first p .number {
+          font-size: .34133304rem;
+          color: #FFF;
+          display: inline-block;
+          width: 1.79199847rem;
+          height: .52906622rem;
+          line-height: .52906622rem;
+          background: url("../images/friend/ic_invite_number.png") center center no-repeat;
+          background-size: 100%; }
       .friend_request header .first .left {
         width: 1.5rem;
         height: 1.2rem;
@@ -816,6 +836,9 @@ a:focus {
           height: .3rem;
           margin-bottom: .1rem;
           padding-left: .1rem; }
+          .friend_request header .first .right .r_first .txt {
+            font-size: .25599978rem;
+            color: #000; }
         .friend_request header .first .right .r_second {
           margin: 0;
           padding: 0; }
@@ -843,38 +866,66 @@ a:focus {
       width: 100%;
       height: 1rem;
       position: absolute;
-      bottom: 0;
+      bottom: 5%;
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
-      -webkit-flex-direction: row;
-          -ms-flex-direction: row;
-              flex-direction: row; }
+      -webkit-flex-flow: row nowrap;
+          -ms-flex-flow: row nowrap;
+              flex-flow: row nowrap;
+      -webkit-justify-content: space-around;
+          -ms-flex-pack: distribute;
+              justify-content: space-around; }
       .friend_request header .second .left,
       .friend_request header .second .right {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-            -ms-flex: 1;
-                flex: 1;
+        width: 2.93546416rem;
+        height: 1.02399913rem;
         font-family: PingFangSC-Regular;
-        font-size: .2rem;
+        font-size: .30479983rem;
         color: #51586A;
         letter-spacing: 0;
-        margin-top: 0rem; }
+        margin-top: 0rem;
+        -webkit-border-radius: 3%;
+                border-radius: 3%;
+        border: .01706665rem solid #fff; }
         .friend_request header .second .left .number,
         .friend_request header .second .right .number {
-          text-align: center;
           margin: 0;
           padding: 0;
           margin-top: 0.1rem;
-          line-height: .5rem; }
+          line-height: .5rem;
+          text-align: left;
+          -webkit-transform: scale(0.7);
+              -ms-transform: scale(0.7);
+                  transform: scale(0.7);
+          white-space: nowrap;
+          margin-left: 20%; }
+          .friend_request header .second .left .number i,
+          .friend_request header .second .right .number i {
+            font-size: .17066652rem; }
         .friend_request header .second .left .title,
         .friend_request header .second .right .title {
-          text-align: center;
-          line-height: .25rem; }
+          line-height: .25rem;
+          text-align: left;
+          -webkit-transform: scale(0.7);
+              -ms-transform: scale(0.7);
+                  transform: scale(0.7);
+          white-space: nowrap;
+          margin-left: 20%; }
+          .friend_request header .second .left .title i,
+          .friend_request header .second .right .title i {
+            font-size: .17066652rem; }
+      .friend_request header .second .left {
+        background: url("../images/friend/ic_invite_money.png") 10% center no-repeat;
+        background-size: 23%;
+        background-color: rgba(244, 203, 119, 0.5); }
+      .friend_request header .second .right {
+        background: url("../images/friend/ic_invite_oil.png") 10% center no-repeat;
+        background-size: 18%;
+        background-color: rgba(244, 203, 119, 0.5); }
       .friend_request header .second .center {
         width: none;
         height: 80%;
@@ -1583,7 +1634,8 @@ a:focus {
   height: 11.36rem;
   -webkit-transition: all .1s;
   transition: all .1s;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden; }
   .friend_game header {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -2065,7 +2117,8 @@ a:focus {
         background-size: 100%; }
       .friend_request_details .popum_wrap .popum .rule_main {
         height: auto;
-        overflow: hidden;
+        height: 6rem;
+        overflow: scroll;
         font-family: PingFangSC-Regular;
         padding: 0 0.2rem;
         padding-bottom: 0.5rem;
@@ -2557,7 +2610,7 @@ a:focus {
       width: 100%; }
     .guide section .tran01 {
       height: 5.80266172rem;
-      background: url("../images/guide/ic_part1.png") center center no-repeat;
+      background: url("../images/guide/ic_part1.png") center bottom no-repeat;
       background-size: 90%;
       margin-top: .51199956rem; }
     .guide section .tran02 {

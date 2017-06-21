@@ -24,7 +24,7 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
                 $scope.w = $scope.data.w;
                 $scope.d = $scope.data.d;
                 $scope.t = $scope.data.t;
-                $scope.c = data["result"]["checkin"].length;
+                $scope.c = data["result"]["checkin"][0]["checkin_num"];
                 $scope.toil = data["result"]["tmorrowOil"]
                 for (var i = 0; i < data["result"]["checkin"].length; i++) {
                     $scope.signx.push(moment(data["result"]["checkin"][i]["checkin_date"]).date())
@@ -60,7 +60,6 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
         for (var i = 0; i < $scope.strs.length; i++) {
             $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
         }
-        console.log($scope.theRequest)
         $scope.userid = $scope.theRequest.user_id;
         $scope.strs = $scope.theRequest.OIL_TOKEN;
         $scope.main_sign()
@@ -98,6 +97,7 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
             v11.get($rootScope.url_global + '/passport/service.php?c=task', list, $scope.strs).then(function(data) {
                 if (data["result"] != undefined) {
                     $scope.task = data["result"];
+                    console.log($scope.task)
                 } else {
                     $ionicPopup.alert({
                         title: '提示',
@@ -111,7 +111,7 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
         $scope.date();
         $scope.goget = function(x) {
             if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
-                _hmt.push(['_trackPageview', "/getprice"]);
+                _hmt.push(['_trackPageview', "/getprize"]);
             }
             var signlist = {
                 "jsonrpc": "2.0",
@@ -154,7 +154,6 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
         }
         $scope.userid = $scope.theRequest.user_id;
         $scope.strs = $scope.theRequest.OIL_TOKEN;
-        console.log($scope.strs)
         $scope.main_task()
     } else {
         webappSDK.getUserInfos(function(res) {
@@ -189,7 +188,8 @@ HJY.controller("v11_help", ["webappSDK", "$timeout", "$ionicBackdrop", "$scope",
         $(".pagenicon_v11").css({ width: ".14133304rem" })
         $(".pagenicon_v11").eq(x).css({ width: ".34133304rem" })
     }
-    $scope.call = function(x) {
-        webappSDK.call(x)
+    $scope.call = function(phone) {
+        console.log(phone)
+        webappSDK.call(phone)
     }
 }])
