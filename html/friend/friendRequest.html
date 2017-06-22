@@ -12,7 +12,7 @@
                     </p>
                 </div>-->
                 <p>
-                    <span class="number">5</span>
+                    <span class="number">{{allFriendNum}}</span>
                     <br>
                     <span class="txt">成功邀请用户数</span>
                 </p>
@@ -20,14 +20,14 @@
             <div class="second">
                 <div class="left">
                     <p class="number">累计获得红包金额</p>
-                    <p class="title">1000<i>元</i></p>
+                    <p class="title">{{package}}<i> 元</i></p>
                 </div>
                 <!--<div class="center">
 
                 </div>-->
                 <div class="right">
                     <p class="number">累计获得油滴数</p>
-                    <p class="title">200<i>油滴</i></p>
+                    <p class="title">{{allOilNum}}<i> 油滴</i></p>
                 </div>
             </div>
         </header>
@@ -43,8 +43,9 @@
                             <li ng-repeat="x in frienddetails">
                                 <span class="phone_number">{{x.phone | encryPt}}</span>
                                 <span class="oil_drop">
-                                    <b style="font-weight:500;" ng-if="x.get_oildrop_num">+{{x.get_oildrop_num}}油滴</b>
-                                    <b style="font-weight:500;color:#51586a" ng-if="!x.get_oildrop_num">未加油</b>
+                                    <b style="font-weight:500;" ng-if="x.get_oildrop_num!=0&&x.get_oildrop_num&&(!x.get_packets||x.get_packets==0)">+{{x.get_oildrop_num}}油滴</b>
+                                    <b style="font-weight:500;" ng-if="x.get_packets!=0">+{{x.get_packets}}元红包</b>
+                                    <b style="font-weight:500;color:#51586a" ng-if="(!x.get_oildrop_num||x.get_oildrop_num==0)&&(!x.get_packets||x.get_packets==0)">未加油</b>
                                 </span>
                             </li>
                         </ul>

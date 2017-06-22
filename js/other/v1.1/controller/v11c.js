@@ -16,10 +16,21 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
         $scope.signx = [];
         v11.get($rootScope.url_global + '/passport/service.php?c=account', list, $scope.strs).then(function(data) {
             if (data["result"] != undefined) {
-                if (data["result"]["message"] == "您今天已经签到，请明天再来") {
-                    $(".sign_popum").hide();
-                    $ionicBackdrop.release();
-                }
+                $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+                    console.log(data["result"]["message"] == "您今天已经签到，请明天再来")
+                    if (data["result"]["message"] == "您今天已经签到，请明天再来") {
+                        // $(".sign_popum").hide();
+                        // $ionicBackdrop.release();
+                        console.log(1)
+                    } else {
+                        $ionicBackdrop.retain();
+                        $(".sign_v11").show()
+                        $timeout(function() {
+                            $(".sign_v11").hide()
+                            $ionicBackdrop.release();
+                        }, 2000)
+                    }
+                })
                 $scope.data = v11.date(data["result"]["year"], data["result"]["month"] - 1, data["result"]["day"]);
                 $scope.w = $scope.data.w;
                 $scope.d = $scope.data.d;
@@ -125,7 +136,6 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
                 "id": 1
             }
             v11.get($rootScope.url_global + '/passport/service.php?c=task', signlist).then(function(data) {
-                console.log(data)
                 if (data["result"].code == 0) {
                     $scope.date();
                     $(".task_popum").show()
@@ -164,16 +174,25 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
         })
     }
 }])
-HJY.controller("v11_help", ["webappSDK", "$timeout", "$ionicBackdrop", "$scope", "$state", "login_logic", "v11", "$rootScope", "_", "$ionicPopup", "$http", function(webappSDK, $timeout, $ionicBackdrop, $scope, $state, login_logic, v11, $rootScope, _, $ionicPopup, $http) {
+HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "$scope", "$state", "login_logic", "v11", "$rootScope", "_", "$ionicPopup", "$http", function($sce, webappSDK, $timeout, $ionicBackdrop, $scope, $state, login_logic, v11, $rootScope, _, $ionicPopup, $http) {
     $("title").html("帮助")
     $scope.img = ["images/v11/ic_help_directions@3x.png", "images/v11/ic_help_Red@3x.png", "images/v11/ic_help_Package@3x.png", "images/v11/ic_help_account@3x.png", "images/v11/ic_help_invoice@3x.png", "images/v11/ic_help_refunds@3x.png"]
-    $http.get('mock/help/help (2).json').success(function(data) {
-        $scope.page = _.toArray(_.groupBy(data, function(num, index) { return Math.floor(index / 4); }))
-        $scope.help_information = data[1]["con"];
+    var list = {
+        "jsonrpc": "2.0",
+        "method": "helperList",
+        "params": [],
+        "id": 1
+    }
+    v11.get($rootScope.url_global + '/operate/index.php?c=helper', list, $scope.strs).then(function(data) {
+        $scope.page = _.toArray(_.groupBy(data["result"], function(num, index) { return Math.floor(index / 4); }))
+        $scope.help_information = data["result"][0]["con"];
+        $scope.title = data["result"][0]["type"];
         login_logic.deal_help()
     })
-    $scope.se = function(x) {
+    $scope.se = function(x, y) {
+        $scope.title = y;
         $scope.help_information = x;
+        console.log(x)
     }
     $scope.gonote = function() {
         if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
@@ -182,14 +201,33 @@ HJY.controller("v11_help", ["webappSDK", "$timeout", "$ionicBackdrop", "$scope",
         $state.go("help_guide")
     }
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-        $(".pagenicon_v11").eq(0).css({ width: ".34133304rem" })
+        $(".pagenicon_v11").eq(0).css({ width: ".34133304rem" });
+        $(".slider-slide ul li").eq(0).find("span").addClass("select")
+        $(".slider-slide ul li").click(function() {
+            $(".slider-slide ul li").find("span").removeClass("select")
+            $(this).find("span").addClass("select")
+        })
     })
     $scope.slideHasChanged = function(x) {
         $(".pagenicon_v11").css({ width: ".14133304rem" })
         $(".pagenicon_v11").eq(x).css({ width: ".34133304rem" })
     }
+    $scope.trans = function(str) {
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        str1 = HTMLDecode(str)
+        var doc = "<div>" + str1 + "</div>";
+        var a = [doc];
+        var xx = [];
+        return a;
+
+    }
     $scope.call = function(phone) {
-        console.log(phone)
         webappSDK.call(phone)
     }
 }])

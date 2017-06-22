@@ -1,12 +1,12 @@
 <div style="width:100%;overflow:auto;" scroll-height>
-    <!--原生的滚动条，提升性能，减少BUG-->
-    <div class="help_v11" style="-webkit-overflow-scrolling: touch">
+
+    <div class="help_v11" style="-webkit-overflow-scrolling: touch" scroll-height>
         <header ng-if="page">
             <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">
                 <ion-slide ng-repeat="x in page">
                     <ul>
-                        <li ng-repeat="y in x track by $index" ng-click="se(y.con)" style="background-image:url({{img[$index]}});">
-                            {{y.type}}
+                        <li ng-repeat="y in x track by $index" ng-click="se(y.con,y.type)" style="background-image:url({{y.img_url}});">
+                            <span>{{y.type}}</span>
                         </li>
                     </ul>
                 </ion-slide>
@@ -16,12 +16,14 @@
             </div>
         </header>
         <section>
-            <h3>热门问题</h3>
+            <h3>{{title}}</h3>
             <ul class="main_content_help">
                 <li ng-repeat="x in help_information">
-                    <p class="question"><span>{{x.question}}</span><span class="help_iconb"></span></p>
+                    <p class="question"><span>{{x.title}}</span><span class="help_iconb"></span></p>
                     <div class="answer" style="display: none">
-                        <p ng-repeat="y in x.answer"> {{y}}</p>
+                        <div ng-repeat="y in trans(x.answer)">
+                            <div ng-bind-html="y"></div>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -32,7 +34,7 @@
             </div>
             <div class="second">
                 <a href="http://a1.7x24cc.com/phone_webChat.html?accountId=N000000010362&chatId=yykj-c5867180-39d1-11e7-bd22-61f4856f24a8">在线客服</a>
-                <a ng-click="call('400-851-8686')">客服电话</a>
+                <a class="se" ng-click="call('400-851-8686')">客服电话</a>
             </div>
             <div class="third">
                 服务时间：9:00-18:00（法定节假日除外）

@@ -146,13 +146,11 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     $scope.url = location.search; //参数
     $scope.theRequest = new Object();
     friend.popum();
-    // webappSDK.GetActiveId(1);
     $scope.share = function() { //分享原生H5指令交互
         var content = {
             title: "必须看！老司机教你8.5折充油卡！",
             content: "注册就送200元加油券，车主必备，老司机快来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
-            // url: $rootScope.url_global + "/wechat/?" + "" + "#/game/main",
             url: ""
         }
         webappSDK.share(content);
@@ -160,7 +158,6 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
 
     webappSDK.getUserInfos(function(res) { //webbriage入口
         var info = JSON.parse(res)
-
         $scope.userid = info.user_id
         $scope.strs = info.OIL_TOKEN
         if ($scope.userid != null) {
@@ -172,18 +169,28 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
                 }],
                 "id": 1
             }
+            console.log(1)
             var promise_scode = login_logic.submit(list, $scope.strs);
             promise_scode.then(function(data) {
-                console.log(data)
                 if (data.result != undefined) {
-                    $scope.todayOilNum = data["result"]["todayOilNum"]
-                    $scope.allOilNum = data["result"]["allOilNum"]
-                    $scope.allFriendNum = data["result"]["allFriendNum"]
-                    $scope.frienddetails = data["result"]["list"]
+                    $scope.todayOilNum = data["result"]["todayOilNum"];
+                    $scope.allOilNum = data["result"]["allOilNum"];
+                    $scope.allFriendNum = data["result"]["allFriendNum"];
+                    if (data["result"]["list"] == 0 && data["result"]["oldList"] != 0) {
+                        $scope.frienddetails = data["result"]["oldList"];
+                    } else if (data["result"]["list"] != 0 && data["result"]["oldList"] == 0) {
+                        $scope.frienddetails = data["result"]["list"];
+                    } else if (data["result"]["list"] != 0 && data["result"]["oldList"] != 0) {
+                        $scope.frienddetails = data["result"]["list"].concat(data["result"]["oldList"]);
+                    } else {
+                        $scope.frienddetails = []
+                    }
+                    $scope.package = data["result"]["allPackets"];
                     if ($scope.frienddetails == 0) {
                         friend.friend_none()
                     }
                 } else { //错误信息弹窗
+
                     $ionicPopup.alert({
                         title: '提示',
                         template: data["error"]["message"],
@@ -217,14 +224,23 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             var promise_scode = login_logic.submit(list, $scope.strs);
             promise_scode.then(function(data) {
                 if (data.result != undefined) {
-                    $scope.todayOilNum = data["result"]["todayOilNum"]
-                    $scope.allOilNum = data["result"]["allOilNum"]
-                    $scope.allFriendNum = data["result"]["allFriendNum"]
-                    $scope.frienddetails = data["result"]["list"]
-                    console.log(data)
+                    $scope.todayOilNum = data["result"]["todayOilNum"];
+                    $scope.allOilNum = data["result"]["allOilNum"];
+                    $scope.allFriendNum = data["result"]["allFriendNum"];
+                    if (data["result"]["list"] == 0 && data["result"]["oldList"] != 0) {
+                        $scope.frienddetails = data["result"]["oldList"];
+                    } else if (data["result"]["list"] != 0 && data["result"]["oldList"] == 0) {
+                        $scope.frienddetails = data["result"]["list"];
+                    } else if (data["result"]["list"] != 0 && data["result"]["oldList"] != 0) {
+                        $scope.frienddetails = data["result"]["list"].concat(data["result"]["oldList"]);
+                    } else {
+                        $scope.frienddetails = []
+                    }
+                    $scope.package = data["result"]["allPackets"];
                     if ($scope.frienddetails == 0) {
                         friend.friend_none()
                     }
+
                 } else { //错误信息弹窗
                     $ionicPopup.alert({
                         title: '提示',

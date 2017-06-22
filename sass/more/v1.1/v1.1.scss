@@ -11,6 +11,7 @@
         width: 2.38933129rem; // 140px;
         height: 3.41333042rem; // 200px;
         font-family: ComicSansMS-Bold;
+        display:none;
         letter-spacing: 0;
         z-index: 12;
         @include backgroundset("../../images/v11/ic_check_oil.png",-0rem,center,120%);
@@ -166,14 +167,24 @@
                     flex-flow: row nowrap;
                     justify-content: flex-start;
                     li {
-                        padding-top: 1.1rem;
+                        padding-top: 1.2rem;
                         font-family: PingFangSC-Regular;
-                        margin:0 .3rem;
+                        width:25%;
                         font-size: .22186648rem; // 13px
                         color: #606060;
                         letter-spacing: 0;
                         text-align: center;
-                        @include backgroundset("../../images/v11/ic_help_directions.png", center, center, 80%)
+                        span{
+                            display:inline-block;
+                            width:1.02399913rem; // 60px;
+                            height:.4266663rem; // 25px;
+
+                        }
+                        .select{
+                            color:#E2BC85;
+                            @include backgroundset("../../images/v11/ic_help_line.png",center,bottom,100%);
+                        }
+                        @include backgroundset("../../images/v11/ic_help_directions.png", center, center, 50%)
                     }
                 }
             }
@@ -228,7 +239,7 @@
                 .answer {
                     padding: .36rem 0; // 18px 0;
                     border-top: .04rem dotted #CCCCCC;
-                    p {
+                    div {
                         font-size: .24rem; // 12px;
                         font-family: PingFangSC-Regular;
                         color: #999999;
@@ -262,8 +273,14 @@
                 height: .68266608rem; // 40px;
                 border: .0341333rem solid #E2BC85; // 2px;
                 text-align: center;
+                text-indent:.5rem;
                 line-height: .68266608rem; // 40px;
                 margin: auto;
+                border-radius:3%;
+                @include backgroundset("../../images/v11/ic_help_service@3x.png",.2rem,center,25%)
+            }
+            .se{
+                background-image:url("../../images/v11/ic_help_phone@3x.png")
             }
         }
         .third {

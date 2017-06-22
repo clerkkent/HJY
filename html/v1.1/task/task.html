@@ -6,7 +6,7 @@
             <p class="second">奖品已发放到您的账户</p>
         </div>
         <header>
-            <h3>新手奖励计划</h3>
+            <h3>奖励计划</h3>
             <div class="fourth">
                 <ul class="pic">
                     <div ng-repeat="x in task track by $index">
@@ -43,7 +43,8 @@
             <div class="task_list" ng-repeat="x in task track by $index">
                 <p class="til">
                     <span class="fir">{{x.title}}</span>
-                    <span class="sec">{{x.oil_number}}<i>滴油</i></span>
+                    <span class="sec"><i ng-if="x.oil_number!=0">{{x.oil_number}}滴油</i><br/></span>
+                    <!--<i ng-if="x.packet_name!=''">{{x.packet_name}}</i>-->
                 </p>
                 <p class="des">
                     {{x.des}}

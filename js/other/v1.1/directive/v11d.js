@@ -14,6 +14,7 @@ HJY.directive('v11Popum', ["$timeout", "$ionicBackdrop", function($timeout, $ion
     return {
         restrict: 'AE',
         link: function(scope, element, attr) {
+            console.log(scope.data)
             $ionicBackdrop.retain();
             $(element).show()
             $timeout(function() {
