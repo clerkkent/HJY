@@ -24,9 +24,9 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
                         console.log(1)
                     } else {
                         $ionicBackdrop.retain();
-                        $(".sign_v11").show()
+                        $(".sign_v11 .sign_popum").show()
                         $timeout(function() {
-                            $(".sign_v11").hide()
+                            $(".sign_v11 .sign_popum").hide()
                             $ionicBackdrop.release();
                         }, 2000)
                     }
@@ -213,17 +213,18 @@ HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "
         $(".pagenicon_v11").eq(x).css({ width: ".34133304rem" })
     }
     $scope.trans = function(str) {
-        function HTMLDecode(text) {
-            var temp = document.createElement("div");
-            temp.innerHTML = text;
-            var output = temp.innerText || temp.textContent;
-            temp = null;
-            return output;
-        }
-        str1 = HTMLDecode(str)
-        var doc = "<div>" + str1 + "</div>";
-        var a = [doc];
+        // function HTMLDecode(text) {
+        //     var temp = document.createElement("div");
+        //     temp.innerHTML = text;
+        //     var output = temp.innerText || temp.textContent;
+        //     temp = null;
+        //     return output;
+        // }
+        // str1 = HTMLDecode(str)
+        // var doc = "<div>" + str1 + "</div>";
+        var a = [str];
         var xx = [];
+
         return a;
 
     }

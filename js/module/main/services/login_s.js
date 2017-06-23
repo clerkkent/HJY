@@ -555,14 +555,14 @@ HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScop
         wx.ready(function() {
             console.log($rootScope.share)
             wx.onMenuShareTimeline({
-                title: "必须看！老司机教你8.5折充油卡！", // 分享标题
+                title: "200元加油红包免费领，加油低至8.5折", // 分享标题
                 link: $rootScope.share, // 分享链接
                 imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
                     // 分享图标
             });
             wx.onMenuShareAppMessage({
                 title: "必须看！老司机教你8.5折充油卡！",
-                desc: "注册就送200元加油券，车主必备，老司机快来~",
+                desc: "全国中石油/中石化通用，最快3分钟到账，十万车主都在用，老司机速来~",
                 link: $rootScope.share,
                 imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
             });
@@ -573,14 +573,14 @@ HJY.factory("wxsdk", ["$http", "$q", "$rootScope", function($http, $q, $rootScop
     factory.shares = function() {
         wx.ready(function() {
             wx.onMenuShareTimeline({
-                title: "必须看！老司机教你8.5折充油卡！", // 分享标题
+                title: "200元加油红包免费领，加油低至8.5折!", // 分享标题
                 link: $rootScope.share, // 分享链接
                 imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
                     // 分享图标
             });
             wx.onMenuShareAppMessage({
-                title: "必须看！老司机教你8.5折充油卡！",
-                desc: "注册就送200元加油券，车主必备，老司机快来~",
+                title: "200元加油红包免费领，加油低至8.5折!",
+                desc: "全国中石油/中石化通用，最快3分钟到账，十万车主都在用，老司机速来~",
                 link: $rootScope.share,
                 imgUrl: "http://www.ihaomu.com/wechat/images/share.jpg"
             });

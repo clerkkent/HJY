@@ -44,7 +44,7 @@
                                 <span class="phone_number">{{x.phone | encryPt}}</span>
                                 <span class="oil_drop">
                                     <b style="font-weight:500;" ng-if="x.get_oildrop_num!=0&&x.get_oildrop_num&&(!x.get_packets||x.get_packets==0)">+{{x.get_oildrop_num}}油滴</b>
-                                    <b style="font-weight:500;" ng-if="x.get_packets!=0">+{{x.get_packets}}元红包</b>
+                                    <b style="font-weight:500;" ng-if="x.get_packets!=0&&x.get_packets">+{{x.get_packets}}元红包</b>
                                     <b style="font-weight:500;color:#51586a" ng-if="(!x.get_oildrop_num||x.get_oildrop_num==0)&&(!x.get_packets||x.get_packets==0)">未加油</b>
                                 </span>
                             </li>

@@ -43,7 +43,8 @@
             <div class="task_list" ng-repeat="x in task track by $index">
                 <p class="til">
                     <span class="fir">{{x.title}}</span>
-                    <span class="sec"><i ng-if="x.oil_number!=0">{{x.oil_number}}滴油</i><br/></span>
+                    <!--<span class="sec"><i class="oil" ng-if="x.oil_number!=0">{{x.oil_number}}</i><i class="packet" ng-if="x.packet!='0'">{{x.packet}}</i><br/></span>-->
+                    <span class="sec"><i  ng-if="x.oil_number!=0">{{x.oil_number}}油滴</i></span>
                     <!--<i ng-if="x.packet_name!=''">{{x.packet_name}}</i>-->
                 </p>
                 <p class="des">

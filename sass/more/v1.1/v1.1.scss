@@ -456,7 +456,7 @@
             margin: .3rem auto;
             overflow: hidden;
             .til {
-                margin-top: 5%;
+
                 .fir {
                     font-family: PingFangSC-Medium;
                     font-size: .25599978rem; // 15px;
@@ -471,6 +471,15 @@
                     margin-left: .5rem;
                     i {
                         font-size: .20479983rem; // 12px;
+                        display:inline-block;
+                        padding:.3rem;
+                        padding-left:0;
+                    }
+                    .oil{
+                        @include backgroundset("../../images/friend/ic_invite_money.png",left,center,30%)
+                    }
+                    .packet{
+                        @include backgroundset("../../images/friend/ic_invite_oil.png",left,center,30%)
                     }
                 }
             }

@@ -148,8 +148,8 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     friend.popum();
     $scope.share = function() { //分享原生H5指令交互
         var content = {
-            title: "必须看！老司机教你8.5折充油卡！",
-            content: "注册就送200元加油券，车主必备，老司机快来~",
+            title: "200元加油红包免费领，加油低至8.5折",
+            content: "全国中石油/中石化通用，最快3分钟到账，十万车主都在用，老司机速来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
             url: ""
         }
@@ -169,7 +169,7 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
                 }],
                 "id": 1
             }
-            console.log(1)
+
             var promise_scode = login_logic.submit(list, $scope.strs);
             promise_scode.then(function(data) {
                 if (data.result != undefined) {
@@ -232,15 +232,17 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
                     } else if (data["result"]["list"] != 0 && data["result"]["oldList"] == 0) {
                         $scope.frienddetails = data["result"]["list"];
                     } else if (data["result"]["list"] != 0 && data["result"]["oldList"] != 0) {
+                        console.log(data["result"]["oldList"])
                         $scope.frienddetails = data["result"]["list"].concat(data["result"]["oldList"]);
                     } else {
                         $scope.frienddetails = []
                     }
+                    console.log($scope.frienddetails)
                     $scope.package = data["result"]["allPackets"];
                     if ($scope.frienddetails == 0) {
                         friend.friend_none()
                     }
-
+                    console.log(data)
                 } else { //错误信息弹窗
                     $ionicPopup.alert({
                         title: '提示',
@@ -261,8 +263,8 @@ HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPo
     webappSDK.GetActiveId(1);
     $scope.share = function() { //分享原生H5指令交互
         var content = {
-            title: "必须看！老司机教你8.5折充油卡！",
-            content: "注册就送200元加油券，车主必备，老司机快来~",
+            title: "200元加油红包免费领，加油低至8.5折",
+            content: "全国中石油/中石化通用，最快3分钟到账，十万车主都在用，老司机速来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
             // url: $rootScope.url_global + "/wechat/?#/game/main"
             url: ""
