@@ -37,7 +37,7 @@
                     width: 100%;
                     height: 2.39572193rem;
                     position: absolute;
-                    @include backgroundset("../../images/active/tanchuang(1).png", center, center, 70%);
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/tanchuang(1).png", center, center, 70%);
                     top: -2.09572193rem;
                     left: 0;
                     z-index: 200;
@@ -64,7 +64,7 @@
             position: absolute;
             width: 1.57433155rem; // 92px;
             height: 1.12941176rem; // 66px;
-            @include backgroundset("../../images/active/ic_zong.png", center, center, 90%);
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/ic_zong.png", center, center, 90%);
             top: 20%;
             right: 0;
             z-index: 200;
@@ -72,13 +72,13 @@
             // animation: db 1s ease;
         }
         .aicon2 {
-            @include backgroundset("../../images/active/zhongjiang.png", center, top, 90%);
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/zhongjiang.png", center, top, 90%);
             transform: scale(1.3);
         }
         header {
             height: 2.98666412rem; // 175px
             width: 100%;
-            background-image: url("../../images/land/H5_gold.png");
+            background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_gold.png");
             background-repeat: no-repeat;
             background-position: top center;
             background-size: 100%;
@@ -88,7 +88,7 @@
                 height: 2.59413112rem; // 152px
                 @include center-block;
                 font-family: PingFangSC-Regular;
-                @include backgroundset("../../images/land/H5_mountain 2.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_mountain 2.png",
                 center,
                 center,
                 100%);
@@ -98,7 +98,7 @@
                 //     height:.85333261rem; // 50px;
                 //     width:100%;
                 //     position:relative;
-                //     @include backgroundset("../../images/land/H5_car.png",left,center,70%);
+                //     @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_car.png",left,center,70%);
                 //     p{
                 //         width:1.43359878rem; // 84px;
                 //         height:.47786626rem; // 28px;
@@ -112,7 +112,7 @@
                 //         @include center-block;
                 //         margin-right:0%;
                 //         text-indent:0.3rem;
-                //         @include backgroundset("../../images/land/H5_Order.png",0.08rem,center,20%);
+                //         @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_Order.png",0.08rem,center,20%);
                 //     }
                 // }
                 .type {
@@ -156,7 +156,7 @@
                     text-align: center;
                     font-size: .22186648rem; // 13px;
                     line-height: .92159921rem; // 54px;
-                    background-image: url(../../images/land/H5_left.png), url(../../images/land/H5_right.png);
+                    background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_left.png), url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_right.png);
                     background-repeat: no-repeat, no-repeat;
                     background-position: 25% center, 75% center;
                     background-size: 15%, 15%;
@@ -182,7 +182,7 @@
                         position: absolute;
                         right: 10%;
                         bottom: 0;
-                        @include backgroundset("../../images/land/ic_home_info@3x.png",
+                        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_home_info@3x.png",
                         center,
                         center,
                         100%)
@@ -194,7 +194,7 @@
                     padding-left: .68266608rem; // 40px;
                     font-family: PingFangSC-Regular;
                     font-size: .23893313rem; // 14px;
-                    @include backgroundset("../../images/land/H5_icon.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_icon.png",
                     0.15rem,
                     center,
                     6%);
@@ -218,7 +218,7 @@
                 border-radius: 2%;
                 header {
                     height: 50%;
-                    @include backgroundset("../../images/land/ic_popup_huijiayou@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_popup_huijiayou@3x.png",
                     center,
                     15%,
                     30%);
@@ -265,7 +265,7 @@
                                 height: .20479983rem; // 12px;
                                 display: inline-block;
                                 margin: 0;
-                                @include backgroundset("../../images/land/ic_home_rmb@3x.png",
+                                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_home_rmb@3x.png",
                                 center,
                                 center,
                                 150%);
@@ -306,7 +306,7 @@
                 text-align: center;
                 font-size: .22186648rem; // 13px;
                 color: #999999;
-                background-image: url(../../images/land/H5_left.png), url(../../images/land/H5_right.png);
+                background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_left.png), url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_right.png);
                 background-repeat: no-repeat, no-repeat;
                 background-position: 15% center, 85% center;
                 background-size: 20%, 20%;
@@ -365,7 +365,7 @@
             .help {
                 color: #F95B4E;
                 padding-left: .30133304rem; // 20px;
-                @include backgroundset("../../images/land/H5_help.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_help.png",
                 80%,
                 center,
                 4%);
@@ -417,7 +417,7 @@
                     border-radius: 20%;
                     position: absolute;
                     left: 19%;
-                    @include backgroundset("../../images/game/H5_Check@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/H5_Check@3x.png",
                     center,
                     center,
                     100%);
@@ -449,7 +449,7 @@
                     flex-flow: column;
                     margin: 0.1rem 0.06rem;
                     justify-content: space-between;
-                    @include backgroundset("../../images/land/H5_Option_n.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_Option_n.png",
                     center,
                     center,
                     100%);
@@ -471,7 +471,7 @@
                     }
                 }
                 .is_sellect {
-                    @include backgroundset("../../images/land/H5_Option_h.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_Option_h.png",
                     center,
                     center,
                     100%);
@@ -508,7 +508,7 @@
                 font-size: .20479983rem; // 12px;
                 color: #F95B4E;
                 margin-top: .40306643rem; // 16px;
-                @include backgroundset("../../images/land/ic_Order.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_Order.png",
                 center,
                 center,
                 100%);
@@ -521,7 +521,7 @@
                 font-size: .20479983rem; // 12px;
                 color: #F95B4E;
                 margin-top: .27306643rem; // 16px;
-                @include backgroundset("../../images/land/ic_ service ic_service.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_ service ic_service.png",
                 center,
                 center,
                 50%);
@@ -568,7 +568,7 @@
                     text-indent: 0.2rem;
                     color: #6DC152;
                     margin-left: 0.2rem;
-                    @include backgroundset("../../images/land/ic_recording_green@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_recording_green@3x.png",
                     0.1rem,
                     0.18rem,
                     100%);
@@ -576,18 +576,18 @@
                     padding-left: .30719974rem; // 18px;
                 }
                 .pay_success {
-                    @include backgroundset("../../images/land/ic_recording_red@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_recording_red@3x.png",
                     left,
                     0.18rem,
                     100%);
                 }
                 .un_pay {
-                    background-image: url("../../images/land/ic_recording_Orange@3x.png");
+                    background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_recording_Orange@3x.png");
                 }
                 .icon_order {
                     width: .30719974rem; // 18px
                     height: .30719974rem; // 18px;
-                    @include backgroundset("../../images/login/ic_pay_arrow_n@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_pay_arrow_n@3x.png",
                     center,
                     center,
                     100%);
@@ -653,7 +653,7 @@
             height: 1.87733173rem; // 110px;
             width: 100%;
             margin-bottom: .17066652rem; // 10px;
-            @include backgroundset("../../images/land/ic_details_background@2x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_background@2x.png",
             center,
             center,
             100%);
@@ -662,7 +662,7 @@
                 height: 100%;
                 width: 1.62133195rem; // 95px;
                 @include center-block;
-                @include backgroundset("../../images/land/ic_pay_suc_small@3x.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_suc_small@3x.png",
                 center,
                 0.05rem,
                 80%);
@@ -681,7 +681,7 @@
             font-size: .22186648rem; // 13px;
             font-family: PingFangSC-Regular;
             color: #666666;
-            @include backgroundset("../../images/land/ic_details_CNPC.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_CNPC.png",
             0.5rem,
             center,
             9%);
@@ -693,7 +693,7 @@
             }
         }
         .second_icon {
-            background-image: url("../../images/land/ic_details_SINOPEC@2x.png");
+            background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_SINOPEC@2x.png");
         }
         footer {
             background-color: #FFF;
@@ -710,7 +710,7 @@
                 width: 100%;
                 max-height: 5.87092832rem; // 344px;
                 overflow-y: hidden;
-                background-image: url("../../images/land/ic_details_frame_l@3x.png"), url("../../images/land/ic_details_frame_r@3x.png");
+                background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_frame_l@3x.png"), url("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_frame_r@3x.png");
                 background-size: 30%, 30%;
                 background-position: -0.15rem -0.25rem, 104% -0.25rem;
                 border: 1px solid #D8BD99;
@@ -723,7 +723,7 @@
                     text-indent: 0.15rem;
                     color: #6DC152;
                     margin: .17066652rem auto; // 10px auto;
-                    @include backgroundset("../../images/land/ic_recording_green@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_recording_green@3x.png",
                     left,
                     top,
                     100%);
@@ -765,7 +765,7 @@
                     margin-top: 0;
                     span {
                         padding-left: .30719974rem; // 18px;
-                        @include backgroundset("../../images/land/ic_details_recharge@3x.png",
+                        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_recharge@3x.png",
                         left,
                         center,
                         14%);
@@ -774,11 +774,11 @@
                         // margin-left: -0.2rem;
                     }
                     .time {
-                        background-image: url(../../images/land/ic_details_time@3x.png);
+                        background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_time@3x.png);
                         background-size: 20%;
                     }
                     .state {
-                        background-image: url(../../images/land/ic_details_state@3x.png);
+                        background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_state@3x.png);
                         background-size: 20%;
                     }
                 }
@@ -801,7 +801,7 @@
                             width: .34133304rem; // 20px;
                             height: .34133304rem; // 20px;
                             margin-right: 2%;
-                            @include backgroundset("../../images/land/ic_details_option_n@3x.png",
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_option_n@3x.png",
                             center,
                             center,
                             60%);
@@ -821,7 +821,7 @@
                             width: .34133304rem; // 20px;
                             height: .34133304rem; // 20px;
                             margin-right: 2%;
-                            @include backgroundset("../../images/land/ic_details_option_h@3x.png",
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_option_h@3x.png",
                             center,
                             center,
                             100%);
@@ -842,7 +842,7 @@
                             height: .34133304rem; // 20px;
                             margin-right: 2%;
                             position: relative;
-                            @include backgroundset("../../images/land/ic_details_option@3x.png",
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_option@3x.png",
                             center,
                             center,
                             80%);
@@ -864,7 +864,7 @@
                             height: .34133304rem; // 20px;
                             margin-right: 2%;
                             position: relative;
-                            @include backgroundset("../../images/land/ic_pay_un@3x.png",
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_un@3x.png",
                             center,
                             center,
                             80%);
@@ -879,7 +879,7 @@
                         .icon_re {
                             width: .55668449rem;
                             height: .55668449rem;
-                            @include backgroundset("../../images/land/ic_pay_Details@3x.png",
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_Details@3x.png",
                             center,
                             center,
                             60%);
@@ -901,7 +901,7 @@
                                 padding-top: 0.1rem;
                                 color: white;
                                 z-index: 10;
-                                @include backgroundset("../../images/land/ic_pay_bubble@3x.png",
+                                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_bubble@3x.png",
                                 center,
                                 center,
                                 100%);
@@ -923,7 +923,7 @@
                             height: .34133304rem; // 20px;
                             margin-right: 2%;
                             position: relative;
-                            @include backgroundset("../../images/land/ic_pay_fail@3x.png",
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_fail@3x.png",
                             center,
                             center,
                             80%);
@@ -938,7 +938,7 @@
                         .icon_re {
                             width: .55668449rem;
                             height: .55668449rem;
-                            @include backgroundset("../../images/land/ic_pay_Details@3x.png",
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_Details@3x.png",
                             center,
                             center,
                             60%);
@@ -960,7 +960,7 @@
                                 padding-left: 0.3rem;
                                 padding-top: 0.1rem;
                                 color: white;
-                                @include backgroundset("../../images/land/ic_pay_bubble@3x.png",
+                                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_bubble@3x.png",
                                 center,
                                 center,
                                 100%);
@@ -996,7 +996,7 @@
             height: 100%;
             background-color: #f5f5f5;
             margin-top: .17066652rem; // 10px;
-            @include backgroundset("../../images/login/ic_details_no@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_details_no@3x.png",
             center,
             45%,
             50%);
@@ -1042,7 +1042,7 @@
         header {
             width: 100%;
             height: 6.62032086rem; // 270px;
-            @include backgroundset("../../images/active/Top Bar.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/Top Bar.png",
             top,
             center,
             100%);
@@ -1050,7 +1050,7 @@
         section {
             width: 100%;
             height: 18.39037433rem; // 1250px;
-            @include backgroundset("../../images/active/Group 22.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/Group 22.png",
             center,
             .17112299rem,
             100%);
@@ -1080,7 +1080,7 @@
     .funcpage_register {
         width: 100%;
         height: 18.34665101rem; // 1075px;
-        @include backgroundset("../../images/land/register/TopBar_2.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/register/TopBar_2.png",
         center,
         top,
         100%);
@@ -1091,7 +1091,7 @@
             width: 100%;
             height: 100%;
             display: none;
-            @include backgroundset("../../images/land/register/Group(1).png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/register/Group(1).png",
             right,
             0.806665rem,
             90%);
@@ -1102,7 +1102,7 @@
                 height: 50px;
                 @include center-block;
                 margin-top: 5.81999563rem; // 300px
-                @include backgroundset("../../images/land/register/Rectangle 62.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/register/Rectangle 62.png",
                 center,
                 center,
                 100%)
@@ -1198,17 +1198,19 @@
         .tel{
             color:#f95b4e;
             font-size:.3266663rem; // 25px;
+            line-height:.4rem;
         }
         .cr{
             color:#da8147;
             font-size:.20479983rem; // 12px
             padding:0 .8rem;
+            line-height:.4rem;
         }
     }
     .award_list {
         width: 100%;
         height: 21.50398165rem; // 1075px;
-        @include backgroundset("../../images/land/register/TopBar.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/register/TopBar.png",
         center,
         center,
         100%);
@@ -1219,7 +1221,7 @@
         header {
             height: 4.06639576rem;
             width: 100%;
-            @include backgroundset("../../images/active/top.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/top.png",
             top,
             center,
             100%);
@@ -1227,7 +1229,7 @@
         section {
             flex: 1;
             width: 100%;
-            @include backgroundset("../../images/active/2.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/2.png",
             center,
             -0.4rem,
             100%);

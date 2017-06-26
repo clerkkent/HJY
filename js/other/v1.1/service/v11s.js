@@ -18,7 +18,7 @@ angular.module('HJY').factory("v11", ["$http", "$q", "$rootScope", function($htt
         //new Date(year,month+1,0) ： month+1是下一个月，day为0代表的是上一个月的最后一天，即我们所需的当前月的最后一天。
         //getDate（）则返回这个日期对象是一个月中的第几天，我们由最后一天得知这个月一共有多少天
         var days = new Date(year, month + 1, 0).getDate();
-        var w = ["天", "一", "二", "三", "四", "五", "六"]
+        var w = ["日", "一", "二", "三", "四", "五", "六"]
         var res = [];
         //输出第一天之前的空格
         for (var i = 0; i < weekday; i++) {

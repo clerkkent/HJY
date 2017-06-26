@@ -6,7 +6,6 @@
             <p class="second">奖品已发放到您的账户</p>
         </div>
         <header>
-            <h3>奖励计划</h3>
             <div class="fourth">
                 <ul class="pic">
                     <div ng-repeat="x in task track by $index">
@@ -43,8 +42,8 @@
             <div class="task_list" ng-repeat="x in task track by $index">
                 <p class="til">
                     <span class="fir">{{x.title}}</span>
-                    <!--<span class="sec"><i class="oil" ng-if="x.oil_number!=0">{{x.oil_number}}</i><i class="packet" ng-if="x.packet!='0'">{{x.packet}}</i><br/></span>-->
-                    <span class="sec"><i  ng-if="x.oil_number!=0">{{x.oil_number}}油滴</i></span>
+                    <span class="sec"><i class="oil" ng-if="x.packet!='0'" >{{ x.packet| number:0}}元</i><i class="packet" ng-if="x.oil_number!=0">{{x.oil_number}}</i><br/></span>
+                    <!--<span class="sec"><i  ng-if="x.oil_number!=0">{{x.oil_number}}油滴</i></span>-->
                     <!--<i ng-if="x.packet_name!=''">{{x.packet_name}}</i>-->
                 </p>
                 <p class="des">
@@ -59,7 +58,7 @@
             <h3>活动规则</h3>
             <p>
                 <span>1.</span>
-                <span>活动时间：2017年6月20日12:00-2017年7月31 日23:59:59</span>
+                <span>活动时间：2017年6月24日00:00-2017年7月24 日23:59:59</span>
             </p>
             <p>
                 <span>2.</span>

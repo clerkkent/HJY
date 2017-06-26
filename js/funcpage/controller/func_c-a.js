@@ -75,7 +75,6 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
 
     // var a = moment([2017, 6, 1]).fromNow()
     // console.log(a)
-    console.log($scope.date)
 
 
     // var a = moment();
@@ -1033,6 +1032,7 @@ angular.module('HJY').controller("register", ["$scope", "$state", "login_logic",
         }
         promise_login = login_logic.submit(list_login);
         promise_login.then(function(data) {
+            console.log(data)
             if (data.result != undefined) {
                 if (data["result"]["isRegister"] == 0) {
                     $scope.state = 1;

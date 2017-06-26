@@ -146,6 +146,14 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     $scope.url = location.search; //参数
     $scope.theRequest = new Object();
     friend.popum();
+    $("title").html("好友列表");
+
+    $scope.callA = function() {
+            console.log(12)
+            hjytest.hello("js调用了android中的hello方法");
+        }
+        // setTimeout($scope.callA(), 3000)
+
     $scope.share = function() { //分享原生H5指令交互
         var content = {
             title: "200元加油红包免费领，加油低至8.5折",
@@ -232,17 +240,17 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
                     } else if (data["result"]["list"] != 0 && data["result"]["oldList"] == 0) {
                         $scope.frienddetails = data["result"]["list"];
                     } else if (data["result"]["list"] != 0 && data["result"]["oldList"] != 0) {
-                        console.log(data["result"]["oldList"])
+
                         $scope.frienddetails = data["result"]["list"].concat(data["result"]["oldList"]);
                     } else {
                         $scope.frienddetails = []
                     }
-                    console.log($scope.frienddetails)
+
                     $scope.package = data["result"]["allPackets"];
                     if ($scope.frienddetails == 0) {
                         friend.friend_none()
                     }
-                    console.log(data)
+
                 } else { //错误信息弹窗
                     $ionicPopup.alert({
                         title: '提示',
@@ -261,6 +269,7 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
 HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPopup", "friend", "webappSDK", "$rootScope", function($scope, $state, $http, $ionicPopup, friend, webappSDK, $rootScope) {
     friend.popum();
     webappSDK.GetActiveId(1);
+    $("title").html("邀请有礼")
     $scope.share = function() { //分享原生H5指令交互
         var content = {
             title: "200元加油红包免费领，加油低至8.5折",
@@ -873,8 +882,14 @@ HJY.controller("download", ["$scope", "$state", "login_logic", "$http", function
     }
 }])
 HJY.controller("guide", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
-
+    $("title").html("新手指引")
 }])
 HJY.controller("help_guide", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
-
+    $("title").html("增信页")
+}])
+HJY.controller("register_agreement", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
+    $("title").html("注册协议")
+}])
+HJY.controller("user_agreement", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
+    $("title").html("用户协议")
 }])

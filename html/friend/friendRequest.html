@@ -1,6 +1,14 @@
 <div style="width:100%;height:100%;overflow-y:hidden;">
     <div class="friend_request" scroll-height>
         <!-- directive:friend-rules -->
+        <script>
+            function callAndroid() {
+
+                var a = hjytest.hello("button");
+                alert(a);
+            }
+        </script>
+        <button type="button" id="button1" ng-click="callA()">button</button>
         <header>
             <div class="first">
                 <!--<div class="left"></div>
@@ -53,6 +61,8 @@
                 </div>
             </div>
         </section>
+
+
         <footer ng-click="share()">
             邀请车友来加油
         </footer>

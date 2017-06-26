@@ -332,7 +332,7 @@ $background) {
         .pic_show {
             height: 1.88rem; // 94px;
             width: 100%;
-            @include backgroundset("../images/friend/H5_popup.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/H5_popup.png",
             center,
             center,
             100%);
@@ -371,7 +371,7 @@ $background) {
             margin: 0 auto;
             padding: 0;
             border-radius: 50%;
-            @include backgroundset("../images/friend/close.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/close.png",
             center,
             center,
             60%);
@@ -418,7 +418,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         height: .36rem; // 18px
         width: .36rem; // 18px
         top: 25%;
-        @include backgroundset("../images/login/ic_pay_return@3x.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_pay_return@3x.png",
         center,
         center,
         100%)
@@ -437,15 +437,15 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         color: #E2BC85;
     }
     .main {
-        background: url(../images/login/ic_tabar_home_n@3x.png) center 20% no-repeat;
+        background: url(https://imagecdn.ihuijiayou.com/wechat/images/login/ic_tabar_home_n@3x.png) center 20% no-repeat;
         background-size: .4rem .4rem; // 21px; // 20px;
     }
     .order {
-        background: url(../images/login/ic_tabar_recording_n@3x.png) center 20% no-repeat;
+        background: url(https://imagecdn.ihuijiayou.com/wechat/images/login/ic_tabar_recording_n@3x.png) center 20% no-repeat;
         background-size: .4rem .4rem; // 21px; // 20px;
     }
     .my {
-        background: url(../images/login/ic_tabar_me_h@3x.png) center 20% no-repeat;
+        background: url(https://imagecdn.ihuijiayou.com/wechat/images/login/ic_tabar_me_h@3x.png) center 20% no-repeat;
         background-size: .4rem .4rem; // 21px; // 20px;
     }
 }
@@ -458,7 +458,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     display: flex;
     flex-direction: column;
     height: 10.36rem; // 568px;
-    @include backgroundset("../images/login/ic_login_ pattern.png",
+    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_login_ pattern.png",
     center,
     bottom,
     100%);
@@ -472,7 +472,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             width: 1.26rem; // 63px; // 122px // 122px;
             height: 1.86rem; // 93px ;// 175px;
             @include center-block;
-            @include backgroundset("../images/login/ic_login_logo.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_login_logo.png",
             center,
             center,
             100%);
@@ -485,7 +485,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             position: absolute;
             top: .5rem; // 25px;
             left: .3rem; // 15px;
-            @include backgroundset("../images/login/ic_login_return@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_login_return@3x.png",
             center,
             center,
             100%)
@@ -514,7 +514,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                         height: .4rem;
                         display: inline-block;
                         // 30px;
-                        @include backgroundset("../images/login/ic_login_account@2x.png",
+                        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_login_account@2x.png",
                         center,
                         center,
                         100%)
@@ -615,7 +615,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     width: 100%;
                     height: .8rem; // 26px;
                     margin-bottom: .12rem; // 6px;
-                    @include backgroundset("../images/login/ic_login_wechat.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_login_wechat.png",
                     center,
                     center,
                     80%)
@@ -638,7 +638,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         font-size: .24rem; // 12px;
         span {
             display: inline-block;
-            @include backgroundset("../images/login/ic_login_Check_h.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_login_Check_h.png",
             center,
             center,
             100%);
@@ -648,7 +648,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             margin-right: .16rem;
         }
         .selected {
-            background-image: url(../images/login/ic_login_Check_n.png);
+            background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/login/ic_login_Check_n.png);
             background-size: 100%;
             //height:1rem; // 50px;
         }
@@ -671,7 +671,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     dt {
         width: 100%;
         height: 1.5rem; // 75px;
-        @include backgroundset("../images/login/ic_tabar_me_h@3x.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_tabar_me_h@3x.png",
         center,
         center,
         100%)
@@ -725,7 +725,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 position: absolute;
                 left: 5%;
                 top: 20%;
-                @include backgroundset("../images/login/ic_help@3x.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_help@3x.png",
                 center,
                 center,
                 100%)
@@ -761,7 +761,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                         top: 25%;
                         transition: all .6s;
                         transform: rotate(-90deg);
-                        @include backgroundset("../images/login/ic_navbar_arrow_down@3x.png",
+                        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_arrow_down@3x.png",
                         center,
                         center,
                         100%)
@@ -821,7 +821,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             height: .36rem; // 18px
             width: .36rem; // 18px
             top: 25%;
-            @include backgroundset("../images/login/ic_pay_return@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_pay_return@3x.png",
             center,
             center,
             100%)
@@ -879,7 +879,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         color: #FFFFFF;
         letter-spacing: 0;
         position: relative;
-        @include backgroundset("../images/friend/ic_invite_pic.png",center,center,100%);
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_pic.png",center,center,100%);
         // background-image: radial-gradient(48% 125%, #F4D28A 50%, #F3B93E 100%);
         .friend_back {
             display: inline-block;
@@ -888,7 +888,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             height: .4rem;
             width: .4rem;
             top: 10%;
-            @include backgroundset("../images/login/ic_pay_return@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_pay_return@3x.png",
             center,
             center,
             100%);
@@ -918,13 +918,13 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     width:1.79199847rem; // 105px;
                     height:.52906622rem; // 31px;
                     line-height:.52906622rem; // 31px;
-                    @include backgroundset("../images/friend/ic_invite_number.png",center,center,100%);
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_number.png",center,center,100%);
                 }
             }
             .left {
                 width: 1.5rem; // 75px
                 height: 1.2rem; // 60px;
-                @include backgroundset("../images/login/ic_invite_gas@3x.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_invite_gas@3x.png",
                 center,
                 center,
                 100%)
@@ -968,7 +968,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                         position: relative;
                         left: -0.0rem;
                         margin: 0;
-                        @include backgroundset("../images/login/ic_invite_oil@3x.png",
+                        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_invite_oil@3x.png",
                         center,
                         center,
                         100%)
@@ -1021,11 +1021,11 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 }
             }
             .left{
-                 @include backgroundset("../images/friend/ic_invite_money.png",10%,center,23%);
+                 @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_money.png",10%,center,23%);
                   background-color:rgba(#F4CB77,.5);
             }
             .right{
-                @include backgroundset("../images/friend/ic_invite_oil.png",10%,center,18%);
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_oil.png",10%,center,18%);
                  background-color:rgba(#F4CB77,.5);
             }
             .center {
@@ -1068,13 +1068,13 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     font-family: PingFangSC-Regular;
                     color: #999999;
                     letter-spacing: 0;
-                    background-image: url(../images/login/ic_home_tag_left@3x.png), url(../images/login/ic_home_tag_right@3x.png);
+                    background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_tag_left@3x.png), url(https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_tag_right@3x.png);
                     background-repeat: no-repeat, no-repeat;
                     background-position: 32% center, 68% center;
                     background-size: 6%, 6%;
                 }
                 .friend_none {
-                    @include backgroundset("../images/login/ic_default_order@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_default_order@3x.png",
                     top,
                     center,
                     50%);
@@ -1152,7 +1152,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             height: 3.6rem; // 180px
             width: 100%;
             overflow: hidden;
-            @include backgroundset("../images/login/ic_pay_background@2x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_pay_background@2x.png",
             center,
             center,
             100%) .type {
@@ -1180,7 +1180,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     display: inline-block;
                     font-size: .2rem; // 10px
                     font-family: PingFangSC-Medium;
-                    @include backgroundset("../images/login/ic_home_price@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_price@3x.png",
                     center,
                     center,
                     100%)
@@ -1232,7 +1232,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     height: .32rem; // 16px
                     vertical-align: middle;
                     margin-left: 0.05rem;
-                    @include backgroundset("../images/login/ic_navbar_arrow_down@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_arrow_down@3x.png",
                     center,
                     center,
                     100%)
@@ -1252,7 +1252,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     height: .48rem;
                     vertical-align: middle;
                     margin-left: 1rem;
-                    @include backgroundset("../images/login/ic_popover_CNPC@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_popover_CNPC@3x.png",
                     center,
                     center,
                     100%)
@@ -1263,7 +1263,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     height: .32rem; // 16px
                     vertical-align: middle;
                     margin-left: 0.05rem;
-                    @include backgroundset("../images/login/ic_navbar_arrow_down@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_arrow_down@3x.png",
                     center,
                     center,
                     100%)
@@ -1301,7 +1301,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     width: .52rem; // 26px
                     height: .52rem; // 26px
                     display: inline-block;
-                    background: url("../images/login/ic_pay_Check@3x.png"), no-repeat;
+                    background: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_pay_Check@3x.png"), no-repeat;
                     background-position: center -1px;
                     background-size: 100%;
                     vertical-align: middle;
@@ -1353,7 +1353,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         width: 100%;
         height: 3.5rem;
         position: relative;
-        @include backgroundset("../images/login/ic_me_background@2x.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_background@2x.png",
         center,
         center,
         100%);
@@ -1365,7 +1365,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             letter-spacing: 0;
             height: .7rem; // 35px;
             line-height: .7rem; // 35px
-            @include backgroundset("../images/login/ic_navbar_news@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_news@3x.png",
             center,
             right,
             100%);
@@ -1379,7 +1379,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 width: 1.4rem;
                 height: 1.4rem;
                 display: inline-block;
-                @include backgroundset("../images/login/ic_tabar_me_n@3x.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_tabar_me_n@3x.png",
                 center,
                 center,
                 100%)
@@ -1422,7 +1422,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                         display: inline-block;
                         text-indent: .2rem; // 10px
                         width: 1.2rem; // 60px;
-                        @include backgroundset("../images/login/ic_tabar_home_h@3x.png",
+                        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_tabar_home_h@3x.png",
                         left,
                         center,
                         100%) background-size: .3rem .3rem; // 15px; // 15px
@@ -1435,7 +1435,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 position: absolute;
                 right: .3rem; // 15px
                 top: 10%;
-                @include backgroundset("../images/login/ic_me_Button@3x.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_Button@3x.png",
                 center,
                 center,
                 100%)
@@ -1456,27 +1456,27 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             }
         }
         .my_oil_card {
-            background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_gas@3x.png") 7% center no-repeat;
+            background: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_gas@3x.png") 7% center no-repeat;
             background-size: .3rem .3rem; // 15px; // 15px
             background-color: #FFF;
         }
         .coupon {
-            background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_news_coupon@3x.png") 7% center no-repeat;
+            background: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_news_coupon@3x.png") 7% center no-repeat;
             background-size: .3rem .3rem; // 15px; // 15px
             background-color: #FFF;
         }
         .friend {
-            background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_news_invite@3x.png") 7% center no-repeat;
+            background: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_news_invite@3x.png") 7% center no-repeat;
             background-size: .3rem .3rem; // 15px; // 15px
             background-color: #FFF;
         }
         .help_center {
-            background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_help@3x.png") 7% center no-repeat;
+            background: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_help@3x.png") 7% center no-repeat;
             background-size: .3rem .3rem; // 15px; // 15px
             background-color: #FFF;
         }
         .setting {
-            background: url("../images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("../images/login/ic_me_install@3x.png") 7% center no-repeat;
+            background: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_arrow_up@3x.png") 97% center no-repeat, url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_install@3x.png") 7% center no-repeat;
             background-size: .3rem .3rem; // 15px; // 15px
             background-color: #FFF;
         }
@@ -1493,7 +1493,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             width: 2.6rem; // 130px;
             height: 2.9rem; // 145px;
             z-index: 12;
-            background-image: url("../images/login/ic_me_popover@3x.png");
+            background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_popover@3x.png");
             background-size: 2.2rem 2.2rem; // 26px; // 44px; // 17px; // 17px; // 110px; // 110px;
             background-position: center center;
             background-repeat: no-repeat;
@@ -1517,7 +1517,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 font-family: Moon-Bold;
                 text-align: left;
                 text-indent: .8rem;
-                background-image: url("../images/login/ic_me_popover_add@3x.png"), url("../images/login/ic_me_popover_Text@3x.png");
+                background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_popover_add@3x.png"), url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_me_popover_Text@3x.png");
                 background-size: .3rem.3rem, .88rem .52rem;
                 background-position: .5rem center, 1.1rem center;
                 background-repeat: no-repeat, no-repeat;
@@ -1548,7 +1548,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         font-size: .32rem; // 16px;
         color: #51586A;
         letter-spacing: 0;
-        @include backgroundset("../images/login/ic_navbar_news@3x.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_news@3x.png",
         center,
         right,
         100%);
@@ -1562,7 +1562,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             display: inline-block;
             left: 0.2rem;
             padding-right: .3rem; // 10px;
-            @include backgroundset("../images/login/ic_navbar_arrow_down@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_navbar_arrow_down@3x.png",
             center,
             right,
             100%);
@@ -1587,7 +1587,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 color: #999999;
                 letter-spacing: 0;
                 margin: 0.2rem 0;
-                background-image: url("../images/login/ic_home_tag_left@3x.png"), url("../images/login/ic_home_tag_right@3x.png");
+                background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_tag_left@3x.png"), url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_tag_right@3x.png");
                 background-repeat: no-repeat, no-repeat;
                 background-position: 25% center, 75% center;
                 background-size: .36rem .12rem, .36rem .12rem; // 3px;
@@ -1606,7 +1606,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                             width: .68rem; // 34px;
                             height: .44rem; // 22px;
                             display: block;
-                            @include backgroundset("../images/login/ic_home_sale@3x.png",
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_sale@3x.png",
                             center,
                             center,
                             100%);
@@ -1682,7 +1682,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     display: inline-block;
                     font-size: .2rem; // 10px
                     font-family: PingFangSC-Medium;
-                    @include backgroundset("../images/login/ic_home_price@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_price@3x.png",
                     center,
                     center,
                     100%)
@@ -1704,7 +1704,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 color: #999999;
                 letter-spacing: 0;
                 margin: 0.2rem 0;
-                background-image: url("../images/login/ic_home_tag_left@3x.png"), url("../images/login/ic_home_tag_right@3x.png");
+                background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_tag_left@3x.png"), url("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_tag_right@3x.png");
                 background-repeat: no-repeat, no-repeat;
                 background-position: 25% center, 75% center;
                 background-size: .36rem .12rem, .36rem .12rem; // 3px;
@@ -1724,7 +1724,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     font-size: .26rem; // 13px;
                     color: #FF7320;
                     margin: .05rem .25rem; // 22px; // 5px;
-                    @include backgroundset("../images/login/ic_home_money_n.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_money_n.png",
                     center,
                     center,
                     100%);
@@ -1733,7 +1733,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     }
                 }
                 .select {
-                    @include backgroundset("../images/login/ic_home_money_h@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_home_money_h@3x.png",
                     center,
                     center,
                     100%);
@@ -1786,12 +1786,12 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         flex: 1;
         text-align: center;
         overflow: hidden;
-        @include backgroundset("../images/game/invite2.png",center,center,95%);
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/invite2.png",center,center,95%);
         .title {
             width: 5.2rem; // 260px;
             height: 2.1rem; // 105px;
             display: inline-block;
-            @include backgroundset("../images/game/h5_title.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/h5_title.png",
             center,
             center,
             80%)
@@ -1801,7 +1801,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             height: 3.52rem; // 176px
             display: inline-block;
             margin-top: -0.5rem;
-            @include backgroundset("../images/game/h5_background.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/h5_background.png",
             center,
             center,
             90%);
@@ -1810,7 +1810,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 width: 1.2rem; // 60px
                 height: 1.4rem; // 70px
                 display: block;
-                @include backgroundset("../images/game/气泡2.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/气泡2.png",
                 center,
                 center,
                 100%);
@@ -1843,7 +1843,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 height: 2.34rem; // 117px;
                 position: absolute;
                 left: 0.5rem;
-                @include backgroundset("../images/game/h5_gas.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/h5_gas.png",
                 center,
                 center,
                 100%);
@@ -1855,7 +1855,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     top: 0.35rem;
                     width: .14rem; // 7px
                     height: .44rem; // 22px
-                    @include backgroundset("../images/game/h5_pointer.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/h5_pointer.png",
                     center,
                     center,
                     100%);
@@ -1885,7 +1885,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     top: 0.6rem;
                     opacity: 0;
                     display: none;
-                    @include backgroundset("../images/game/h5_oil.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/h5_oil.png",
                     center,
                     center,
                     100%);
@@ -1907,7 +1907,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 position: absolute;
                 right: 0.5rem;
                 bottom: 0;
-                @include backgroundset("../images/game/h5_lecythus.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/h5_lecythus.png",
                 center,
                 center,
                 100%);
@@ -1957,7 +1957,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             width: 3.58rem; // 179px
             margin: 0 auto;
             text-align: center;
-            background: url("../images/game/手指.png") 0.3rem center no-repeat;
+            background: url("https://imagecdn.ihuijiayou.com/wechat/images/game/手指.png") 0.3rem center no-repeat;
             background-size: .28rem .34rem; // 17px; // 14px;
             transition: all 1s;
         }
@@ -1969,7 +1969,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 width: 3.2rem; // 160px;
                 height: 2.8rem; // 140px
                 margin: -0.4rem auto;
-                @include backgroundset("../images/game/h5_total.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/h5_total.png",
                 center,
                 center,
                 100%);
@@ -2041,7 +2041,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 width: 2.62rem; // 131px
                 height: 1.34rem; // 67px
                 margin: 0.0rem auto;
-                @include backgroundset("../images/game/h5_total.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/h5_total.png",
                 center,
                 center,
                 100%);
@@ -2119,7 +2119,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                     border-radius: 20%;
                     position: absolute;
                     left: 19%;
-                    @include backgroundset("../images/game/H5_Check@3x.png",
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/H5_Check@3x.png",
                     center,
                     center,
                     100%) top: 25%;
@@ -2151,7 +2151,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         width: 100%;
         height: 8.90399257rem;
         position: relative;
-        @include backgroundset("../images/game/game_s.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/game_s.png",
         center,
         -.9rem,
         100%);
@@ -2174,7 +2174,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         //     width: 100%;
         //     height: .94rem; // 47px;
         //     line-height: .94rem; // 47px;
-        //     background: url(../images/game/H5_accomplish_option.png) 20% center no-repeat;
+        //     background: url(https://imagecdn.ihuijiayou.com/wechat/images/game/H5_accomplish_option.png) 20% center no-repeat;
         //     background-size: .36rem .36rem; // 18px; // 18px;
         //     display: flex;
         //     flex-direction: row;
@@ -2203,13 +2203,13 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         //         b {
         //             font-size: .24rem; // 12px;
         //         }
-        //         @include backgroundset("../images/game/H5_accomplish_list.png",
+        //         @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/H5_accomplish_list.png",
         //         center,
         //         center,
         //         100%)
         //     }
         //     .oil {
-        //         @include backgroundset("../images/game/H5_accomplish_huijiayou.png",
+        //         @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/H5_accomplish_huijiayou.png",
         //         center,
         //         center,
         //         100%)
@@ -2255,7 +2255,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         color: #4A4A4A;
         margin-top: 0.1rem;
         font-family: PingFangSC-Medium;
-        @include backgroundset("../images/friend/invite.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/invite.png",
         center,
         center,
         90%);
@@ -2274,7 +2274,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             font-family: PingFangSC-Medium;
             margin-top: 0.2rem;
             span {
-                @include backgroundset("../images/friend/H5_backgroud.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/H5_backgroud.png",
                 center,
                 center,
                 95%);
@@ -2293,7 +2293,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         }
     }
     section {
-        // @include backgroundset("../images/friend/invite.png",
+        // @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/invite.png",
         // top,
         // center,
         // 80%);
@@ -2311,7 +2311,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             height:100%;
             line-height:1rem;
             font-size: .24rem; // 12px
-            @include backgroundset("../images/friend/H5_info.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/H5_info.png",
             left,
             center,
             16%)
@@ -2344,7 +2344,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     -webkit-overflow-scrolling: touch;
     header {
         height: 3.92532998rem; // 230px
-        @include backgroundset("../images/land/H5_banner.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_banner.png",
         center,
         center,
         auto);
@@ -2363,7 +2363,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             top: -2%;
             color: #699896;
             font-size: .17066652rem; // 10px
-            @include backgroundset("../images/land/H5_mark.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_mark.png",
             left,
             center,
             15%);
@@ -2378,7 +2378,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 bottom: 100%;
                 display: none;
                 line-height: .28rem; // 12px;
-                @include backgroundset("../images/land/H5_bubble.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_bubble.png",
                 top,
                 center,
                 80%);
@@ -2390,7 +2390,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             color: #f95b4e;
             margin-left: 5%;
             text-indent: 0.3rem;
-            @include backgroundset("../images/land/H5_info.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_info.png",
             left,
             25%,
             4%);
@@ -2474,7 +2474,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 border-radius: 20%;
                 position: absolute;
                 left: 19%;
-                @include backgroundset("../images/game/H5_Check@3x.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/H5_Check@3x.png",
                 center,
                 center,
                 100%);
@@ -2500,7 +2500,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         .first {
             height: 8.53332605rem; // 500px
             width: 100%;
-            @include backgroundset("../images/land/H5_ drawing@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_ drawing@3x.png",
             center,
             center,
             100%)
@@ -2534,7 +2534,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
 
 .download {
     height: 1.27999891rem; // 75px
-    @include backgroundset("../images/land/H5_ arrow@3x.png",
+    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_ arrow@3x.png",
     35%,
     85%,
     18%);
@@ -2552,7 +2552,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         width: 2.5rem;
         height: 2.5rem;
         transform: scale(0.4);
-        @include backgroundset("../images/land/H5_logo@3x.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_logo@3x.png",
         center,
         20%,
         100%);
@@ -2621,7 +2621,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         flex: 1;
         header {
             height: 2.36rem; // 118px;
-            @include backgroundset("../images/land/H5_complete@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_complete@3x.png",
             20%,
             center,
             18%);
@@ -2673,14 +2673,14 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         .first {
             height: 8.58rem;
             width: 100%;
-            @include backgroundset("../images/land/H5_ drawing@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_ drawing@3x.png",
             center,
             center,
             100%)
         }
         .downloadp {
             height: 1.27999891rem; // 75px
-            @include backgroundset("../images/land/H5_ arrow@3x.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_ arrow@3x.png",
             35%,
             85%,
             18%);
@@ -2697,7 +2697,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 width: 2.5rem;
                 height: 2.5rem;
                 transform: scale(0.4);
-                @include backgroundset("../images/land/H5_logo@3x.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_logo@3x.png",
                 center,
                 20%,
                 100%);
@@ -2772,7 +2772,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         width: 100%;
         z-index: 200;
         position: relative;
-        @include backgroundset("../images/guide/banner.png",
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/guide/banner.png",
         -0.20079983rem, // 12px, // 10px,
         center,
         100%);
@@ -2790,7 +2790,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         }
         .tran01 {
             height: 5.80266172rem; // 340px;
-            @include backgroundset("../images/guide/ic_part1.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/guide/ic_part1.png",
             center,
             bottom,
             90%);
@@ -2811,7 +2811,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             .con01 {
                 width: 100%;
                 height: 3.41333042rem; // 200px;
-                @include backgroundset("../images/guide/ic_part2.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/guide/ic_part2.png",
                 center,
                 center,
                 90%);
@@ -2819,7 +2819,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             .con02 {
                 width: 100%;
                 height: 4.26666303rem; // 250px;
-                @include backgroundset("../images/guide/ic_part3.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/guide/ic_part3.png",
                 center,
                 center,
                 90%);
@@ -2828,7 +2828,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 width: 90%;
                 margin: 0 auto;
                 height: 3.2426639rem; // 190px;
-                @include backgroundset("../images/guide/ic_part4.png",
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/guide/ic_part4.png",
                 center,
                 center,
                 90%);
@@ -2841,7 +2841,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             width: 100%;
             margin: .51199956rem 0; // 30px
             margin-bottom: 0;
-            @include backgroundset("../images/guide/ic_part5.png",
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/guide/ic_part5.png",
             center,
             center,
             80%);
@@ -2856,7 +2856,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     flex-flow: column nowrap;
     .first {
         flex: 1;
-        background-image: url("../images/help/Group7.png"), url("../images/help/Group4.png");
+        background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/help/Group7.png"), url("https://imagecdn.ihuijiayou.com/wechat/images/help/Group4.png");
         background-size: 70%, 80%;
         margin-top: .25599978rem; // 15px
         background-position: top center, center 80%;
@@ -2870,7 +2870,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     }
     .second {
         flex: 1;
-        background-image: url("../images/help/Group7.png"), url("../images/help/Group5.png");
+        background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/help/Group7.png"), url("https://imagecdn.ihuijiayou.com/wechat/images/help/Group5.png");
         background-size: 70%, 80%;
         margin-top: 1rem;
         background-position: top center, center 80%;

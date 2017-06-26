@@ -17,11 +17,14 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
         v11.get($rootScope.url_global + '/passport/service.php?c=account', list, $scope.strs).then(function(data) {
             if (data["result"] != undefined) {
                 $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-                    console.log(data["result"]["message"] == "您今天已经签到，请明天再来")
                     if (data["result"]["message"] == "您今天已经签到，请明天再来") {
                         // $(".sign_popum").hide();
                         // $ionicBackdrop.release();
-                        console.log(1)
+                        //    $ionicBackdrop.retain();
+                        // $(".sign_v11 .sign_popum").show()
+                        // $timeout(function() {
+
+                        // }, 2000)
                     } else {
                         $ionicBackdrop.retain();
                         $(".sign_v11 .sign_popum").show()
@@ -85,7 +88,7 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
 
 }])
 HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login_logic", "v11", "$rootScope", "_", "$ionicPopup", "$http", "webappSDK", function($timeout, $ionicBackdrop, $scope, $state, login_logic, v11, $rootScope, _, $ionicPopup, $http, webappSDK) {
-    $("title").html("新手奖励计划")
+    $("title").html("奖励计划")
     $scope.gobuy = function() {
         if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
             _hmt.push(['_trackPageview', "/gobuy"]);
@@ -108,7 +111,7 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
             v11.get($rootScope.url_global + '/passport/service.php?c=task', list, $scope.strs).then(function(data) {
                 if (data["result"] != undefined) {
                     $scope.task = data["result"];
-                    console.log($scope.task)
+                    console.log(data)
                 } else {
                     $ionicPopup.alert({
                         title: '提示',

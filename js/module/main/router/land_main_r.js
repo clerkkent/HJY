@@ -1,5 +1,5 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-    window.version_glo = "4.3";
+    window.version_glo = "4.8";
     $ionicConfigProvider.views.maxCache(5);
     var v = "?" + window.version_glo;
     $stateProvider.state("funcpage", {
