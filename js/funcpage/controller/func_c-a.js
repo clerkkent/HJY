@@ -11,6 +11,9 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
     })
 }]);
 angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $rootScope) {
+    $scope.open_fri = function() {
+        $state.go("funcpage.land_fiend_active")
+    }
     $scope.gonote = function() {
         location.href = $rootScope.url_global + "/wechat/?from=duanwujie#/funcpage/db_festival"
     }
@@ -24,7 +27,6 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.pre_price = [];
     $scope.recommend = 0;
     $scope.recommend_p = 0;
-    console.log(get_type);
     if (get_type.result != undefined) {
         var type = get_type["result"]["list"];
         for (i = 0; i < type.length; i++) {
@@ -99,7 +101,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
             $scope.prize = true;
         }
     }
-
+    $scope.open
     $scope.closep = function() {
         $scope.prize = false;
     }
@@ -1068,14 +1070,16 @@ angular.module('HJY').controller("register", ["$scope", "$state", "login_logic",
     }
 
     function judge(obj) {　　
-        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+        for (var i in obj) { //如果不为空，则会执行到这一步，返回tru
             　　　　 return true;　　 }　
         return false;
     }
+    console.log(3)
     $scope.error = login_logic.parse_url();
     $scope.download_show = true;
     $scope.baidu_icp = false;
-    $scope.no_download = ["momo", "baidu"];
+
+    $scope.no_download = ["momo", "baidu", "gdt"];
     if (judge($scope.error)) {
         if ($scope.error["ch"] != undefined) {
             sessionStorage.setItem("channel", $scope.error["ch"]);
@@ -1197,4 +1201,7 @@ angular.module('HJY').controller("award", ["$scope", "$state", "login_logic", "$
             console.log($scope.award)
         }
     )
+}])
+angular.module('HJY').controller("land_fiend_active", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "$interval", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, $interval, $rootScope) {
+
 }])

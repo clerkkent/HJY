@@ -1,5 +1,4 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-    window.version_glo = "4.8";
     $ionicConfigProvider.views.maxCache(5);
     var v = "?" + window.version_glo;
     $stateProvider.state("funcpage", {
@@ -242,6 +241,11 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             url: "/award",
             controller: "award",
             templateUrl: "html//funpage/active/award_list.html" + v
+        })
+        .state("funcpage.land_fiend_active", {
+            url: "/land_fiend_active",
+            controller: "land_fiend_active",
+            templateUrl: "html//funpage/active/friend_active.html" + v
         })
         // .state("feedback", {
         //     url: "/feedback",

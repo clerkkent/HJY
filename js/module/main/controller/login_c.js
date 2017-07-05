@@ -148,11 +148,6 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
     friend.popum();
     $("title").html("好友列表");
 
-    $scope.callA = function() {
-            console.log(12)
-            hjytest.hello("js调用了android中的hello方法");
-        }
-        // setTimeout($scope.callA(), 3000)
 
     $scope.share = function() { //分享原生H5指令交互
         var content = {
@@ -885,7 +880,7 @@ HJY.controller("guide", ["$scope", "$state", "login_logic", "$http", function($s
     $("title").html("新手指引")
 }])
 HJY.controller("help_guide", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
-    $("title").html("增信页")
+    $("title").html("优惠折扣来源")
 }])
 HJY.controller("register_agreement", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
     $("title").html("注册协议")

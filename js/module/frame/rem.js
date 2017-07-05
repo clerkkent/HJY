@@ -24,4 +24,5 @@
             }
         })
     }
+    window.version_glo = $(".version").html();
 })(document, window);

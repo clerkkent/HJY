@@ -320,7 +320,6 @@ $background) {
     display: none;
     .popum {
         width: 4.8rem; // 240px
-
         z-index: 12;
         @include center-block;
         margin-top: 5.1%;
@@ -339,8 +338,8 @@ $background) {
         }
         .rule_main {
             height: auto;
-             height:6rem;
-        overflow:scroll;
+            height: 6rem;
+            overflow: scroll;
             font-family: PingFangSC-Regular;
             padding: 0 0.2rem;
             padding-bottom: 0.5rem;
@@ -879,7 +878,10 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
         color: #FFFFFF;
         letter-spacing: 0;
         position: relative;
-        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_pic.png",center,center,100%);
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_pic.png",
+        center,
+        center,
+        100%);
         // background-image: radial-gradient(48% 125%, #F4D28A 50%, #F3B93E 100%);
         .friend_back {
             display: inline-block;
@@ -904,21 +906,22 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             flex-direction: row;
             @include center-block;
             margin-top: 10%;
-            p{
-                text-align:center;
+            p {
+                text-align: center;
                 @include center-block;
-
                 font-family: PingFangSC-Regular;
-                line-height:.52906622rem; // 31px;
-                .number{
-                    font-size:.34133304rem; // 20px;
-                    color:#FFF;
-                    display:inline-block;
-
-                    width:1.79199847rem; // 105px;
-                    height:.52906622rem; // 31px;
-                    line-height:.52906622rem; // 31px;
-                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_number.png",center,center,100%);
+                line-height: .52906622rem; // 31px;
+                .number {
+                    font-size: .34133304rem; // 20px;
+                    color: #FFF;
+                    display: inline-block;
+                    width: 1.79199847rem; // 105px;
+                    height: .52906622rem; // 31px;
+                    line-height: .52906622rem; // 31px;
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_number.png",
+                    center,
+                    center,
+                    100%);
                 }
             }
             .left {
@@ -934,10 +937,10 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
                 margin-top: 0.1rem;
                 .r_first {
                     font-size: .24rem; // 12px
-                .txt{
-                    font-size:.25599978rem; // 15px;
-                    color:#000;
-                }
+                    .txt {
+                        font-size: .25599978rem; // 15px;
+                        color: #000;
+                    }
                     font-family: PingFangSC-Medium;
                     color: #51586A;
                     margin: 0;
@@ -983,50 +986,55 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             bottom: 5%;
             display: flex;
             flex-flow: row nowrap;
-            justify-content:space-around;
+            justify-content: space-around;
             .left,
             .right {
-                width:2.93546416rem; // 172px;
-                height:1.02399913rem; // 60px;
+                width: 2.93546416rem; // 172px;
+                height: 1.02399913rem; // 60px;
                 font-family: PingFangSC-Regular;
                 font-size: .30479983rem; // 12px;
                 color: #51586A;
                 letter-spacing: 0;
                 margin-top: 0rem;
-                border-radius:3%;
-                border:.01706665rem solid #fff; // 2px;
+                border-radius: 3%;
+                border: .01706665rem solid #fff; // 2px;
                 .number {
                     margin: 0;
                     padding: 0;
                     margin-top: 0.1rem;
                     line-height: .5rem; // 25px
-                    text-align:left;
-                    transform:scale(.7);
-                    white-space:nowrap;
-
-                    margin-left:20%;
-                    i{
-                        font-size:.17066652rem; // 10px;
+                    text-align: left;
+                    transform: scale(.7);
+                    white-space: nowrap;
+                    margin-left: 20%;
+                    i {
+                        font-size: .17066652rem; // 10px;
                     }
                 }
                 .title {
                     line-height: .25rem;
-                    text-align:left;
-                    transform:scale(.7);
-                     white-space:nowrap;
-                    margin-left:20%;
-                    i{
-                        font-size:.17066652rem; // 10px;
+                    text-align: left;
+                    transform: scale(.7);
+                    white-space: nowrap;
+                    margin-left: 20%;
+                    i {
+                        font-size: .17066652rem; // 10px;
                     }
                 }
             }
-            .left{
-                 @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_money.png",10%,center,23%);
-                  background-color:rgba(#F4CB77,.5);
+            .left {
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_money.png",
+                10%,
+                center,
+                23%);
+                background-color: rgba(#F4CB77, .5);
             }
-            .right{
-                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_oil.png",10%,center,18%);
-                 background-color:rgba(#F4CB77,.5);
+            .right {
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/ic_invite_oil.png",
+                10%,
+                center,
+                18%);
+                background-color: rgba(#F4CB77, .5);
             }
             .center {
                 width: none;
@@ -1781,12 +1789,15 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     height: 11.36rem; // 568px
     transition: all .1s;
     -webkit-overflow-scrolling: touch;
-    overflow:hidden;
+    overflow: hidden;
     header {
         flex: 1;
         text-align: center;
         overflow: hidden;
-        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/invite2.png",center,center,95%);
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/invite2.png",
+        center,
+        center,
+        95%);
         .title {
             width: 5.2rem; // 260px;
             height: 2.1rem; // 105px;
@@ -1832,7 +1843,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     section {
         height: 4.3rem;
         width: 100%;
-        margin-top:0.7rem;
+        margin-top: 0.7rem;
         .first {
             width: 5.26rem; // 263px;
             height: 2.34rem; // 117px;
@@ -2308,8 +2319,8 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
             display: inline-block;
             width: 1.56rem; // 78px;
             color: #e8514e;
-            height:100%;
-            line-height:1rem;
+            height: 100%;
+            line-height: 1rem;
             font-size: .24rem; // 12px
             @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/friend/H5_info.png",
             left,
@@ -2319,7 +2330,7 @@ $breakpoints: ( 'xs': 'only screen and ( min-width: 320px)',
     }
     footer {
         height: 1rem;
-        margin-bottom:0.2rem;
+        margin-bottom: 0.2rem;
         button {
             width: 5rem; // 250px;
             height: .9rem; // 45px;

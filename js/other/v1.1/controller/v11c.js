@@ -18,20 +18,19 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
             if (data["result"] != undefined) {
                 $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
                     if (data["result"]["message"] == "您今天已经签到，请明天再来") {
-                        // $(".sign_popum").hide();
-                        // $ionicBackdrop.release();
-                        //    $ionicBackdrop.retain();
-                        // $(".sign_v11 .sign_popum").show()
-                        // $timeout(function() {
-
-                        // }, 2000)
+                        // $ionicBackdrop.retain();
+                        // $(".sign_v11 .sign_popum").show();
+                        // $("body").click(function() {
+                        //     $(".sign_v11 .sign_popum").hide()
+                        //     $ionicBackdrop.release();
+                        // })
                     } else {
                         $ionicBackdrop.retain();
-                        $(".sign_v11 .sign_popum").show()
-                        $timeout(function() {
+                        $(".sign_v11 .sign_popum").show();
+                        $("body").click(function() {
                             $(".sign_v11 .sign_popum").hide()
                             $ionicBackdrop.release();
-                        }, 2000)
+                        })
                     }
                 })
                 $scope.data = v11.date(data["result"]["year"], data["result"]["month"] - 1, data["result"]["day"]);
@@ -39,6 +38,7 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
                 $scope.d = $scope.data.d;
                 $scope.t = $scope.data.t;
                 $scope.c = data["result"]["checkin"][0]["checkin_num"];
+                $scope.oil = data["result"]["checkin"][0]["oildrop_num"];
                 $scope.toil = data["result"]["tmorrowOil"]
                 for (var i = 0; i < data["result"]["checkin"].length; i++) {
                     $scope.signx.push(moment(data["result"]["checkin"][i]["checkin_date"]).date())
@@ -47,11 +47,13 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
                     for (var i = 0; i < $(".sign_v11 .days li").length; i++) {
                         if ($(".sign_v11 .days li"))
                             for (var j = 0; j < $scope.signx.length; j++) {
-                                if ($(".sign_v11 .days li").eq(i).html() == $scope.signx[j] && $(".sign_v11 .days li").eq(i).html() != data["result"]["day"]) {
-                                    $(".sign_v11 .days li").eq(i).addClass("select")
-                                } else if ($(".sign_v11 .days li").eq(i).html() == $scope.signx[j] && $(".sign_v11 .days li").eq(i).html() == data["result"]["day"]) {
-                                    $scope.oil = data["result"]["checkin"][j]["oildrop_num"]
-                                    $(".sign_v11 .days li").eq(i).addClass("tselect")
+                                if ((data["result"]["month"] / 1 - 1) == moment(data["result"]["checkin"][j]["checkin_date"]).month()) {
+                                    if ($(".sign_v11 .days li").eq(i).html() == $scope.signx[j] && $(".sign_v11 .days li").eq(i).html() != (data["result"]["day"] / 1)) {
+                                        $(".sign_v11 .days li").eq(i).addClass("select")
+                                    } else if ($(".sign_v11 .days li").eq(i).html() == $scope.signx[j] && $(".sign_v11 .days li").eq(i).html() == (data["result"]["day"] / 1)) {
+                                        $scope.oil = data["result"]["checkin"][j]["oildrop_num"]
+                                        $(".sign_v11 .days li").eq(i).addClass("tselect")
+                                    }
                                 }
                             }
                     }
@@ -216,15 +218,6 @@ HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "
         $(".pagenicon_v11").eq(x).css({ width: ".34133304rem" })
     }
     $scope.trans = function(str) {
-        // function HTMLDecode(text) {
-        //     var temp = document.createElement("div");
-        //     temp.innerHTML = text;
-        //     var output = temp.innerText || temp.textContent;
-        //     temp = null;
-        //     return output;
-        // }
-        // str1 = HTMLDecode(str)
-        // var doc = "<div>" + str1 + "</div>";
         var a = [str];
         var xx = [];
 
