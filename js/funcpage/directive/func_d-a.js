@@ -31,6 +31,79 @@ angular.module('HJY').directive("scrollI", ["$timeout", function($timeout) {
         }
     }
 }])
+angular.module('HJY').directive("allFolda", [function() {
+    return {
+        restrict: 'ECMA',
+        link: function(scope, element, attr) {
+
+            $(element).parent(".note").click(function() {
+                if ($(this).hasClass('selected01')) {
+                    $(this).removeClass("selected01")
+                } else {
+                    $(this).addClass("selected01")
+                }
+
+                if ($(this).find(".switch").hasClass('switch_se')) {
+                    $(this).find(".switch").removeClass("switch_se")
+                } else {
+                    $(this).find(".switch").addClass("switch_se")
+                }
+            })
+        }
+    }
+
+}])
+angular.module('HJY').directive("allFoldb", [function() {
+    return {
+        restrict: 'ECMA',
+        link: function(scope, element, attr) {
+
+            $(element).parent(".note").click(function() {
+                if ($(this).hasClass('selected02')) {
+                    $(this).removeClass("selected02")
+                } else {
+                    $(this).addClass("selected02")
+                }
+                if ($(this).find(".switch").hasClass('switch_se')) {
+                    $(this).find(".switch").removeClass("switch_se")
+                } else {
+                    $(this).find(".switch").addClass("switch_se")
+                }
+            })
+        }
+    }
+
+}])
+
+angular.module('HJY').directive("fPopum", ["$ionicBackdrop", function($ionicBackdrop) {
+    return {
+        restrict: 'ECMA',
+        link: function(scope, element, attr) {
+            $(element).click(function(e) {
+                $ionicBackdrop.retain();
+                $("section .popum").show();
+                $(document).on('touchmove', function(e) {
+                    e.preventDefault()
+                })
+            })
+
+        }
+    }
+
+}])
+angular.module('HJY').directive("cPopum", ["$ionicBackdrop", function($ionicBackdrop) {
+    return {
+        restrict: 'ECMA',
+        link: function(scope, element, attr) {
+            $(element).click(function() {
+                $ionicBackdrop.release();
+                $("section .popum").hide();
+                $(document).off('touchmove')
+            })
+        }
+    }
+
+}])
 HJY.directive("landmainDetails", function() {
     return {
         restrict: "ECMA",
