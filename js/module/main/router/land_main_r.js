@@ -1,6 +1,7 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-    $ionicConfigProvider.views.maxCache(5);
+    $ionicConfigProvider.views.maxCache(10);
     var v = "?" + window.version_glo;
+    $ionicConfigProvider.templates.maxPrefetch(0);
     $stateProvider.state("funcpage", {
             url: "/funcpage",
             controller: "funcpage",
@@ -8,14 +9,14 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             resolve: {
                 loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load([
-                        './js/funcpage/controller/func_c-a.js' + v,
-                        './js/funcpage/directive/func_d-a.js' + v,
-                        './js/funcpage/filter/func_f-a.js' + v,
-                        './js/funcpage/service/func_s-a.js' + v,
-                        './css/funcpage/funcpage.css' + v,
-                        './js/plugins/underscore.js' + v,
-                        './js/plugins/md5.js' + v,
-                        './js/plugins/moment.min.js' + v
+                        'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/controller/func_c-a.js' + v,
+                        'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/directive/func_d-a.js' + v,
+                        'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/filter/func_f-a.js' + v,
+                        'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/service/func_s-a.js' + v,
+                        'https://imagecdn.ihuijiayou.com/wechat/css/funcpage/funcpage.css' + v,
+                        'https://imagecdn.ihuijiayou.com/wechat/js/plugins/underscore.js' + v,
+                        'https://imagecdn.ihuijiayou.com/wechat/js/plugins/md5.js' + v,
+                        'https://imagecdn.ihuijiayou.com/wechat/js/plugins/moment.min.js' + v
                     ]); // 按需加载目标 js file
                 }],
                 parse: "login_logic",

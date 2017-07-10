@@ -390,6 +390,13 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
             })
         })
     }
+    factory.CustomerService = function(id) {
+        this.webview(function(bridge) {
+            bridge.callHandler('CustomerService', id, function(responseData) { //请求OC
+
+            })
+        })
+    }
     return factory
 }])
 HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope) {

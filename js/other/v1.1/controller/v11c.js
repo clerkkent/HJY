@@ -197,7 +197,6 @@ HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "
     $scope.se = function(x, y) {
         $scope.title = y;
         $scope.help_information = x;
-        console.log(x)
     }
     $scope.gonote = function() {
         if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {

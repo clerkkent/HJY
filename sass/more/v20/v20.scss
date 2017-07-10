@@ -1,0 +1,119 @@
+@import '../template/temp.scss';
+@keyframes round {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes shake{
+    0%{
+        transform: translateX(0rem);
+    }
+    25%{
+        transform:  translateX(-0.5rem);
+    }
+    50%{
+        transform:  translateX(0rem);
+    }
+    75%{
+        transform:translateX(0.5rem);
+    }
+    100%{
+        transform:translateX(0rem);
+    }
+}
+.shake_v20{
+    header{
+        height:9.43785861rem; // 553px;
+        @include backgroundset("../../images/v20/shake/ic_shake.png",top,center,112%);
+        background-color:#7a7d93;
+        position:relative;
+        .car{
+            position:absolute;
+            width:.85333261rem;
+            height:.31199956rem; // 30px;
+            // @include backgroundset("../../images/v20/shake/ic_car.png",top,center,112%);
+            background-color:#03ccbb;
+            left:43.2%;
+            transform-origin:center 1.8rem;
+            top:32%;
+            animation:round 5s linear infinite;
+        }
+        .hand{
+            position:absolute;
+            width:1rem;
+            height:2rem;
+            background-color:pink;
+            left:43%;
+            top:40%;
+        }
+        .shake{
+            animation:shake .25s linear infinite;
+        }
+    }
+    section{
+        height:13.7557216rem; // 806px;
+        background:#7a7d93;
+        overflow:hidden;
+        .transi01{
+            width:5.90506163rem; // 346px;
+            height:3.68639685rem; // 216px;
+            margin:.3rem auto;
+            @include backgroundset("../../images/v20/shake/ic_list.png",center,center,100%);
+            position:relative;
+            font-family: PingFangSC-Regular;
+            p{
+                color:#FFF;
+                right:8%;
+                position:absolute;
+                margin-top:.40719974rem; // 18px;
+            }
+        }
+        .transi02{
+            width:6.0927948rem; // 357px;
+            height:9.7279917rem; // 570px;
+            margin:0 auto;
+            @include backgroundset("../../images/v20/shake/ic_prize.png",center,center,100%)
+        }
+    }
+    footer{
+        background:#7a7d93;
+        font-family: PingFangSC-Regular;
+        overflow:hidden;
+        h3{
+            width:3.99359659rem; // 234px;
+            height:.68266608rem; // 40px;
+            margin:.5rem auto;
+            border-radius:.34133304rem; // 20px;
+            border:0.068267rem #fff solid;
+            text-align:center;
+            line-height:.48266608rem; // 40px;
+            color:#fff;
+            font-size:.27306643rem; // 16px;
+        }
+        p{
+            padding: .1rem .2rem;
+            display: flex;
+            flex-flow: row nowrap;
+            font-family: PingFangSC-Regular;
+            font-size: 13px;
+            color: #fff;
+            letter-spacing: 0;
+            span:nth-child(1) {
+                width: .37066652rem; // 10px;
+            }
+            span:nth-child(2) {
+                flex: 1;
+            }
+        }
+        .icp{
+            width:100%;
+            display:block;
+            padding-bottom:1rem;
+            font-size: 10px;
+            text-align:center;
+        }
+    }
+}
