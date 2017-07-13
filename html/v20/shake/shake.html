@@ -1,6 +1,9 @@
 <div style="width:100%;overflow:auto;" scroll-height>
     <!--原生的滚动条，提升性能，减少BUG-->
+
     <div class="shake_v20" style="-webkit-overflow-scrolling: touch">
+        <!-- directive:v20-popum1 -->
+        <!-- directive:v20-popum2 -->
         <header>
             <div class="car"></div>
             <div class="hand"></div>
@@ -12,11 +15,19 @@
                 </p>
             </div>-->
         </header>
+        <audio id="audio">   
+      <source src="images/v20/shake/shake_sound_male.mp3" type="audio/mpeg">
+    </audio>
         <section>
             <div class="transi01">
-                <p>查看我的奖品</p>
+                <p class="look">查看我的奖品</p>
                 <ul>
-                    <li></li>
+                    <div class="wrap">
+                        <li ng-repeat="x in allPrizeList">
+                            <p>18238832021</p>
+                            <p>{{x.lottery_name}}</p>
+                        </li>
+                    </div>
                 </ul>
             </div>
             <div class="transi02">

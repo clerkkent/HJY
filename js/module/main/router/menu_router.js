@@ -288,13 +288,7 @@ HJY.run(['$rootScope', function($rootScope) {
         s.parentNode.insertBefore(hm, s);
     }
     //
-    if (location.hostname == "192.168.11.132") {
-        $rootScope.url_global = "http://192.168.11.132:8888";
-        console.log($rootScope.url_global)
-    } else {
-        $rootScope.url_global = window.location.protocol + "//" + location.hostname; //本地测试
-    }
-
+    $rootScope.url_global = window.location.origin
 }]);
 HJY.config(["$httpProvider", function($httpProvider) {　　
     $httpProvider.interceptors.push("httpInterceptor");

@@ -1079,7 +1079,7 @@ angular.module('HJY').controller("register", ["$scope", "$state", "login_logic",
     $scope.download_show = true;
     $scope.baidu_icp = false;
 
-    $scope.no_download = ["momo", "baidu", "gdt"];
+    $scope.no_download = ["momo", "baidu", "gdt", "wyxw"];
     if (judge($scope.error)) {
         if ($scope.error["ch"] != undefined) {
             sessionStorage.setItem("channel", $scope.error["ch"]);
@@ -1103,7 +1103,6 @@ angular.module('HJY').controller("register_login", ["$scope", "$state", "login_l
     $scope.timeout = false; //倒数读秒按钮禁用
     // $scope.icode_show = false;
     $scope.second = "获取验证码";
-    console.log($scope.channel)
     $scope.scode_get = function() { //获取验证码
         var list = {
             "jsonrpc": "2.0",

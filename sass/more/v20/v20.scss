@@ -24,7 +24,106 @@
         transform:translateX(0rem);
     }
 }
+@keyframes scroll{
+     from {
+      transform:translateY(0%);
+    }
+
+    to{
+      transform:translateY(-100%);
+    }
+}
 .shake_v20{
+    .myprize{
+        @include center-block;
+        width:5.63199519rem; // 330px;
+        height:4.64212937rem; // 272px;
+        position:fixed;
+        @include backgroundset("../../images/v20/shake/ic_popups.png",center,center,100%);
+        z-index:12;
+        display:none;
+        .title{
+            display:flex;
+            flex-flow:row nowrap;
+            justify-content:space-around;
+            font-family: PingFangSC-Regular;
+            font-size: .22186648rem; // 13px
+            color: #4A4A4A;
+            letter-spacing: 0;
+            margin-top:1rem;
+            padding:0 .3rem;
+        }
+        .close{
+            width:.4266663rem; // 25px;
+            height:.4266663rem; // 25px;
+            color:#FFF;
+            text-align:center;
+            line-height:.286663rem; // 25px;
+            border:2px solid #fff;
+            font-size:.27306643rem; // 16px;
+            border-radius:.20479983rem; // 12px;
+            position:absolute;
+            right:5%;
+            top:5%;
+        }
+    }
+    .shake_win{
+        @include center-block;
+        width:4.26666303rem; // 250px
+        height:5.11999563rem; // 300px
+        position:fixed;
+        @include backgroundset("../../images/v20/shake/ic_pop_ups.png",center,center,100%);
+        z-index:12;
+        overflow:hidden;
+        display:none;
+        p{
+            text-align:center;
+        }
+        .title{
+            margin-top:65%;
+            color:#ff8e4c;
+            font-family: PingFangSC-Regular;
+            font-size:.25599978rem; // 15px;
+        }
+        .text{
+            padding:.1rem 0rem;
+            display:block;
+        }
+        .close{
+            height:.85333261rem;
+            width:3.41333042rem; // 200px;
+            border-radius:.4266663rem; // 25px;
+            border:.0341333rem solid #E2BC85; // 2px;
+            color:#E2BC85;
+            line-height:.80333261rem;
+            margin:.3rem auto;
+            font-size:.30719974rem; // 18px;
+        }
+    }
+    .shake_lose{
+        @include center-block;
+        width:4.26666303rem; // 250px
+        height:6.11999563rem; // 300px
+        position:fixed;
+        @include backgroundset("../../images/v20/shake/ic_not in.png",center,center,80%);
+        z-index:12;
+        overflow:hidden;
+        display:none;
+        .close{
+            height:.85333261rem;
+            width:3.41333042rem; // 200px;
+            border-radius:.4266663rem; // 25px;
+            border:.0341333rem solid #fff; // 2px;
+            color:#fff;
+            line-height:.80333261rem;
+            margin:.3rem .4rem;
+            display:block;
+            font-size:.30719974rem; // 18px;
+            text-align:center;
+            position:absolute;
+            bottom:0;
+        }
+    }
     header{
         height:9.43785861rem; // 553px;
         @include backgroundset("../../images/v20/shake/ic_shake.png",top,center,112%);
@@ -64,11 +163,36 @@
             @include backgroundset("../../images/v20/shake/ic_list.png",center,center,100%);
             position:relative;
             font-family: PingFangSC-Regular;
-            p{
+            overflow:hidden;
+            .look{
                 color:#FFF;
                 right:8%;
                 position:absolute;
                 margin-top:.40719974rem; // 18px;
+            }
+            ul{
+                width:5.11999563rem; // 300px;
+                height:2.44053125rem; // 143px;
+                margin:0 auto;
+                margin-top:1rem;
+                overflow:hidden;
+                .wrap{
+                    width:5.11999563rem; // 300px;
+                    min-height:2.44053125rem; // 143px;
+                    animation:scroll 5s linear infinite;
+                    li{
+                        width:100%;
+                        display:flex;
+                        flex-flow:row nowrap;
+                        height:.40959965rem; // 24px;
+                        padding:.27rem .3rem;
+                        justify-content:space-between;
+                        font-family: PingFangSC-Regular;
+                        font-size: .27306643rem; // 16px;
+                        color: #333743;
+                        letter-spacing: 0;
+                    }
+                }
             }
         }
         .transi02{

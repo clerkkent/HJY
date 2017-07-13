@@ -18,3 +18,17 @@ angular.module('HJY').directive("shakeK", ["$timeout", function($timeout) {
         }
     }
 }])
+HJY.directive("v20Popum1", function() {
+    return {
+        restrict: "ECMA",
+        replace: true,
+        templateUrl: "html/v20/shake/popum01.html"
+    }
+})
+HJY.directive("v20Popum2", function() {
+    return {
+        restrict: "ECMA",
+        replace: true,
+        templateUrl: "html/v20/shake/popum02.html"
+    }
+})
