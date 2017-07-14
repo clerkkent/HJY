@@ -1,14 +1,44 @@
 <div class="myprize">
-    <p class="close">x</p>
+    <p class="close" ng-click="hidePrizeList()">x</p>
     <ul class="title">
         <li>奖品名称</li>
-        <li>兑换码</li>
-        <li>密码</li>
+        <li>详情</li>
         <li>使用方法</li>
     </ul>
-    <ul>
-        <li>
+    <ul class="content">
+        <li ng-repeat="x in personPrizeList" ng-if="x.prize_type=='3'" repeat-f>
+            <div class="v20_icon movie">
 
+            </div>
+            <div>
+                <p>卡号:{{x.card_number}}</p>
+                <p>密码:{{x.card_code}}</p>
+            </div>
+            <div>
+                <p class="go">点击查看</p>
+            </div>
+        </li>
+        <li ng-repeat="x in personPrizeList" ng-if="x.prize_type=='2'" repeat-f>
+            <div class="v20_icon packet">
+
+            </div>
+            <div class="other">
+                <p>红包:{{x.prize_name}}元</p>
+            </div>
+            <div>
+                <p class="go">点击使用</p>
+            </div>
+        </li>
+        <li ng-repeat="x in personPrizeList" ng-if="x.prize_type=='1'" repeat-f>
+            <div class="v20_icon oil_drop">
+
+            </div>
+            <div class="other">
+                <p>油滴:{{x.prize_name}}</p>
+            </div>
+            <div>
+                <p class="go">点击使用</p>
+            </div>
         </li>
     </ul>
 </div>

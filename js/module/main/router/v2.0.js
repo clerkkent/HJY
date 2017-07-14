@@ -27,4 +27,9 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "shake",
             templateUrl: "html/v20/shake/shake.html" + v,
         })
+        .state("v20.schoolmate", {
+            url: "/schoolmate",
+            controller: "schoolmate",
+            templateUrl: "html/v20/shake/shake.html" + v
+        })
 }]);

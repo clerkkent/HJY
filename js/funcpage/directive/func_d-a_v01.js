@@ -57,7 +57,6 @@ angular.module('HJY').directive("allFoldb", [function() {
     return {
         restrict: 'ECMA',
         link: function(scope, element, attr) {
-
             $(element).parent(".note").click(function() {
                 if ($(this).hasClass('selected02')) {
                     $(this).removeClass("selected02")

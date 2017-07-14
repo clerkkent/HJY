@@ -6,7 +6,9 @@
         <!-- directive:v20-popum2 -->
         <header>
             <div class="car"></div>
-            <div class="hand"></div>
+            <div class="hand">
+                <div class="present"></div>
+            </div>
             <!--<div class="note">
                 <h3>如何获得抽奖机会</h3>
                 <p>直充一笔可获得1次抽奖机会<br/> 充值一笔3期分期套餐可获得3次抽奖机会
@@ -20,13 +22,14 @@
     </audio>
         <section>
             <div class="transi01">
-                <p class="look">查看我的奖品</p>
+                <p class="look" ng-click="showPrizeList()">查看我的奖品</p>
                 <ul>
-                    <div class="wrap">
+                    <div class="wrap" scroll-show>
                         <li ng-repeat="x in allPrizeList">
-                            <p>18238832021</p>
-                            <p>{{x.lottery_name}}</p>
+                            <p>{{x.phone}}</p>
+                            <p>{{x.prize_name}}</p>
                         </li>
+                        <li class="scrollBottom"> </li>
                     </div>
                 </ul>
             </div>

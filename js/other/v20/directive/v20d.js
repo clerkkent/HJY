@@ -10,11 +10,31 @@ angular.module('HJY').directive("repeatF", ["$timeout", function($timeout) {
         }
     }
 }])
-angular.module('HJY').directive("shakeK", ["$timeout", function($timeout) {
+angular.module('HJY').directive("scrollShow", ["$timeout", function($timeout) {
     return {
         restrict: "A",
         link: function(scope, element, attr) {
+            var speed = 1;
+            var i = 1;
+            console.log($(element).height())
 
+            function scroll() {
+                if (speed * i < $(element).height()) {
+                    i++
+                    var deal = "translateY(" + (-speed * i) + "px)";
+                    $(element).css({ transform: deal })
+                } else {
+                    i = 0;
+                }
+
+            }
+            var action = setInterval(scroll, 50);
+            $(element).on("touchstart", function() {
+                clearInterval(action)
+            })
+            $(element).on("touchend", function() {
+                action = setInterval(scroll, 50);
+            })
         }
     }
 }])
