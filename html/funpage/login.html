@@ -19,7 +19,7 @@
                     <div class="scode information">
                         <span class="first" style="background-image:url(images/login/ic_login_password.png)"></span>
                         <span class="second">
-                                <input type="text" autocomplete="off" name="scode" ng-model="info.scode" required placeholder="请输入短信验证码" style="width:60%;" maxlength="6">
+                                <input type="text" autocomplete="off" name="scode" ng-model="info.scode" required placeholder="请输入短信验证码" style="width:60%;" maxlength="4">
                                 <span class="third notice" ng-hide="true">验证码输入错误</span>
                         <button class="scode_get" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">
                                 </button>

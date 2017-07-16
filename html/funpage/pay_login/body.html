@@ -2,7 +2,7 @@
 <div>
     <input type="tel" id="phone" class="info" autocomplete="off" placeholder="请输入手机号" name="phone" ng-verify="pattern:/^0?1[0-9][0-9]\d{4}\d{4}$/,max:11,errmsg:'手机号码格式错误',required: false" ng-model="info.phone" ng-pattern="/^0?1[0-9][0-9]\d{4}\d{4}$/" name="phone"
         placeholder="请输入手机号码">
-    <input type="tel" id="scode" class="info" autocomplete="off" placeholder="请输入验证码" name="scode" ng-maxlength="6" ng-minlength="6" name="scode" ng-model="info.scode" ng-verify="max:6,min:6,required: false" placeholder="请输入短信验证码">
+    <input type="tel" id="scode" class="info" autocomplete="off" placeholder="请输入验证码" name="scode" ng-maxlength="4" ng-minlength="4" name="scode" ng-model="info.scode" ng-verify="max:6,min:6,required: false" placeholder="请输入短信验证码">
     <button class="get_scode" ng-bind="second" ng-disabled="agree || myform.phone.$invalid" ng-click="scode_get()">获取短信验证码</button>
 </div>
 <button class="second_i button button-assertive info" type="submit" ng-disabled="myform.phone.$invalid||myform.scode.$invalid||agreet" ng-click="login_pay()" style="margin-top:1rem;"><p style="font-size:.28rem">{{pay_text}}</p><p>充值金额{{price_n}}元</p></button>

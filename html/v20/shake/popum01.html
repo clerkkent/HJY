@@ -15,7 +15,7 @@
                 <p>密码:{{x.card_code}}</p>
             </div>
             <div>
-                <p class="go">点击查看</p>
+                <p class="go" ng-click="movieUse()">点击查看</p>
             </div>
         </li>
         <li ng-repeat="x in personPrizeList" ng-if="x.prize_type=='2'" repeat-f>

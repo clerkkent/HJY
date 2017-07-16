@@ -156,13 +156,16 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
             url: ""
         }
-        webappSDK.share(content);
+        if (login_logic.JudgeSystem()) {
+            hjytest.invitation(JSON.stringify(content));
+        } else {
+            webappSDK.share(content);
+        }
     }
-
-    webappSDK.getUserInfos(function(res) { //webbriage入口
-        var info = JSON.parse(res)
-        $scope.userid = info.user_id
-        $scope.strs = info.OIL_TOKEN
+    $scope.callA = function() {
+        var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
+        $scope.userid = axxxx.user_id;
+        $scope.strs = axxxx.OIL_TOKEN;
         if ($scope.userid != null) {
             var list = {
                 "jsonrpc": "2.0",
@@ -172,7 +175,6 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
                 }],
                 "id": 1
             }
-
             var promise_scode = login_logic.submit(list, $scope.strs);
             promise_scode.then(function(data) {
                 if (data.result != undefined) {
@@ -184,16 +186,18 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
                     } else if (data["result"]["list"] != 0 && data["result"]["oldList"] == 0) {
                         $scope.frienddetails = data["result"]["list"];
                     } else if (data["result"]["list"] != 0 && data["result"]["oldList"] != 0) {
+
                         $scope.frienddetails = data["result"]["list"].concat(data["result"]["oldList"]);
                     } else {
                         $scope.frienddetails = []
                     }
+
                     $scope.package = data["result"]["allPackets"];
                     if ($scope.frienddetails == 0) {
                         friend.friend_none()
                     }
-                } else { //错误信息弹窗
 
+                } else { //错误信息弹窗
                     $ionicPopup.alert({
                         title: '提示',
                         template: data["error"]["message"],
@@ -206,7 +210,63 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
                 console.log("验证码信息获取失败");
             })
         }
-    });
+    }
+
+    $scope.getUserInfos = function() {
+        webappSDK.getUserInfos(function(res) { //webbriage入口
+            var info = JSON.parse(res)
+            $scope.userid = info.user_id
+            $scope.strs = info.OIL_TOKEN
+            if ($scope.userid != null) {
+                var list = {
+                    "jsonrpc": "2.0",
+                    "method": "myInviteFriendList",
+                    "params": [{
+                        "user_id": $scope.userid //用户的user_id，必须
+                    }],
+                    "id": 1
+                }
+
+                var promise_scode = login_logic.submit(list, $scope.strs);
+                promise_scode.then(function(data) {
+                    if (data.result != undefined) {
+                        $scope.todayOilNum = data["result"]["todayOilNum"];
+                        $scope.allOilNum = data["result"]["allOilNum"];
+                        $scope.allFriendNum = data["result"]["allFriendNum"];
+                        if (data["result"]["list"] == 0 && data["result"]["oldList"] != 0) {
+                            $scope.frienddetails = data["result"]["oldList"];
+                        } else if (data["result"]["list"] != 0 && data["result"]["oldList"] == 0) {
+                            $scope.frienddetails = data["result"]["list"];
+                        } else if (data["result"]["list"] != 0 && data["result"]["oldList"] != 0) {
+                            $scope.frienddetails = data["result"]["list"].concat(data["result"]["oldList"]);
+                        } else {
+                            $scope.frienddetails = []
+                        }
+                        $scope.package = data["result"]["allPackets"];
+                        if ($scope.frienddetails == 0) {
+                            friend.friend_none()
+                        }
+                    } else { //错误信息弹窗
+
+                        $ionicPopup.alert({
+                            title: '提示',
+                            template: data["error"]["message"],
+                            okText: '嗯！知道了', // String
+                            okType: 'button-energized',
+                        });
+                    }
+
+                }, function() {
+                    console.log("验证码信息获取失败");
+                })
+            }
+        });
+    }
+    if (login_logic.JudgeSystem()) {
+        $scope.callA();
+    } else {
+        $scope.getUserInfos();
+    }
     if ($scope.url.indexOf("?") != -1) { //URL入口
         var str = $scope.url.substr(1);
         $scope.strs = str.split("&");
@@ -273,7 +333,11 @@ HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPo
             // url: $rootScope.url_global + "/wechat/?#/game/main"
             url: ""
         }
-        webappSDK.share(content);
+        if (login_logic.JudgeSystem()) {
+            hjytest.invitation(content);
+        } else {
+            webappSDK.share(content);
+        }
     }
 }]);
 HJY.controller("pay", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {

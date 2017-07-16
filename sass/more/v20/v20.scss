@@ -7,248 +7,250 @@
         transform: rotate(360deg);
     }
 }
-@keyframes shake{
-    0%{
-        transform: translateX(0rem);
-    }
-    25%{
-        transform:  translateX(-0.5rem);
-    }
-    50%{
-        transform:  translateX(0rem);
-    }
-    75%{
-        transform:translateX(0.5rem);
-    }
-    100%{
-        transform:translateX(0rem);
-    }
-}
-@keyframes scroll{
-     from {
-      transform:translateY(0%);
-    }
 
-    to{
-      transform:translateY(-100%);
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(0deg);
     }
 }
-@keyframes scalePresent{
-     from {
-      transform:scale(1.3);
-    }
 
-    to{
-      transform:scale(1);
+@keyframes scroll {
+    from {
+        transform: translateY(0%);
+    }
+    to {
+        transform: translateY(-100%);
     }
 }
-.shake_v20{
-    .myprize{
+
+@keyframes scalePresent {
+    from {
+        transform: scale(1.3);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.shake_v20 {
+    .myprize {
         @include center-block;
-        width:5.63199519rem; // 330px;
-        height:4.64212937rem; // 272px;
-        position:fixed;
-        @include backgroundset("../../images/v20/shake/ic_popups.png",center,center,100%);
-        z-index:12;
-        display:none;
-        .title{
-            display:flex;
-            flex-flow:row nowrap;
-            justify-content:space-around;
+        width: 5.63199519rem; // 330px;
+        height: 4.64212937rem; // 272px;
+        position: fixed;
+        @include backgroundset("../../images/v20/shake/ic_popups.png", center, center, 100%);
+        z-index: 12;
+        display: none;
+        .title {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
             font-family: PingFangSC-Regular;
             font-size: .22186648rem; // 13px
             color: #4A4A4A;
             letter-spacing: 0;
-            margin-top:1rem;
-            padding:0 .3rem;
+            margin-top: 1rem;
+            padding: 0 .3rem;
         }
-        .content{
-            width:5.11999563rem; // 300px;
-            height:2.41333042rem; // 200px;
-            margin:0 auto;
-            overflow:auto;
-            padding:0rem .5rem;
-            margin-top:.3rem;
+        .content {
+            width: 5.11999563rem; // 300px;
+            height: 2.41333042rem; // 200px;
+            margin: 0 auto;
+            overflow: auto;
+            padding: 0rem .5rem;
+            margin-top: .3rem;
             font-family: PingFangSC-Medium;
             font-size: .17066652rem; // 10px;
             color: #666666;
             letter-spacing: 0;
-            li{
-                height:.82159921rem; // 54px;
-                display:flex;
-                flex-flow:row nowrap;
-                justify-content:space-between;
-                .go{
-                    line-height:.82159921rem; // 54px
-                    height:.92159921rem; // 54px;
+            li {
+                height: .82159921rem; // 54px;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                .go {
+                    line-height: .82159921rem; // 54px
+                    height: .92159921rem; // 54px;
                     color: #EE6868;
                 }
-                .other{
-                     line-height:.82159921rem; // 54px
-                    height:.92159921rem; // 54px;
+                .other {
+                    line-height: .82159921rem; // 54px
+                    height: .92159921rem; // 54px;
                     color: #EE6868;
                 }
-                .movie{
-                     height:.82159921rem; // 54px;
-                    width:.76799934rem; // 45px;
-                    @include backgroundset("../../images/v20/shake/ic_muv.png",center,center,100%);
+                .movie {
+                    height: .82159921rem; // 54px;
+                    width: .76799934rem; // 45px;
+                    @include backgroundset("../../images/v20/shake/ic_muv.png", center, center, 100%);
                 }
-                .packet{
-                      height:.82159921rem; // 54px;
-                    width:.76799934rem; // 45px;
-                    @include backgroundset("../../images/v20/shake/ic_red.png",center,center,100%);
+                .packet {
+                    height: .82159921rem; // 54px;
+                    width: .76799934rem; // 45px;
+                    @include backgroundset("../../images/v20/shake/ic_red.png", center, center, 100%);
                 }
-                .oil_drop{
-                       height:.82159921rem; // 54px;
-                    width:.76799934rem; // 45px;
-                    @include backgroundset("../../images/v20/shake/ic_oil.png",center,center,60%);
+                .oil_drop {
+                    height: .82159921rem; // 54px;
+                    width: .76799934rem; // 45px;
+                    @include backgroundset("../../images/v20/shake/ic_oil.png", center, center, 60%);
                 }
             }
         }
-        .close{
-            width:.4266663rem; // 25px;
-            height:.4266663rem; // 25px;
-            color:#FFF;
-            text-align:center;
-            line-height:.286663rem; // 25px;
-            border:2px solid #fff;
-            font-size:.27306643rem; // 16px;
-            border-radius:.20479983rem; // 12px;
-            position:absolute;
-            right:5%;
-            top:5%;
+        .close {
+            width: .4266663rem; // 25px;
+            height: .4266663rem; // 25px;
+            color: #FFF;
+            text-align: center;
+            line-height: .286663rem; // 25px;
+            border: 2px solid #fff;
+            font-size: .27306643rem; // 16px;
+            border-radius: .20479983rem; // 12px;
+            position: absolute;
+            right: 5%;
+            top: 5%;
         }
     }
-    .shake_win{
+    .shake_win {
         @include center-block;
-        width:4.26666303rem; // 250px
-        height:5.11999563rem; // 300px
-        position:fixed;
-        @include backgroundset("../../images/v20/shake/ic_pop_ups.png",center,center,100%);
-        z-index:12;
-        overflow:hidden;
-        display:none;
-        p{
-            text-align:center;
+        width: 4.26666303rem; // 250px
+        height: 5.11999563rem; // 300px
+        position: fixed;
+        @include backgroundset("../../images/v20/shake/ic_pop_ups.png", center, center, 100%);
+        z-index: 12;
+        overflow: hidden;
+        display: none;
+        p {
+            text-align: center;
         }
-        .title{
-            margin-top:65%;
-            color:#ff8e4c;
+        .title {
+            margin-top: 65%;
+            color: #ff8e4c;
             font-family: PingFangSC-Regular;
-            font-size:.25599978rem; // 15px;
+            font-size: .25599978rem; // 15px;
         }
-        .text{
-            padding:.1rem 0rem;
-            display:block;
+        .text {
+            padding: .1rem 0rem;
+            display: block;
         }
-        .close{
-            height:.85333261rem;
-            width:3.41333042rem; // 200px;
-            border-radius:.4266663rem; // 25px;
-            border:.0341333rem solid #E2BC85; // 2px;
-            color:#E2BC85;
-            line-height:.80333261rem;
-            margin:.3rem auto;
-            font-size:.30719974rem; // 18px;
+        .close {
+            height: .85333261rem;
+            width: 3.41333042rem; // 200px;
+            border-radius: .4266663rem; // 25px;
+            border: .0341333rem solid #E2BC85; // 2px;
+            color: #E2BC85;
+            line-height: .80333261rem;
+            margin: .3rem auto;
+            font-size: .30719974rem; // 18px;
         }
     }
-    .shake_lose{
+    .shake_lose {
         @include center-block;
-        width:4.26666303rem; // 250px
-        height:6.11999563rem; // 300px
-        position:fixed;
-        @include backgroundset("../../images/v20/shake/ic_not in.png",center,center,80%);
-        z-index:12;
-        overflow:hidden;
-        display:none;
-        .close{
-            height:.85333261rem;
-            width:3.41333042rem; // 200px;
-            border-radius:.4266663rem; // 25px;
-            border:.0341333rem solid #fff; // 2px;
-            color:#fff;
-            line-height:.80333261rem;
-            margin:.3rem .4rem;
-            display:block;
-            font-size:.30719974rem; // 18px;
-            text-align:center;
-            position:absolute;
-            bottom:0;
+        width: 4.26666303rem; // 250px
+        height: 6.11999563rem; // 300px
+        position: fixed;
+        @include backgroundset("../../images/v20/shake/ic_not in.png", center, center, 80%);
+        z-index: 12;
+        overflow: hidden;
+        display: none;
+        .close {
+            height: .85333261rem;
+            width: 3.41333042rem; // 200px;
+            border-radius: .4266663rem; // 25px;
+            border: .0341333rem solid #fff; // 2px;
+            color: #fff;
+            line-height: .80333261rem;
+            margin: .3rem .4rem;
+            display: block;
+            font-size: .30719974rem; // 18px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
         }
     }
-    header{
-        height:9.43785861rem; // 553px;
-        @include backgroundset("../../images/v20/shake/ic_shake.png",top,center,112%);
-        background-color:#7a7d93;
-        position:relative;
-        .car{
-            position:absolute;
-            width:.85333261rem;
-            height:.31199956rem; // 30px;
-            @include backgroundset("../../images/v20/shake/ic_car.png",center,center,100%);
-            left:43.2%;
-            transform-origin:center 1.8rem;
-            top:32%;
-            animation:round 5s linear infinite;
+    header {
+        height: 9.43785861rem; // 553px;
+        @include backgroundset("../../images/v20/shake/ic_shake.png", top, center, 112%);
+        background-color: #7a7d93;
+        position: relative;
+        .car {
+            position: absolute;
+            width: .85333261rem;
+            height: .31199956rem; // 30px;
+            @include backgroundset("../../images/v20/shake/ic_car.png", center, center, 100%);
+            left: 43.2%;
+            transform-origin: center 1.8rem;
+            top: 32%;
+            animation: round 5s linear infinite;
         }
-        .hand{
-            position:absolute;
-            width:1.8rem;
-            height:2.8rem;
-            background-color:pink;
-            @include backgroundset("../../images/v20/shake/ic_hand.png",center,center,100%);
-            left:35%;
-            top:37.5%;
-            .present{
-                width:1.00933239rem; // 65px;
-                height:1.10933239rem; // 65px;
-                @include backgroundset("../../images/v20/shake/ic_gift.png",center,center,100%);
+        .hand {
+            position: absolute;
+            width: 1.8rem;
+            height: 2.8rem;
+            background-color: pink;
+            @include backgroundset("../../images/v20/shake/ic_hand.png", center, center, 100%);
+            left: 35%;
+            top: 37.5%;
+            transform-origin: bottom right;
+            .present {
+                width: 1.00933239rem; // 65px;
+                height: 1.10933239rem; // 65px;
+                @include backgroundset("../../images/v20/shake/ic_gift.png", center, center, 100%);
                 @include center-block;
-                margin-left:28%;
-                margin-top:40%;
-                animation:scalePresent 1s  infinite alternate;
+                margin-left: 28%;
+                margin-top: 40%;
+                animation: scalePresent 1s infinite alternate;
             }
         }
-        .shake{
-            animation:shake .25s linear infinite;
+        .shake {
+            animation: shake .5s linear infinite;
         }
     }
-    section{
-        height:13.7557216rem; // 806px;
-        background:#7a7d93;
-        overflow:hidden;
-        .transi01{
-            width:5.90506163rem; // 346px;
-            height:3.68639685rem; // 216px;
-            margin:.3rem auto;
-            @include backgroundset("../../images/v20/shake/ic_list.png",center,center,100%);
-            position:relative;
+    section {
+        height: 13.7557216rem; // 806px;
+        background: #7a7d93;
+        overflow: hidden;
+        .transi01 {
+            width: 5.90506163rem; // 346px;
+            height: 3.68639685rem; // 216px;
+            margin: .3rem auto;
+            @include backgroundset("../../images/v20/shake/ic_list.png", center, center, 100%);
+            position: relative;
             font-family: PingFangSC-Regular;
-            overflow:hidden;
-            .look{
-                color:#FFF;
-                right:8%;
-                position:absolute;
-                margin-top:.40719974rem; // 18px;
+            overflow: hidden;
+            .look {
+                color: #FFF;
+                right: 8%;
+                position: absolute;
+                margin-top: .40719974rem; // 18px;
             }
-            ul{
-                width:5.11999563rem; // 300px;
-                height:2.44053125rem; // 143px;
-                margin:0 auto;
-                margin-top:1rem;
-                overflow:hidden;
-                .wrap{
-                    width:5.11999563rem; // 300px;
-                    min-height:2.44053125rem; // 143px;
-
-                    transform:translateY(0%);
-                    li{
-                        width:100%;
-                        display:flex;
-                        flex-flow:row nowrap;
-                        height:.40959965rem; // 24px;
-                        padding:.27rem .3rem;
-                        justify-content:space-between;
+            ul {
+                width: 5.11999563rem; // 300px;
+                height: 2.44053125rem; // 143px;
+                margin: 0 auto;
+                margin-top: 1rem;
+                overflow: hidden;
+                .wrap {
+                    width: 5.11999563rem; // 300px;
+                    min-height: 2.44053125rem; // 143px;
+                    transform: translateY(0%);
+                    li {
+                        width: 100%;
+                        display: flex;
+                        flex-flow: row nowrap;
+                        height: .40959965rem; // 24px;
+                        padding: .27rem .3rem;
+                        justify-content: space-between;
                         font-family: PingFangSC-Regular;
                         font-size: .27306643rem; // 16px;
                         color: #333743;
@@ -257,29 +259,60 @@
                 }
             }
         }
-        .transi02{
-            width:6.0927948rem; // 357px;
-            height:9.7279917rem; // 570px;
-            margin:0 auto;
-            @include backgroundset("../../images/v20/shake/ic_prize.png",center,center,100%)
+        .transi02 {
+            width: 6.0927948rem; // 357px;
+            height: 9.7279917rem; // 570px;
+            margin: 0 auto;
+            @include backgroundset("../../images/v20/shake/ic_prize.png", center, center, 100%);
+            overflow: hidden;
+            .main_prize {
+                width: 6.10909091rem; // 357px;
+                padding: 0 .3rem;
+                height: 4rem;
+                margin-top: 2rem;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                li {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    border: .0513369rem solid #03ccbb; // 3px;
+                    border-radius: 5%;
+                }
+            }
+            .other_prize {
+                width: 6.10909091rem; // 357px;
+                padding: 0 .3rem;
+                height: 1.5rem;
+                overflow: hidden;
+                display: flex;
+                margin-top: 1.8rem;
+                flex-flow: row wrap;
+                justify-content: space-around;
+                li {
+                    width: 2rem;
+                    line-height: .5rem;
+                    text-align: center;
+                }
+            }
         }
     }
-    footer{
-        background:#7a7d93;
+    footer {
+        background: #7a7d93;
         font-family: PingFangSC-Regular;
-        overflow:hidden;
-        h3{
-            width:3.99359659rem; // 234px;
-            height:.68266608rem; // 40px;
-            margin:.5rem auto;
-            border-radius:.34133304rem; // 20px;
-            border:0.068267rem #fff solid;
-            text-align:center;
-            line-height:.48266608rem; // 40px;
-            color:#fff;
-            font-size:.27306643rem; // 16px;
+        overflow: hidden;
+        h3 {
+            width: 3.99359659rem; // 234px;
+            height: .68266608rem; // 40px;
+            margin: .5rem auto;
+            border-radius: .34133304rem; // 20px;
+            border: 0.068267rem #fff solid;
+            text-align: center;
+            line-height: .48266608rem; // 40px;
+            color: #fff;
+            font-size: .27306643rem; // 16px;
         }
-        p{
+        p {
             padding: .1rem .2rem;
             display: flex;
             flex-flow: row nowrap;
@@ -294,12 +327,153 @@
                 flex: 1;
             }
         }
-        .icp{
-            width:100%;
-            display:block;
-            padding-bottom:1rem;
+        .icp {
+            width: 100%;
+            display: block;
+            padding-bottom: 1rem;
             font-size: 10px;
-            text-align:center;
+            text-align: center;
+        }
+    }
+}
+
+.schoolmate {
+    height: 11.43101604rem; // 668px;
+    width: 100%;
+    @include backgroundset("../../images/v20/schoolmate/ic_card_bj.png",center,center,100%);
+    position: relative;
+    section {
+        height: 7.3885295rem; // 263px
+        padding: 0 .25199956rem; // 30px
+        font-family: PingFangSC-Regular;
+        padding-top: 0.34rem;
+        background:#FFF;
+        @include center-block;
+        margin-bottom:0;
+        width:5.73262032rem; // 335px;
+        border-radius:5% 5% 0% 0%;
+        .info {
+            width: 100%;
+            height: .77005348rem; // 45px
+            border-radius: .46rem; // 23px;
+            width:5.13368984rem; // 300px;
+            padding-left: .86rem; // 23px;
+            font-size: .23893313rem; // 14px
+            color: #858585;
+            border:.0171123rem solid #D8D8D8; // 1px;
+            margin-bottom: .1rem; // 5px
+            text-decoration: none;
+            font-family: PingFangSC-Regular;
+             @include backgroundset("../../images/v20/schoolmate/ic_card_name.png",.3rem,center,8%);
+             background-color:#F8F8F8;
+        }
+        .notice{
+            padding-left: .26rem; // 23px;
+            font-family: PingFangSC-Regular;
+            font-size: .23957219rem; // 14px;
+            color: #FF7320;
+            letter-spacing: 0;
+            position:absolute;
+            top:.1rem;
+            left:.2rem;
+            display:block;
+
+        }
+        .name{
+            margin-top:.2rem;
+        }
+        #phone{
+            @include backgroundset("../../images/v20/schoolmate/ic_card_phone.png",.3rem,center,8%);
+            background-color:#F8F8F8;
+        }
+        .first_i{
+             @include backgroundset("../../images/v20/schoolmate/ic_card_verification.png",.3rem,center,8%);
+             background-color:#F8F8F8;
+        }
+        .invited_i{
+              @include backgroundset("../../images/v20/schoolmate/ic_card_Invitation.png",.3rem,center,8%);
+              background-color:#F8F8F8;
+        }
+        .schoolmate_note{
+            font-family: PingFangSC-Regular;
+            font-size: .17112299rem; // 10px
+            color: #999999;
+            letter-spacing: 0;
+        }
+        .details {
+            width: 2.0rem; // 90px
+            height: .34133304rem; // 20px
+            line-height: .34133304rem; // 20px
+            text-align: center;
+            font-size: .22rem; // 14px
+            color: #858585;
+            position: absolute;
+            right: 10%;
+            top: 0.59rem;
+            font-family: PingFangSC-Regular;
+        }
+        .second_i {
+            width: 100%;
+            height: .85333261rem; // 50px
+            border-radius: .46rem; // 23px;
+            font-size: 0.32rem;
+            padding: 0;
+            color: #858585;
+            color: #FFF;
+            margin-bottom: .1rem; // 5px
+            font-weight: 550;
+            font-family: PingFangSC-Medium;
+            margin-top: 0.4rem;
+        }
+        .get_scode {
+            width: 1.66rem; // 50px;
+            height: .36rem; // 18px;
+            background: none;
+            border: none;
+            color: #ff6409;
+            position: absolute;
+            right: 10%;
+            top: 34.2%;
+            font-size: .22rem; // 14px
+            font-family: PingFangSC-Regular;
+        }
+        .remind {
+            width: 4.8rem; // 240px
+            height: .6rem; // 30px;
+            line-height: .6rem;
+            margin: 0 auto;
+            margin-top: -0.1rem;
+            text-align: center;
+            padding-left: 0.3rem;
+            font-family: PingFangSC-Regular;
+            font-size: .20rem; // 12px
+            letter-spacing: 0;
+            overflow: hidden;
+            position: relative;
+            transform: scale(1.1);
+            color: #FDA174;
+            b {
+                font-weight: 500;
+                color: #FF7320;
+            }
+            .agree {
+                display: inline-block;
+                border-radius: 20%;
+                position: absolute;
+                left: 19%;
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/H5_Check@3x.png", center, center, 100%);
+                top: 25%;
+                transform: scale(0.7);
+            }
+            .selected {
+                background-image: none;
+            }
+            span {
+                width: .3rem; // 15px;
+                height: .3rem; // 15px;
+                border: .02rem solid #f95b4e;
+                color: #f95b4e;
+            }
         }
     }
 }
