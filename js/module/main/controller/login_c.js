@@ -154,7 +154,8 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             title: "200元加油红包免费领，加油低至8.5折",
             content: "全国中石油/中石化通用，最快3分钟到账，十万车主都在用，老司机速来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
-            url: ""
+            url: "",
+            isLogin: false
         }
         if (login_logic.JudgeSystem()) {
             hjytest.invitation(JSON.stringify(content));
@@ -262,11 +263,7 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             }
         });
     }
-    if (login_logic.JudgeSystem()) {
-        $scope.callA();
-    } else {
-        $scope.getUserInfos();
-    }
+
     if ($scope.url.indexOf("?") != -1) { //URL入口
         var str = $scope.url.substr(1);
         $scope.strs = str.split("&");
@@ -319,9 +316,13 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
                 console.log("验证码信息获取失败");
             })
         }
+    } else if (login_logic.JudgeSystem()) {
+        $scope.callA();
+    } else {
+        $scope.getUserInfos();
     }
 }]);
-HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPopup", "friend", "webappSDK", "$rootScope", function($scope, $state, $http, $ionicPopup, friend, webappSDK, $rootScope) {
+HJY.controller("friend_request_details", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "friend", "webappSDK", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, friend, webappSDK, $rootScope) {
     friend.popum();
     webappSDK.GetActiveId(1);
     $("title").html("邀请有礼")
@@ -330,11 +331,11 @@ HJY.controller("friend_request_details", ["$scope", "$state", "$http", "$ionicPo
             title: "200元加油红包免费领，加油低至8.5折",
             content: "全国中石油/中石化通用，最快3分钟到账，十万车主都在用，老司机速来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
-            // url: $rootScope.url_global + "/wechat/?#/game/main"
-            url: ""
+            url: "",
+            isLogin: 1
         }
         if (login_logic.JudgeSystem()) {
-            hjytest.invitation(content);
+            hjytest.invitation(JSON.stringify(content));
         } else {
             webappSDK.share(content);
         }

@@ -72,24 +72,50 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
     if ($scope.url.indexOf("?") != -1) {
         var str = $scope.url.substr(1);
         $scope.strs = str.split("&");
-        console.log($scope.strs)
         for (var i = 0; i < $scope.strs.length; i++) {
             $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
         }
         $scope.userid = $scope.theRequest.user_id;
         $scope.strs = $scope.theRequest.OIL_TOKEN;
+        if ($scope.userid == "" && $scope.strs == "") {
+            if (login_logic.JudgeSystem()) {
+                var axxxx = JSON.parse(hjytest.toLogin());
+            } else {
+                webappSDK.toLogin(function(res) {
+
+                })
+            }
+        }
         $scope.main_sign()
     } else {
         if (login_logic.JudgeSystem()) {
             var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
             $scope.userid = axxxx.user_id;
             $scope.strs = axxxx.OIL_TOKEN;
+            if ($scope.userid == "" && $scope.strs == "") {
+                if (login_logic.JudgeSystem()) {
+                    var axxxx = JSON.parse(hjytest.toLogin());
+                } else {
+                    webappSDK.toLogin(function(res) {
+
+                    })
+                }
+            }
             $scope.main_sign()
         } else {
             webappSDK.getUserInfos(function(res) {
                 var info = JSON.parse(res)
                 $scope.userid = info.user_id
                 $scope.strs = info.OIL_TOKEN //webbriage入口
+                if ($scope.userid == "" && $scope.strs == "") {
+                    if (login_logic.JudgeSystem()) {
+                        var axxxx = JSON.parse(hjytest.toLogin());
+                    } else {
+                        webappSDK.toLogin(function(res) {
+
+                        })
+                    }
+                }
                 $scope.main_sign()
             })
         }
@@ -98,6 +124,8 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
 }])
 HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login_logic", "v11", "$rootScope", "_", "$ionicPopup", "$http", "webappSDK", function($timeout, $ionicBackdrop, $scope, $state, login_logic, v11, $rootScope, _, $ionicPopup, $http, webappSDK) {
     $("title").html("奖励计划")
+    $scope.userid = "";
+    $scope.strs = ""
     $scope.gobuy = function() {
         if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
             _hmt.push(['_trackPageview', "/gobuy"]);
@@ -110,6 +138,30 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
     }
     $scope.theRequest = new Object();
     $scope.url = location.search; //参数
+    if ($scope.url.indexOf("?") != -1) {
+        var str = $scope.url.substr(1);
+        $scope.strs = str.split("&");
+        for (var i = 0; i < $scope.strs.length; i++) {
+            $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
+        }
+        $scope.userid = $scope.theRequest.user_id;
+        $scope.strs = $scope.theRequest.OIL_TOKEN;
+        $scope.main_task()
+    } else {
+        if (login_logic.JudgeSystem()) {
+            var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
+            $scope.userid = axxxx.user_id;
+            $scope.strs = axxxx.OIL_TOKEN;
+            $scope.main_task()
+        } else {
+            webappSDK.getUserInfos(function(res) {
+                var info = JSON.parse(res)
+                $scope.userid = info.user_id
+                $scope.strs = info.OIL_TOKEN //webbriage入口
+                $scope.main_task()
+            })
+        }
+    }
     $scope.main_task = function() {
         var list = {
             "jsonrpc": "2.0",
@@ -172,30 +224,7 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
             })
         }
     }
-    if ($scope.url.indexOf("?") != -1) {
-        var str = $scope.url.substr(1);
-        $scope.strs = str.split("&");
-        for (var i = 0; i < $scope.strs.length; i++) {
-            $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
-        }
-        $scope.userid = $scope.theRequest.user_id;
-        $scope.strs = $scope.theRequest.OIL_TOKEN;
-        $scope.main_task()
-    } else {
-        if (login_logic.JudgeSystem()) {
-            var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
-            $scope.userid = axxxx.user_id;
-            $scope.strs = axxxx.OIL_TOKEN;
-            $scope.main_sign()
-        } else {
-            webappSDK.getUserInfos(function(res) {
-                var info = JSON.parse(res)
-                $scope.userid = info.user_id
-                $scope.strs = info.OIL_TOKEN //webbriage入口
-                $scope.main_sign()
-            })
-        }
-    }
+    $scope.main_task()
 }])
 HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "$scope", "$state", "login_logic", "v11", "$rootScope", "_", "$ionicPopup", "$http", function($sce, webappSDK, $timeout, $ionicBackdrop, $scope, $state, login_logic, v11, $rootScope, _, $ionicPopup, $http) {
     $("title").html("帮助")
@@ -239,6 +268,14 @@ HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "
         var xx = [];
 
         return a;
+
+    }
+    $scope.console = function() {
+        if (login_logic.JudgeSystem()) {
+            hjytest.CustomerService(phone)
+        } else {
+            webappSDK.CustomerService(phone)
+        }
 
     }
     $scope.call = function(phone) {

@@ -1,17 +1,22 @@
 <div style="width:100%; -webkit-overflow-scrolling: touch;overflow-y:auto;" ui-view scroll-ls scroll-height>
     <div class="schoolmate" style=" -webkit-overflow-scrolling: touch">
+        <div class="schoolmate_popum01" style="background-image:url(images/v20/schoolmate/{{popumback}})">
+            <span class="close" ng-click="popumclose()">x</span>
+            <p>{{card_message}}</p>
+            <button class="button button-assertive" ng-click="download()">{{download_text}}</button>
+        </div>
         <header>
         </header>
         <section>
             <form name="landform" class="information" novalidate verify-scope="tipStyle: 0">
                 <p class="notice">{{notice}}</p>
-                <input class="info name" autocomplete="off" type="tel" id="card" ng-verify="require:true,errmsg:'姓名为必须项'" placeholder="请输入您的姓名" ng-model="info.name">
+                <input class="info name" autocomplete="off" id="card" ng-verify="require:true,errmsg:'姓名为必须项'" maxlength="5" placeholder="请输入您的姓名" ng-model="info.name">
                 <input class="info" type="tel" autocomplete="off" id="phone" ng-verify="pattern:/^0?1[0-9][0-9]\d{4}\d{4}$/,errmsg:'手机号码格式错误'" ng-model="info.phone" maxlength="11" placeholder="请输入手机号码">
                 <input class="first_i info" autocomplete="off" type="tel" ng-model="info.scode" name="scode" ng-verify="max:4,min:4,errmsg:'验证码格式错误'" required placeholder="请输入验证码">
                 <button class="get_scode" ng-bind="second" ng-disabled="timeout" ng-click="scode_get()">获取短信验证码</button>
-                <input class="invited_i info" autocomplete="off" type="tel" ng-model="info.invited_code" name="scode" ng-verify="require:true,errmsg:'邀请码错误'" required placeholder="请输入邀请码">
+                <input class="invited_i info" autocomplete="off" ng-model="info.invited_code" name="scode" ng-verify="require:true,errmsg:'邀请码错误'" maxlength="6" required placeholder="请输入邀请码">
                 <p class="schoolmate_note">说明： 领取会加油长江商学院专属VIP卡，享9折加油特权；更有免费查违章、特惠车险众多优惠。</p>
-                <input class="second_i button button-assertive" type="button" value="{{text}}"  ng-click="login()">
+                <input class="second_i button button-assertive" type="button" value="{{text}}" ng-click="login()" style="background-color:#f3b93e;">
             </form>
         </section>
     </div>

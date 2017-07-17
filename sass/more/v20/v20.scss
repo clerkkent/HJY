@@ -276,8 +276,9 @@
                 li {
                     width: 1.5rem;
                     height: 1.5rem;
-                    border: .0513369rem solid #03ccbb; // 3px;
+                    border: .0513369rem solid #a9c1f7; // 3px;
                     border-radius: 5%;
+                    background-color:#ffffff;
                 }
             }
             .other_prize {
@@ -291,8 +292,13 @@
                 justify-content: space-around;
                 li {
                     width: 2rem;
-                    line-height: .5rem;
+                    line-height: .3rem;
                     text-align: center;
+                    color:#FFF;
+                    font-family: PingFangSC-Regular;
+                    font-size: .23893313rem; // 14px
+                    color: #FFFFFF;
+                    letter-spacing: 0;
                 }
             }
         }
@@ -342,6 +348,37 @@
     width: 100%;
     @include backgroundset("../../images/v20/schoolmate/ic_card_bj.png",center,center,100%);
     position: relative;
+    .schoolmate_popum01{
+        width:5.06666303rem; // 250px;
+        height:3.55999782rem;
+        @include center-block;
+        display:none;
+        z-index:12;
+        @include backgroundset("../../images/v20/schoolmate/ic_card_p_h.png",center,.3rem,50%);
+        background-color:#FFF;
+        border-radius:5%;
+        p{
+            text-align:center;
+             color: #ff6409;
+             margin-top:2.2rem;
+        }
+        button{
+            color:#fff;
+            background:#ff6409;
+            width:100%;
+            height:.85333261rem;
+            position:absolute;
+            bottom:0;
+        }
+        .close{
+            color:#666;
+            position:absolute;
+            right:0.3rem;
+            top:0.1rem;
+            font-size:.41199956rem; // 30px;
+
+        }
+    }
     section {
         height: 7.3885295rem; // 263px
         padding: 0 .25199956rem; // 30px
@@ -366,6 +403,9 @@
             font-family: PingFangSC-Regular;
              @include backgroundset("../../images/v20/schoolmate/ic_card_name.png",.3rem,center,8%);
              background-color:#F8F8F8;
+        }
+        .info:focus{
+            border:.0171123rem solid #f3b93e; // 1px;
         }
         .notice{
             padding-left: .26rem; // 23px;

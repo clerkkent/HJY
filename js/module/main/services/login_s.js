@@ -386,7 +386,20 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
             })
         })
     }
+    factory.toLogin = function(content) {
+        this.webview(function(bridge) {
+            bridge.callHandler('toLogin', content, function(responseData) { //请求OC
 
+            })
+        })
+    }
+    factory.CustomerService = function(content) {
+        this.webview(function(bridge) {
+            bridge.callHandler('CustomerService', content, function(responseData) { //请求OC
+
+            })
+        })
+    }
     factory.getUserInfos = function(callback) {
         this.webview(function(bridge) {
             bridge.callHandler('getUserInfos', function(responseData) { //请求OC
