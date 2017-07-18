@@ -1,0 +1,61 @@
+<div style="width:100%;overflow:auto;-webkit-overflow-scrolling: touch" scroll-height>
+    <!--原生的滚动条，提升性能，减少BUG-->
+
+    <div class="vipcard_v20" style="-webkit-overflow-scrolling: touch" scroll-height>
+        <div class="vipcard_popum01">
+            <div class="fade"></div>
+            <div class="wrap">
+                <p>请输入特权兑换码</p>
+                <span class="close">x</span>
+                <input type="" name="" value="">
+                <button>兑换</button>
+            </div>
+        </div>
+        <header>
+            <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">
+                <ion-slide ng-repeat="x in page" style="background-image:url({{y.img_url}});">
+
+                </ion-slide>
+                <ion-slide style="background-image:url({{y.img_url}});">
+                    <div>
+
+                    </div>
+                </ion-slide>
+                <ion-slide style="background-image:url({{y.img_url}});">
+                    <div>
+
+                    </div>
+                </ion-slide>
+
+            </ion-slide-box>
+        </header>
+        <section>
+            <p class="getprize" ng-show="get">
+                马上领取
+            </p>
+            <p class="getprize" ng-show="!get">
+                已领取
+            </p>
+        </section>
+        <footer>
+            <ul>
+                <li>
+                    <p>违章免费查询</p>
+                    <p>敬请期待</p>
+                </li>
+                <li>
+                    <p>罚款免费办理 </p>
+                    <p>敬请期待</p>
+                </li>
+                <li>
+                    <p>免费代办年检</p>
+                    <p>敬请期待</p>
+                </li>
+                <li>
+                    <p>特惠车险服务</p>
+                    <p>敬请期待</p>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</div>

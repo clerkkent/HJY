@@ -32,4 +32,9 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "schoolmate",
             templateUrl: "html/v20/schoolmate/schoolmate.html" + v
         })
+        .state("v20.vipcard", {
+            url: "/vipcard",
+            controller: "vipcard",
+            templateUrl: "html/v20/vipcard/vipcard.html" + v
+        })
 }]);

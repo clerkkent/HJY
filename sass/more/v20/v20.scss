@@ -189,8 +189,8 @@
             text-align:center;
             color:#fff;
             font-size:.3rem;
-            left:45%;
-            top:71%;
+            width:100%;
+            top:72%;
         }
         .car {
             position: absolute;
@@ -245,7 +245,7 @@
             }
             ul {
                 width: 5.11999563rem; // 300px;
-                height: 2.44053125rem; // 143px;
+                height: 2.24053125rem; // 143px;
                 margin: 0 auto;
                 margin-top: 1.35rem;
                 overflow: hidden;
@@ -531,6 +531,160 @@
                 height: .3rem; // 15px;
                 border: .02rem solid #f95b4e;
                 color: #f95b4e;
+            }
+        }
+    }
+}
+.vipcard_v20{
+    display:flex;
+    flex-flow:column nowrap;
+    background:#eee;
+    header{
+        height:2.96042781rem; // 173px;
+        width:100%;
+        ion-slide{
+            width:5.16791444rem; // 302px;
+            height:2.79679144rem; // 105px;
+            div{
+                width:5.16791444rem; // 302px;
+                height:2.56684492rem; // 150px
+                @include center-block;
+            }
+
+        }
+        ion-slide:nth-child(1){
+            div{
+
+                background:red;
+            }
+        }
+        ion-slide:nth-child(2){
+            div{
+
+                background:#03ccbb;
+            }
+        }
+    }
+    section{
+        height:1.71122995rem; // 100px
+        @include backgroundset("../../images/v20/schoolmate/get.png",center,center,100%);
+        background-color:#fff;
+        position:relative;
+        .getprize{
+            width:1.71122995rem; // 100px; // 10pxpx;
+            height:.56470588rem; // 33px;
+            border-radius:6%;
+            border:.0342246rem solid #FF8339; // 2px;
+            font-family: PingFangSC-Semibold;
+            position:absolute;
+            bottom:.1rem;
+            left:1.03048128rem; // 31px;
+            text-align:center;
+            color:#FF8339;
+        }
+
+    }
+    footer{
+        height:auto;
+        background:#fff;
+        margin-top:.2rem;
+        flex:1;
+        ul{
+            background:#eee;
+            height:2.77486631rem; // 168px;
+                display:flex;
+            flex-flow:row wrap;
+            justify-content:space-around;
+
+
+            li{
+            width:3.1628877rem; // 186px;
+            height:1.36898396rem; // 80px;
+
+            @include backgroundset("../../images/v20/schoolmate/get.png",.2rem,center,30%);
+            background-color:#fff;
+            p:nth-child(1){
+                font-family: PingFangSC-Semibold;
+                font-size: .23957219rem; // 14px;
+                color: #666666;
+                letter-spacing: 0;
+                margin-top:.3rem;
+                margin-left:1.2rem;
+            }
+            p:nth-child(2){
+                font-family: PingFangSC-Semibold;
+                font-size: .20534759rem; // 12px
+                color:  #999999;
+                letter-spacing: 0;
+
+                margin-left:1.2rem;
+            }
+            }
+            li:nth-child(1){
+                background-image:url(../../images/v20/schoolmate/ic_card_me_1.png)
+            }
+            li:nth-child(2){
+                background-image:url(../../images/v20/schoolmate/ic_card_me_2.png)
+            }
+            li:nth-child(3){
+                background-image:url(../../images/v20/schoolmate/ic_card_me_3.png)
+            }
+            li:nth-child(4){
+                background-image:url(../../images/v20/schoolmate/ic_card_me_4.png)
+            }
+        }
+
+    }
+    .vipcard_popum01{
+        display:none;
+        .fade{
+            padding:10000rem;
+        position:fixed;
+        background:rgba(black,.5);
+        z-index:99;
+        }
+        .wrap{
+            width:5.13368984rem; // 300px;
+            height:4rem;
+            @include center-block;
+            margin-top:50%;
+            background:#fff;
+            z-index:100;
+            @include backgroundset("../../images/v20/schoolmate/ic_card_p_exchange.png",top,center,100%);
+            background-color:#fff;
+            border-radius:5%;
+            .close{
+                width:.34224599rem; // 20px;
+                height:.34224599rem; // 20px;
+                position:absolute;
+                right:3%;
+                top:3%;
+                color:#fff;
+                font-size:.44224599rem; // 20px;
+            }
+            p{
+                line-height:.85561497rem; // 50px;
+                text-align:center;
+                height:.85561497rem; // 50px;
+                color:#fff;
+            }
+            input{
+                width:90%;
+                background-color:#eee;
+                height:.75561497rem; // 50px;
+                margin:0 auto;
+                margin-top:.8rem;
+                display:block;
+                border:0;
+            }
+            button{
+                @include center-block;
+                margin-bottom:5%;
+                width:3.52673797rem; // 60px;
+                height:.81336898rem; // 30px;
+                border:.0342246rem solid #FF8339;border-radius:3%;
+                background: none;
+                color:#FF8339;
             }
         }
     }
