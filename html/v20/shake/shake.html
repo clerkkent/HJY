@@ -1,4 +1,4 @@
-<div style="width:100%;overflow:auto;" scroll-height>
+<div style="width:100%;overflow:auto;-webkit-overflow-scrolling: touch" scroll-height>
     <!--原生的滚动条，提升性能，减少BUG-->
 
     <div class="shake_v20" style="-webkit-overflow-scrolling: touch">
@@ -9,6 +9,12 @@
             <div class="hand">
                 <div class="present"></div>
             </div>
+            <p class="left_chance">
+                你还有{{prize_number}}次抽奖机会
+            </p>
+            <p class="chance">
+                {{testxxx}}
+            </p>
             <!--<div class="note">
                 <h3>如何获得抽奖机会</h3>
                 <p>直充一笔可获得1次抽奖机会<br/> 充值一笔3期分期套餐可获得3次抽奖机会
@@ -35,7 +41,9 @@
             </div>
             <div class="transi02">
                 <ul class="main_prize">
-                    <li ng-repeat='x in main_prize' style='background:url({{dealpic(x.img)}}) center center no-repeat;background-size:100%;background-color:#ffffff;'></li>
+                    <li ng-repeat='x in main_prize' style='background:url({{dealpic(x.img)}}) center center no-repeat;background-size:100%;background-color:#ffffff;'>
+                        <p class="prize_name">{{x.lottery_name}}</p>
+                    </li>
                 </ul>
                 <ul class="other_prize">
                     <li ng-repeat='x in other_prize'>{{x.lottery_name}}</li>

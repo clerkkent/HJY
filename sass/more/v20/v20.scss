@@ -127,6 +127,7 @@
         height: 5.11999563rem; // 300px
         position: fixed;
         @include backgroundset("../../images/v20/shake/ic_pop_ups.png", center, center, 100%);
+          background-color:#fff;
         z-index: 12;
         overflow: hidden;
         display: none;
@@ -179,10 +180,18 @@
         }
     }
     header {
-        height: 9.43785861rem; // 553px;
+        height: 9.93785861rem; // 553px;
         @include backgroundset("../../images/v20/shake/ic_shake.png", top, center, 112%);
         background-color: #7a7d93;
         position: relative;
+        .left_chance{
+            position:absolute;
+            text-align:center;
+            color:#fff;
+            font-size:.3rem;
+            left:45%;
+            top:71%;
+        }
         .car {
             position: absolute;
             width: .85333261rem;
@@ -190,7 +199,7 @@
             @include backgroundset("../../images/v20/shake/ic_car.png", center, center, 100%);
             left: 43.2%;
             transform-origin: center 1.8rem;
-            top: 32%;
+            top: 31%;
             animation: round 5s linear infinite;
         }
         .hand {
@@ -200,7 +209,7 @@
             background-color: pink;
             @include backgroundset("../../images/v20/shake/ic_hand.png", center, center, 100%);
             left: 35%;
-            top: 37.5%;
+            top: 35.5%;
             transform-origin: bottom right;
             .present {
                 width: 1.00933239rem; // 65px;
@@ -217,12 +226,12 @@
         }
     }
     section {
-        height: 13.7557216rem; // 806px;
+        height: 15.7557216rem; // 806px;
         background: #7a7d93;
         overflow: hidden;
         .transi01 {
             width: 5.90506163rem; // 346px;
-            height: 3.68639685rem; // 216px;
+            height: 4.08639685rem; // 216px;
             margin: .3rem auto;
             @include backgroundset("../../images/v20/shake/ic_list.png", center, center, 100%);
             position: relative;
@@ -232,13 +241,13 @@
                 color: #FFF;
                 right: 8%;
                 position: absolute;
-                margin-top: .40719974rem; // 18px;
+                margin-top: .50719974rem; // 18px;
             }
             ul {
                 width: 5.11999563rem; // 300px;
                 height: 2.44053125rem; // 143px;
                 margin: 0 auto;
-                margin-top: 1rem;
+                margin-top: 1.35rem;
                 overflow: hidden;
                 .wrap {
                     width: 5.11999563rem; // 300px;
@@ -269,7 +278,7 @@
                 width: 6.10909091rem; // 357px;
                 padding: 0 .3rem;
                 height: 4rem;
-                margin-top: 2rem;
+                margin-top: 2.6rem;
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: space-between;
@@ -279,6 +288,13 @@
                     border: .0513369rem solid #a9c1f7; // 3px;
                     border-radius: 5%;
                     background-color:#ffffff;
+                    .prize_name{
+                        color:#fff;
+                        text-align:center;
+                        font-family: PingFangSC-Regular;
+                        font-size: .17066652rem; // 10px
+                        margin-top:105%;
+                    }
                 }
             }
             .other_prize {
@@ -287,9 +303,9 @@
                 height: 1.5rem;
                 overflow: hidden;
                 display: flex;
-                margin-top: 1.8rem;
+                margin-top: 1.2rem;
                 flex-flow: row wrap;
-                justify-content: space-around;
+                justify-content: space-between;
                 li {
                     width: 2rem;
                     line-height: .3rem;
@@ -314,12 +330,12 @@
             border-radius: .34133304rem; // 20px;
             border: 0.068267rem #fff solid;
             text-align: center;
-            line-height: .48266608rem; // 40px;
+            line-height: .60266608rem; // 40px
             color: #fff;
             font-size: .27306643rem; // 16px;
         }
         p {
-            padding: .1rem .2rem;
+            padding: .1rem 0rem;
             display: flex;
             flex-flow: row nowrap;
             font-family: PingFangSC-Regular;
@@ -327,10 +343,12 @@
             color: #fff;
             letter-spacing: 0;
             span:nth-child(1) {
-                width: .37066652rem; // 10px;
+                width: .57066652rem; // 10px;
+                padding-left:.2rem;
             }
             span:nth-child(2) {
                 flex: 1;
+                padding-right:.1rem;
             }
         }
         .icp {

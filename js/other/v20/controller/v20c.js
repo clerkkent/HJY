@@ -1,8 +1,7 @@
 HJY.controller("v20", ["$scope", "$state", "login_logic", function($scope, $state, login_logic) {
-    $scope.test = "dasdad";
+
 }])
 HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicPopup", "login_logic", "$timeout", "webappSDK", "$ionicBackdrop", "v20", "$rootScope", function($scope, $rootScope, $state, webappSDK, $ionicPopup, login_logic, $timeout, webappSDK, $ionicBackdrop, v20, $rootScope) {
-    $scope.test = "dasdad";
     $scope.PrizeList = null;
     $scope.allPrizeList = null;
     $scope.shakePrize = null;
@@ -10,6 +9,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
     $scope.prize_number = 0;
     $scope.user_id = "";
     $scope.token = "";
+    $("title").html("摇一摇")
     if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
         _hmt.push(['_trackPageview', "/schoolmate"]);
     }
@@ -17,12 +17,15 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
         $scope.user_id = axxxx.user_id;
         $scope.token = axxxx.OIL_TOKEN;
-    } else {
+    } else if (login_logic.JudgeSystemIOS()) {
         webappSDK.getUserInfos(function(res) {
             var info = JSON.parse(res)
             $scope.user_id = info.user_id
             $scope.token = info.OIL_TOKEN //webbriage入口
         })
+    } else {
+        $scope.user_id = "";
+        $scope.token = "";
     }
     $scope.movieUse = function() {
         location.href = "http://t.cn/RoCXpzd"
@@ -39,7 +42,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
     }
     var myShakeEvent = new Shake({
         threshold: 5,
-        timeout: 2000
+        timeout: 3000
     });
     myShakeEvent.start();
     $scope.getPrizeList = function() {
@@ -48,7 +51,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
             "method": "PrizeList",
             "params": [{
                 "type": 1,
-                "user_id": "$scope.user_id"
+                "user_id": $scope.user_id
             }],
             "id": 1
         }
@@ -59,19 +62,9 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                     $scope.other_prize = _.filter(data["result"]["list"], function(num) { return num["img"] == ''; });
                     $scope.prize_number = data["result"]["prize_number"]
                     $scope.PrizeList = data["result"]["list"]
-                    $ionicPopup.alert({
-                        title: '提示',
-                        template: $scope.prize_number,
-                        okText: '嗯！知道了', // String
-                        okType: 'button-energized',
-                    });
+
                 } else {
-                    $ionicPopup.alert({
-                        title: '提示',
-                        template: data["error"]["message"],
-                        okText: '嗯！知道了', // String
-                        okType: 'button-energized',
-                    });
+
                 }
             }
         )
@@ -160,64 +153,81 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
 
     function remove() {
         $(".hand").removeClass("shake");
-        if ($scope.user_id == "" && $scope.token == "") {
-            $ionicPopup.alert({
-                title: '提示',
-                template: "您还未登陆,请登陆",
-                okText: '嗯！知道了', // String
-                okType: 'button-energized',
-            });
-            webappSDK.doTheTask()
-        } else {
-            $scope.shakeResult();
-        }
+        // if ($scope.user_id == "" && $scope.token == "") {
+        //     // $ionicPopup.alert({
+        //     //     title: '提示',
+        //     //     template: "您还未登陆,请登陆",
+        //     //     okText: '嗯！知道了', // String
+        //     //     okType: 'button-energized',
+        //     // });
 
+        //     // if (login_logic.JudgeSystem()) {
+        //     //     hjytest.toLogin()
+        //     // } else {
+        //     //     webappSDK.toLogin()
+        //     // }
+        //     remove_s();
+        // } else {
+        //     remove_s();
+        // }
+        $scope.shakeResult();
     }
+    $scope.testxxx = 0;
     $scope.shakeResult = function() {
-        var shakelist = {
-            "jsonrpc": "2.0",
-            "method": "Draw",
-            "params": [{
-                "type": 1,
-                "user_id": $scope.user_id
-            }],
-            "id": 1
-        }
-        v20.get($rootScope.url_global + '/passport/service.php?c=prize', shakelist, $scope.token).then(function(data) {
-            if (data["result"]["id"] != undefined) {
-                $scope.getPrizeList();
-                $scope.getPersonalList();
-                $scope.shakePrize = data["result"]["lottery_name"];
-                $(".shake_win").show()
-                $ionicBackdrop.retain()
-                myShakeEvent.stop();
-                $(".shake_win .close").click(function() {
-                    myShakeEvent.start();
-                    $(".shake_win").hide()
-                    $ionicBackdrop.release()
-                })
-            } else {
-                $(".shake_lose").show()
-                $ionicBackdrop.retain()
-                myShakeEvent.stop();
-                $(".shake_lose .close").click(function() {
-                    myShakeEvent.start();
-                    $(".shake_lose").hide()
-                    $ionicBackdrop.release()
-                })
+            $scope.testxxx += 1;
+            var shakelist = {
+                "jsonrpc": "2.0",
+                "method": "Draw",
+                "params": [{
+                    "type": 1,
+                    "user_id": $scope.user_id
+                }],
+                "id": 1
             }
+            v20.get($rootScope.url_global + '/passport/service.php?c=prize', shakelist, $scope.token).then(function(data) {
+                if (data["result"]["id"] != undefined) {
+                    $scope.shakePrize = data["result"]["lottery_name"];
+                    $(".shake_win").show()
+                    $ionicBackdrop.retain()
+                    myShakeEvent.stop();
+                    $(document).on('touchmove', function(e) {
+                        e.preventDefault()
+                    })
+                    $(".shake_win .close").click(function() {
+                        $scope.getPrizeList();
+                        $scope.getPersonalList();
+                        myShakeEvent.start();
+                        $(".shake_win").hide()
+                        $ionicBackdrop.release()
+                        $(document).off('touchmove')
+                    })
+                } else {
+                    $(".shake_lose").show()
+                    $ionicBackdrop.retain()
+                    myShakeEvent.stop();
+                    $(document).on('touchmove', function(e) {
+                        e.preventDefault()
+                    })
+                    $(".shake_lose .close").click(function() {
+                        $scope.getPrizeList();
+                        $scope.getPersonalList();
+                        myShakeEvent.start();
+                        $(".shake_lose").hide()
+                        $ionicBackdrop.release()
+                        $(document).off('touchmove')
+                    })
+                }
 
-        })
-    }
-
+            })
+        }
+        // var remove_s = _.throttle($scope.shakeResult, 3000)
+    $scope.shakeResult()
 
     function test() {
+        $timeout(remove, 1000);
         $("#audio")[0].play();
         $(".hand").addClass("shake");
-        $timeout(remove, 1000);
-
     }
-
     window.addEventListener('shake', test, false);
 }])
 HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "$state", "login_logic", "ngVerify", "$interval", "$ionicPopup", function($scope, v20, $ionicBackdrop, $rootScope, $state, login_logic, ngVerify, $interval, $ionicPopup) {
@@ -286,6 +296,7 @@ HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "
     $scope.popumclose = function() {
         $(".schoolmate_popum01").hide();
         $ionicBackdrop.release();
+        $(document).off('touchmove')
     }
 
     $scope.get_cardPresent = function() {
@@ -307,9 +318,13 @@ HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "
                     $ionicBackdrop.retain();
                     $scope.download_text = "立即体验";
                     $(".schoolmate_popum01").show();
+                    $(document).on('touchmove', function(e) {
+                        e.preventDefault()
+                    })
                     $(".schoolmate_popum01 .close").click = function() {
                         $(".schoolmate_popum01").hide();
                         $ionicBackdrop.release();
+                        $(document).off('touchmove')
                     }
                 } else {
                     $scope.card_message = "会员卡太火爆，被抢光了！"
@@ -317,9 +332,13 @@ HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "
                     $ionicBackdrop.retain();
                     $scope.download_text = "下载App";
                     $(".schoolmate_popum01").show();
+                    $(document).on('touchmove', function(e) {
+                        e.preventDefault()
+                    })
                     $(".schoolmate_popum01 .close").click = function() {
                         $(".schoolmate_popum01").hide();
                         $ionicBackdrop.release();
+                        $(document).off('touchmove')
                     }
                 }
             } else { //错误信息弹窗

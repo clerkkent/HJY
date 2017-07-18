@@ -26,7 +26,7 @@
                 <p>红包:{{x.prize_name}}元</p>
             </div>
             <div>
-                <p class="go">点击使用</p>
+                <p class="go" ng-click="viewOil()">点击使用</p>
             </div>
         </li>
         <li ng-repeat="x in personPrizeList" ng-if="x.prize_type=='1'" repeat-f>
@@ -37,7 +37,7 @@
                 <p>油滴:{{x.prize_name}}</p>
             </div>
             <div>
-                <p class="go">点击使用</p>
+                <p class="go" ng-click="viewOil()">点击使用</p>
             </div>
         </li>
     </ul>

@@ -5,6 +5,14 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
     $scope.url = location.search; //参数
     $scope.theRequest = new Object();
     $("title").html("签到")
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var date = date.getDate();
+    $scope.data = v11.date(year, month, date);
+    $scope.w = $scope.data.w;
+    $scope.d = $scope.data.d;
+    $scope.t = $scope.data.t;
     $scope.main_sign = function(res) {
         $scope.test = "dasdad";
         var list = {
@@ -79,8 +87,20 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
         $scope.strs = $scope.theRequest.OIL_TOKEN;
         if ($scope.userid == "" && $scope.strs == "") {
             if (login_logic.JudgeSystem()) {
+                $ionicPopup.alert({
+                    title: '提示',
+                    template: "请先登录",
+                    okText: '嗯！知道了', // String
+                    okType: 'button-energized',
+                });
                 var axxxx = JSON.parse(hjytest.toLogin());
             } else {
+                $ionicPopup.alert({
+                    title: '提示',
+                    template: "请先登录",
+                    okText: '嗯！知道了', // String
+                    okType: 'button-energized',
+                });
                 webappSDK.toLogin(function(res) {
 
                 })
@@ -176,8 +196,9 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
             v11.get($rootScope.url_global + '/passport/service.php?c=task', list, $scope.strs).then(function(data) {
                 if (data["result"] != undefined) {
                     $scope.task = data["result"];
-                    console.log(data)
+
                 } else {
+                    console.log(data)
                     $ionicPopup.alert({
                         title: '提示',
                         template: data["error"]["message"],
@@ -272,9 +293,9 @@ HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "
     }
     $scope.console = function() {
         if (login_logic.JudgeSystem()) {
-            hjytest.CustomerService(phone)
+            hjytest.CustomerService()
         } else {
-            webappSDK.CustomerService(phone)
+            webappSDK.CustomerService()
         }
 
     }
