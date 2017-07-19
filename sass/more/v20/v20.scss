@@ -179,6 +179,13 @@
             bottom: 0;
         }
     }
+    .fade{
+
+        position:fixed;
+        background:rgba(black,.5);
+        z-index:6;
+        display:none;
+    }
     header {
         height: 9.93785861rem; // 553px;
         @include backgroundset("../../images/v20/shake/ic_shake.png", top, center, 112%);
@@ -371,7 +378,7 @@
         height:3.55999782rem;
         @include center-block;
         display:none;
-        z-index:12;
+        z-index:9;
         @include backgroundset("../../images/v20/schoolmate/ic_card_p_h.png",center,.3rem,50%);
         background-color:#FFF;
         border-radius:5%;
@@ -396,6 +403,13 @@
             font-size:.41199956rem; // 30px;
 
         }
+    }
+    .fade{
+
+        position:fixed;
+        background:rgba(black,.5);
+        z-index:6;
+         display:none;
     }
     section {
         height: 7.3885295rem; // 263px
@@ -542,28 +556,20 @@
     header{
         height:2.96042781rem; // 173px;
         width:100%;
-        ion-slide{
-            width:5.16791444rem; // 302px;
-            height:2.79679144rem; // 105px;
-            div{
-                width:5.16791444rem; // 302px;
-                height:2.56684492rem; // 150px
-                @include center-block;
-            }
-
-        }
-        ion-slide:nth-child(1){
-            div{
-
-                background:red;
+        .slider {
+            height: 2.96042781rem; // 173px;
+            width: 100%;
+            .slider-slide{
+                .box{
+                    height:2.95253081rem; // 173px;
+                    background:red;
+                     @include backgroundset("../../images/v20/schoolmate/get.png",center,center,100%);
+                     transform:scale(.85);
+                }
             }
         }
-        ion-slide:nth-child(2){
-            div{
 
-                background:#03ccbb;
-            }
-        }
+
     }
     section{
         height:1.71122995rem; // 100px
@@ -581,6 +587,18 @@
             left:1.03048128rem; // 31px;
             text-align:center;
             color:#FF8339;
+        }
+        .already{
+             width:1.71122995rem; // 100px; // 10pxpx;
+            height:.56470588rem; // 33px;
+            border-radius:6%;
+            border:.0342246rem solid #666; // 2px;
+            font-family: PingFangSC-Semibold;
+            position:absolute;
+            bottom:.1rem;
+            left:1.03048128rem; // 31px;
+            text-align:center;
+            color:#666;
         }
 
     }
@@ -635,13 +653,19 @@
         }
 
     }
+
+}
+.getvip_v20{
+    @include backgroundset("../../images/v20/schoolmate/ic_card_default.png",center,40%,60%);
+    position:relative;
+    overflow:hidden;
     .vipcard_popum01{
         display:none;
         .fade{
-            padding:10000rem;
+
         position:fixed;
         background:rgba(black,.5);
-        z-index:99;
+        z-index:8;
         }
         .wrap{
             width:5.13368984rem; // 300px;
@@ -649,15 +673,15 @@
             @include center-block;
             margin-top:50%;
             background:#fff;
-            z-index:100;
+            z-index:9;
             @include backgroundset("../../images/v20/schoolmate/ic_card_p_exchange.png",top,center,100%);
             background-color:#fff;
             border-radius:5%;
             .close{
-                width:.34224599rem; // 20px;
-                height:.34224599rem; // 20px;
+                width:.54224599rem; // 20px;
+                height:.54224599rem; // 20px;
                 position:absolute;
-                right:3%;
+                right:0%;
                 top:3%;
                 color:#fff;
                 font-size:.44224599rem; // 20px;
@@ -676,6 +700,7 @@
                 margin-top:.8rem;
                 display:block;
                 border:0;
+                text-align:center;
             }
             button{
                 @include center-block;
@@ -686,6 +711,30 @@
                 background: none;
                 color:#FF8339;
             }
+        }
+    }
+    .getvip_v20_main{
+        margin-top:6rem;
+        .note{
+            text-align:center;
+            font-size:.22186648rem; // 13px;
+            font-family: PingFangSC-Regular;
+            color: #999999;
+            letter-spacing: 0;
+        }
+        .getvipcard{
+            margin-top:1rem;
+            text-align:center;
+            border: 1px solid #F18B30;
+            border-radius: 5%;
+            width:3.75466346rem; // 220px;
+            height:.85333261rem;
+            margin:1rem auto;
+            line-height:.85333261rem;
+            font-family: PingFangSC-Medium;
+            font-size: .27306643rem; // 16px;
+            color: #F18B30;
+            letter-spacing: 0;
         }
     }
 }

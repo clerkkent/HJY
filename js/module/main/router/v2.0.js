@@ -37,4 +37,9 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "vipcard",
             templateUrl: "html/v20/vipcard/vipcard.html" + v
         })
+        .state("v20.getvip", {
+            url: "/getvip",
+            controller: "getvip",
+            templateUrl: "html/v20/vipcard/getvip.html" + v
+        })
 }]);

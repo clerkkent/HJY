@@ -20,7 +20,7 @@ angular.module('HJY').directive("scrollShow", ["$timeout", function($timeout) {
 
             function scroll() {
                 if (speed * i < $(element).height()) {
-                    i++
+                    i++;
                     var deal = "translateY(" + (-speed * i) + "px)";
                     $(element).css({ transform: deal })
                 } else {

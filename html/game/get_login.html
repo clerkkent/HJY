@@ -20,7 +20,7 @@
 
         <button ng-if="registed" class="get_scode" ng-bind="second" ng-disabled="timeout || myForm.phone.$invalid" ng-click="scode_get()">
                                 </button>
-        <input ng-if="registed" class="first_i" type="text" ng-maxlength="4" name="scode" ng-model="info.scode" ng-verify="max:6,min:6" required placeholder="请输入短信验证码">
+        <input ng-if="registed" class="first_i" type="text" ng-maxlength="4" name="scode" ng-model="info.scode" ng-verify="max:4,min:4" required placeholder="请输入短信验证码">
 
         <input class="second_i button button-assertive" type="submit" value="领取油滴" ng-disabled="myForm.phone.$invalid  || myForm.scode.$invalid || agree" ng-click="login()">
     </form>

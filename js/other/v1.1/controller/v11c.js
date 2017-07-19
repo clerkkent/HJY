@@ -14,93 +14,108 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
     $scope.d = $scope.data.d;
     $scope.t = $scope.data.t;
     $scope.main_sign = function(res) {
-        $scope.test = "dasdad";
-        var list = {
-            "jsonrpc": "2.0",
-            "method": "newCheckIn",
-            "params": [],
-            "id": 1
-        }
-        $scope.signx = [];
-        v11.get($rootScope.url_global + '/passport/service.php?c=account', list, $scope.strs).then(function(data) {
-            if (data["result"] != undefined) {
-                $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-                    if (data["result"]["message"] == "您今天已经签到，请明天再来") {
-                        // $ionicBackdrop.retain();
-                        // $(".sign_v11 .sign_popum").show();
-                        // $("body").click(function() {
-                        //     $(".sign_v11 .sign_popum").hide()
-                        //     $ionicBackdrop.release();
-                        // })
-                    } else {
-                        $ionicBackdrop.retain();
-                        $(".sign_v11 .sign_popum").show();
-                        $("body").click(function() {
-                            $(".sign_v11 .sign_popum").hide()
-                            $ionicBackdrop.release();
-                        })
+            $scope.test = "dasdad";
+            var list = {
+                "jsonrpc": "2.0",
+                "method": "newCheckIn",
+                "params": [],
+                "id": 1
+            }
+            $scope.signx = [];
+            v11.get($rootScope.url_global + '/passport/service.php?c=account', list, $scope.strs).then(function(data) {
+                if (data["result"] != undefined) {
+                    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+                        if (data["result"]["message"] == "您今天已经签到，请明天再来") {
+                            // $ionicBackdrop.retain();
+                            // $(".sign_v11 .sign_popum").show();
+                            // $("body").click(function() {
+                            //     $(".sign_v11 .sign_popum").hide()
+                            //     $ionicBackdrop.release();
+                            // })
+                        } else {
+                            $ionicBackdrop.retain();
+                            $(".sign_v11 .sign_popum").show();
+                            $("body").click(function() {
+                                $(".sign_v11 .sign_popum").hide()
+                                $ionicBackdrop.release();
+                            })
+                        }
+                    })
+                    $scope.data = v11.date(data["result"]["year"], data["result"]["month"] - 1, data["result"]["day"]);
+                    $scope.w = $scope.data.w;
+                    $scope.d = $scope.data.d;
+                    $scope.t = $scope.data.t;
+                    $scope.c = data["result"]["checkin"][0]["checkin_num"];
+                    $scope.oil = data["result"]["checkin"][0]["oildrop_num"];
+                    $scope.toil = data["result"]["tmorrowOil"]
+                    for (var i = 0; i < data["result"]["checkin"].length; i++) {
+                        $scope.signx.push(moment(data["result"]["checkin"][i]["checkin_date"]).date())
                     }
-                })
-                $scope.data = v11.date(data["result"]["year"], data["result"]["month"] - 1, data["result"]["day"]);
-                $scope.w = $scope.data.w;
-                $scope.d = $scope.data.d;
-                $scope.t = $scope.data.t;
-                $scope.c = data["result"]["checkin"][0]["checkin_num"];
-                $scope.oil = data["result"]["checkin"][0]["oildrop_num"];
-                $scope.toil = data["result"]["tmorrowOil"]
-                for (var i = 0; i < data["result"]["checkin"].length; i++) {
-                    $scope.signx.push(moment(data["result"]["checkin"][i]["checkin_date"]).date())
-                }
-                $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-                    for (var i = 0; i < $(".sign_v11 .days li").length; i++) {
-                        if ($(".sign_v11 .days li"))
-                            for (var j = 0; j < $scope.signx.length; j++) {
-                                if ((data["result"]["month"] / 1 - 1) == moment(data["result"]["checkin"][j]["checkin_date"]).month()) {
-                                    if ($(".sign_v11 .days li").eq(i).html() == $scope.signx[j] && $(".sign_v11 .days li").eq(i).html() != (data["result"]["day"] / 1)) {
-                                        $(".sign_v11 .days li").eq(i).addClass("select")
-                                    } else if ($(".sign_v11 .days li").eq(i).html() == $scope.signx[j] && $(".sign_v11 .days li").eq(i).html() == (data["result"]["day"] / 1)) {
-                                        $scope.oil = data["result"]["checkin"][j]["oildrop_num"]
-                                        $(".sign_v11 .days li").eq(i).addClass("tselect")
+                    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+                        for (var i = 0; i < $(".sign_v11 .days li").length; i++) {
+                            if ($(".sign_v11 .days li"))
+                                for (var j = 0; j < $scope.signx.length; j++) {
+                                    if ((data["result"]["month"] / 1 - 1) == moment(data["result"]["checkin"][j]["checkin_date"]).month()) {
+                                        if ($(".sign_v11 .days li").eq(i).html() == $scope.signx[j] && $(".sign_v11 .days li").eq(i).html() != (data["result"]["day"] / 1)) {
+                                            $(".sign_v11 .days li").eq(i).addClass("select")
+                                        } else if ($(".sign_v11 .days li").eq(i).html() == $scope.signx[j] && $(".sign_v11 .days li").eq(i).html() == (data["result"]["day"] / 1)) {
+                                            $scope.oil = data["result"]["checkin"][j]["oildrop_num"]
+                                            $(".sign_v11 .days li").eq(i).addClass("tselect")
+                                        }
                                     }
                                 }
-                            }
-                    }
-                })
+                        }
+                    })
 
-            } else {
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: data["error"]["message"],
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
-            }
-        })
-    }
-    if ($scope.url.indexOf("?") != -1) {
-        var str = $scope.url.substr(1);
-        $scope.strs = str.split("&");
-        for (var i = 0; i < $scope.strs.length; i++) {
-            $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
+                } else {
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: data["error"]["message"],
+                        okText: '嗯！知道了', // String
+                        okType: 'button-energized',
+                    });
+                }
+            })
         }
-        $scope.userid = $scope.theRequest.user_id;
-        $scope.strs = $scope.theRequest.OIL_TOKEN;
+        // if ($scope.url.indexOf("?") != -1) {
+        //     var str = $scope.url.substr(1);
+        //     $scope.strs = str.split("&");
+        //     for (var i = 0; i < $scope.strs.length; i++) {
+        //         $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
+        //     }
+        //     $scope.userid = $scope.theRequest.user_id;
+        //     $scope.strs = $scope.theRequest.OIL_TOKEN;
+        //     if ($scope.userid == "" && $scope.strs == "") {
+        //         if (login_logic.JudgeSystem()) {
+        //             $ionicPopup.alert({
+        //                 title: '提示',
+        //                 template: "请先登录",
+        //                 okText: '嗯！知道了', // String
+        //                 okType: 'button-energized',
+        //             });
+        //             var axxxx = JSON.parse(hjytest.toLogin());
+        //         } else {
+        //             $ionicPopup.alert({
+        //                 title: '提示',
+        //                 template: "请先登录",
+        //                 okText: '嗯！知道了', // String
+        //                 okType: 'button-energized',
+        //             });
+        //             webappSDK.toLogin(function(res) {
+
+    //             })
+    //         }
+    //     }
+    //     $scope.main_sign()
+    // } else {
+    if (login_logic.JudgeSystem()) {
+        var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
+        $scope.userid = axxxx.user_id;
+        $scope.strs = axxxx.OIL_TOKEN;
         if ($scope.userid == "" && $scope.strs == "") {
             if (login_logic.JudgeSystem()) {
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: "请先登录",
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
                 var axxxx = JSON.parse(hjytest.toLogin());
             } else {
-                $ionicPopup.alert({
-                    title: '提示',
-                    template: "请先登录",
-                    okText: '嗯！知道了', // String
-                    okType: 'button-energized',
-                });
                 webappSDK.toLogin(function(res) {
 
                 })
@@ -108,10 +123,10 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
         }
         $scope.main_sign()
     } else {
-        if (login_logic.JudgeSystem()) {
-            var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
-            $scope.userid = axxxx.user_id;
-            $scope.strs = axxxx.OIL_TOKEN;
+        webappSDK.getUserInfos(function(res) {
+            var info = JSON.parse(res)
+            $scope.userid = info.user_id
+            $scope.strs = info.OIL_TOKEN //webbriage入口
             if ($scope.userid == "" && $scope.strs == "") {
                 if (login_logic.JudgeSystem()) {
                     var axxxx = JSON.parse(hjytest.toLogin());
@@ -122,24 +137,9 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
                 }
             }
             $scope.main_sign()
-        } else {
-            webappSDK.getUserInfos(function(res) {
-                var info = JSON.parse(res)
-                $scope.userid = info.user_id
-                $scope.strs = info.OIL_TOKEN //webbriage入口
-                if ($scope.userid == "" && $scope.strs == "") {
-                    if (login_logic.JudgeSystem()) {
-                        var axxxx = JSON.parse(hjytest.toLogin());
-                    } else {
-                        webappSDK.toLogin(function(res) {
-
-                        })
-                    }
-                }
-                $scope.main_sign()
-            })
-        }
+        })
     }
+    // }
 
 }])
 HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login_logic", "v11", "$rootScope", "_", "$ionicPopup", "$http", "webappSDK", function($timeout, $ionicBackdrop, $scope, $state, login_logic, v11, $rootScope, _, $ionicPopup, $http, webappSDK) {

@@ -6,27 +6,27 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
     $scope.allPrizeList = null;
     $scope.shakePrize = null;
     $scope.personPrizeList = null;
-    $scope.prize_number = 0;
-    $scope.user_id = "1250";
-    $scope.token = "jnc78i753h51sqhvlto9b9vfk7";
+    $scope.user_id = "";
+    $scope.token = "";
     $("title").html("摇一摇")
     if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
         _hmt.push(['_trackPageview', "/schoolmate"]);
     }
-    // if (login_logic.JudgeSystem()) {
-    //     var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
-    //     $scope.user_id = axxxx.user_id;
-    //     $scope.token = axxxx.OIL_TOKEN;
-    // } else if (login_logic.JudgeSystemIOS()) {
-    //     webappSDK.getUserInfos(function(res) {
-    //         var info = JSON.parse(res)
-    //         $scope.user_id = info.user_id
-    //         $scope.token = info.OIL_TOKEN //webbriage入口
-    //     })
-    // } else {
-    //     $scope.user_id = "";
-    //     $scope.token = "";
-    // }
+    // alert(navigator.appVersion)
+    if (login_logic.JudgeSystem()) {
+        var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
+        $scope.user_id = axxxx.user_id;
+        $scope.token = axxxx.OIL_TOKEN;
+    } else if (login_logic.JudgeSystemIOS()) {
+        webappSDK.getUserInfos(function(res) {
+            var info = JSON.parse(res)
+            $scope.user_id = info.user_id
+            $scope.token = info.OIL_TOKEN //webbriage入口
+        })
+    } else {
+        $scope.user_id = "";
+        $scope.token = "";
+    }
     $scope.movieUse = function() {
         location.href = "http://t.cn/RoCXpzd"
     }
@@ -41,7 +41,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         return "https://test1.ihuijiayou.com/operate/uploads/" + x
     }
     var myShakeEvent = new Shake({
-        threshold: 5,
+        threshold: 15,
         timeout: 3000
     });
     myShakeEvent.start();
@@ -123,7 +123,6 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
     }
 
     $scope.showPrizeList = function() {
-        $scope.getPersonalList()
         if ($scope.user_id == "" && $scope.token == "") {
             $ionicPopup.confirm({
                 title: '提示',
@@ -143,34 +142,37 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
             });
         } else {
             myShakeEvent.stop();
+            $(".myprize").show();
+            $(".fade").show();
+            $scope.getPersonalList();
         }
-        $(".myprize").show()
+
     }
     $scope.hidePrizeList = function() {
         myShakeEvent.start();
         $(".myprize").hide()
+        $(".fade").hide()
     }
 
     function remove() {
         $(".hand").removeClass("shake");
-        // if ($scope.user_id == "" && $scope.token == "") {
-        //     // $ionicPopup.alert({
-        //     //     title: '提示',
-        //     //     template: "您还未登陆,请登陆",
-        //     //     okText: '嗯！知道了', // String
-        //     //     okType: 'button-energized',
-        //     // });
+        if ($scope.user_id == "" && $scope.token == "") {
+            $ionicPopup.alert({
+                title: '提示',
+                template: "您还未登陆,请登陆",
+                okText: '嗯！知道了', // String
+                okType: 'button-energized',
+            });
 
-        //     // if (login_logic.JudgeSystem()) {
-        //     //     hjytest.toLogin()
-        //     // } else {
-        //     //     webappSDK.toLogin()
-        //     // }
-        //     remove_s();
-        // } else {
-        //     remove_s();
-        // }
-        $scope.shakeResult();
+            if (login_logic.JudgeSystem()) {
+                hjytest.toLogin()
+            } else {
+                webappSDK.toLogin()
+            }
+        } else {
+            $scope.shakeResult();
+        }
+
     }
     $scope.testxxx = 0;
     $scope.shakeResult = function() {
@@ -189,7 +191,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                     console.log(data)
                     $scope.shakePrize = data["result"]["lottery_name"];
                     $(".shake_win").show()
-                    $ionicBackdrop.retain()
+                    $(".fade").show()
                     myShakeEvent.stop();
                     $(document).on('touchmove', function(e) {
                         e.preventDefault()
@@ -200,13 +202,13 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                         $scope.getPersonalList();
                         myShakeEvent.start();
                         $(".shake_win").hide()
-                        $ionicBackdrop.release()
+                        $(".fade").hide()
                         $(document).off('touchmove')
                     })
                 } else {
                     console.log(data)
                     $(".shake_lose").show()
-                    $ionicBackdrop.retain()
+                    $(".fade").show()
                     myShakeEvent.stop();
                     $(document).on('touchmove', function(e) {
                         e.preventDefault()
@@ -217,7 +219,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                         $scope.getPersonalList();
                         myShakeEvent.start();
                         $(".shake_lose").hide()
-                        $ionicBackdrop.release()
+                        $(".fade").hide()
                         $(document).off('touchmove')
                     })
                 }
@@ -241,9 +243,8 @@ HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "
     $scope.key = "";
     $scope.second = "获取验证码";
     $scope.text = "绑定会员卡";
-    $scope.userid = "";
     $scope.download_text = "";
-
+    $("title").html("会员卡绑定");
     $scope.focus = function() {
         $scope.notice = ""
     }
@@ -285,7 +286,7 @@ HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "
 
             } else { //错误信息弹窗
                 $scope.error = true;
-                $scope.notice = "手机号码格式错误";
+                $scope.notice = data["error"]["message"];
             }
 
         }, function() {
@@ -298,49 +299,54 @@ HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "
     }
     $scope.popumclose = function() {
         $(".schoolmate_popum01").hide();
-        $ionicBackdrop.release();
+        $(".fade").hide()
         $(document).off('touchmove')
     }
 
-    $scope.get_cardPresent = function() {
+    $scope.get_cardPresent = function(user_id) {
         var inviteList = {
             "jsonrpc": "2.0",
-            "method": "GetCardBag",
+            "method": "UserCodeGetCardbag",
             "params": [{
-                "user_id": $scope.userid,
-                "invitecode": $scope.info.invited_code,
+                "type": 1,
+                "user_id": user_id,
+                "ExCode": $scope.info.invited_code,
                 "user_name": $scope.info.name
             }],
             "id": 1
         }
+
         v20.get($rootScope.url_global + '/passport/service.php?c=card', inviteList).then(function(data) {
             if (data.result != undefined) {
                 if (data.result["code"] == 0) {
                     $scope.card_message = "成功领取会加油尊享会员卡！"
                     $scope.popumback = "ic_card_p_h.png"
-                    $ionicBackdrop.retain();
                     $scope.download_text = "立即体验";
                     $(".schoolmate_popum01").show();
+                    $(".fade").show()
                     $(document).on('touchmove', function(e) {
                         e.preventDefault()
                     })
                     $(".schoolmate_popum01 .close").click = function() {
+                        console.log($(".fade"))
                         $(".schoolmate_popum01").hide();
-                        $ionicBackdrop.release();
+                        $(".fade").hide()
                         $(document).off('touchmove')
                     }
                 } else {
                     $scope.card_message = "会员卡太火爆，被抢光了！"
                     $scope.popumback = "ic_card_p_n.png"
-                    $ionicBackdrop.retain();
+
                     $scope.download_text = "下载App";
                     $(".schoolmate_popum01").show();
+                    $(".fade").show()
                     $(document).on('touchmove', function(e) {
                         e.preventDefault()
                     })
                     $(".schoolmate_popum01 .close").click = function() {
+                        console.log($(".fade"))
                         $(".schoolmate_popum01").hide();
-                        $ionicBackdrop.release();
+                        $(".fade").hide()
                         $(document).off('touchmove')
                     }
                 }
@@ -350,7 +356,7 @@ HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "
             }
         })
     }
-    $scope.login_main = function() {
+    $scope.login_main = function(signxx) {
         list_login = {
             "jsonrpc": "2.0",
             "method": "signin",
@@ -358,19 +364,32 @@ HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "
                 "username": $scope.info.phone, //电话号
                 "sms_key": $scope.key, //短信接口收到的key
                 "sms_code": $scope.info.scode, //验证码
-                "invite_code ": $scope.info.invited_code,
             }],
             "id": 1
         }
 
         var promise_login = login_logic.submit(list_login);
         promise_login.then(function(data) {
-            console.log(2)
-            console.log(data)
             if (data.result != undefined) {
                 if (data.result["code"] == 0) {
                     $scope.userid = data.result["data"]["id"];
-                    $scope.get_cardPresent();
+                    if (signxx) {
+                        $scope.get_cardPresent(data.result["data"]["id"]);
+                    } else {
+                        $ionicPopup.alert({
+                            title: '提示',
+                            template: "注册成功！",
+                            okText: '嗯！知道了', // String
+                            okType: 'button-energized',
+                        });
+                    }
+                } else {
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: "登录失败请重试",
+                        okText: '嗯！知道了', // String
+                        okType: 'button-energized',
+                    });
                 }
             } else { //错误信息弹窗
                 $scope.error = true;
@@ -385,48 +404,107 @@ HJY.controller("schoolmate", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "
             });
         })
     }
-
+    $scope.registed = null;
+    $scope.loginc = function() { //登录注册
+        var list_login = null;
+        var promise_login = null;
+        list_login = {
+            "jsonrpc": "2.0",
+            "method": "isRegisterForBefore",
+            "params": [{
+                "phone": $scope.info.phone
+            }],
+            "id": 1
+        }
+        promise_login = login_logic.submit(list_login);
+        promise_login.then(function(data) {
+            if (data.result != undefined) {
+                if (data["result"]["isRegister"] == 0) {
+                    $scope.registed = true;
+                    $scope.login_main()
+                } else {
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: "您已注册！",
+                        okText: '嗯！知道了', // String
+                        okType: 'button-energized',
+                    });
+                }
+            }
+        }, function() {
+            $ionicPopup.alert({
+                title: '提示',
+                template: "网络异常",
+                okText: '嗯！知道了', // String
+                okType: 'button-energized',
+            });
+        })
+    }
     $scope.login = function() { //登录注册
         ngVerify.check('landform', function(res) {
             if (res.length != 0) {
                 $scope.notice = res[0]["ngVerify"]["OPTS"]["errmsg"];
-                $scope.$apply()
+                console.log(res)
+                $scope.$apply();
             } else {
-                var inviteList = {
-                    "jsonrpc": "2.0",
-                    "method": "inviteCode",
-                    "params": [{
-                        "inviteCode": $scope.info.invited_code
-                    }],
-                    "id": 1
-                }
-                v20.get($rootScope.url_global + '/passport/service.php?c=card', inviteList).then(function(data) {
-                    if (data.result != undefined) {
-                        if (data.result["code"] == 0) {
-                            $scope.login_main()
-                        } else {
-                            console.log(data)
-                            $ionicPopup.alert({
-                                title: '提示',
-                                template: data.result["message"],
-                                okText: '嗯！知道了', // String
-                                okType: 'button-energized',
-                            });
-                        }
-                    } else { //错误信息弹窗
-                        $scope.error = true;
-                        $scope.notice = data["error"]["message"];
+                if ($scope.info.invited_code != "" && $scope.info.invited_code.length == 6) {
+                    var inviteList = {
+                        "jsonrpc": "2.0",
+                        "method": "inviteCode",
+                        "params": [{
+                            "type": 1,
+                            "inviteCode": $scope.info.invited_code
+                        }],
+                        "id": 1
                     }
-                })
+                    v20.get($rootScope.url_global + '/passport/service.php?c=card', inviteList).then(function(data) {
+                        if (data.result != undefined) {
+                            if (data.result["code"] == 0) {
+                                $scope.login_main(true)
+                            } else {
+                                $ionicPopup.alert({
+                                    title: '提示',
+                                    template: data.result["message"],
+                                    okText: '嗯！知道了', // String
+                                    okType: 'button-energized',
+                                });
+                            }
+                        } else { //错误信息弹窗
+                            $scope.error = true;
+                            $scope.notice = data["error"]["message"];
+                        }
+                    })
+                } else if ($scope.info.invited_code != "" && $scope.info.invited_code.length != 6) {
+                    $scope.error = true;
+                    $scope.notice = "兑换码格式错误";
+                } else if ($scope.info.invited_code == "") {
+                    $scope.loginc(false);
+                }
             }
         }, false);
 
     }
 }])
-HJY.controller("vipcard", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "$state", "login_logic", "ngVerify", "$interval", "$ionicPopup", function($scope, v20, $ionicBackdrop, $rootScope, $state, login_logic, ngVerify, $interval, $ionicPopup) {
+HJY.controller("vipcard", ["$scope", "v20", "$rootScope", "$ionicBackdrop", "$rootScope", "$state", "webappSDK", "login_logic", "ngVerify", "$interval", "$ionicPopup", function($scope, v20, $rootScope, $ionicBackdrop, $rootScope, $state, webappSDK, login_logic, ngVerify, $interval, $ionicPopup) {
     $scope.banner = null;
-    $scope.user_id = "1250";
-    $scope.token = "jnc78i753h51sqhvlto9b9vfk7";
+    $scope.user_id = "";
+    $scope.token = "";
+    $rootScope.his = 0;
+    $scope.transfrom = function(x) {
+        return x.toString().replace(/(\d{4})(\d{4})(\d{4})/, "$1 $2 $3 ");
+    }
+    $("title").html("会员卡");
+    if (login_logic.JudgeSystem()) {
+        var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
+        $scope.user_id = axxxx.user_id;
+        $scope.token = axxxx.OIL_TOKEN;
+    } else {
+        webappSDK.getUserInfos(function(res) {
+            var info = JSON.parse(res)
+            $scope.user_id = info.user_id
+            $scope.token = info.OIL_TOKEN //webbriage入口
+        })
+    }
     $scope.getCard = function() {
         var list = {
             "jsonrpc": "2.0",
@@ -436,23 +514,120 @@ HJY.controller("vipcard", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "$st
             }],
             "id": 1
         }
+
         v20.get($rootScope.url_global + '/passport/service.php?c=card', list, $scope.token).then(function(data) {
             console.log(data)
+            if (data["result"] != undefined) {
+                if (data["result"].length != 0) {
+                    $scope.card = data["result"]
+                } else {
+                    location.replace($rootScope.url_global + "/wechat/#/v20/getvip")
+                }
+                $scope.selectcard = data["result"][0]["privilege"]
+                $scope.selectcardCheck = data["result"][0]["privilege"][0]
+            }
         })
+    }
+
+    $scope.dealpic = function(x) { //上线前修改
+        return "https://test1.ihuijiayou.com/operate/uploads/" + x
     }
     $scope.getStatus = function() {
         var list = {
             "jsonrpc": "2.0",
-            "method": "UserCard",
+            "method": "userGetCardPrivilege",
             "params": [{
-                "user_id": $scope.user_id
+                "user_id": $scope.user_id,
+                "id": $scope.selectcardCheck.id,
+                "card_id": $scope.selectcardCheck.card_id,
+                "get_type_time": $scope.selectcardCheck.get_type_time,
+                "packet_id": $scope.selectcardCheck.packet_id
+            }],
+            "id": 1
+        }
+
+        v20.get($rootScope.url_global + '/passport/service.php?c=card', list, $scope.token).then(function(data) {
+            console.log(data)
+            if (data["result"] != undefined) {
+                if (data["result"]["code"] == 0) {
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: "领取成功",
+                        okText: '嗯！知道了', // String
+                        okType: 'button-calm',
+                    });
+                    $scope.getCard();
+                } else {
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: data["result"]["message"],
+                        okText: '嗯！知道了', // String
+                        okType: 'button-calm',
+                    });
+                    $scope.getCard();
+                }
+            } else {
+                $ionicPopup.alert({
+                    title: '提示',
+                    template: data["error"]["message"],
+                    okText: '嗯！知道了', // String
+                    okType: 'button-calm',
+                });
+                $scope.getCard();
+            }
+
+        })
+    }
+    $scope.getCard();
+}])
+HJY.controller("getvip", ["$scope", "v20", "$ionicBackdrop", "$rootScope", "$state", "webappSDK", "login_logic", "ngVerify", "$interval", "$ionicPopup", function($scope, v20, $ionicBackdrop, $rootScope, $state, webappSDK, login_logic, ngVerify, $interval, $ionicPopup) {
+    $scope.excode = null;
+    if (login_logic.JudgeSystem()) {
+        var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
+        $scope.user_id = axxxx.user_id;
+        $scope.token = axxxx.OIL_TOKEN;
+    } else {
+
+        webappSDK.getUserInfos(function(res) {
+            var info = JSON.parse(res)
+            $scope.user_id = info.user_id
+            $scope.token = info.OIL_TOKEN //webbriage入口
+        })
+    }
+    $scope.getVip = function() {
+        $(".vipcard_popum01").show();
+        $(".vipcard_popum01 .close").click(function() {
+            $(".vipcard_popum01").hide();
+        })
+    }
+    $scope.cdkey = function() {
+        var list = {
+            "jsonrpc": "2.0",
+            "method": "UserCodeGetCardbag",
+            "params": [{
+                "user_id": $scope.user_id,
+                "ExCode": $scope.excode
             }],
             "id": 1
         }
         v20.get($rootScope.url_global + '/passport/service.php?c=card', list, $scope.token).then(function(data) {
-            console.log(data)
+            if (data["result"] != undefined) {
+                if (data["result"]["code"] == 0) {
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: "兑换成功",
+                        okText: '嗯！知道了', // String
+                        okType: 'button-energized',
+                    });
+                } else {
+                    $ionicPopup.alert({
+                        title: '提示',
+                        template: data["result"]["message"],
+                        okText: '嗯！知道了', // String
+                        okType: 'button-energized',
+                    });
+                }
+            }
         })
     }
-    $scope.getCard();
-    $scope.get = false;
 }])

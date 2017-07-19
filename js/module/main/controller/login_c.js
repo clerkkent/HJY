@@ -770,7 +770,7 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
             if (/^0?1[0-9][0-9]\d{4}\d{4}$/.test($scope.info.phone.replace(/\s/g, ""))) {
                 $scope.phonet = false;
                 //手机号码注册判断，已注册提示错误信息未注册进行下步
-                if (/\d{6}/.test($scope.info.scode)) {
+                if (/\d{4}/.test($scope.info.scode)) {
                     $scope.info_send.username = $scope.info.phone.replace(/\s/g, "");
                     $scope.info_send.sms_code = $scope.info.scode;
                     $scope.info_send.oil_card = $scope.info.card.replace(/\s/g, "");

@@ -21,6 +21,28 @@ HJY.directive('scrollHeight', function() { //赋予元素当前可见窗口高�
         }
     }
 });
+HJY.directive('clLe', function() { //赋予元素当前可见窗口高度
+    return {
+        restrict: 'AE',
+        link: function(scope, element, attr) {
+            // var y = (document.body.clientHeight) / ($(element[0]).height());
+            // console.log(document.body.clientHeight)
+            // console.log($(element[0]).height())
+            // console.log(y)
+            // $(element[0]).css({ transform: "scale(" + y + ")" })
+            element[0].style.height = document.documentElement.clientHeight + 'px';
+            element[0].style.width = document.documentElement.clientWidth + 'px';
+            // var w = $(element[0]).find(".wrap").css("height")
+            //     // var h = $(element[0]).find("header").css("height")
+            //     // var s = $(element[0]).find("section").css("height")
+            //     // var f = $(element[0]).find("footer").css("height")
+            //     // $(element[0]).find("header").css({ transform: "scale(" + x + ")", height: x * h });
+            //     // $(element[0]).find("section").css({ transform: "scale(" + x + ")", height: x * s });
+            //     // $(element[0]).find("footer").css({ transform: "scale(" + x + ")", height: x * f });
+            // $(element[0]).find(".wrap").css({ transform: "scale(" + x + ")", height: x * w });
+        }
+    }
+});
 HJY.directive("scrollLs", function() {
     return {
         restrict: "AE",
