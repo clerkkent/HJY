@@ -50,7 +50,7 @@
         width: 5.63199519rem; // 330px;
         height: 4.64212937rem; // 272px;
         position: fixed;
-        @include backgroundset("../../images/v20/shake/ic_popups.png", center, center, 100%);
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_popups.png", center, center, 100%);
         z-index: 12;
         display: none;
         .title {
@@ -93,17 +93,17 @@
                 .movie {
                     height: .82159921rem; // 54px;
                     width: .76799934rem; // 45px;
-                    @include backgroundset("../../images/v20/shake/ic_muv.png", center, center, 100%);
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_muv.png", center, center, 100%);
                 }
                 .packet {
                     height: .82159921rem; // 54px;
                     width: .76799934rem; // 45px;
-                    @include backgroundset("../../images/v20/shake/ic_red.png", center, center, 100%);
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_red.png", center, center, 100%);
                 }
                 .oil_drop {
                     height: .82159921rem; // 54px;
                     width: .76799934rem; // 45px;
-                    @include backgroundset("../../images/v20/shake/ic_oil.png", center, center, 60%);
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_oil.png", center, center, 60%);
                 }
             }
         }
@@ -126,7 +126,7 @@
         width: 4.26666303rem; // 250px
         height: 5.11999563rem; // 300px
         position: fixed;
-        @include backgroundset("../../images/v20/shake/ic_pop_ups.png", center, center, 100%);
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_pop_ups.png", center, center, 100%);
           background-color:#fff;
         z-index: 12;
         overflow: hidden;
@@ -160,7 +160,7 @@
         width: 4.26666303rem; // 250px
         height: 6.11999563rem; // 300px
         position: fixed;
-        @include backgroundset("../../images/v20/shake/ic_not in.png", center, center, 80%);
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_not in.png", center, center, 80%);
         z-index: 12;
         overflow: hidden;
         display: none;
@@ -188,7 +188,7 @@
     }
     header {
         height: 9.93785861rem; // 553px;
-        @include backgroundset("../../images/v20/shake/ic_shake.png", top, center, 112%);
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_shake.png", top, center, 112%);
         background-color: #7a7d93;
         position: relative;
         .left_chance{
@@ -203,7 +203,7 @@
             position: absolute;
             width: .85333261rem;
             height: .31199956rem; // 30px;
-            @include backgroundset("../../images/v20/shake/ic_car.png", center, center, 100%);
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_car.png", center, center, 100%);
             left: 43.2%;
             transform-origin: center 1.8rem;
             top: 31%;
@@ -214,14 +214,14 @@
             width: 1.8rem;
             height: 2.8rem;
             background-color: pink;
-            @include backgroundset("../../images/v20/shake/ic_hand.png", center, center, 100%);
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_hand.png", center, center, 100%);
             left: 35%;
             top: 35.5%;
             transform-origin: bottom right;
             .present {
                 width: 1.00933239rem; // 65px;
                 height: 1.10933239rem; // 65px;
-                @include backgroundset("../../images/v20/shake/ic_gift.png", center, center, 100%);
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_gift.png", center, center, 100%);
                 @include center-block;
                 margin-left: 28%;
                 margin-top: 40%;
@@ -240,7 +240,7 @@
             width: 5.90506163rem; // 346px;
             height: 4.08639685rem; // 216px;
             margin: .3rem auto;
-            @include backgroundset("../../images/v20/shake/ic_list.png", center, center, 100%);
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_list.png", center, center, 100%);
             position: relative;
             font-family: PingFangSC-Regular;
             overflow: hidden;
@@ -279,7 +279,7 @@
             width: 6.0927948rem; // 357px;
             height: 9.7279917rem; // 570px;
             margin: 0 auto;
-            @include backgroundset("../../images/v20/shake/ic_prize.png", center, center, 100%);
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_prize.png", center, center, 100%);
             overflow: hidden;
             .main_prize {
                 width: 6.10909091rem; // 357px;
@@ -371,17 +371,24 @@
 .schoolmate {
     height: 11.43101604rem; // 668px;
     width: 100%;
-    @include backgroundset("../../images/v20/schoolmate/ic_card_bj.png",center,center,100%);
+    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_bj.png",center,center,100%);
     position: relative;
     .schoolmate_popum01{
         width:5.06666303rem; // 250px;
         height:3.55999782rem;
         @include center-block;
         display:none;
-        z-index:9;
-        @include backgroundset("../../images/v20/schoolmate/ic_card_p_h.png",center,.3rem,50%);
+        z-index:12;
+
         background-color:#FFF;
         border-radius:5%;
+        .icon_popum{
+            @include center-block;
+            width:1.8rem;
+            height:1.8rem;
+            margin-top:.3rem;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_bj.png",center,center,100%);
+        }
         p{
             text-align:center;
              color: #ff6409;
@@ -433,7 +440,7 @@
             margin-bottom: .1rem; // 5px
             text-decoration: none;
             font-family: PingFangSC-Regular;
-             @include backgroundset("../../images/v20/schoolmate/ic_card_name.png",.3rem,center,8%);
+             @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_name.png",.3rem,center,8%);
              background-color:#F8F8F8;
         }
         .info:focus{
@@ -455,15 +462,15 @@
             margin-top:.2rem;
         }
         #phone{
-            @include backgroundset("../../images/v20/schoolmate/ic_card_phone.png",.3rem,center,8%);
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_phone.png",.3rem,center,8%);
             background-color:#F8F8F8;
         }
         .first_i{
-             @include backgroundset("../../images/v20/schoolmate/ic_card_verification.png",.3rem,center,8%);
+             @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_verification.png",.3rem,center,8%);
              background-color:#F8F8F8;
         }
         .invited_i{
-              @include backgroundset("../../images/v20/schoolmate/ic_card_Invitation.png",.3rem,center,8%);
+              @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_Invitation.png",.3rem,center,8%);
               background-color:#F8F8F8;
         }
         .schoolmate_note{
@@ -471,6 +478,7 @@
             font-size: .17112299rem; // 10px
             color: #999999;
             letter-spacing: 0;
+            padding:0 .2rem;
         }
         .details {
             width: 2.0rem; // 90px
@@ -553,6 +561,7 @@
     display:flex;
     flex-flow:column nowrap;
     background:#eee;
+    min-height:7.67999345rem; // 450px;
     header{
         height:2.96042781rem; // 173px;
         width:100%;
@@ -563,8 +572,18 @@
                 .box{
                     height:2.95253081rem; // 173px;
                     background:red;
-                     @include backgroundset("../../images/v20/schoolmate/get.png",center,center,100%);
+                     @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/get.png",center,center,100%);
                      transform:scale(.85);
+                     overflow:hidden;
+                     p{
+                        font-family: PingFangSC-Semibold;
+                        font-size: .39599978rem; // 15px;
+                        color: #FFFFFF;
+                        letter-spacing: 3.56px;
+                        line-height: .39599978rem; // 15px;
+                        text-align:center;
+                        margin-top:1.4rem;
+                     }
                 }
             }
         }
@@ -573,14 +592,17 @@
     }
     section{
         height:1.71122995rem; // 100px
-        @include backgroundset("../../images/v20/schoolmate/get.png",center,center,100%);
+        .secwrap{
+            height:1.71122995rem; // 100px
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/get.png",center,center,100%);
         background-color:#fff;
         position:relative;
         .getprize{
             width:1.71122995rem; // 100px; // 10pxpx;
             height:.56470588rem; // 33px;
+            line-height:.56319952rem; // 33px;
             border-radius:6%;
-            border:.0342246rem solid #FF8339; // 2px;
+            border:.01706665rem solid #FF8339; // 2px;
             font-family: PingFangSC-Semibold;
             position:absolute;
             bottom:.1rem;
@@ -600,6 +622,8 @@
             text-align:center;
             color:#666;
         }
+        }
+
 
     }
     footer{
@@ -619,14 +643,14 @@
             width:3.1628877rem; // 186px;
             height:1.36898396rem; // 80px;
 
-            @include backgroundset("../../images/v20/schoolmate/get.png",.2rem,center,30%);
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/get.png",.2rem,center,30%);
             background-color:#fff;
             p:nth-child(1){
                 font-family: PingFangSC-Semibold;
                 font-size: .23957219rem; // 14px;
                 color: #666666;
                 letter-spacing: 0;
-                margin-top:.3rem;
+                margin-top:.4rem;
                 margin-left:1.2rem;
             }
             p:nth-child(2){
@@ -639,16 +663,16 @@
             }
             }
             li:nth-child(1){
-                background-image:url(../../images/v20/schoolmate/ic_card_me_1.png)
+                background-image:url(https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_me_1.png)
             }
             li:nth-child(2){
-                background-image:url(../../images/v20/schoolmate/ic_card_me_2.png)
+                background-image:url(https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_me_2.png)
             }
             li:nth-child(3){
-                background-image:url(../../images/v20/schoolmate/ic_card_me_3.png)
+                background-image:url(https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_me_3.png)
             }
             li:nth-child(4){
-                background-image:url(../../images/v20/schoolmate/ic_card_me_4.png)
+                background-image:url(https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_me_4.png)
             }
         }
 
@@ -656,7 +680,7 @@
 
 }
 .getvip_v20{
-    @include backgroundset("../../images/v20/schoolmate/ic_card_default.png",center,40%,60%);
+    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_default.png",center,40%,60%);
     position:relative;
     overflow:hidden;
     .vipcard_popum01{
@@ -671,10 +695,10 @@
             width:5.13368984rem; // 300px;
             height:4rem;
             @include center-block;
-            margin-top:50%;
+            margin-top:40%;
             background:#fff;
             z-index:9;
-            @include backgroundset("../../images/v20/schoolmate/ic_card_p_exchange.png",top,center,100%);
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/schoolmate/ic_card_p_exchange.png",top,center,100%);
             background-color:#fff;
             border-radius:5%;
             .close{

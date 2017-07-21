@@ -11,6 +11,7 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
     })
 }]);
 angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $rootScope) {
+    $("title").html("全国中石化/中石油通用，加油低至8.5折");
     $scope.open_fri = function() {
         $state.go("funcpage.land_fiend_active")
     }
@@ -783,8 +784,6 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
         }
 
     }
-
-
     $scope.send_details = function(n) {
         var mytime = new Date();
         var t = mytime.getTime();

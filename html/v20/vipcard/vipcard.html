@@ -6,8 +6,11 @@
             <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">
                 <ion-slide>
                     <div class="box" ng-repeat="x in card" style="background-image:url({{dealpic(x.card_img)}});width:100%;height:100;">
-                        {{transfrom(x.card_number)}}
+                        <p>{{transfrom(x.card_number)}}</p>
                     </div>
+                    <!-- <div class="box" style="background-image:url('images/v20/schoolmate/45.png');width:100%;height:100;">
+                        <p>{{transfrom(1111111111111111)}}</p>
+                    </div> -->
                 </ion-slide>
                 <!-- <ion-slide style="background-image:url({{y.img_url}}); ">
                     <div>
@@ -22,13 +25,15 @@
 
             </ion-slide-box>
         </header>
-        <section ng-repeat="x in selectcard">
-            <p class="getprize " ng-click="getStatus()" ng-show="x.get_status==1">
-                马上领取
-            </p>
-            <p class="getprize already" ng-show="x.get_status==2 ">
-                已领取
-            </p>
+        <section>
+            <div ng-repeat="x in selectcard" class="secwrap">
+                <p class="getprize " ng-click="getStatus()" ng-show="x.get_status==1">
+                    马上领取
+                </p>
+                <p class="getprize already" ng-show="x.get_status==2">
+                    已领取
+                </p>
+            </div>
         </section>
         <footer>
             <ul>

@@ -155,7 +155,7 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
             content: "全国中石油/中石化通用，最快3分钟到账，十万车主都在用，老司机速来~",
             imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
             url: "",
-            isLogin: false
+            isLogin: 0
         }
         if (login_logic.JudgeSystem()) {
             hjytest.invitation(JSON.stringify(content));
@@ -597,7 +597,7 @@ HJY.controller("land", ["$scope", "$state", "$http", "land", "$interval", "$ioni
     $scope.price = get_predata["result"]["money"][0].name; //当前商品原价,用于乘以折扣使用
     $scope.pre_price = get_predata["result"]["money"][0].name; //用于传递后台原价，或者进行测试使用
     $scope.discount = 1; //当前卡所享折扣
-
+    $("title").html("200元加油红包免费领，加油低至8.5折");
     if (get_predata["result"] != undefined) {
         $scope.info_send.product_id = get_predata["result"]["list"][0]["id"]; //get_predata为页面加载前返回的商品信息
         $scope.discount = get_predata["result"]["list"][0]["product_discount"]; //折扣

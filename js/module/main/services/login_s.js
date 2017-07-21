@@ -1,6 +1,40 @@
 ;
 HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $rootScope) {
     var factory = {}
+    factory.get = function(url, data_send, authToken) {
+        var defer = $q.defer();
+        var head = null
+        var link = $rootScope.url_global + url
+        if (authToken != undefined) { //此处的登录状态cookie设置还需要更改
+            head = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            };
+
+            function clearCookie() {
+                var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+                if (keys) {
+                    for (var i = keys.length; i--;)
+                        document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+                }
+            }
+            window.document.cookie = "OIL_TOKEN=" + authToken + ";path=/;";
+        } else {
+            head = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+        $http({
+            method: 'POST',
+            url: link,
+            headers: head,
+            data: data_send
+        }).success(function(data, header, config, status) {
+            defer.resolve(data); //声明执行成功
+        }).error(function(data, header, config, status) {
+            defer.reject(); //声明执行失败
+        });
+        return defer.promise
+    }
     factory.deal = function() { //注册页输入框下线变色
         var str = "";
         $(".main_content").on("focus", ".login input", (function(event) {
@@ -64,14 +98,6 @@ HJY.factory("login_logic", ["$http", "$q", "$rootScope", function($http, $q, $ro
             head = {
                 'Content-Type': 'application/x-www-form-urlencoded'
             };
-
-            function clearCookie() {
-                var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
-                if (keys) {
-                    for (var i = keys.length; i--;)
-                        document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
-                }
-            }
             window.document.cookie = "OIL_TOKEN=" + authToken + ";path=/;";
         } else {
             head = {
@@ -454,6 +480,13 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
     factory.CustomerService = function(id) {
         this.webview(function(bridge) {
             bridge.callHandler('CustomerService', id, function(responseData) { //请求OC
+
+            })
+        })
+    }
+    factory.callBack = function(id) {
+        this.webview(function(bridge) {
+            bridge.callHandler('callBack', id, function(responseData) { //请求OC
 
             })
         })

@@ -1,6 +1,9 @@
 <div style="width:100%; -webkit-overflow-scrolling: touch;overflow-y:auto;" ui-view scroll-ls scroll-height>
     <div class="schoolmate" style=" -webkit-overflow-scrolling: touch">
-        <div class="schoolmate_popum01" style="background-image:url(images/v20/schoolmate/{{popumback}})">
+        <div class="schoolmate_popum01">
+            <p class="icon_popum" ng-show="success==true" style="background-image:url(images/v20/schoolmate/ic_card_p_n.png)"></p>
+            <p class="icon_popum" ng-show="success==false" style="background-image:url(images/v20/schoolmate/ic_card_p_h.png)"></p>
+            <p class="icon_popum" ng-show="success==3" style="background-image:url(images/v20/schoolmate/register.png);transfrom:scale(.8);"></p>
             <span class="close" ng-click="popumclose()">x</span>
             <p>{{card_message}}</p>
             <button class="button button-assertive" ng-click="download()">{{download_text}}</button>
