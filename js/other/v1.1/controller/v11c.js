@@ -185,7 +185,7 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
         $scope.b = ["images/v11/ic_novice_one.png", "images/v11/ic_novice_two.png", "images/v11/ic_novice_three.png", "images/v11/ic_novice_four.png", "images/v11/ic_novice_four.png"]
         $scope.date = function() {
             v11.get($rootScope.url_global + '/passport/service.php?c=task', list, $scope.strs).then(function(data) {
-
+                console.log(data)
                 if (data["result"] != undefined) {
                     $scope.task = data["result"];
 
@@ -237,6 +237,7 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
             })
         }
     }
+    $scope.main_task()
     $scope.gobuy = function() {
             if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
                 _hmt.push(['_trackPageview', "/gobuy"]);
@@ -349,4 +350,8 @@ HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "
             webappSDK.call(phone)
         }
     }
+}])
+HJY.controller("v11_article", ["$scope", "$state", "login_logic", function($scope, $state, login_logic) {
+    $scope.test = "dasdad";
+    $("title").html("会加油新闻")
 }])

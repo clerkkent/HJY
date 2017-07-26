@@ -264,59 +264,60 @@ HJY.controller("friend", ["$scope", "$state", "login_logic", "$http", "$ionicPop
         });
     }
 
-    if ($scope.url.indexOf("?") != -1) { //URL入口
-        var str = $scope.url.substr(1);
-        $scope.strs = str.split("&");
-        for (var i = 0; i < $scope.strs.length; i++) {
-            $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
-        }
-        $scope.userid = $scope.theRequest.user_id;
-        $scope.strs = $scope.theRequest.OIL_TOKEN;
-        if ($scope.userid != null) {
-            var list = {
-                "jsonrpc": "2.0",
-                "method": "myInviteFriendList",
-                "params": [{
-                    "user_id": $scope.userid //用户的user_id，必须
-                }],
-                "id": 1
-            }
-            var promise_scode = login_logic.submit(list, $scope.strs);
-            promise_scode.then(function(data) {
-                if (data.result != undefined) {
-                    $scope.todayOilNum = data["result"]["todayOilNum"];
-                    $scope.allOilNum = data["result"]["allOilNum"];
-                    $scope.allFriendNum = data["result"]["allFriendNum"];
-                    if (data["result"]["list"] == 0 && data["result"]["oldList"] != 0) {
-                        $scope.frienddetails = data["result"]["oldList"];
-                    } else if (data["result"]["list"] != 0 && data["result"]["oldList"] == 0) {
-                        $scope.frienddetails = data["result"]["list"];
-                    } else if (data["result"]["list"] != 0 && data["result"]["oldList"] != 0) {
+    // if ($scope.url.indexOf("?") != -1) { //URL入口
+    //     var str = $scope.url.substr(1);
+    //     $scope.strs = str.split("&");
+    //     for (var i = 0; i < $scope.strs.length; i++) {
+    //         $scope.theRequest[$scope.strs[i].split("=")[0]] = $scope.strs[i].split("=")[1]; //提取url中的参数
+    //     }
+    //     $scope.userid = $scope.theRequest.user_id;
+    //     $scope.strs = $scope.theRequest.OIL_TOKEN;
+    //     if ($scope.userid != null) {
+    //         var list = {
+    //             "jsonrpc": "2.0",
+    //             "method": "myInviteFriendList",
+    //             "params": [{
+    //                 "user_id": $scope.userid //用户的user_id，必须
+    //             }],
+    //             "id": 1
+    //         }
+    //         var promise_scode = login_logic.submit(list, $scope.strs);
+    //         promise_scode.then(function(data) {
+    //             if (data.result != undefined) {
+    //                 $scope.todayOilNum = data["result"]["todayOilNum"];
+    //                 $scope.allOilNum = data["result"]["allOilNum"];
+    //                 $scope.allFriendNum = data["result"]["allFriendNum"];
+    //                 if (data["result"]["list"] == 0 && data["result"]["oldList"] != 0) {
+    //                     $scope.frienddetails = data["result"]["oldList"];
+    //                 } else if (data["result"]["list"] != 0 && data["result"]["oldList"] == 0) {
+    //                     $scope.frienddetails = data["result"]["list"];
+    //                 } else if (data["result"]["list"] != 0 && data["result"]["oldList"] != 0) {
 
-                        $scope.frienddetails = data["result"]["list"].concat(data["result"]["oldList"]);
-                    } else {
-                        $scope.frienddetails = []
-                    }
+    //                     $scope.frienddetails = data["result"]["list"].concat(data["result"]["oldList"]);
+    //                 } else {
+    //                     $scope.frienddetails = []
+    //                 }
 
-                    $scope.package = data["result"]["allPackets"];
-                    if ($scope.frienddetails == 0) {
-                        friend.friend_none()
-                    }
+    //                 $scope.package = data["result"]["allPackets"];
+    //                 if ($scope.frienddetails == 0) {
+    //                     friend.friend_none()
+    //                 }
 
-                } else { //错误信息弹窗
-                    $ionicPopup.alert({
-                        title: '提示',
-                        template: data["error"]["message"],
-                        okText: '嗯！知道了', // String
-                        okType: 'button-energized',
-                    });
-                }
+    //             } else { //错误信息弹窗
+    //                 $ionicPopup.alert({
+    //                     title: '提示',
+    //                     template: data["error"]["message"],
+    //                     okText: '嗯！知道了', // String
+    //                     okType: 'button-energized',
+    //                 });
+    //             }
 
-            }, function() {
-                console.log("验证码信息获取失败");
-            })
-        }
-    } else if (login_logic.JudgeSystem()) {
+    //         }, function() {
+    //             console.log("验证码信息获取失败");
+    //         })
+    //     }
+    // } else 
+    if (login_logic.JudgeSystem()) {
         $scope.callA();
     } else {
         $scope.getUserInfos();

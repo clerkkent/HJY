@@ -53,7 +53,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         return $rootScope.url_global + "/operate/uploads/" + x
     }
     var myShakeEvent = new Shake({
-        threshold: 15,
+        threshold: 10,
         timeout: 3000
     });
     myShakeEvent.start();
@@ -122,14 +122,21 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                 cancelType: 'button-energized', // String (默认: 'button-default')。取消按钮的类型。
             }).then(function(res) {
                 if (login_logic.JudgeSystem()) {
-                    var axxxx = JSON.parse(hjytest.toLogin(" "));
+                    if (res) {
+                        var axxxx = JSON.parse(hjytest.toLogin(" "));
+                    }
                 } else {
-                    webappSDK.toLogin()
+                    if (res) {
+                        webappSDK.toLogin()
+                    }
                 }
             });
         } else {
             $scope.getPersonalList();
             myShakeEvent.stop();
+            $(".fade").on("touchmove", function(event) {
+                event.preventDefault;
+            }, false)
             $(".myprize").show();
             $(".fade").show();
 
@@ -138,6 +145,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
     }
     $scope.hidePrizeList = function() {
         myShakeEvent.start();
+        $(".fade").off("touchmove");
         $(".myprize").hide()
         $(".fade").hide()
     }
@@ -151,12 +159,6 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                 okText: '嗯！知道了', // String
                 okType: 'button-energized',
             });
-
-            if (login_logic.JudgeSystem()) {
-                hjytest.toLogin()
-            } else {
-                webappSDK.toLogin()
-            }
         } else {
             $scope.shakeResult();
         }
@@ -181,9 +183,9 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                     $(".shake_win").show()
                     $(".fade").show()
                     myShakeEvent.stop();
-                    $(document).on('touchmove', function(e) {
-                        e.preventDefault()
-                    })
+                    $("body").on("touchmove", function(event) {
+                        event.preventDefault;
+                    }, false)
                     $(".shake_win .close").click(function() {
                         console.log(data)
                         $scope.getPrizeList();
@@ -191,16 +193,15 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                         myShakeEvent.start();
                         $(".shake_win").hide()
                         $(".fade").hide()
-                        $(document).off('touchmove')
+                        $("body").off("touchmove");
                     })
                 } else {
-                    console.log(data)
                     $(".shake_lose").show()
                     $(".fade").show()
                     myShakeEvent.stop();
-                    $(document).on('touchmove', function(e) {
-                        e.preventDefault()
-                    })
+                    $("body").on("touchmove", function(event) {
+                        event.preventDefault;
+                    }, false)
                     $(".shake_lose .close").click(function() {
                         console.log(data)
                         $scope.getPrizeList();
@@ -208,7 +209,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                         myShakeEvent.start();
                         $(".shake_lose").hide()
                         $(".fade").hide()
-                        $(document).off('touchmove')
+                        $("body").off("touchmove");
                     })
                 }
 

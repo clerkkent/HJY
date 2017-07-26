@@ -38,6 +38,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         })
         .state("v11.article01", {
             url: "/article01",
+            controller: "v11_article",
             templateUrl: "html/v1.1/article/article01.html" + v
         })
 }]);

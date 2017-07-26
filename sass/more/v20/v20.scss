@@ -160,10 +160,17 @@
         width: 4.26666303rem; // 250px
         height: 6.11999563rem; // 300px
         position: fixed;
-        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/v20/shake/ic_not in.png", center, center, 80%);
+        @include backgroundset("../../images/v20/shake/ic_not in.png", center, center, 80%);
         z-index: 12;
         overflow: hidden;
         display: none;
+        .text{
+            color:#fff;
+            font-family: PingFangSC-Regular;
+            text-align:center;
+            margin-top:4.2rem;
+            font-size:.24479983rem; // 12px;
+        }
         .close {
             height: .85333261rem;
             width: 3.41333042rem; // 200px;
@@ -233,7 +240,7 @@
         }
     }
     section {
-        height: 15.7557216rem; // 806px;
+        height: 14.7557216rem; // 806px;
         background: #7a7d93;
         overflow: hidden;
         .transi01 {
@@ -333,13 +340,14 @@
         h3 {
             width: 3.99359659rem; // 234px;
             height: .68266608rem; // 40px;
-            margin: .5rem auto;
+            margin: 0rem auto;
             border-radius: .34133304rem; // 20px;
             border: 0.068267rem #fff solid;
             text-align: center;
             line-height: .60266608rem; // 40px
             color: #fff;
             font-size: .27306643rem; // 16px;
+            margin-bottom:.3rem;
         }
         p {
             padding: .1rem 0rem;
