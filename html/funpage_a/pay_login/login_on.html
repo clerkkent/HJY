@@ -1,0 +1,11 @@
+<h3 class="title" style="background-position:10% center,90% center;">
+    {{pay_title}}</h3>
+<div>
+    <p class="login_on">
+        {{phone_on|encryPt}}
+    </p>
+</div>
+<button class="second_i button button-assertive info" type="submit" value="{{pay_text}}" ng-disabled="agreet" ng-click="login_pay_on()" style="margin-top:1rem;">
+            <p style="font-size:.28rem">{{pay_text}}</p><p>充值金额{{price_n}}元</p>
+</button>
+<p class="remind" class="agree checkbox-assertive" ng-model="info.agree"><span class="agree" ng-click="toggleCustom()"></span><span style="border:none;" ng-click="go_agree()">同意《会加油服务协议》</span></p>

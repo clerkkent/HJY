@@ -1,0 +1,42 @@
+<ion-content style="width:100%; -webkit-overflow-scrolling: touch;background:#f5f5f5;overflow:auto;" scroll-height>
+    <div class="order_list">
+        <ul>
+            <li ng-repeat="x in order_list" ng-click="go_details(x.id)">
+                <p class="title">
+                    <span class="company">{{x.product_name}}</span>
+                    <!--<span class="state" ng-if="x.status==1&&x.count<x.total_time">{{x.count}}/{{x.total_time}}</span>-->
+                    <!--<span class="state un_pay" ng-if="x.status==0"></span>
+                    <span class="state pay_success" ng-if="x.status==1&&x.count==x.total_time"></span>-->
+                    <span class="icon_order"></span>
+                </p>
+                <div class="details">
+                    <dl class="card_order">
+                        <dt>卡号</dt>
+                        <dd>{{x.card_number|cardPt}}</dd>
+                    </dl>
+                    <dl class="type">
+                        <dt>套餐类型</dt>
+                        <dd>{{x.total_time}}个月</dd>
+                    </dl>
+                    <dl class="pay_state" ng-if="x.status==3||x.status==1">
+                        <dt>支付金额</dt>
+                        <dd>{{x.discount_after_amount}}</dd>
+                    </dl>
+                    <dl class="pay_state go_pay" ng-if="x.status==0">
+                        <p ng-if="false">去支付</p>
+                    </dl>
+                    <dl class="pay_state order_close" ng-if="x.status==4||x.status==2">
+                        订单关闭
+                    </dl>
+                </div>
+            </li>
+            <div style="display:flex;flex-flow:row wrap;justify-content: space-between;">
+                <p class="button button-dark" style="margin:.8rem auto" ng-click="esc()">退出登录</p>
+                <p class="button button-balanced" style="margin:.8rem auto" ng-click="shop()">再买一单</p>
+            </div>
+
+        </ul>
+    </div>
+    <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="bottom">
+    </ion-infinite-scroll>
+</ion-content>

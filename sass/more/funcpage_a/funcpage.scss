@@ -1,0 +1,1603 @@
+    @import '../template/temp.scss';
+    @keyframes db {
+        0% {
+            top: -1.5rem;
+        }
+        50% {
+            top: 30%;
+            background-size: 90% 70%;
+        }
+        100% {
+            top: 20%; // 125px
+            background-size: 90%;
+        }
+    }
+
+    .land_main {
+        width: 100%;
+        height: 11.27412457rem; // 602px;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        -webkit-overflow-scrolling: touch;
+        .activepopum {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(black, .5);
+            z-index: 201;
+            .popum_wrap {
+                width: 4.22673797rem;
+                height: 2.51550802rem;
+                @include center-block;
+                background: #FFF;
+                border-radius: .13653322rem;
+                padding: .42780749rem .25668449rem;
+                .active_p {
+                    width: 100%;
+                    height: 2.39572193rem;
+                    position: absolute;
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/tanchuang(1).png", center, center, 70%);
+                    top: -2.09572193rem;
+                    left: 0;
+                    z-index: 200;
+                }
+                .redownload {
+                    font-family: PingFangSC-Regular;
+                    font-size: .25668449rem;
+                    line-height: .40802139rem;
+                    color: #676767;
+                    span {
+                        color: #ffbd95;
+                    }
+                }
+                .confirm {
+                    width: 100%;
+                    font-size: .25668449rem;
+                    color: #ff843c;
+                    text-align: center;
+                    margin-top: .27112299rem;
+                }
+            }
+        }
+        .aicon {
+            position: absolute;
+            width: 1.57433155rem; // 92px;
+            height: 1.12941176rem; // 66px;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/ic_zong.png", center, center, 90%);
+            top: 20%;
+            right: 0;
+            z-index: 200;
+            animation: db 1s ease;
+            // animation: db 1s ease;
+        }
+        .aicon2 {
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/zhongjiang.png", center, top, 90%);
+            transform: scale(1.3);
+        }
+        .aicon3 {
+            @include backgroundset("../../images/active/friend_active/icon.png", left, top, 90%);
+            transform: scale(1);
+        }
+        header {
+            height: 3.28666412rem; // 175px
+            width: 100%;
+            background-image: url("../../images/little_beer/ic_home_head.png");
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-size: 100%;
+            position: relative;
+            .order_wrap {
+                width: 100%; // 350px;
+                height: 2.59413112rem; // 152px
+                @include center-block;
+                font-family: PingFangSC-Regular;
+                // @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_mountain 2.png",
+                // center,
+                // center,
+                // 100%);
+                margin-bottom: 0;
+                padding: 0 .54613287rem; // 32px;
+
+                // .first{
+                //     height:.85333261rem; // 50px;
+                //     width:100%;
+                //     position:relative;
+                //     @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_car.png",left,center,70%);
+                //     p{
+                //         width:1.43359878rem; // 84px;
+                //         height:.47786626rem; // 28px;
+                //         border:1px solid red;
+                //         border-radius:.13653322rem; // 8px;
+                //         text-align:center;
+                //         line-height:.47786626rem; // 28px;
+                //         font-size:.22186648rem; // 13px
+                //         font-family: PingFangSC-Regular;
+                //         color:#F95B4E ;
+                //         @include center-block;
+                //         margin-right:0%;
+                //         text-indent:0.3rem;
+                //         @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_Order.png",0.08rem,center,20%);
+                //     }
+                // }
+
+                .help {
+                color: #F95B4E;
+                left: .50133304rem; // 20px;
+                position:absolute;
+                @include backgroundset("../../images/little_beer/ic_home_help.png",
+                80%,
+                center,
+                100%);
+                font-size: .22186648rem; // 13px;
+                font-family: PingFangSC-Regular;
+                text-align: right;
+                margin: 0.1rem 0;
+                height:.3rem;
+                width:1.5rem;
+                top: 1.84133304rem; // 20px
+            }
+                .type {
+                    margin-bottom: 0.3rem;
+                    text-align: center;
+                    color: #F95B4E;
+                    font-family: PingFangSC-Medium;
+                    height: .46079961rem; // 27px;
+                    line-height: .46079961rem; // 27px;
+                    letter-spacing: 0px;
+                    .mul {
+                        font-size: .40959965rem; // 24px;
+                        font-family: PingFangSC-Medium;
+                        display: inline-block;
+                        height: .46079961rem; // 27px;
+                        line-height: .46079961rem; // 27px;
+                    }
+                    .unit {
+                        font-size: .24rem; // 12px
+                        font-family: PingFangSC-Medium;
+                        display: inline-block;
+                        vertical-align: top;
+                        letter-spacing: 8px;
+                    }
+                    .count {
+                        font-size: .40959965rem; // 24px;
+                        font-family: PingFangSC-Medium;
+                        display: inline-block;
+                        height: .46079961rem; // 27px;
+                        line-height: .46079961rem; // 27px;
+                    }
+                }
+                .user_info {
+                    text-align: center;
+                    font-size: .22186648rem; // 13px;
+                    color: #EC9F89;
+                }
+                .title_state02 {
+                    height: .92159921rem; // 54px;
+                    color: #FC6A11;
+                    text-align: center;
+                    font-size: .22186648rem; // 13px;
+                    line-height: .92159921rem; // 54px;
+                    background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_left.png), url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_right.png);
+                    background-repeat: no-repeat, no-repeat;
+                    background-position: 25% center, 75% center;
+                    background-size: 15%, 15%;
+                }
+                .first {
+                    text-align: center;
+                    font-size: .22186648rem; // 13px
+                    color: #999999;
+                    font-family: PingFangSC-Medium;
+                    margin-top: .21199956rem; // 30px;
+                    margin-bottom: .27306643rem; // 16px;
+                    position: relative;
+                    span {
+                        color: #f95b4e;
+                        i {
+                            font-size: .27306643rem; // 16px;
+                        }
+                    }
+                    .icon_details_pro {
+                        width: .35599978rem; // 15px;
+                        height: .35599978rem; // 15px;
+                        display: inline-block;
+                        position: absolute;
+                        right: 10%;
+                        bottom: 0;
+                        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_home_info@3x.png",
+                        center,
+                        center,
+                        100%)
+                    }
+                }
+                #card {
+                    height: .90453256rem; // 53px;
+                    width: 100%;
+                    padding-left: .68266608rem; // 40px;
+                    font-family: PingFangSC-Regular;
+                    font-size: .23893313rem; // 14px;
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_icon.png",
+                    0.15rem,
+                    center,
+                    6%);
+                    background-color: #FFF;
+                }
+            }
+        }
+        .land_main_popum {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(black, .5);
+            z-index: 201;
+            .popum_wrap {
+                width: 4.77866259rem; // 280px;
+                height: 6.82666084rem; // 400px;
+                @include center-block;
+                background: #FFF;
+                display: flex;
+                flex-direction: column;
+                border-radius: 2%;
+                header {
+                    height: 50%;
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_popup_huijiayou@3x.png",
+                    center,
+                    15%,
+                    30%);
+                    background-color: #eadfcb;
+                    text-align: center;
+                    position: relative;
+                    border-top-left-radius: 2%;
+                    border-top-right-radius: 2%;
+                    font-size: .27306643rem; // 16px;
+                    p {
+                        position: absolute;
+                        bottom: 8%;
+                        text-align: center;
+                        width: 100%;
+                        color: #FFF;
+                    }
+                    .close {
+                        position: absolute;
+                        right: 5%;
+                        top: 5%;
+                        color: #FFF;
+                        font-size: .51199956rem; // 30px
+                    }
+                }
+                section {
+                    .popum_title {
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: space-between;
+                        height: .85333261rem; // 50px;
+                        line-height: .85333261rem; // 50px;
+                        border-bottom: 1px solid #eee;
+                        margin-bottom: .17066652rem; // 10px;
+                        width: 100%;
+                        font-size: .27306643rem; // 16px;
+                        span {
+                            display: block;
+                            font-family: PingFangSC-Regular;
+                            color: #E2BC85;
+                            letter-spacing: 0;
+                            margin-left: -0.1rem;
+                            i {
+                                width: .20479983rem; // 12px;
+                                height: .20479983rem; // 12px;
+                                display: inline-block;
+                                margin: 0;
+                                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_home_rmb@3x.png",
+                                center,
+                                center,
+                                150%);
+                            }
+                        }
+                        .sec {
+                            margin-right: -0.1rem;
+                        }
+                    }
+                    .popum_details {
+                        max-height: 4.51333042rem; // 200px;
+                        overflow-y: scroll;
+                        li {
+                            display: flex;
+                            flex-flow: row wrap;
+                            justify-content: space-between;
+                            background: none;
+                            width: 100%;
+                            height: .51199956rem; // 30px;
+                            margin: 0;
+                            p {
+                                font-family: PingFangSC-Regular;
+                                color: #666666;
+                                letter-spacing: 0;
+                                font-size: .18773317rem; // 11px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        section {
+            width: 100%;
+            height: 7.3386604rem; // 430px;
+            padding: 0 .54613287rem; // 32px;
+            position: relative;
+            .title {
+                text-align: center;
+                font-size: .22186648rem; // 13px;
+                color: #999999;
+                background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_left.png), url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_right.png);
+                background-repeat: no-repeat, no-repeat;
+                background-position: 15% center, 85% center;
+                background-size: 20%, 20%;
+                margin-top: .37546635rem; // 22px;
+                margin-bottom: .23893313rem; // 14px;
+            }
+            .select {
+                height: .93866587rem; // 55px;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                .left,
+                .right {
+                    width: .76799934rem; // 45px;
+                    height: .76799934rem; // 45px;
+                    border-radius: .37546635rem; // 22px
+                    border: 1px solid #f95b4e;
+                    line-height: .76799934rem; // 45px
+                    text-align: center;
+                    font-size: .40959965rem; // 24px
+                    margin-top: 0.1rem;
+                    color: #f95b4e;
+                    font-weight: 600;
+                }
+                .left {
+                    font-size: .20059965rem; // 24px
+                }
+                .right {}
+                .left:active {
+                    color: #FFF;
+                    background-image: linear-gradient(-38deg, #FDC499 0%, #FF952F 47%, #FC6C12 100%);
+                }
+                .right:active {
+                    color: #FFF;
+                    background-image: linear-gradient(-38deg, #FDC499 0%, #FF952F 47%, #FC6C12 100%);
+                }
+                .forbidden {
+                    color: #FFF;
+                    background: #ccc;
+                    border: none;
+                }
+                .center {
+                    width: 3.05493073rem; // 179px;
+                    border: 1px solid #f95b4e;
+                    border-radius: 3%;
+                    line-height: .93866587rem; // 55px;
+                    text-align: center;
+                    font-size: .40959965rem; // 24px;
+                    font-family: PingFangSC-Medium;
+                    color: #f95b4e;
+                    i {
+                        font-size: .23893313rem; // 14px;
+                    }
+                }
+            }
+
+            .info {
+                height: .85333261rem; // 50px;
+                border: 1px solid #999999;
+                border-radius: 2px;
+                width: 100%;
+                margin-top: .13653322rem; // 8px;
+                padding-left: .34133304rem; // 20px;
+            }
+            .get_scode {
+                position: absolute;
+                color: #F95B4E;
+                text-align: center;
+                font-size: .22186648rem; // 13px;
+                background: none;
+                border: none;
+                right: 10%;
+                top: 30%;
+            }
+            .remind {
+                width: 4.8rem; // 240px
+                height: .6rem; // 30px;
+                line-height: .6rem;
+                margin: 0 auto;
+                margin-top: 0.1rem;
+                text-align: center;
+                padding-left: 0.3rem;
+                font-family: PingFangSC-Regular;
+                font-size: .20rem; // 12px
+                letter-spacing: 0;
+                overflow: hidden;
+                position: relative;
+                transform: scale(1.3);
+                color: #FDA174;
+                b {
+                    font-weight: 500;
+                    color: #FF7320;
+                }
+                .agree {
+                    display: inline-block;
+                    border-radius: 20%;
+                    position: absolute;
+                    left: 19%;
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/H5_Check@3x.png",
+                    center,
+                    center,
+                    100%);
+                    top: 25%;
+                    transform: scale(0.7);
+                }
+                .selected {
+                    background-image: none;
+                }
+                span {
+                    width: .3rem; // 15px;
+                    height: .3rem; // 15px;
+                    border: .02rem solid #f95b4e;
+                    color: #f95b4e;
+                }
+            }
+            ul {
+                width: 100%;
+                height: 2.32106469rem; // 136px;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-start;
+                overflow: hidden;
+                li {
+                    height: .92159921rem; // 54px;
+                    width: 1.62133195rem; // 95px;
+                    text-align: center;
+                    display: flex;
+                    flex-flow: column;
+                    margin: 0.1rem 0.06rem;
+                    justify-content: space-between;
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_Option_n.png",
+                    center,
+                    center,
+                    100%);
+                    .pre_price {
+                        font-size: .30719974rem; // 18px;
+                        color: #F95B4E;
+                        font-family: PingFangSC-Semibold;
+                        margin-top: 8%;
+                        span {
+                            font-size: .20479983rem; // 12px;
+                            padding-left: 0.04rem;
+                        }
+                    }
+                    .dis_price {
+                        font-size: .18773317rem; // 11px;
+                        color: #F95B4E;
+                        font-family: PingFangSC-Regular;
+                        margin-bottom: 8%;
+                    }
+                }
+                .is_sellect {
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_Option_h.png",
+                    center,
+                    center,
+                    100%);
+                    .pre_price {
+                        color: #FFF;
+                    }
+                    .dis_price {
+                        color: #FFF;
+                    }
+                }
+            }
+            .second_i {
+                width: 100%;
+                height: .85333261rem; // 50px;
+                margin-top: .30719974rem; // 18px;
+                border-radius: .4266663rem; // 25px;
+                font-size: .34133304rem; // 20px
+                font-family: PingFangSC-Semibold;
+                font-size: .30719974rem; // 18px
+                border: none;
+                appearance: button;
+                box-shadow: 0px 3px 0px #f95b4e;
+                p {
+                    text-align: center;
+                    font-size: .23893313rem; // 14px;
+                    line-height: .37546635rem; // 22px
+                }
+            }
+            .my_order {
+                width: 1.62133195rem; // 95px;
+                height: .68266608rem; // 40px;
+                position: absolute;
+                right: 10%;
+                font-size: .20479983rem; // 12px;
+                color: #F95B4E;
+                margin-top: .40306643rem; // 16px;
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_Order.png",
+                center,
+                center,
+                100%);
+            }
+            .consult {
+                width: 1.62133195rem; // 95px;
+                height: .98266608rem; // 40px;
+                position: absolute;
+                left: 3%;
+                font-size: .20479983rem; // 12px;
+                color: #F95B4E;
+                margin-top: .27306643rem; // 16px;
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_ service ic_service.png",
+                center,
+                center,
+                50%);
+            }
+            .login_on {
+                text-align: center;
+                font-family: PingFangSC-Regular;
+                color: #999999;
+                font-size: .22186648rem; // 13px;
+                margin-top: 0.6rem;
+            }
+        }
+    }
+
+    .order_list {
+        background-color: #f5f5f5;
+        li {
+            width: 100%;
+            height: 2.18453147rem; // 128px;
+            margin-top: .08533326rem; // 5px
+            margin-bottom: .17066652rem; // 10px
+            .title {
+                height: .73386604rem; // 43px
+                line-height: .73386604rem; // 43px
+                padding-left: .35839969rem; // 21px
+                color: #51586A;
+                font-family: PingFangSC-Regular;
+                font-size: .22186648rem; // 13px;
+                display: flex;
+                flex-direction: row;
+                position: relative;
+                background: #FFF;
+                margin-bottom: 0.02rem;
+                span {
+                    display: block;
+                }
+                .company {
+                    font-size: .23893313rem; // 14px;
+                }
+                .state {
+                    height: 100%;
+                    width: .98986582rem; // 58px;
+                    font-size: .17066652rem; // 10px;
+                    text-indent: 0.2rem;
+                    color: #6DC152;
+                    margin-left: 0.2rem;
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_recording_green@3x.png",
+                    0.1rem,
+                    0.18rem,
+                    100%);
+                    transform: scale(1.3);
+                    padding-left: .30719974rem; // 18px;
+                }
+                .pay_success {
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_recording_red@3x.png",
+                    left,
+                    0.18rem,
+                    100%);
+                }
+                .un_pay {
+                    background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_recording_Orange@3x.png");
+                }
+                .icon_order {
+                    width: .30719974rem; // 18px
+                    height: .30719974rem; // 18px;
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_pay_arrow_n@3x.png",
+                    center,
+                    center,
+                    100%);
+                    @include center-block;
+                    margin-right: 5%;
+                }
+            }
+            .details {
+                width: 100%;
+                height: 1.39946547rem; // 82px;
+                background: #FFF;
+                margin-top: 0.05rem;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                dl {
+                    flex: 1;
+                    height: 100%;
+                    text-align: center;
+                    font-family: PingFangSC-Regular;
+                    dt {
+                        color: #999999;
+                        font-size: .23893313rem; // 14px;
+                        height: .85333261rem; // 50px;
+                        line-height: .85333261rem; // 50px;
+                    }
+                    dd {
+                        color: #51586A;
+                        font-size: .20479983rem; // 12px;
+                    }
+                }
+                .order_close {
+                    line-height: 1.39946547rem; // 82px;
+                    color: #999999;
+                }
+                .go_pay {
+                    position: relative;
+                    p {
+                        width: 1.2117323rem; // 71px;
+                        height: .46079961rem; // 27px;
+                        border: 1px solid #FA9245;
+                        color: #FA9245;
+                        text-align: center;
+                        border-radius: 5%;
+                        @include center-block;
+                    }
+                }
+                .card_order {
+                    text-align: left;
+                    text-indent: .37546635rem; // 22px
+                }
+            }
+        }
+    }
+
+    .order_details {
+        display: flex;
+        flex-flow: column wrap;
+        height: 11.50292352rem; // 674px;
+        width: 100%;
+        background-color: #f5f5f5;
+        header {
+            height: 1.87733173rem; // 110px;
+            width: 100%;
+            margin-bottom: .17066652rem; // 10px;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_background@2x.png",
+            center,
+            center,
+            100%);
+            position: relative;
+            p {
+                height: 100%;
+                width: 1.62133195rem; // 95px;
+                @include center-block;
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_suc_small@3x.png",
+                center,
+                0.05rem,
+                80%);
+                text-align: center;
+                color: #FFF;
+                vertical-align: bottom;
+                padding-top: 22%;
+                font-size: .30719974rem; // 18px;
+                font-family: PingFangSC-Regular;
+            }
+        }
+        section {
+            height: 1.16053234rem; // 68px;
+            width: 100%;
+            padding-left: 1.41653212rem; // 83px;
+            font-size: .22186648rem; // 13px;
+            font-family: PingFangSC-Regular;
+            color: #666666;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_CNPC.png",
+            0.5rem,
+            center,
+            9%);
+            background-color: #FFF;
+            line-height: .44133304rem; // 20px;
+            margin-bottom: .20479983rem; // 12px;
+            .card_order {
+                margin-top: 0.15rem;
+            }
+        }
+        .second_icon {
+            background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_SINOPEC@2x.png");
+        }
+        footer {
+            background-color: #FFF;
+            padding: 0 .47786626rem; // 28px
+            height: 8.07252644rem; // 473px;
+            h3 {
+                font-size: .27306643rem; // 16px;
+                text-align: center;
+                font-family: PingFangSC-Semibold;
+                color: #666666;
+                margin-top: .25599978rem; // 15px;
+            }
+            .first {
+                width: 100%;
+                max-height: 5.87092832rem; // 344px;
+                overflow-y: hidden;
+                background-image: url("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_frame_l@3x.png"), url("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_frame_r@3x.png");
+                background-size: 30%, 30%;
+                background-position: -0.15rem -0.25rem, 104% -0.25rem;
+                border: 1px solid #D8BD99;
+                border-radius: 4%;
+                border-top: none;
+                background-repeat: no-repeat, no-repeat;
+                .type {
+                    width: .98986582rem; // 58px;
+                    font-size: .17066652rem; // 10px;
+                    text-indent: 0.15rem;
+                    color: #6DC152;
+                    margin: .17066652rem auto; // 10px auto;
+                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_recording_green@3x.png",
+                    left,
+                    top,
+                    100%);
+                    transform: scale(1.3);
+                    padding-left: .30719974rem; // 18px;
+                    height: .4266663rem; // 25px;
+                }
+                .pay_amount {
+                    font-size: .20479983rem; // 12px
+                    font-family: PingFangSC-Regular;
+                    color: #666666;
+                    margin: 0 auto;
+                    height: .61439948rem; // 36px;
+                    margin-top: .25599978rem; // 15px;
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: space-between;
+                    padding: 0 .41199956rem; // 30px;
+                    span {
+                        font-size: .23893313rem; // 14px
+                        color: #2A2A2A;
+                        display: block;
+                        i {
+                            font-size: .20479983rem; // 12px
+                        }
+                    }
+                }
+                .list_title {
+                    margin: .34133304rem auto; // 20px;
+                    font-size: .20479983rem; // 12px;
+                    color: #3F3F3F;
+                    font-family: PingFangSC-Regular;
+                    width: 5.07866259rem; // 280px;
+                    display: flex;
+                    border-top: 1px solid #E5E5E5;
+                    flex-flow: row wrap;
+                    justify-content: space-between;
+                    padding-top: 0.3rem;
+                    margin-top: 0;
+                    span {
+                        padding-left: .30719974rem; // 18px;
+                        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_recharge@3x.png",
+                        left,
+                        center,
+                        14%);
+                    }
+                    .money {
+                        // margin-left: -0.2rem;
+                    }
+                    .time {
+                        background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_time@3x.png);
+                        background-size: 20%;
+                    }
+                    .state {
+                        background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_state@3x.png);
+                        background-size: 20%;
+                    }
+                }
+                ul {
+                    margin-top: .34133304rem; // 20px;
+                    max-height: 3.58399694rem; // 210px;
+                    padding-left: .1rem; // 40px;
+                    overflow-y: auto;
+                    padding: 0 0.4rem;
+                    padding-left: 0.6rem;
+                    li {
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: space-between;
+                        font-size: .20479983rem; // 12px;
+                        font-family: PingFangSC-Regular;
+                        color: #666666;
+                        margin-bottom: .34133304rem; // 20px
+                        .icon_current {
+                            width: .34133304rem; // 20px;
+                            height: .34133304rem; // 20px;
+                            margin-right: 2%;
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_option_n@3x.png",
+                            center,
+                            center,
+                            60%);
+                            position: relative;
+                            .concat {
+                                width: 0;
+                                border-right: 1px solid #E7E7E7;
+                                height: 170%;
+                                @include center-block;
+                                margin-top: 70%;
+                            }
+                        }
+                    }
+                    .past {
+                        color: #6DC152;
+                        .icon_current {
+                            width: .34133304rem; // 20px;
+                            height: .34133304rem; // 20px;
+                            margin-right: 2%;
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_option_h@3x.png",
+                            center,
+                            center,
+                            100%);
+                            position: relative;
+                            .concat {
+                                width: 0;
+                                border-right: 1px solid #D2F0C9;
+                                height: 140%;
+                                @include center-block;
+                                margin-top: 90%;
+                            }
+                        }
+                    }
+                    .now {
+                        color: #B7DDAA;
+                        .icon_current {
+                            width: .34133304rem; // 20px;
+                            height: .34133304rem; // 20px;
+                            margin-right: 2%;
+                            position: relative;
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_details_option@3x.png",
+                            center,
+                            center,
+                            80%);
+                            .concat {
+                                width: 0;
+                                border-right: 1px solid #E7E7E7;
+                                height: 170%;
+                                @include center-block;
+                                margin-top: 80%;
+                            }
+                        }
+                    }
+                    .refund_part {
+                        color: #F3B93E;
+                        overflow: visible;
+                        position: relative;
+                        .icon_current {
+                            width: .34133304rem; // 20px;
+                            height: .34133304rem; // 20px;
+                            margin-right: 2%;
+                            position: relative;
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_un@3x.png",
+                            center,
+                            center,
+                            80%);
+                            .concat {
+                                width: 0;
+                                border-right: 1px solid #E7E7E7;
+                                height: 170%;
+                                @include center-block;
+                                margin-top: 80%;
+                            }
+                        }
+                        .icon_re {
+                            width: .55668449rem;
+                            height: .55668449rem;
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_Details@3x.png",
+                            center,
+                            center,
+                            60%);
+                            position: absolute;
+                            left: -12%;
+                            top: -30%;
+                            span {
+                                display: none;
+                                position: absolute;
+                                font-family: PingFangSC-Regular;
+                                left: .4rem;
+                                top: -0.25rem;
+                                font-size: .22245989rem;
+                                width: 4.8rem;
+                                text-align: center;
+                                height: 1.02673797rem;
+                                line-height: 0.9rem;
+                                padding-left: 0.3rem;
+                                padding-top: 0.1rem;
+                                color: white;
+                                z-index: 10;
+                                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_bubble@3x.png",
+                                center,
+                                center,
+                                100%);
+                                background-size: 100% 50%;
+                                i {
+                                    color: #ee7323;
+                                }
+                            }
+                            .selected {
+                                display: block;
+                            }
+                        }
+                    }
+                    .refund_all {
+                        color: #F3B93E;
+                        position: relative;
+                        .icon_current {
+                            width: .34133304rem; // 20px;
+                            height: .34133304rem; // 20px;
+                            margin-right: 2%;
+                            position: relative;
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_fail@3x.png",
+                            center,
+                            center,
+                            80%);
+                            .concat {
+                                width: 0;
+                                border-right: 1px solid #E7E7E7;
+                                height: 170%;
+                                @include center-block;
+                                margin-top: 80%;
+                            }
+                        }
+                        .icon_re {
+                            width: .55668449rem;
+                            height: .55668449rem;
+                            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_Details@3x.png",
+                            center,
+                            center,
+                            60%);
+                            position: absolute;
+                            left: -12%;
+                            top: -30%;
+                            span {
+                                display: none;
+                                position: absolute;
+                                font-family: PingFangSC-Regular;
+                                left: .4rem;
+                                top: -0.25rem;
+                                z-index: 10;
+                                text-align: center;
+                                line-height: 0.9rem;
+                                font-size: .22245989rem;
+                                width: 4.8rem;
+                                height: 1.02673797rem;
+                                padding-left: 0.3rem;
+                                padding-top: 0.1rem;
+                                color: white;
+                                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_pay_bubble@3x.png",
+                                center,
+                                center,
+                                100%);
+                                background-size: 100% 50%;
+                                i {
+                                    color: #ee7323;
+                                }
+                            }
+                            .selected {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+            .second {
+                margin-top: 0.3rem;
+                border-top: 1px solid #E5E5E5;
+                padding: 0.3rem 0;
+                p {
+                    font-family: PingFangSC-Regular;
+                    color: #999;
+                }
+            }
+        }
+    }
+
+    .not_login {
+        height: 11.4005236rem; // 668px
+        background: #e8e8e8;
+        overflow: hidden;
+        .not_login_wrap {
+            height: 100%;
+            background-color: #f5f5f5;
+            margin-top: .17066652rem; // 10px;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/login/ic_details_no@3x.png",
+            center,
+            45%,
+            50%);
+            header {
+                text-align: center;
+                font-family: PingFangSC-Regular;
+                color: #666666;
+                font-size: .25599978rem; // 15px;
+                margin-top: .93866587rem; // 55px;
+            }
+            section {
+                .login_wrap {
+                    width: 3.80586342rem; // 223px;
+                    height: .92159921rem; // 54px;
+                    line-height: .92159921rem; // 54px;
+                    border-radius: 5%;
+                    border: 1px solid #F18B30;
+                    text-align: center;
+                    margin: .34133304rem auto; // 20px;
+                    font-family: PingFangSC-Medium;
+                    color: #F18B30;
+                    font-size: .30719974rem; // 18px;
+                }
+            }
+            footer {
+                margin-top: 5.5732955rem; // 260px;
+                font-family: PingFangSC-Regular;
+                color: #666;
+                font-size: .25599978rem; // 15px
+                text-align: center;
+            }
+        }
+    }
+
+    .popup-body {
+        text-align: center;
+    }
+
+    .dbf {
+        width: 100%;
+        height: 22.83957219rem; // 1510px
+        position: relative;
+        header {
+            width: 100%;
+            height: 6.62032086rem; // 270px;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/Top Bar.png",
+            top,
+            center,
+            100%);
+        }
+        section {
+            width: 100%;
+            height: 18.39037433rem; // 1250px;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/Group 22.png",
+            center,
+            .17112299rem,
+            100%);
+            // background-color: #46A76F;
+            position: relative;
+            top: -2.27112299rem; // 10px;
+            .back {
+                height: 93%;
+                bottom: -0.5rem;
+                width: 100%;
+                position: absolute;
+                background-color: #46A76F;
+                z-index: -1000;
+            }
+            .txt {
+                @include center-block;
+                font-family: PingFangSC-Medium;
+                color: #FFF;
+                font-size: .20534759rem; // 12px;
+                width: 5.29037433rem; // 315px;
+                margin-bottom: .69786096rem; // 70px;
+                height: .68449198rem; // 40px;
+            }
+        }
+    }
+
+    .funcpage_register {
+        width: 100%;
+        height: 18.34665101rem; // 1075px;
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/register/TopBar_2.png",
+        center,
+        top,
+        100%);
+        background-color: #FFDC5A;
+        position: relative;
+        .register_popum {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: none;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/register/Group(1).png",
+            right,
+            0.806665rem,
+            90%);
+            background-color: rgba(black, .5);
+            z-index: 201;
+            .redownload {
+                width: 3.41333042rem; // 200px;
+                height: 50px;
+                @include center-block;
+                margin-top: 5.81999563rem; // 300px
+                @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/register/Rectangle 62.png",
+                center,
+                center,
+                100%)
+            }
+        }
+        .get_award {
+            height: 4rem; // 200px;
+            width: 5.12rem; // 256px;
+            @include center-block;
+            margin-top: 5.35892876rem; // 314px;
+            .information {
+                width: 5.04rem; // 252px;
+                height: 3.44rem; // 102px;
+                .first_i {
+                    width: 100%;
+                    height: .32rem; // 16px
+                    line-height: .32rem; // 16px
+                    height: .93866587rem; // 55px;
+                    padding-left: 20%;
+                    background: #FFF;
+                    border: none;
+                    text-align: left;
+                    border-radius: .5rem; // 20px
+                    margin-bottom: 0.2rem;
+                    position: relative;
+                    font-size: .28rem; // 14px
+                }
+                .get_scode {
+                    position: absolute;
+                    top: 0.05rem;
+                    right: 0.1rem;
+                    border: none;
+                    color: #f3b93e;
+                    width: 1.6rem;
+                    height: 0.9rem;
+                    z-index: 100;
+                    font-size: .2rem; // 10px
+                    background: none
+                }
+                .second_i {
+                    width: 100%;
+                    height: .94rem; // 47px;
+                    border: none;
+                    text-align: center;
+                    border-radius: .5rem; // 20px
+                    font-size: .28rem; // 14px
+                }
+            }
+            .remind {
+                width: 4.8rem; // 240px
+                height: .6rem; // 30px;
+                line-height: .6rem;
+                margin: 0 auto;
+                margin-top: -0.2rem;
+                text-align: center;
+                padding-left: 0.3rem;
+                font-family: PingFangSC-Regular;
+                font-size: .24rem; // 12px
+                color: #343434;
+                letter-spacing: 0;
+                overflow: hidden;
+                position: relative;
+                .agree {
+                    width: .3rem; // 15px;
+                    height: .3rem; // 15px;
+                    border: .02rem solid #f95b4e;
+                    display: inline-block;
+                    border-radius: 20%;
+                    position: absolute;
+                    left: 19%;
+                    @include backgroundset("../images/game/H5_Check@3x.png",
+                    center,
+                    center,
+                    100%);
+                    top: 25%;
+                }
+                .selected {
+                    background-image: none;
+                }
+                span {
+                    color: #f95b4e;
+                }
+            }
+        }
+    }
+
+    .funcpage_icp {
+        height: 3rem;
+        background-color: #FFDC5A;
+        font-family: PingFangSC-Regular;
+        p {
+            text-align: center;
+        }
+        .tel {
+            color: #f95b4e;
+            font-size: .3266663rem; // 25px;
+            line-height: .4rem;
+        }
+        .cr {
+            color: #da8147;
+            font-size: .20479983rem; // 12px
+            padding: 0 .8rem;
+            line-height: .4rem;
+        }
+    }
+
+    .award_list {
+        width: 100%;
+        height: 21.50398165rem; // 1075px;
+        @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/register/TopBar.png",
+        center,
+        center,
+        100%);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        header {
+            height: 4.06639576rem;
+            width: 100%;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/top.png",
+            top,
+            center,
+            100%);
+        }
+        section {
+            flex: 1;
+            width: 100%;
+            @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/active/2.png",
+            center,
+            -0.4rem,
+            100%);
+            background-color: #E5EBCD;
+            overflow: hidden;
+            .a_one {
+                width: 4.94932911rem;
+                height: 2.55999782rem;
+                margin: 0 auto;
+                margin-top: 1.3rem;
+                display: flex;
+                overflow-y: auto;
+                flex-flow: column nowrap;
+                justify-content: space-between;
+                li {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    font-size: .23893313rem; // 14px;
+                    font-family: PingFangSC-Regular;
+                    p {
+                        text-align: center;
+                    }
+                }
+            }
+            .a_two {
+                width: 4.94932911rem;
+                height: 2.25999782rem;
+                margin: 0 auto;
+                margin-top: 3rem;
+                overflow-y: auto;
+                li {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    height: .44133304rem; // 20px;
+                    justify-content: space-between;
+                    font-size: .23893313rem; // 14px;
+                    font-family: PingFangSC-Regular;
+                    font-size: .23893313rem; // 14px;
+                    font-family: PingFangSC-Regular;
+                    p {
+                        text-align: center;
+                    }
+                }
+            }
+            .a_three {
+                width: 4.94932911rem;
+                height: 2.55999782rem;
+                margin: 0 auto;
+                margin-top: 3.4rem;
+                p {
+                    margin-top: 0.3rem;
+                    line-height: .34133304rem; // 20px;
+                    font-size: .23893313rem; // 14px;
+                    font-family: PingFangSC-Regular;
+                }
+            }
+            .consult {
+                text-align: center;
+                margin-top: 1.2rem;
+                font-size: .23893313rem; // 14px;
+                font-family: PingFangSC-Regular;
+                color: #53534f;
+            }
+        }
+    }
+
+    .land_fiend_active {
+        background: #ffdc5a;
+        header {
+            height: 3.41333042rem; // 200px;
+            @include backgroundset('../../images/active/friend_active/ic_hjy_banner.png',
+            center,
+            center,
+            100%)
+        }
+        section {
+            padding: 0 .34133304rem; // 20px;
+            padding-bottom: .3rem;
+            .note {
+                height: 1.79199847rem; // 105px;
+                font-size: .20893313rem; // 14px
+                font-family: PingFang-SC-Regular;
+                @include backgroundset('../../images/active/friend_active/ic_hjy_ecl.png',
+                top,
+                center,
+                100%);
+                color: #666666;
+                margin: .17066652rem 0; // 10px 0;
+                overflow: hidden;
+                line-height: .4266663rem; // 25px;
+                position: relative;
+                .packet_icon {
+                    padding-left: .73386604rem; // 43px;
+                    display: inline-block;
+                    @include backgroundset('../../images/active/friend_active/ic_hjy_redpack1.png',
+                    center,
+                    left,
+                    .7rem);
+                    color: #f95b4e;
+                }
+                .oil_icon {
+                    padding-right: .33386604rem; // 43px;
+                    display: inline-block;
+                    @include backgroundset('../../images/active/friend_active/ic_hjy_youdi.png',
+                    center,
+                    right,
+                    40%);
+                    color: #f3a042;
+                }
+                p {
+                    padding: 0 .210133304rem; // 20px; // 32px ;
+                    height: .34133304rem; // 20px;
+                    overflow: hidden;
+                    margin-top: 1rem;
+                    display: block;
+                }
+                .switch {
+                    @include center-block;
+                    width: .24306643rem; // 16px;
+                    height: .24306643rem; // 16px;
+                    margin-bottom: .15rem;
+                    @include backgroundset('../../images/active/friend_active/ic_hjy_open.png',
+                    center,
+                    center,
+                    100%);
+                    transition: all .6s;
+                }
+                .switch_se {
+                    @include backgroundset('../../images/active/friend_active/ic_hjy_retract.png',
+                    center,
+                    center,
+                    100%);
+                }
+            }
+            .transition01 {
+                @include backgroundset('../../images/active/friend_active/ic_hjy_ycl.png',
+                top,
+                center,
+                100%);
+            }
+            .transition02 {
+                .packet_icon {
+                    padding-left: .63386604rem; // 43px;
+                    display: inline-block;
+                    @include backgroundset('../../images/active/friend_active/ic_hjy_redpack2.png',
+                    center,
+                    left,
+                    .7rem);
+                }
+            }
+            .selected01 {
+                @include backgroundset('../../images/active/friend_active/ic_hjy_ycl1.png',
+                top,
+                center,
+                100%);
+                height: 2.88426421rem; // 169px;
+                p {
+                    height: auto;
+                }
+            }
+            .selected02 {
+                @include backgroundset('../../images/active/friend_active/ic_hjy_ecl1.png',
+                top,
+                center,
+                100%);
+                height: 2.28426421rem; // 169px;
+                p {
+                    height: auto;
+                }
+            }
+            .transition03 {
+                height: 7.2703938rem; // 426px;
+                width: 100%;
+                @include backgroundset('../../images/active/friend_active/ic_hjy_phb.png',
+                center,
+                center,
+                100%);
+                overflow: hidden;
+                position: relative;
+                h3 {
+                    text-align: center;
+                    color: #bc6a04;
+                    font-size: .23893313rem; // 14px;
+                    font-family: PingFang-SC-Medium;
+                    position: absolute;
+                    width: 100%;
+                    top: .7rem;
+                }
+                .title {
+                    width: 100%;
+                    height: .76799934rem; // 45px;
+                    line-height: .76799934rem; // 45px;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-around;
+                    margin-top: 1.5rem;
+                    li {
+                        width: 1.0159921rem; // 54px;
+                        font-family: PingFang-SC-Regular;
+                        color: #B15B04;
+                        line-height: .76799934rem; // 45px;
+                        font-size: .20893313rem; // 14px;
+                        text-align: center;
+                        p {
+                            display: inline-block;
+                            margin-top: .1rem;
+                            line-height: .3rem;
+                        }
+                    }
+                }
+                .before {
+                    color: #bc6a04;
+                    font-size: .22479983rem; // 12px;
+                    font-family: PingFang-SC-Regular;
+                    text-decoration: underline;
+                    position: absolute;
+                    right: 5%;
+                    bottom: 3%;
+                }
+            }
+            .popum {
+                @include center-block;
+                position: fixed;
+                display: none;
+                z-index: 12;
+                transform: scale(.9);
+                height: 9rem;
+                overflow:visible;
+                h3 {
+                    top: 1rem;
+                }
+                .title {
+                    margin-top: 2.2rem;
+                }
+                .close{
+                    color:#fff;
+                    font-size:.85333261rem;
+                    border:.1rem solid #fff;
+                    width:1.02399913rem; // 60px;
+                    height:1.02399913rem; // 60px;
+                    text-align:center;
+                    line-height:.65333261rem;
+                    border-radius:50%;
+                    transform:scale(.8);
+                    @include center-block;
+                    margin-bottom:-.6rem;
+                }
+            }
+            .transition04 {
+                font-family: PingFangSC-Regular;
+                color: #212121;
+                font-size: .23rem; // 14px;
+                overflow: hidden;
+                h3 {
+                    text-align: center;
+                    font-size: .27306643rem; // 16px;
+                    @include backgroundset('../../images/active/friend_active/ic_hjy_hdgz.png',
+                    center,
+                    center,
+                    100%);
+                    margin: 0.3rem .30719974rem; // 18px;
+                }
+                div {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    margin: .1rem 0;
+                    h4 {
+                        width: .392533rem; // 23px;
+                        height: .47959965rem; // 24px;
+                        @include backgroundset('../../images/active/friend_active/ic_hjy_hdgz1.png',
+                        center,
+                        center,
+                        100%);
+                    }
+                    p {
+                        flex: 1;
+                        margin-top: .1rem;
+                        margin-left: .1rem;
+                        span {
+                            color: #f8805e;
+                        }
+                    }
+                }
+                div:nth-child(3) {
+                    h4 {
+                        @include backgroundset('../../images/active/friend_active/ic_hjy_hdgz2.png',
+                        center,
+                        center,
+                        100%);
+                    }
+                }
+                div:nth-child(4) {
+                    h4 {
+                        @include backgroundset('../../images/active/friend_active/ic_hjy_hdgz3.png',
+                        center,
+                        center,
+                        100%);
+                    }
+                }
+                div:nth-child(5) {
+                    h4 {
+                        @include backgroundset('../../images/active/friend_active/ic_hjy_hdgz4.png',
+                        center,
+                        center,
+                        100%);
+                    }
+                }
+                div:nth-child(6) {
+                    h4 {
+                        @include backgroundset('../../images/active/friend_active/ic_hjy_hdgz5.png',
+                        center,
+                        center,
+                        100%);
+                    }
+                }
+                div:nth-child(7) {
+                    h4 {
+                        @include backgroundset('../../images/active/friend_active/ic_hjy_hdgz6.png',
+                        center,
+                        center,
+                        100%);
+                    }
+                }
+                div:nth-child(8) {
+                    h4 {
+                        @include backgroundset('../../images/active/friend_active/ic_hjy_hdgz7.png',
+                        center,
+                        center,
+                        100%);
+                    }
+                }
+                div:nth-child(9) {
+                    h4 {
+                        @include backgroundset('../../images/active/friend_active/ic_hjy_hdgz8.png',
+                        center,
+                        center,
+                        100%);
+                    }
+                }
+                .remind {
+                    text-align: center;
+                    font-size: .17066652rem; // 10px
+                    color: #666666;
+                    width: 100%;
+                    margin: .3rem 0;
+                }
+            }
+        }
+        footer {
+            height: .83626595rem; // 49px;
+            color: #FFF;
+            text-align: center;
+            font-family: PingFang-SC-Medium;
+            background-image: linear-gradient(0deg, #F23456 0%, #F2894B 100%);
+            font-size: .30719974rem; // 18px;
+            line-height: .83626595rem; // 49px;
+        }
+    }

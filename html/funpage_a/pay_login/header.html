@@ -1,0 +1,11 @@
+<h3 class="title_state02">套餐详情</h3>
+<p class="type">
+    <span class="count">{{u_price}}</span>
+    <span class="unit">元/月</span>
+    <span class="mul" ng-if="pay_type_info!=1">×{{t_s}}个月</span>
+    <span class="mul" ng-if="pay_type_info==1">即时充</span>
+    <span class="unit"> 套餐</span>
+</p>
+<p class="user_info">
+    油卡号: {{card_s}} {{company_s}} {{name_s}}
+</p>

@@ -491,6 +491,13 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
             })
         })
     }
+    factory.openAppleStore = function(id) {
+        this.webview(function(bridge) {
+            bridge.callHandler('openAppleStore', id, function(responseData) { //请求OC
+
+            })
+        })
+    }
     return factory
 }])
 HJY.factory("land", ["$http", "$q", "$rootScope", function($http, $q, $rootScope) {

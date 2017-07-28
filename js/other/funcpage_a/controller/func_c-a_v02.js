@@ -13,10 +13,10 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
 angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $rootScope) {
     $("title").html("全国中石化/中石油通用，加油低至8.5折");
     $scope.open_fri = function() {
-        $state.go("funcpage.land_fiend_active")
+        $state.go("funcpage_a.land_fiend_active")
     }
     $scope.gonote = function() {
-        location.href = $rootScope.url_global + "/wechat/?from=duanwujie#/funcpage/db_festival"
+        location.href = $rootScope.url_global + "/wechat/?from=duanwujie#/funcpage_a/db_festival"
     }
     $scope.text = "确认套餐";
     $scope.pay_text = "确认支付"
@@ -94,8 +94,8 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     var testD = moment().isAfter("2017/06/09")
     if (testH || testD) {
         $scope.open = function() {
-            _hmt.push(['_trackPageview', "/funcpage/award"]);
-            $state.go("funcpage.award")
+            _hmt.push(['_trackPageview', "/funcpage_a/award"]);
+            $state.go("funcpage_a.award")
         }
     } else {
         $scope.open = function() {
@@ -184,7 +184,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
         return ((1 - d) * t * u).toFixed(1);
     }
     $scope.go_help = function() {
-        $state.go("funcpage.help")
+        $state.go("funcpage_a.help")
     }
 
     $scope.login_flag = false; //登录状态
@@ -209,9 +209,9 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     //此处需要优化，减少服务器压力~,直接网页跳转时拦截上面状态确认函数即可，取消定时器轮询
     $scope.go_order = function() {
             if ($scope.login_flag) {
-                $state.go("funcpage.order_list")
+                $state.go("funcpage_a.order_list")
             } else {
-                $state.go("funcpage.not_login")
+                $state.go("funcpage_a.not_login")
             }
         }
         //以上为价格套餐选择处理逻辑
@@ -268,7 +268,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
                         localStorage.setItem("f_price", $scope.final_price);
                         localStorage.setItem("u_price", $scope.unit_price);
                         localStorage.setItem("flag_pay", 0);
-                        $state.go("funcpage.land_main.login_on");
+                        $state.go("funcpage_a.land_main.login_on");
                     } else {
                         localStorage.setItem("card", $scope.info.card.replace(/\s/g, ""));
                         localStorage.setItem("name", $scope.cardinfo.name);
@@ -280,7 +280,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
                         localStorage.setItem("f_price", $scope.final_price);
                         localStorage.setItem("u_price", $scope.unit_price);
                         localStorage.setItem("flag_pay", 0);
-                        $state.go("funcpage.land_main.pay_login");
+                        $state.go("funcpage_a.land_main.pay_login");
                         //以上为备用参数
                     }
                 } else { //错误信息弹窗
@@ -412,7 +412,7 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
         login_logic.submit(list).then(function(data) {
             if (data.result.status == 1) {
                 $scope.login_flag = true;
-                $state.go("funcpage.land_main.login_on");
+                $state.go("funcpage_a.land_main.login_on");
             } else {
                 $scope.login_flag = false;
             }
@@ -588,8 +588,8 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
         //以上为备用参数
         $scope.pay_text = "支付" + $scope.price_f + "元";
         $scope.list_flag = {
-            url: "/#/funcpage/land_main",
-            back_url: "/#/funcpage/pay_success",
+            url: "/#/funcpage_a/land_main",
+            back_url: "/#/funcpage_a/pay_success",
             order_id: $scope.order_id
         }
 
@@ -629,7 +629,7 @@ angular.module('HJY').controller("pay_login_on", ["$scope", "$state", "login_log
 HJY.controller("m_pay_success", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.url_data = login_logic.parse_url();
     $scope.go_order_list = function() {
-        $state.go("funcpage.order_list")
+        $state.go("funcpage_a.order_list")
     }
 
     function judge(obj) {　　
@@ -674,7 +674,7 @@ HJY.controller("m_pay_success", ["$scope", "$state", "login_logic", "$http", "la
 HJY.controller("m_pay_fails", ["$scope", "$state", "login_logic", "$http", "land", "$interval", "$ionicPopup", function($scope, $state, login_logic, $http, land, $interval, $ionicPopup) {
     $scope.repay = function() {
         var channel = sessionStorage.getItem("ch");
-        location.hash = "#/funcpage/land_main?ch=" + channel;
+        location.hash = "#/funcpage_a/land_main?ch=" + channel;
     }
 }])
 angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic", "$http", "land_main", "$ionicPopup", function($scope, $state, login_logic, $http, land_main, $ionicPopup) {
@@ -713,13 +713,13 @@ angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic
         login_logic.submit(l).then(function(data) {
             console.log(data)
             if (data.result["code"] == 0) {
-                $state.go("funcpage.login")
+                $state.go("funcpage_a.login")
             }
         })
     }
     $scope.shop = function() {
         var channel = sessionStorage.getItem("ch");
-        location.hash = "#/funcpage/land_main?ch=" + channel;
+        location.hash = "#/funcpage_a/land_main?ch=" + channel;
     }
     $scope.loadMore = function() {
         $scope.page = $scope.page + 1;
@@ -750,7 +750,7 @@ angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic
                         }).then(function(res) {
                             if (res) {
                                 var channel = sessionStorage.getItem("ch");
-                                location.hash = "#/funcpage/land_main?ch=" + channel;
+                                location.hash = "#/funcpage_a/land_main?ch=" + channel;
                             }
 
                         });
@@ -772,7 +772,7 @@ angular.module('HJY').controller("order_list", ["$scope", "$state", "login_logic
     };
 
     $scope.go_details = function(p_id) {
-        $state.go("funcpage.order_details", { id: p_id })
+        $state.go("funcpage_a.order_details", { id: p_id })
     }
 }]);
 
@@ -780,7 +780,7 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
     $scope.go_pay = function(x) {
         localStorage.setItem("flag_pay", 1);
         if (localStorage.getItem("flag_pay") == 1) {
-            $state.go("funcpage.land_main.login_on", { pro: x })
+            $state.go("funcpage_a.land_main.login_on", { pro: x })
         }
 
     }
@@ -851,7 +851,7 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
 angular.module('HJY').controller("not_login", ["$scope", "$state", "login_logic", "$http", function($scope, $state, login_logic, $http) {
     $scope.go_login = function() {
         var channel = sessionStorage.getItem("ch");
-        location.hash = "#/funcpage/login?ch=" + channel;
+        location.hash = "#/funcpage_a/login?ch=" + channel;
     }
 }]);
 HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval", "$ionicPopup", function($scope, $state, login_logic, $interval, $ionicPopup) {
@@ -868,7 +868,7 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
         login_logic.submit(list).then(function(data) {
             if (data.result.status == 1) {
                 $scope.login_flag = true;
-                $state.go("funcpage.order_list");
+                $state.go("funcpage_a.order_list");
             } else {
                 $scope.login_flag = false;
             }
@@ -989,7 +989,7 @@ HJY.controller("land_main_login", ["$scope", "$state", "login_logic", "$interval
         promise_login.then(function(data) {
             if (data.result != undefined) {
                 $scope.send_scode_flag = true;
-                $state.go("funcpage.order_list");
+                $state.go("funcpage_a.order_list");
             } else { //错误信息弹窗
                 $scope.send_scode_flag = false;
                 $ionicPopup.alert({
@@ -1038,7 +1038,7 @@ angular.module('HJY').controller("register", ["$scope", "$state", "login_logic",
                 if (data["result"]["isRegister"] == 0) {
                     $scope.state = 1;
                     $scope.registed = true;
-                    $state.go("funcpage.register.login");
+                    $state.go("funcpage_a.register.login");
                 } else {
                     $(".main_content .register_popum").css({ backgroundImage: "url(images/land/register/Group(1).png)" })
                     $(".main_content .register_popum").fadeIn("slow");
@@ -1201,14 +1201,5 @@ angular.module('HJY').controller("award", ["$scope", "$state", "login_logic", "$
     )
 }])
 angular.module('HJY').controller("land_fiend_active", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "$interval", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, $interval, $rootScope) {
-    console.log(123)
-    var list = {
-        "jsonrpc": "2.0",
-        "method": "getPrizeUser",
-        "params": [],
-        "id": 1
-    }
-    login_logic.submit(list).then(function(data) {
-        console.log(data)
-    })
+
 }])
