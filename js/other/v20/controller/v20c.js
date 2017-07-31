@@ -6,8 +6,8 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
     $scope.allPrizeList = null;
     $scope.shakePrize = null;
     $scope.personPrizeList = null;
-    $scope.user_id = "1335";
-    $scope.token = "jagh2u8mmhnksb1b5fj9kkvnc5";
+    $scope.user_id = "";
+    $scope.token = "";
     $scope.activity_status = 1;
     $("title").html("摇一摇");
     if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
@@ -25,14 +25,17 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         }
         v20.get($rootScope.url_global + '/passport/service.php?c=prize', list, $scope.token).then(
             function(data) {
+                console.log(data)
                 if (data["result"] != undefined) {
+                    $scope.startTime = moment.unix(data["result"]["state_time"] * 1).format('YYYY年MM月DD日');
+                    $scope.endTime = moment.unix(data["result"]["end_time"] * 1).format('YYYY年MM月DD日');
                     $scope.main_prize = _.filter(data["result"]["list"], function(num) { return num["img"] != ''; });
                     $scope.other_prize = _.filter(data["result"]["list"], function(num) { return num["img"] == ''; });
                     $scope.prize_number = data["result"]["prize_number"]
                     $scope.PrizeList = data["result"]["list"]
                     $scope.activity_status = data["result"]["activity_status"];
                     if ($scope.activity_status == 2) {
-                        $(".left_chance").html("活动已结束")
+                        $(".left_chance").text("活动已结束")
                     }
                 } else {
 
@@ -40,7 +43,6 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
             }
         )
     }
-    $scope.getPrizeList()
     $scope.movieUse = function() {
         location.href = "http://t.cn/RoCXpzd"
     }
@@ -93,7 +95,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
             }
         )
     }
-    $scope.getAllPrizeList()
+
     $scope.getPersonalList = function() {
         var list = {
             "jsonrpc": "2.0",
@@ -257,12 +259,14 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         $scope.user_id = axxxx.user_id;
         $scope.token = axxxx.OIL_TOKEN;
         $scope.getPrizeList();
+        $scope.getAllPrizeList()
     } else {
         webappSDK.getUserInfos(function(res) {
             var info = JSON.parse(res)
             $scope.user_id = info.user_id
             $scope.token = info.OIL_TOKEN //webbriage入口
             $scope.getPrizeList();
+            $scope.getAllPrizeList()
         })
     }
 }])

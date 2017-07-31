@@ -9,15 +9,15 @@
             <div class="fourth">
                 <ul class="pic">
                     <div ng-repeat="x in task track by $index">
-                        <li class="a_get" style="background-image:url({{b[$index]}});" ng-if="x.status==1&&x.user_get_status==2">
+                        <li class="a_get" style="background-image:url({{b[$index]}});" ng-if="x.status==1&&x.user_get_status==2&&x.activity_status">
                             <p class="first">{{x.title}}</p>
                             <p class="second"></p>
                         </li>
-                        <li class="get" style="background-image:url('../../images/v11/ic_novice_light.png'),url('{{b[$index]}}')" ng-if="x.status==1&&x.user_get_status==1">
+                        <li class="get" style="background-image:url('../../images/v11/ic_novice_light.png'),url('{{b[$index]}}')" ng-if="x.status==1&&x.user_get_status==1&&x.activity_status">
                             <p class="first">{{x.title}}</p>
                             <p class="second"></p>
                         </li>
-                        <li class="un_get" style="background-image:url({{b[$index]}});" ng-if="x.status==0&&x.user_get_status==1">
+                        <li class="un_get" style="background-image:url({{b[$index]}});" ng-if="x.status==0&&x.user_get_status==1&&x.activity_status">
                             <p class="first">{{x.title}}</p>
                             <p class="second"></p>
                         </li>
@@ -49,16 +49,17 @@
                 <p class="des">
                     {{x.des}}
                 </p>
-                <button class="done button  button-dark" ng-if="x.status==1&&x.user_get_status==2">已完成</button>
-                <button class="get button  button-dark" ng-if="x.status==1&&x.user_get_status==1" ng-click="goget(x)">领取</button>
-                <button class="gotask button  button-dark" ng-if="x.status==0&&x.user_get_status==1" ng-click="gobuy()">做任务</button>
+                <button class="done button  button-dark" ng-if="x.status==1&&x.user_get_status==2&&x.activity_status==1">已完成</button>
+                <button class="get button  button-dark" ng-if="x.status==1&&x.user_get_status==1&&x.activity_status==1" ng-click="goget(x)">领取</button>
+                <button class="gotask button  button-dark" ng-if="x.status==0&&x.user_get_status==1&&x.activity_status==1" ng-click="gobuy()">做任务</button>
+                <button class="done button  button-dark" ng-if="x.activity_status==2" style="backgoround-color:gray;">已结束</button>
             </div>
         </section>
         <footer>
             <h3>活动规则</h3>
             <p>
                 <span>1.</span>
-                <span>活动时间：2017年6月24日00:00-2017年7月24 日23:59:59</span>
+                <span>活动时间：{{startTime}}-{{endTime}}</span>
             </p>
             <p>
                 <span>2.</span>

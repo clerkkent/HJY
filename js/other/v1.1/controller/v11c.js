@@ -172,7 +172,7 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
 HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login_logic", "v11", "$rootScope", "_", "$ionicPopup", "$http", "webappSDK", function($timeout, $ionicBackdrop, $scope, $state, login_logic, v11, $rootScope, _, $ionicPopup, $http, webappSDK) {
     $("title").html("奖励计划")
     $scope.userid = "";
-    $scope.strs = ""
+    $scope.strs = "";
     $scope.main_task = function() {
         var list = {
             "jsonrpc": "2.0",
@@ -185,10 +185,10 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
         $scope.b = ["images/v11/ic_novice_one.png", "images/v11/ic_novice_two.png", "images/v11/ic_novice_three.png", "images/v11/ic_novice_four.png", "images/v11/ic_novice_four.png"]
         $scope.date = function() {
             v11.get($rootScope.url_global + '/passport/service.php?c=task', list, $scope.strs).then(function(data) {
-                console.log(data)
+                $scope.startTime = moment.unix(data["result"][0]["s_time"] * 1).format('YYYY年MM月DD日');
+                $scope.endTime = moment.unix(data["result"][0]["e_time"] * 1).format('YYYY年MM月DD日');
                 if (data["result"] != undefined) {
                     $scope.task = data["result"];
-
                 } else {
                     console.log(data)
                     $ionicPopup.alert({

@@ -1208,7 +1208,7 @@ angular.module('HJY').controller("land_fiend_active", ["$scope", "$state", "logi
         "params": [],
         "id": 1
     }
-    login_logic.submit(list).then(function(data) {
+    login_logic.get("/operate/index.php?c=activity_invite", list).then(function(data) {
         console.log(data)
     })
 }])

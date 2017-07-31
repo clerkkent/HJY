@@ -1,6 +1,6 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-    $ionicConfigProvider.views.maxCache(5);
-    $ionicConfigProvider.templates.maxPrefetch(0);
+    $ionicConfigProvider.views.maxCache(0);
+    $ionicConfigProvider.templates.maxPrefetch(5);
     var v = "?" + window.version_glo;
     $stateProvider.state("v11", {
             url: "/v11",
@@ -16,7 +16,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                         './css/v1.1/v1.1.css' + v,
                         './js/plugins/underscore.js' + v,
                         './js/plugins/md5.js' + v,
-                        './js/plugins/moment.min.js' + v
+                        './js/plugins/moment.min.js' + v,
                     ]); // 按需加载目标 js file
                 }]
             }
