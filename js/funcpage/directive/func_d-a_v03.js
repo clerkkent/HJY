@@ -79,8 +79,9 @@ angular.module('HJY').directive("fPopum", ["$ionicBackdrop", function($ionicBack
         restrict: 'ECMA',
         link: function(scope, element, attr) {
             $(element).click(function(e) {
-                $ionicBackdrop.retain();
+
                 $("section .popum").show();
+                $(".fade").show()
                 $(document).on('touchmove', function(e) {
                     e.preventDefault()
                 })
@@ -95,8 +96,9 @@ angular.module('HJY').directive("cPopum", ["$ionicBackdrop", function($ionicBack
         restrict: 'ECMA',
         link: function(scope, element, attr) {
             $(element).click(function() {
-                $ionicBackdrop.release();
+
                 $("section .popum").hide();
+                $(".fade").hide()
                 $(document).off('touchmove')
             })
         }

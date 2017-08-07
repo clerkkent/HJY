@@ -1,10 +1,10 @@
 <div class="land_main_popum" ng-if="detail">
     <div class="popum_wrap">
-        <header>
+        <header style="height:2.7rem;">
             <p>充值明细</p>
             <span class="close" ng-click="close()">×</span>
         </header>
-        <section>
+        <section style="flex:1;">
             <p class="popum_title">
                 <span>
                     <i class="m_icon"></i>充值金额（元）
@@ -13,7 +13,7 @@
                     <i class="t_icon"></i>到账时间
                 </span>
             </p>
-            <ul class="popum_details">
+            <ul class="popum_details" style="height:3rem">
                 <li ng-repeat="x in date_list">
                     <p>{{unit_price}}({{$index+1}}/{{type_info.t}})</p>
                     <p>{{x}}</p>

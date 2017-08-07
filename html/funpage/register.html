@@ -4,7 +4,7 @@
         <div class="get_award">
             <form class="information" name="myForm" novalidate verify-scope="tipStyle: 1">
                 <div ui-view>
-                    <input class="first_i" autocomplete="off" ng-model="info.phone" type="tel" maxlength="11" id="phone" name="phone" required placeholder="请输入手机号码">
+                    <input class="first_i" autocomplete="off" ng-model="info.phone" type="tel" maxlength="11" minlength="11" id="phone" name="phone" required placeholder="请输入手机号码">
                     <input class="second_i button button-assertive" type="submit" value="领取礼包" ng-disabled="myForm.phone.$invalid" ng-click="loginc()">
                 </div>
             </form>

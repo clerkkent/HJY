@@ -1,7 +1,5 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-    $ionicConfigProvider.views.maxCache(10);
     var v = "?" + window.version_glo;
-    $ionicConfigProvider.templates.maxPrefetch(0);
     $stateProvider.state("funcpage_a", {
             url: "/funcpage_a",
             controller: "funcpage",
@@ -76,7 +74,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                     var channel = "yimao";
                     var mytime = new Date();
                     var all = get["result"];
-                    var name = "功能页";
+                    var name = "小熊";
                     var id = null;
                     if (judge(x)) {
                         if (x["test_money_HJY_ts"] != undefined) {

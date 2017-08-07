@@ -1,5 +1,6 @@
 <div style="width:100%; -webkit-overflow-scrolling: touch;overflow-y:auto;" scroll-height>
     <div class="land_fiend_active" style=" -webkit-overflow-scrolling: touch;">
+        <div class="fade" cl-le></div>
         <header>
 
         </header>
@@ -24,8 +25,12 @@
                         <p>成功邀请好友数</p>
                     </li>
                 </ul>
-                <ul>
-                    <li></li>
+                <ul class="details">
+                    <li ng-repeat="x in list">
+                        <p class="icon"><i ng-if="$index==3||$index==4">{{$index+1}}</i></p>
+                        <p class="phone">{{x.phone|encryPt}}</p>
+                        <p class="friend_num">{{x.num}}</p>
+                    </li>
                 </ul>
                 <p class="before" f-popum>查看上周中奖名单</p>
             </div>
@@ -41,8 +46,12 @@
                         <p>成功邀请好友数</p>
                     </li>
                 </ul>
-                <ul>
-                    <li></li>
+                <ul class="details">
+                    <li ng-repeat="x in lastlist">
+                        <p class="icon"><i ng-if="$index==3||$index==4">{{$index+1}}</i></p>
+                        <p class="phone">{{x.phone|encryPt}}</p>
+                        <p class="friend_num">{{x.num}}</p>
+                    </li>
                 </ul>
                 <p class="close" c-popum>x</p>
             </div>
@@ -51,7 +60,7 @@
                 <div>
                     <h4></h4>
                     <p>
-                        <span>活动时间</span>：2017年6月30日12:00:00——2017年7月27日 23:59:59；
+                        <span>活动时间</span>：{{startTime}}—{{endTime}}；
                     </p>
                 </div>
                 <div>

@@ -1,9 +1,8 @@
 ;
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$locationProvider", "$httpProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $locationProvider, $httpProvider) {
 
-    $ionicConfigProvider.templates.maxPrefetch(0);
+    $ionicConfigProvider.templates.maxPrefetch(1);
     var v = "?" + window.version_glo;
-    $urlRouterProvider.deferIntercept(false);
 
     function accMul(arg1, arg2) {
         var m = 0,
@@ -234,7 +233,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
         //     controller: "help",
         //     templateUrl: "html/help/feedback.html",
         // })//信息反馈页面
-    $urlRouterProvider.otherwise("error");
+    $urlRouterProvider.otherwise("/funcpage/register?ch=renrenche2");
     var browser = {
         versions: function() {
             var u = navigator.userAgent,
@@ -266,7 +265,9 @@ HJY.run(['$rootScope', function($rootScope) {
         uncode: function(x) {
             var data = null;
             if (x.result != undefined) {
+
                 if ($.md5(x.result.info + "HUIJIAYOU_TOKEN") == x.result.sign) {
+
                     var ri = x.result.info;
                     var uri = Base64.decode(ri)
                     for (var key in x.result) {
@@ -281,12 +282,7 @@ HJY.run(['$rootScope', function($rootScope) {
             return x;
         }
     });
-    if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?fdb9e557f9cc49a60c8ed0c30b13a40e";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    }
+
     //
     $rootScope.url_global = window.location.origin
 }]);

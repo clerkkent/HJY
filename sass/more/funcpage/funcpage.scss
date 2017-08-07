@@ -151,8 +151,8 @@
                 }
                 .user_info {
                     text-align: center;
-                    font-size: .22186648rem; // 13px;
                     color: #EC9F89;
+                    font-size: .22186648rem; // 13px;
                 }
                 .title_state02 {
                     height: .92159921rem; // 54px;
@@ -1305,6 +1305,12 @@
 
     .land_fiend_active {
         background: #ffdc5a;
+        .fade{
+        position:fixed;
+        background:rgba(black,.5);
+        z-index:6;
+        display:none;
+    }
         header {
             height: 3.41333042rem; // 200px;
             @include backgroundset('../../images/active/friend_active/ic_hjy_banner.png',
@@ -1444,6 +1450,67 @@
                             display: inline-block;
                             margin-top: .1rem;
                             line-height: .3rem;
+                        }
+                    }
+                }
+                .details{
+                    height:4rem;
+                    overflow:scroll;
+                    li{
+                        display:flex;
+                        flex-flow:row nowrap;
+                        justify-content:space-between;
+                        padding:0rem .5rem;
+                        overflow:hidden;
+                        height:.8rem;
+                        line-height:.8rem;
+                        p{
+                            text-align:center;
+                            font-family: PingFang-SC-Regular;
+                            font-size: .23893313rem; // 14px;
+                            color: #808080;
+                            letter-spacing: 0;
+                        }
+                        .friend_num{
+                            color: #B15B04;
+                            margin-right:.3rem;
+                        }
+                        .phone{
+                            margin-left:-.3rem;
+                        }
+                        .icon{
+                            width:1rem;
+                            height:1rem;
+                            font-family: PingFangSC-Semibold;
+                            font-size: .23893313rem; // 14px;
+                            color: #B15B04 ;
+                            letter-spacing: 0;
+                            font-weight:600;
+                        }
+                    }
+                    li:nth-child(1){
+                        .icon{
+                            @include backgroundset("../../images/active/friend_active/ic_hjy_no1.png",center,center,40%)
+                        }
+                    }
+                     li:nth-child(2){
+                        .icon{
+                            @include backgroundset("../../images/active/friend_active/ic_hjy_no2.png",center,center,40%)
+                        }
+                    }
+                     li:nth-child(3){
+                        .icon{
+                            @include backgroundset("../../images/active/friend_active/ic_hjy_no3.png",center,center,40%)
+                        }
+                    }
+                     li:nth-child(4){
+                        .icon{
+                            content:"4";
+                        }
+                    }
+                     li:nth-child(5){
+                        .icon{
+                            content:"4";
                         }
                     }
                 }

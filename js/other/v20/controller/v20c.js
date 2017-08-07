@@ -1,7 +1,7 @@
 HJY.controller("v20", ["$scope", "$state", "login_logic", function($scope, $state, login_logic) {
 
 }])
-HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicPopup", "login_logic", "$timeout", "webappSDK", "$ionicBackdrop", "v20", "$rootScope", function($scope, $rootScope, $state, webappSDK, $ionicPopup, login_logic, $timeout, webappSDK, $ionicBackdrop, v20, $rootScope) {
+HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicPopup", "login_logic", "$timeout", "$ionicBackdrop", "v20", function($scope, $rootScope, $state, webappSDK, $ionicPopup, login_logic, $timeout, $ionicBackdrop, v20) {
     $scope.PrizeList = null;
     $scope.allPrizeList = null;
     $scope.shakePrize = null;
@@ -10,9 +10,6 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
     $scope.token = "";
     $scope.activity_status = 1;
     $("title").html("摇一摇");
-    if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
-        _hmt.push(['_trackPageview', "/schoolmate"]);
-    }
     $scope.getPrizeList = function() {
         var list = {
             "jsonrpc": "2.0",
@@ -25,7 +22,6 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         }
         v20.get($rootScope.url_global + '/passport/service.php?c=prize', list, $scope.token).then(
             function(data) {
-                console.log(data)
                 if (data["result"] != undefined) {
                     $scope.startTime = moment.unix(data["result"]["state_time"] * 1).format('YYYY年MM月DD日');
                     $scope.endTime = moment.unix(data["result"]["end_time"] * 1).format('YYYY年MM月DD日');
@@ -37,8 +33,6 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
                     if ($scope.activity_status == 2) {
                         $(".left_chance").text("活动已结束")
                     }
-                } else {
-
                 }
             }
         )
@@ -57,7 +51,6 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         $scope.copyright = false;
     } else {
         $scope.copyright = true;
-        // webappSDK.openAppleStore()
     }
 
     $scope.dealpic = function(x) { //上线前修改
@@ -229,7 +222,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         if ($scope.user_id == "" && $scope.token == "") {
             $ionicPopup.alert({
                 title: '提示',
-                template: "您还未登陆,请登陆",
+                template: "您还未登录,请先登录",
                 okText: '嗯！知道了', // String
                 okType: 'button-energized',
             });
@@ -259,14 +252,14 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         $scope.user_id = axxxx.user_id;
         $scope.token = axxxx.OIL_TOKEN;
         $scope.getPrizeList();
-        $scope.getAllPrizeList()
+        $scope.getAllPrizeList();
     } else {
         webappSDK.getUserInfos(function(res) {
             var info = JSON.parse(res)
             $scope.user_id = info.user_id
             $scope.token = info.OIL_TOKEN //webbriage入口
             $scope.getPrizeList();
-            $scope.getAllPrizeList()
+            $scope.getAllPrizeList();
         })
     }
 }])
@@ -560,6 +553,7 @@ HJY.controller("vipcard", ["$scope", "v20", "$rootScope", "$ionicBackdrop", "$ro
         }
 
         v20.get($rootScope.url_global + '/passport/service.php?c=card', list, $scope.token).then(function(data) {
+            console.log(data)
             if (data["result"] != undefined) {
                 if (data["result"].length != 0) {
                     $scope.card = data["result"]
@@ -576,7 +570,6 @@ HJY.controller("vipcard", ["$scope", "v20", "$rootScope", "$ionicBackdrop", "$ro
             }
         })
     }
-
 
     if (login_logic.JudgeSystem()) {
         var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));

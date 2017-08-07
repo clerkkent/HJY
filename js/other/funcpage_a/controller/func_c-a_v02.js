@@ -10,7 +10,7 @@ angular.module('HJY').controller("func_help", ["$scope", "$state", "login_logic"
         // $(".main_content_help li").eq($(".main_content_help li").length - 1).css({ display: "none" })
     })
 }]);
-angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "_", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, _, land_main, $ionicPopup, $interval, land, $rootScope) {
+angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic", "$http", "get_type", "land_main", "$ionicPopup", "$interval", "land", "$rootScope", function($scope, $state, login_logic, $http, get_type, land_main, $ionicPopup, $interval, land, $rootScope) {
     $("title").html("全国中石化/中石油通用，加油低至8.5折");
     $scope.open_fri = function() {
         $state.go("funcpage_a.land_fiend_active")
@@ -28,6 +28,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.pre_price = [];
     $scope.recommend = 0;
     $scope.recommend_p = 0;
+    console.log(get_type.result)
     if (get_type.result != undefined) {
         var type = get_type["result"]["list"];
         for (i = 0; i < type.length; i++) {

@@ -451,9 +451,6 @@ angular.module('HJY').controller("pay_login", ["$scope", "$state", "login_logic"
                     $scope.phone_flag = data["result"]["is_discount"];
                     // $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "" }
                     $scope.info_send.sms_key = data["result"]["data"]["key"]; //短信验证key
-
-
-
                     var a = 60;
                     $scope.second = a + "s"
                     $scope.timeout = true;
@@ -826,7 +823,6 @@ angular.module('HJY').controller("order_details", ["$scope", "$state", "login_lo
     land_main.get_order_list($scope.send_details()).then(function(data) {
         if (data["result"] != undefined) {
             $scope.order_details = data["result"];
-            console.log($scope.order_details)
             $scope.length = $scope.order_details.oil_info.length;
         } else {
             $ionicPopup.alert({
@@ -1073,12 +1069,11 @@ angular.module('HJY').controller("register", ["$scope", "$state", "login_logic",
             　　　　 return true;　　 }　
         return false;
     }
-    console.log(3)
     $scope.error = login_logic.parse_url();
     $scope.download_show = true;
     $scope.baidu_icp = false;
 
-    $scope.no_download = ["momo", "baidu", "gdt", "wyxw"];
+    $scope.no_download = ["momo", "baidu", "gdt", "wyxw", "chubaodh", "116114"];
     if (judge($scope.error)) {
         if ($scope.error["ch"] != undefined) {
             sessionStorage.setItem("channel", $scope.error["ch"]);
@@ -1201,7 +1196,7 @@ angular.module('HJY').controller("award", ["$scope", "$state", "login_logic", "$
     )
 }])
 angular.module('HJY').controller("land_fiend_active", ["$scope", "$state", "login_logic", "$http", "$ionicPopup", "$interval", "$rootScope", function($scope, $state, login_logic, $http, $ionicPopup, $interval, $rootScope) {
-    console.log(123)
+    $("title").html("中奖名单");
     var list = {
         "jsonrpc": "2.0",
         "method": "getPrizeUser",
@@ -1209,6 +1204,22 @@ angular.module('HJY').controller("land_fiend_active", ["$scope", "$state", "logi
         "id": 1
     }
     login_logic.get("/operate/index.php?c=activity_invite", list).then(function(data) {
+        if (data["result"] != undefined) {
+            $scope.startTime = moment(data["result"]["t_start_time"].split(" ")[0]).format('YYYY年MM月DD日');
+            $scope.endTime = moment(data["result"]["t_end_time"].split(" ")[0]).format('YYYY年MM月DD日');
+            $scope.list = data["result"]["data"]
+        }
+    })
+    var lastlist = {
+        "jsonrpc": "2.0",
+        "method": "getPrizeUserLast",
+        "params": [],
+        "id": 1
+    }
+    login_logic.get("/operate/index.php?c=activity_invite", lastlist).then(function(data) {
         console.log(data)
+        if (data["result"] != undefined) {
+            $scope.lastlist = data["result"]["data"]
+        }
     })
 }])

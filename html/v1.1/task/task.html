@@ -9,15 +9,15 @@
             <div class="fourth">
                 <ul class="pic">
                     <div ng-repeat="x in task track by $index">
-                        <li class="a_get" style="background-image:url({{b[$index]}});" ng-if="x.status==1&&x.user_get_status==2&&x.activity_status">
+                        <li class="a_get" style="background-image:url({{b[$index]}});" ng-if="x.status==1&&x.user_get_status==2">
                             <p class="first">{{x.title}}</p>
                             <p class="second"></p>
                         </li>
-                        <li class="get" style="background-image:url('../../images/v11/ic_novice_light.png'),url('{{b[$index]}}')" ng-if="x.status==1&&x.user_get_status==1&&x.activity_status">
+                        <li class="get" style="background-image:url('../../images/v11/ic_novice_light.png'),url('{{b[$index]}}')" ng-if="x.status==1&&x.user_get_status==1">
                             <p class="first">{{x.title}}</p>
                             <p class="second"></p>
                         </li>
-                        <li class="un_get" style="background-image:url({{b[$index]}});" ng-if="x.status==0&&x.user_get_status==1&&x.activity_status">
+                        <li class="un_get" style="background-image:url({{b[$index]}});" ng-if="x.status==0&&x.user_get_status==1">
                             <p class="first">{{x.title}}</p>
                             <p class="second"></p>
                         </li>

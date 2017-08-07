@@ -188,6 +188,7 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
                 $scope.startTime = moment.unix(data["result"][0]["s_time"] * 1).format('YYYY年MM月DD日');
                 $scope.endTime = moment.unix(data["result"][0]["e_time"] * 1).format('YYYY年MM月DD日');
                 if (data["result"] != undefined) {
+                    console.log(data["result"])
                     $scope.task = data["result"];
                 } else {
                     console.log(data)
@@ -237,7 +238,6 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
             })
         }
     }
-    $scope.main_task()
     $scope.gobuy = function() {
             if (location.hostname == "www.ihaomu.com" || location.hostname == "www.ihuijiayou.com") {
                 _hmt.push(['_trackPageview', "/gobuy"]);
@@ -341,7 +341,6 @@ HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "
                 location.href = "http://a1.7x24cc.com/phone_webChat.html?accountId=N000000010362&chatId=yykj-c5867180-39d1-11e7-bd22-61f4856f24a8"
             }
         }
-
     }
     $scope.call = function(phone) {
         if (login_logic.JudgeSystem()) {

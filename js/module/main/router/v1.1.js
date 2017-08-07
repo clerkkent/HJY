@@ -1,7 +1,6 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-    $ionicConfigProvider.views.maxCache(0);
-    $ionicConfigProvider.templates.maxPrefetch(5);
     var v = "?" + window.version_glo;
+    $ionicConfigProvider.templates.maxPrefetch(1);
     $stateProvider.state("v11", {
             url: "/v11",
             controller: "v11",
