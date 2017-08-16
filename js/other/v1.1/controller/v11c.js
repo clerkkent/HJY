@@ -15,7 +15,6 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
     $scope.t = $scope.data.t;
     $scope.main_sign = function(res) {
             $scope.test = "dasdad";
-
             var list = {
                 "jsonrpc": "2.0",
                 "method": "newCheckIn",
@@ -113,8 +112,17 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
 
     // }
     // $scope.main_sign();
+    var shareList = {
+        title: "签到",
+        content: "每日签到领油滴，充油抵现等你来!",
+        imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
+        url: $rootScope.url_global + "/wechat/#/funcpage/register",
+    }
     if (login_logic.JudgeSystem()) {
         // var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
+        if (navigator.appVersion.split("hjyAndroidAPP")[1] == "2.0.2") {
+            hjytest.getShareDetail(JSON.stringify(shareList))
+        }
 
         function aa(x) {
             $scope.userid = x.user_id;
@@ -142,6 +150,9 @@ HJY.controller("sign", ["$timeout", "webappSDK", "$ionicBackdrop", "$scope", "$s
 
 
     } else {
+        if (navigator.appVersion.split("hjyiOSAPP")[1].split(" ")[0] == "2.0.2") {
+            webappSDK.getShareDetail(shareList)
+        }
         webappSDK.getUserInfos(function(res) {
             var info = JSON.parse(res)
             $scope.userid = info.user_id
@@ -260,7 +271,16 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
         //     $scope.strs = $scope.theRequest.OIL_TOKEN;
         //     $scope.main_task()
         // } else {
+    var shareList = {
+        title: "奖励计划",
+        content: "完成充油任务，领取多重大奖!",
+        imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
+        url: $rootScope.url_global + "/wechat/#/funcpage/register",
+    }
     if (login_logic.JudgeSystem()) {
+        if (navigator.appVersion.split("hjyAndroidAPP")[1] == "2.0.2") {
+            hjytest.getShareDetail(JSON.stringify(shareList))
+        }
         var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
         $scope.userid = axxxx.user_id;
         $scope.strs = axxxx.OIL_TOKEN;
@@ -278,6 +298,9 @@ HJY.controller("task", ["$timeout", "$ionicBackdrop", "$scope", "$state", "login
         // });
         $scope.main_task()
     } else {
+        if (navigator.appVersion.split("hjyiOSAPP")[1].split(" ")[0] == "2.0.2") {
+            webappSDK.getShareDetail(shareList)
+        }
         webappSDK.getUserInfos(function(res) {
             var info = JSON.parse(res)
             $scope.userid = info.user_id
@@ -350,7 +373,21 @@ HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "
         }
     }
 }])
-HJY.controller("v11_article", ["$scope", "$state", "login_logic", function($scope, $state, login_logic) {
-    $scope.test = "dasdad";
-    $("title").html("会加油新闻")
+HJY.controller("v11_article", ["$scope", "webappSDK", "$rootScope", "$state", "login_logic", function($scope, webappSDK, $rootScope, $state, login_logic) {
+    $("title").html("会加油新闻");
+    var shareList = {
+        title: "联合中国石油，会加油建立车主新生态",
+        content: "日前，创新的车主综合服务平台“会加油”，携手中国石油旗下成品油销售版块、非油品销售版块、昆仑润滑油版块以及汽车后市场系统等企业共同亮相",
+        imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
+        url: location.href,
+    }
+    if (login_logic.JudgeSystem()) {
+        if (navigator.appVersion.split("hjyAndroidAPP")[1] == "2.0.2") {
+            hjytest.getShareDetail(JSON.stringify(shareList))
+        }
+    } else {
+        if (navigator.appVersion.split("hjyiOSAPP")[1].split(" ")[0] == "2.0.2") {
+            webappSDK.getShareDetail(shareList)
+        }
+    }
 }])

@@ -1,41 +1,38 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     var v = "?" + window.version_glo;
     $ionicConfigProvider.templates.maxPrefetch(1);
+
+    function resovleDep(param, tpl, module) {
+        var resolves = {
+            loadMyCtrl: ['$ocLazyLoad', '$templateCache', '$q', function($ocLazyLoad, $templateCache, $q) {
+                lazyDeferred = $q.defer();
+                return $ocLazyLoad.load({
+                    name: module,
+                    cache: false,
+                    files: param.files
+                }).then(function() {
+                    lazyDeferred.resolve($templateCache.get(tpl));
+                });
+            }]
+        };
+        return resolves;
+    };
     $stateProvider.state("funcpage", {
             url: "/funcpage",
-            controller: "funcpage",
             templateUrl: "html/funpage/func.html" + v,
-            resolve: {
-                loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'js/funcpage/controller/func_c-a_v03.js' + v,
-                        'js/funcpage/directive/func_d-a_v03.js' + v,
-                        'js/funcpage/filter/func_f-a_v03.js' + v,
-                        'js/funcpage/service/func_s-a_v03.js' + v,
-                        'css/funcpage/funcpage.css' + v,
-                        'https://imagecdn.ihuijiayou.com/wechat/js/plugins/underscore.js' + v,
-                        'https://imagecdn.ihuijiayou.com/wechat/js/plugins/md5.js' + v,
-                        'https://imagecdn.ihuijiayou.com/wechat/js/plugins/moment.min.js' + v
-                    ]); // 按需加载目标 js file
-                }],
-                parse: "login_logic",
-                get: function(parse) {
-                    var x = parse.parse_url();
-
-                    function judge(obj) {　　
-                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
-                            　　　　 return true;　　 }　
-                        return false;
-                    }
-                    if (judge(x)) {
-                        if (x["ch"] != undefined) {
-                            var channel = x["ch"];
-                            sessionStorage.setItem("ch", channel);
-                            localStorage.setItem("ch", channel);
-                        }
-                    }
-                }
-            }
+            controller: "funcpage",
+            resolve: resovleDep({
+                files: [
+                    'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/controller/func_c-a_v04.js' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/directive/func_d-a_v03.js' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/filter/func_f-a_v03.js' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/service/func_s-a_v03.js' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/css/funcpage/funcpage.css' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/plugins/underscore.js' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/plugins/md5.js' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/plugins/moment.min.js' + v
+                ]
+            })
         })
         .state("funcpage.db_festival", {
             url: "/db_festival",
@@ -54,6 +51,20 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                 predata: "land",
                 parse: "login_logic",
                 get: function(predata, parse) {
+                    var x = parse.parse_url();
+
+                    function judge(obj) {　　
+                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                            　　　　 return true;　　 }　
+                        return false;
+                    }
+                    if (judge(x)) {
+                        if (x["ch"] != undefined) {
+                            var channel = x["ch"];
+                            sessionStorage.setItem("ch", channel);
+                            localStorage.setItem("ch", channel);
+                        }
+                    }
                     var mytime = new Date();
                     var t = mytime.getTime();
                     var params = {
@@ -194,12 +205,6 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             url: "/pay_success",
             controller: "m_pay_success",
             templateUrl: "html/funpage/pay_state/pay_success.html" + v
-                // onEnter: function() { //此处处理父组件的download出现在子组件中的BUG
-                //     $(".download").hide()
-                // },
-                // onExit: function() {
-                //     $(".download").show()
-                // }
         })
         .state("funcpage.pay_success.pay_fails", {
             url: "/pay_fails",
@@ -230,7 +235,26 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
         .state("funcpage.register", {
             url: "/register",
             controller: "register",
-            templateUrl: "html/funpage/register.html" + v
+            templateUrl: "html/funpage/register.html" + v,
+            resolve: {
+                parse: "login_logic",
+                get: function(parse) {
+                    var x = parse.parse_url();
+
+                    function judge(obj) {　　
+                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                            　　　　 return true;　　 }　
+                        return false;
+                    }
+                    if (judge(x)) {
+                        if (x["ch"] != undefined) {
+                            var channel = x["ch"];
+                            sessionStorage.setItem("ch", channel);
+                            localStorage.setItem("ch", channel);
+                        }
+                    }
+                }
+            }
         })
         .state("funcpage.register.login", {
             url: "/login",

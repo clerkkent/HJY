@@ -1072,18 +1072,21 @@ angular.module('HJY').controller("register", ["$scope", "$state", "login_logic",
     $scope.error = login_logic.parse_url();
     $scope.download_show = true;
     $scope.baidu_icp = false;
+    Array.prototype.contains = function(needle) { for (i in this) { if (this[i] == needle) return true; } return false; }
+    $scope.no_download = ["momo", "baidu", "gdt", "wyxw", "chubaodh", "116114", "ydzx"];
+    $scope.icp = ["baidu", "fenghunag"]
 
-    $scope.no_download = ["momo", "baidu", "gdt", "wyxw", "chubaodh", "116114"];
     if (judge($scope.error)) {
         if ($scope.error["ch"] != undefined) {
             sessionStorage.setItem("channel", $scope.error["ch"]);
             $scope.channel = sessionStorage.getItem("ch");
             for (i = 0; i < $scope.no_download.length; i++) {
-                if ($scope.channel == $scope.no_download[i] && $scope.no_download[i] != "baidu") {
+                if ($scope.channel == $scope.no_download[i]) {
                     $scope.download_show = false;
-                } else if ($scope.channel == $scope.no_download[i] && $scope.no_download[i] == "baidu") {
-                    $scope.baidu_icp = true
                 }
+            }
+            if ($scope.icp.contains($scope.channel)) {
+                $scope.baidu_icp = true
             }
         }
         if ($scope.error["test_money_HJY"] != undefined) {

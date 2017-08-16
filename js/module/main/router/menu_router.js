@@ -228,11 +228,10 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", "$lo
             controller: "help_guide",
             templateUrl: "html/help/help_guide.html" + v
         })
-        // .state("feedback", {
-        //     url: "/feedback",
-        //     controller: "help",
-        //     templateUrl: "html/help/feedback.html",
-        // })//信息反馈页面
+        .state("updata", {
+            url: "/updata",
+            templateUrl: "html/v20/updata.html",
+        }) //信息反馈页面
     $urlRouterProvider.otherwise("/funcpage/register?ch=renrenche2");
     var browser = {
         versions: function() {
@@ -265,9 +264,7 @@ HJY.run(['$rootScope', function($rootScope) {
         uncode: function(x) {
             var data = null;
             if (x.result != undefined) {
-
                 if ($.md5(x.result.info + "HUIJIAYOU_TOKEN") == x.result.sign) {
-
                     var ri = x.result.info;
                     var uri = Base64.decode(ri)
                     for (var key in x.result) {

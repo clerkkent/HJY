@@ -28,7 +28,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.pre_price = [];
     $scope.recommend = 0;
     $scope.recommend_p = 0;
-    console.log(get_type.result)
+    console.log(get_type)
     if (get_type.result != undefined) {
         var type = get_type["result"]["list"];
         for (i = 0; i < type.length; i++) {
@@ -111,7 +111,8 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.info_send = { username: "", channel: "renrenche", sms_key: "", sms_code: "", oil_card: "", product_id: "", money: "", pay_channel: "ali_pay" }
 
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-            $(".land_main section li").eq($scope.pre_type.length - $scope.recommend - 1).addClass("is_sellect");
+            console.log($scope.recommend_p)
+            $(".land_main section li").eq($scope.pre_price.length - $scope.recommend_p - 1).addClass("is_sellect");
             if ($scope.type_info != undefined) {
                 $scope.reduce_price = ($scope.unit_price * (1 - $scope.type_info["disn"]) * $scope.type_info.t).toFixed(1);
                 $scope.normal_price = $scope.unit_price * $scope.type_info["t"];
@@ -124,6 +125,18 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
     $scope.select_type = function(x, index) {
         $scope.type_info = x; //页面预加载前获取套餐信息。
         $scope.type_selected = index;
+        $(".land_main section li").removeClass("is_sellect");
+        $(".land_main section li").eq(index).addClass("is_sellect");
+        $scope.reduce_price = $scope.reduce();
+        $scope.final_price = $scope.price_final();
+        $scope.info_send.product_id = $scope.type_info.product_id;
+        $scope.belong = $scope.type_info.belong;
+        $scope.normal_price = $scope.price_normal();
+        $scope.get_card_info = false;
+        data();
+    }
+    $scope.select_price = function(x, index) {
+        $scope.unit_price = x;
         $(".land_main section li").removeClass("is_sellect");
         $(".land_main section li").eq(index).addClass("is_sellect");
         $scope.reduce_price = $scope.reduce();
@@ -250,6 +263,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
             $scope.card_info_get = true;
             var land_data = land.submit(list);
             land_data.then(function(data) {
+                console.log(data)
                 if (data.result != undefined) { //带来第一个页面初始数据
                     $scope.cardinfo.name = data["result"]["username"];
                     $scope.cardinfo.company = data["result"]["name"];
@@ -258,6 +272,7 @@ angular.module('HJY').controller("land_main", ["$scope", "$state", "login_logic"
                     $scope.pay_unit_price = $scope.unit_price; //保留首个页面的初始数据，保证首个页面数据不被初始化
                     $scope.pay_type_info = $scope.type_info.t;
                     $scope.price = $scope.final_price;
+                    console.log($scope.pay_unit_price, $scope.pay_type_info, $scope.price)
                     if ($scope.login_flag) {
                         localStorage.setItem("card", $scope.info.card.replace(/\s/g, ""));
                         localStorage.setItem("name", $scope.cardinfo.name);

@@ -23,24 +23,22 @@
         </header>
         <section>
             <div ui-view="body ">
-                <h3 class="title ">{{main_title}}</h3>
+                <!-- <h3 class="title ">{{main_title}}</h3>
                 <div class="select ">
                     <div class="left " ng-click="sub() ">—</div>
                     <div class="center ">{{unit_price}}<i> 元</i></div>
                     <div class="right " ng-click="add() ">+</div>
-                </div>
-
+                </div> -->
+                <p class="my_order " ng-click="go_order()" style="background:url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_Order.png) center left no-repeat;text-align:center;background-repeat:no-repeat;background-size:17%;height:0.4rem;line-height:0.4rem;right:5%;transfrom:scale(1.5);margin-top:.48rem;">我的订单</p>
                 <ul>
-                    <li ng-repeat="x in type | orderBy:order: 'desc' " ng-if="$index<6 " ng-click="select_type(x,$index) " init-t>
-                        <p class="pre_price ">{{x.discount}}<span>折</span></p>
-                        <p class="dis_price " ng-if="x.t!=1 ">{{x.t}}期</p>
-                        <p class="dis_price " ng-if="x.t==1 ">即时充值</p>
+                    <li ng-repeat="x in pre_price | orderBy:order: 'desc' " ng-if="$index<6 " ng-click="select_price(x,$index) " init-t>
+                        <p class="pre_price "><span>￥</span>{{x}}</p>
+                        <p class="dis_price ">仅售{{type_info.disn*x}}元</p>
                     </li>
                 </ul>
                 <input type="submit" class="second_i button button-assertive info " value="{{text}} " ng-disabled="myform.card.$invalid||get_card_info " ng-click="check_send() ">
             </div>
-            <p class="my_order " ng-click="go_order() "></p>
-            <a class="consult" href="http://a1.7x24cc.com/phone_webChat.html?accountId=N000000010362&chatId=yykj-c5867180-39d1-11e7-bd22-61f4856f24a8"></a>
+            <p class="consult" href="tel:4008518686" style="background:none;margin-top:.8rem;text-align:center;transfrom:scale(1.1);">客服热线： 400-851-8686</p>
         </section>
     </form>
 </div>

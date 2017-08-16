@@ -1,40 +1,53 @@
 HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     var v = "?" + window.version_glo;
+    $ionicConfigProvider.templates.maxPrefetch(1);
+
+    function resovleDep(param, tpl, module) {
+        var resolves = {
+            loadMyCtrl: ['$ocLazyLoad', '$templateCache', '$q', function($ocLazyLoad, $templateCache, $q) {
+
+                lazyDeferred = $q.defer();
+                return $ocLazyLoad.load({
+                    name: module,
+                    cache: false,
+                    files: param.files
+                }).then(function() {
+                    lazyDeferred.resolve($templateCache.get(tpl));
+                });
+            }]
+        };
+        return resolves;
+    };
     $stateProvider.state("funcpage_a", {
             url: "/funcpage_a",
             controller: "funcpage",
             templateUrl: "html/funpage_a/func.html" + v,
-            resolve: {
-                loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        'js/other/funcpage_a/controller/func_c-a_v02.js' + v,
-                        'js/other/funcpage_a/directive/func_d-a_v02.js' + v,
-                        'js/other/funcpage_a/filter/func_f-a_v02.js' + v,
-                        'js/other/funcpage_a/service/func_s-a_v02.js' + v,
-                        'css/funcpage_a/funcpage.css' + v,
-                        'https://imagecdn.ihuijiayou.com/wechat/js/plugins/underscore.js' + v,
-                        'https://imagecdn.ihuijiayou.com/wechat/js/plugins/md5.js' + v,
-                        'https://imagecdn.ihuijiayou.com/wechat/js/plugins/moment.min.js' + v
-                    ]); // 按需加载目标 js file
-                }],
-                parse: "login_logic",
-                get: function(parse) {
-                    var x = parse.parse_url();
-
-                    function judge(obj) {　　
-                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
-                            　　　　 return true;　　 }　
-                        return false;
-                    }
-                    if (judge(x)) {
-                        if (x["ch"] != undefined) {
-                            var channel = x["ch"];
-                            sessionStorage.setItem("ch", channel);
-                            localStorage.setItem("ch", channel);
-                        }
-                    }
-                }
-            }
+            // resolve: {
+            //     loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+            //         return $ocLazyLoad.load([
+            //             'js/other/funcpage_a/controller/func_c-a_v02.js' + v,
+            //             'js/other/funcpage_a/directive/func_d-a_v02.js' + v,
+            //             'js/other/funcpage_a/filter/func_f-a_v02.js' + v,
+            //             'js/other/funcpage_a/service/func_s-a_v02.js' + v,
+            //             'css/funcpage_a/funcpage.css' + v,
+            //             'https://imagecdn.ihuijiayou.com/wechat/js/plugins/underscore.js' + v,
+            //             'https://imagecdn.ihuijiayou.com/wechat/js/plugins/md5.js' + v,
+            //             'https://imagecdn.ihuijiayou.com/wechat/js/plugins/moment.min.js' + v
+            //         ]); // 按需加载目标 js file
+            //     }],
+            // }
+            resolve: resovleDep({
+                files: [
+                    'js/other/funcpage_a/controller/func_c-a_v02.js' + v,
+                    'js/other/funcpage_a/directive/func_d-a_v02.js' + v,
+                    'js/other/funcpage_a/filter/func_f-a_v02.js' + v,
+                    'js/other/funcpage_a/service/func_s-a_v02.js' + v,
+                    'css/funcpage_a/funcpage_a.css' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/plugins/underscore.js' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/plugins/md5.js' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/plugins/moment.min.js' + v
+                ]
+            })
         })
         .state("funcpage_a.db_festival", {
             url: "/db_festival",
@@ -53,6 +66,23 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
                 predata: "land",
                 parse: "login_logic",
                 get: function(predata, parse) {
+                    var x = parse.parse_url();
+
+                    function judge(obj) {　　
+                        for (var i in obj) { //如果不为空，则会执行到这一步，返回true
+                            　　　　 return true;　　 }　
+                        return false;
+                    }
+                    if (judge(x)) {
+                        if (x["ch"] != undefined) {
+                            var channel = x["ch"];
+                            sessionStorage.setItem("ch", channel);
+                            localStorage.setItem("ch", channel);
+                        }
+                    }
+
+
+
                     var mytime = new Date();
                     var t = mytime.getTime();
                     var params = {

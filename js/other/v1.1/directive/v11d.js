@@ -10,7 +10,7 @@ angular.module('HJY').directive("repeatF", ["$timeout", function($timeout) {
         }
     }
 }])
-HJY.directive('v11Popum', ["$timeout", "$ionicBackdrop", function($timeout, $ionicBackdrop) { //赋予元素当前可见窗口高度
+angular.module('HJY').directive('v11Popum', ["$timeout", "$ionicBackdrop", function($timeout, $ionicBackdrop) { //赋予元素当前可见窗口高度
     return {
         restrict: 'AE',
         link: function(scope, element, attr) {
@@ -24,7 +24,7 @@ HJY.directive('v11Popum', ["$timeout", "$ionicBackdrop", function($timeout, $ion
         }
     }
 }]);
-HJY.directive('initPage', ["$timeout", "$ionicBackdrop", function($timeout, $ionicBackdrop) { //赋予元素当前可见窗口高度
+angular.module('HJY').directive('initPage', ["$timeout", "$ionicBackdrop", function($timeout, $ionicBackdrop) { //赋予元素当前可见窗口高度
     return {
         restrict: 'AE',
         link: function(scope, element, attr) {

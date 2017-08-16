@@ -98,7 +98,6 @@
                 // 100%);
                 margin-bottom: 0;
                 padding: 0 .54613287rem; // 32px;
-
                 // .first{
                 //     height:.85333261rem; // 50px;
                 //     width:100%;
@@ -120,52 +119,60 @@
                 //         @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_Order.png",0.08rem,center,20%);
                 //     }
                 // }
-
                 .help {
-                color: #F95B4E;
-                left: .50133304rem; // 20px;
-                position:absolute;
-                @include backgroundset("../../images/little_beer/ic_home_help.png",
-                80%,
-                center,
-                100%);
-                font-size: .22186648rem; // 13px;
-                font-family: PingFangSC-Regular;
-                text-align: right;
-                margin: 0.1rem 0;
-                height:.3rem;
-                width:1.5rem;
-                top: 1.84133304rem; // 20px
-            }
+                    color: #F95B4E;
+                    left: .50133304rem; // 20px;
+                    position: absolute;
+                    @include backgroundset("../../images/little_beer/ic_home_help.png",
+                    80%,
+                    center,
+                    100%);
+                    font-size: .22186648rem; // 13px;
+                    font-family: PingFangSC-Regular;
+                    text-align: right;
+                    margin: 0.1rem 0;
+                    height: .3rem;
+                    width: 1.5rem;
+                    top: 1.84133304rem; // 20px
+                }
                 .type {
                     margin-bottom: 0.3rem;
-                    text-align: center;
-                    color: #F95B4E;
+                    // text-align: center;
                     font-family: PingFangSC-Medium;
                     height: .46079961rem; // 27px;
                     line-height: .46079961rem; // 27px;
                     letter-spacing: 0px;
-                    .mul {
-                        font-size: .40959965rem; // 24px;
-                        font-family: PingFangSC-Medium;
-                        display: inline-block;
-                        height: .46079961rem; // 27px;
-                        line-height: .46079961rem; // 27px;
+                    font-family: PingFangSC-Regular;
+                    font-size: .25599978rem; // 15px;
+                    color: #999999;
+                    letter-spacing: 0;
+                    span{
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #333333;
+                        letter-spacing: 0;
                     }
-                    .unit {
-                        font-size: .24rem; // 12px
-                        font-family: PingFangSC-Medium;
-                        display: inline-block;
-                        vertical-align: top;
-                        letter-spacing: 8px;
-                    }
-                    .count {
-                        font-size: .40959965rem; // 24px;
-                        font-family: PingFangSC-Medium;
-                        display: inline-block;
-                        height: .46079961rem; // 27px;
-                        line-height: .46079961rem; // 27px;
-                    }
+                    // .mul {
+                    //     font-size: .40959965rem; // 24px;
+                    //     font-family: PingFangSC-Medium;
+                    //     display: inline-block;
+                    //     height: .46079961rem; // 27px;
+                    //     line-height: .46079961rem; // 27px;
+                    // }
+                    // .unit {
+                    //     font-size: .24rem; // 12px
+                    //     font-family: PingFangSC-Medium;
+                    //     display: inline-block;
+                    //     vertical-align: top;
+                    //     letter-spacing: 8px;
+                    // }
+                    // .count {
+                    //     font-size: .40959965rem; // 24px;
+                    //     font-family: PingFangSC-Medium;
+                    //     display: inline-block;
+                    //     height: .46079961rem; // 27px;
+                    //     line-height: .46079961rem; // 27px;
+                    // }
                 }
                 .user_info {
                     text-align: center;
@@ -175,13 +182,15 @@
                 .title_state02 {
                     height: .92159921rem; // 54px;
                     color: #FC6A11;
-                    text-align: center;
-                    font-size: .22186648rem; // 13px;
+                    // text-align: center;
                     line-height: .92159921rem; // 54px;
-                    background-image: url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_left.png), url(https://imagecdn.ihuijiayou.com/wechat/images/land/H5_right.png);
                     background-repeat: no-repeat, no-repeat;
                     background-position: 25% center, 75% center;
                     background-size: 15%, 15%;
+                    font-family: PingFangSC-Regular;
+                    font-size: .34133304rem; // 20px;
+                    color: #FF7320;
+                    letter-spacing: 0
                 }
                 .first {
                     text-align: center;
@@ -384,7 +393,6 @@
                     }
                 }
             }
-
             .info {
                 height: .85333261rem; // 50px;
                 border: 1px solid #999999;
@@ -408,7 +416,7 @@
                 height: .6rem; // 30px;
                 line-height: .6rem;
                 margin: 0 auto;
-                margin-top: 0.1rem;
+                margin-top: 0.6rem;
                 text-align: center;
                 padding-left: 0.3rem;
                 font-family: PingFangSC-Regular;
@@ -417,7 +425,7 @@
                 overflow: hidden;
                 position: relative;
                 transform: scale(1.3);
-                color: #FDA174;
+                color: #999999;
                 b {
                     font-weight: 500;
                     color: #FF7320;
@@ -426,7 +434,7 @@
                     display: inline-block;
                     border-radius: 20%;
                     position: absolute;
-                    left: 19%;
+                    left: 23%;
                     @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/game/H5_Check@3x.png",
                     center,
                     center,
@@ -451,6 +459,8 @@
                 flex-flow: row wrap;
                 justify-content: flex-start;
                 overflow: hidden;
+                margin-top: .6rem;
+                transform:scale(1.1);
                 li {
                     height: .92159921rem; // 54px;
                     width: 1.62133195rem; // 95px;
@@ -459,13 +469,14 @@
                     flex-flow: column;
                     margin: 0.1rem 0.06rem;
                     justify-content: space-between;
-                    @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/H5_Option_n.png",
+                    @include backgroundset("../../images/little_beer/ic_home_package_n.png",
                     center,
                     center,
-                    100%);
+                    89%);
+
                     .pre_price {
                         font-size: .30719974rem; // 18px;
-                        color: #F95B4E;
+                        color: #2A2A2A;
                         font-family: PingFangSC-Semibold;
                         margin-top: 8%;
                         span {
@@ -475,7 +486,7 @@
                     }
                     .dis_price {
                         font-size: .18773317rem; // 11px;
-                        color: #F95B4E;
+                        color: #717171;
                         font-family: PingFangSC-Regular;
                         margin-bottom: 8%;
                     }
@@ -496,7 +507,7 @@
             .second_i {
                 width: 100%;
                 height: .85333261rem; // 50px;
-                margin-top: .30719974rem; // 18px;
+                margin-top: .60719974rem; // 18px;
                 border-radius: .4266663rem; // 25px;
                 font-size: .34133304rem; // 20px
                 font-family: PingFangSC-Semibold;
@@ -504,6 +515,8 @@
                 border: none;
                 appearance: button;
                 box-shadow: 0px 3px 0px #f95b4e;
+                background-image: linear-gradient(-180deg, #FE8D29 0%, #F95B4E 86%);
+                transform:scale(1.1);
                 p {
                     text-align: center;
                     font-size: .23893313rem; // 14px;
@@ -513,8 +526,7 @@
             .my_order {
                 width: 1.62133195rem; // 95px;
                 height: .68266608rem; // 40px;
-                position: absolute;
-                right: 10%;
+                margin-left: 80%;
                 font-size: .20479983rem; // 12px;
                 color: #F95B4E;
                 margin-top: .40306643rem; // 16px;
@@ -524,13 +536,11 @@
                 100%);
             }
             .consult {
-                width: 1.62133195rem; // 95px;
                 height: .98266608rem; // 40px;
-                position: absolute;
-                left: 3%;
-                font-size: .20479983rem; // 12px;
-                color: #F95B4E;
-                margin-top: .27306643rem; // 16px;
+                width:100%;
+                font-size: .26479983rem; // 12px;
+                color: #FFC840;
+                margin-top: .67306643rem; // 16px;
                 @include backgroundset("https://imagecdn.ihuijiayou.com/wechat/images/land/ic_ service ic_service.png",
                 center,
                 center,
@@ -542,6 +552,13 @@
                 color: #999999;
                 font-size: .22186648rem; // 13px;
                 margin-top: 0.6rem;
+                @include backgroundset("../../images/little_beer/ic_order_phone.png",
+                center,
+                center,
+                100%);
+                background-size:auto 100%;
+                height:1.9967983rem; // 117px;
+                overflow:hidden;
             }
         }
     }
@@ -1166,7 +1183,7 @@
                 height: .6rem; // 30px;
                 line-height: .6rem;
                 margin: 0 auto;
-                margin-top: -0.2rem;
+                margin-top: .5rem;
                 text-align: center;
                 padding-left: 0.3rem;
                 font-family: PingFangSC-Regular;
@@ -1470,25 +1487,25 @@
                 z-index: 12;
                 transform: scale(.9);
                 height: 9rem;
-                overflow:visible;
+                overflow: visible;
                 h3 {
                     top: 1rem;
                 }
                 .title {
                     margin-top: 2.2rem;
                 }
-                .close{
-                    color:#fff;
-                    font-size:.85333261rem;
-                    border:.1rem solid #fff;
-                    width:1.02399913rem; // 60px;
-                    height:1.02399913rem; // 60px;
-                    text-align:center;
-                    line-height:.65333261rem;
-                    border-radius:50%;
-                    transform:scale(.8);
+                .close {
+                    color: #fff;
+                    font-size: .85333261rem;
+                    border: .1rem solid #fff;
+                    width: 1.02399913rem; // 60px;
+                    height: 1.02399913rem; // 60px;
+                    text-align: center;
+                    line-height: .65333261rem;
+                    border-radius: 50%;
+                    transform: scale(.8);
                     @include center-block;
-                    margin-bottom:-.6rem;
+                    margin-bottom: -.6rem;
                 }
             }
             .transition04 {

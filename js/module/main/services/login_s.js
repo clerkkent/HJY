@@ -258,7 +258,6 @@ HJY.factory("game_play", [function($state) { //此处所有的节点应该也归
             } else {
                 that.count = 200;
             }
-
             if (that.r < 160) {
                 that.r += 10;
                 animation.addone();
@@ -442,6 +441,13 @@ HJY.factory("webappSDK", ["$http", "$q", function($http, $q) {
     factory.share = function(content) {
         this.webview(function(bridge) {
             bridge.callHandler('invitation', content, function(responseData) { //请求OC
+
+            })
+        })
+    }
+    factory.getShareDetail = function(content) {
+        this.webview(function(bridge) {
+            bridge.callHandler('getShareDetail', content, function(responseData) { //请求OC
 
             })
         })

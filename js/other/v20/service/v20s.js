@@ -7,14 +7,6 @@ angular.module('HJY').factory("v20", ["$http", "$q", "$rootScope", function($htt
             head = {
                 'Content-Type': 'application/x-www-form-urlencoded'
             };
-
-            // function clearCookie() {
-            //     var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
-            //     if (keys) {
-            //         for (var i = keys.length; i--;)
-            //             document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
-            //     }
-            // }
             window.document.cookie = "OIL_TOKEN=" + authToken + ";path=/;";
         } else {
             head = {

@@ -1,7 +1,7 @@
 <div class="pay_success">
     <div class="pay_details" ui-view>
-        <header>
-            <p>恭喜你，支付成功</p>
+        <header style="background-image:url(images/little_beer/ic_pay_gas_h.png), linear-gradient(54deg, #FFF093 0%, #FFDC5A 82%);background-size:40%;background-position:.3rem center;">
+            <p style="padding-left:.6rem;">恭喜你，支付成功</p>
         </header>
         <section>
             <p>
@@ -33,7 +33,7 @@
         </section>
     </div>
     <footer>
-        <!--<div class="downloadp" ng-if="download_show">
+        <div class="downloadp" ng-if="true" style="position:fixed;bottom:0;">
             <div class="left">
 
             </div>
@@ -43,10 +43,10 @@
             </div>
 
             <p class="right button button-assertive" down-load>下载APP</p>
-        </div>-->
-        <div class="connect">
+        </div>
+        <!-- <div class="connect">
             <button class="button button-assertive" style="margin:0 auto;margin-left:30%;width:100%;position:fixed;bottom:0;right:0;" ng-click="go_order_list()">前往订单列表</button>
             <p class="tel" ng-if="false">客服热线 ： 400-851-8686</p>
-        </div>
+        </div> -->
     </footer>
 </div>

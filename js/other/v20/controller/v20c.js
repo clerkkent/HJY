@@ -10,6 +10,7 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
     $scope.token = "";
     $scope.activity_status = 1;
     $("title").html("摇一摇");
+
     $scope.getPrizeList = function() {
         var list = {
             "jsonrpc": "2.0",
@@ -247,13 +248,25 @@ HJY.controller("shake", ["$scope", "$rootScope", "$state", "webappSDK", "$ionicP
         $(".hand").addClass("shake");
     }
     window.addEventListener('shake', $scope.test, false);
+    var shareList = {
+        title: "摇一摇",
+        content: "充油摇一摇，抽iPhone 7、电影票，100%中奖!",
+        imageUrl: $rootScope.url_global + "/wechat/images/share.jpg",
+        url: $rootScope.url_global + "/wechat/#/funcpage/register",
+    }
     if (login_logic.JudgeSystem()) {
         var axxxx = JSON.parse(hjytest.getUserInfos("js调用了android中的hello方法"));
+        if (navigator.appVersion.split("hjyAndroidAPP")[1] == "2.0.2") {
+            hjytest.getShareDetail(JSON.stringify(shareList))
+        }
         $scope.user_id = axxxx.user_id;
         $scope.token = axxxx.OIL_TOKEN;
         $scope.getPrizeList();
         $scope.getAllPrizeList();
     } else {
+        if (navigator.appVersion.split("hjyiOSAPP")[1].split(" ")[0] == "2.0.2") {
+            webappSDK.getShareDetail(shareList)
+        }
         webappSDK.getUserInfos(function(res) {
             var info = JSON.parse(res)
             $scope.user_id = info.user_id

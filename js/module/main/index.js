@@ -1,8 +1,3 @@
-;
-var underscore = angular.module('underscore', []);
-underscore.factory('_', function() {
-    return window._; //Underscore must already be loaded on the page
-});
 var HJY = angular.module("HJY", ["ionic", "ui.router", "ngVerify", "oc.lazyLoad", "underscore"]);
 HJY.controller("MainCtrl", ["$scope", "$state", "$ionicBackdrop", "$ionicSideMenuDelegate", "$timeout", "$ionicLoading", "$ionicNavBarDelegate", function($scope, $state, $ionicBackdrop, $ionicSideMenuDelegate, $timeout, $ionicLoading, $ionicNavBarDelegate) {
     $(".hjy-loading").show()
@@ -15,3 +10,7 @@ HJY.controller("MainCtrl", ["$scope", "$state", "$ionicBackdrop", "$ionicSideMen
         $ionicNavBarDelegate.back();
     };
 }]);
+var underscore = angular.module('underscore', []);
+underscore.factory('_', function() {
+    return window._; //Underscore must already be loaded on the page
+});
