@@ -1074,7 +1074,7 @@ angular.module('HJY').controller("register", ["$scope", "$state", "login_logic",
     $scope.baidu_icp = false;
     Array.prototype.contains = function(needle) { for (i in this) { if (this[i] == needle) return true; } return false; }
     $scope.no_download = ["momo", "baidu", "gdt", "wyxw", "chubaodh", "116114", "ydzx"];
-    $scope.icp = ["baidu", "fenghunag"]
+    $scope.icp = ["baidu", "fenghuang"]
 
     if (judge($scope.error)) {
         if ($scope.error["ch"] != undefined) {

@@ -358,7 +358,7 @@ HJY.controller("v11_help", ["$sce", "webappSDK", "$timeout", "$ionicBackdrop", "
         if (login_logic.JudgeSystem()) {
             hjytest.CustomerService(" ")
         } else {
-            if (navigator.appVersion.split("hjyiOSAPP")[1].split(" ")[0] == "2.0.0") {
+            if (navigator.appVersion.split("hjyiOSAPP")[1].split(" ")[0].replace(/\./g, "") * 1 >= 200) {
                 webappSDK.CustomerService()
             } else {
                 location.href = "http://a1.7x24cc.com/phone_webChat.html?accountId=N000000010362&chatId=yykj-c5867180-39d1-11e7-bd22-61f4856f24a8"

@@ -23,7 +23,7 @@ HJY.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvider", func
             controller: "funcpage",
             resolve: resovleDep({
                 files: [
-                    'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/controller/func_c-a_v04.js' + v,
+                    'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/controller/func_c-a_v06.js' + v,
                     'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/directive/func_d-a_v03.js' + v,
                     'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/filter/func_f-a_v03.js' + v,
                     'https://imagecdn.ihuijiayou.com/wechat/js/funcpage/service/func_s-a_v03.js' + v,
